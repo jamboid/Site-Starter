@@ -15,18 +15,18 @@ Site.showhide = (function ($) {
 
         bindShowHideEvents = function (component) {
           var thisComp = component,
-              thisAction = $(thisComp).find(defaults.selAction).eq(0),
-              thisContent = $(thisComp).find(defaults.selContent).eq(0);
-              $(thisAction).click(function (e) {
-                e.preventDefault();
-                if($(thisComp).hasClass('isShowing')){
-                  $(thisContent).slideUp();
-                  $(thisComp).removeClass('isShowing');
-                } else {
-                  $(thisContent).slideDown();
-                  $(thisComp).addClass('isShowing');
-                }
-              });
+            thisAction = $(thisComp).find(defaults.selAction).eq(0),
+            thisContent = $(thisComp).find(defaults.selContent).eq(0);
+            $(thisAction).click(function (e) {
+              e.preventDefault();
+              if($(thisComp).hasClass('isShowing')){
+                $(thisContent).slideUp();
+                $(thisComp).removeClass('isShowing');
+              } else {
+                $(thisContent).slideDown();
+                $(thisComp).addClass('isShowing');
+              }
+            });
         },
 
         setActiveStates = function (component) {
@@ -46,8 +46,8 @@ Site.showhide = (function ($) {
 
         // Initialisation
         init = function () {
-            Site.utils.cl("Site.showhide.init called");
-            setShowHideComponents();
+          Site.utils.cl("Site.showhide.init called");
+          setShowHideComponents();
         };
 
     // Return Public API

@@ -14,6 +14,8 @@ Site.init = (function ($) {
     modules.init = function () {
       $(document).ready(function () {
         Site.utils.init();
+        Site.showhide.init();
+        Site.forms.init()
       });
     };
 
