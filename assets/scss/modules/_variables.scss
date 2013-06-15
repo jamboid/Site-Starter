@@ -1,0 +1,39 @@
+/* != Variables */
+
+/* !== Colours */
+
+/* !=== Hex Values  */
+
+$clrBlack: #000;
+$clrDarkGrey: #333;
+$clrGrey: #666;
+$clrWhite: #fff;
+$clrBlue: #5561b9;
+
+
+/* !=== Basic Elements  */
+
+$clrHeaderBackground:$clrDarkGrey;
+$clrHeaderText:$clrWhite;
+
+$clrFooterBackground:$clrDarkGrey;
+$clrFooterText:$clrWhite;
+
+$clrPageBackground: $clrWhite;
+$clrPageText:$clrBlack;
+
+/* !== Links  */
+
+/* !== Typography */
+
+$basefontsize : 1.6em;
+$baselineheight : $basefontsize * 1.5;
+$basefontfamily: "Cambria",Georgia,serif;
+$altfontfamily: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+/* Weights */
+
+$light: 100;
+$normal: 300;
+$heavy: 600;
+

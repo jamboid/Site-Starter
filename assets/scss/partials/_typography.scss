@@ -1,0 +1,63 @@
+/*---[ == Typefaces ]---*/
+
+/*---[ == Headings ]---*/
+h1,h2,h3,h4,h5,h6 {
+	font-family:$altfontfamily;
+	font-weight:$heavy;
+	margin:0;
+}
+
+.alpha {
+	margin:0;
+	font-size:$basefontsize * 3;
+}
+
+.beta {
+	margin:1em 0 0.5em;
+	font-size:$basefontsize * 2.5;
+}
+
+.gamma {
+	font-size:$basefontsize * 2;
+}
+
+.delta {
+	font-size:$basefontsize * 1.5;
+}
+
+.epsilon {
+	font-size:$basefontsize;
+}
+
+/*---[ == Paragraphs ]---*/
+p {
+	margin:0 0 $baselineheight;
+	font-size:$basefontsize;
+}
+
+.stFooter p {
+	color:$clrWhite;
+	font-size:1.6em;
+	margin:0;
+}
+
+/*---[ == Lists ]---*/
+li,dt,dd {
+	font-size:2em;
+}
+
+li li {
+	font-size:0.9em;
+}
+
+.featList {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+/*---[ == Code ]---*/
+code {
+	font-size:$basefontsize;
+	font-family:consolas,monaco,monospace;
+}

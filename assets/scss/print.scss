@@ -1,0 +1,75 @@
+/*---[ == Print Variables ]---*/
+
+/* Typography */
+$basefontsize : 12pt;
+$baselineheight : $basefontsize * 1.5;
+$basefontfamily: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+$altfontfamily: "Cambria",Georgia,serif;
+
+/*---[ == Base Styles ]---*/
+
+// Set page margins
+@page {
+    margin: 2cm 1.5cm;
+}
+
+body {
+  font-size:$basefontsize;
+  line-height:$baselineheight;
+  color:#000;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family:$altfontfamily;
+  page-break-after: avoid;
+}
+
+h1 {
+  font-size:$basefontsize * 3;
+}
+
+h2 {
+  font-size:$basefontsize * 2.4;
+}
+
+h3 {
+  font-size:$basefontsize * 2;
+}
+
+h4 {
+  font-size:$basefontsize * 1.5;
+}
+
+p, li, dt, dd {
+  font-size:$basefontsize;
+}
+
+abbr[title]:after {
+    content: " (" attr(title) ")";
+}
+
+/*---[ == Links ]---*/
+
+a[href]:after {
+    content: " (" attr(title) ")";
+}
+
+a[href^="#"]:after,
+a[href^="javascript"]:after {
+    content: "";
+}
+
+/*---[ == Tables ]---*/
+
+table {
+  width:100%;
+}
+
+th, td {
+  padding:10px 20px;
+}
+
+/*---[ == Hidden Elements ]---*/
+nav {
+  display: none;
+}
