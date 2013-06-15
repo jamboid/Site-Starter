@@ -1,6 +1,8 @@
-/*---[ == Typefaces ]---*/
+/* !== Typography  */
 
-/*---[ == Headings ]---*/
+/* !== Typefaces */
+
+/* !== Headings */
 h1,h2,h3,h4,h5,h6 {
 	font-family:$altfontfamily;
 	font-weight:$heavy;
@@ -29,7 +31,7 @@ h1,h2,h3,h4,h5,h6 {
 	font-size:$basefontsize;
 }
 
-/*---[ == Paragraphs ]---*/
+/* !== Paragraphs */
 p {
 	margin:0 0 $baselineheight;
 	font-size:$basefontsize;
@@ -41,7 +43,7 @@ p {
 	margin:0;
 }
 
-/*---[ == Lists ]---*/
+/* !== Lists */
 li,dt,dd {
 	font-size:2em;
 }
@@ -56,7 +58,7 @@ li li {
 	list-style:none;
 }
 
-/*---[ == Code ]---*/
+/* !== Code */
 code {
 	font-size:$basefontsize;
 	font-family:consolas,monaco,monospace;
