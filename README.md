@@ -1,4 +1,4 @@
-# Fuzz boilerplate
+# Site Starter
 
 This is a boilerplate for beginning front-end development work.
 
