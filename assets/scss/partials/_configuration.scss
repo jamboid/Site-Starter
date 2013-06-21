@@ -1,25 +1,27 @@
-/* !== Set viewport and initial zoom */
+/* != Configuration */
+
+/* !== Set viewport and initial zoom for browsers that support CSS viewport functionality */
 @-webkit-viewport {
-  width: device-width;
+  width: $deviceWidth;
   zoom: 1.0;
 }
 
 @-moz-viewport {
-  width: device-width;
+  width: $deviceWidth;
   zoom: 1.0;
 }
 
 @-ms-viewport {
-  width: device-width;
+  width: $deviceWidth;
   zoom: 1.0;
 }
 
 @-o-viewport {
-  width: device-width;
+  width: $deviceWidth;
   zoom: 1.0;
 }
 
 @viewport {
-  width: device-width;
+  width: $deviceWidth;
   zoom: 1.0;
 }

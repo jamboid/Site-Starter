@@ -2,19 +2,22 @@
 
 /* !== Colours */
 
-/* !=== Hex Values  */
-
+/* !=== Hex Values */
+/* NOTE: Use these to define element and other colours below. These variables should not be used in any other SASS files. */
 $clrBlack: #000;
 $clrDarkGrey: #333;
 $clrGrey: #666;
+$clrLightGrey: #999;
 $clrWhite: #fff;
 $clrBlue: #5561b9;
 
+/* !=== Basic Element Colours */
+/* NOTE: Use hex vars to define these. Don't add hex/rgb/rgba values directly */
+$clrBodyBackground: $clrWhite;
+$clrBodyText: $clrDarkGrey;
 
-/* !=== Basic Elements  */
-
-$clrHeaderBackground:$clrDarkGrey;
-$clrHeaderText:$clrWhite;
+$clrHeaderBackground:$clrWhite;
+$clrHeaderText:$clrLightGrey;
 
 $clrFooterBackground:$clrDarkGrey;
 $clrFooterText:$clrWhite;
@@ -22,18 +25,23 @@ $clrFooterText:$clrWhite;
 $clrPageBackground: $clrWhite;
 $clrPageText:$clrBlack;
 
-/* !== Links  */
+/* !=== Link Colours */
+/* NOTE: Use hex vars to define these. Don't add hex/rgb/rgba values directly   */
+$clrLink: $clrBlue;
+$clrLinkHover: lighten($clrBlue, 20%);
 
 /* !== Typography */
-
 $basefontsize : 1.6em;
-$baselineheight : $basefontsize * 1.5;
-$basefontfamily: "Cambria",Georgia,serif;
-$altfontfamily: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+$baselineheight : 1.5;
 
-/* Weights */
+$basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
+$altfontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
+$codefontfamily: "Consolas",monaco,monospace;
 
+/* Font Weights */
 $light: 100;
 $normal: 300;
 $heavy: 600;
 
+/* !== Layout */
+$deviceWidth: device-width;

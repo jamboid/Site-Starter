@@ -1,9 +1,5 @@
-/*
-    File:   screen.css
-    Author: Jamie Boyd
-    Date:   **date here**
-    Notes:
-*/
+/* !== Screen */
+/* NOTE: Master SASS file for screen display. Only add @import statements. No SASS/CSS code please */
 
 /* !== Frameworks  */
 @import "bourbon";
@@ -19,8 +15,10 @@
 @import "partials/images";
 
 /* !== Components */
+@import "partials/brand";
 @import "partials/navigation";
 @import "partials/scrollers";
 
 /* !== Extras */
 @import "partials/utilities";
+@import "partials/shame";

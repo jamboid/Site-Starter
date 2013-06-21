@@ -1,5 +1,12 @@
 /* != Images */
 img {
 	max-width:100%;
-	height:auto;
+	height:auto !important;
+}
+
+/* IE8 doesn't like max-width, so remove it and make sure any images have a correct width set */
+.ie8 {
+  img {
+    max-width:none !important;
+  }
 }
