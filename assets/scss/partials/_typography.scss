@@ -1,42 +1,46 @@
 /* !== Typography  */
 
 /* !== Typefaces */
-/* NOTE: Declare any @font-face rules here */
-
-/* !== Document */
-body {
-	font-size:62.5%; /* = 10px */
-	font-family:$basefontfamily;
-	line-height:1.5;
-	color:$clrBodyText;
-}
 
 /* !== Headings */
 h1,h2,h3,h4,h5,h6 {
+	font-family:$altfontfamily;
 	font-weight:$heavy;
 	margin:0;
 }
 
-.siteTitle {
+.alpha {
 	margin:0;
-	font-size:2em;
-	color:$clrHeaderText;
-	font-weight: $normal;
+	font-size:$basefontsize * 3;
 }
 
-.pageTitle {
+.beta {
 	margin:1em 0 0.5em;
-	font-size:3em;
+	font-size:$basefontsize * 2.5;
 }
 
-.compTitle {
+.gamma {
+	font-size:$basefontsize * 2;
+}
 
+.delta {
+	font-size:$basefontsize * 1.5;
+}
+
+.epsilon {
+	font-size:$basefontsize;
 }
 
 /* !== Paragraphs */
 p {
-	margin:0 0 1em;
+	margin:0 0 $baselineheight;
 	font-size:$basefontsize;
+}
+
+.stFooter p {
+	color:$clrWhite;
+	font-size:1.6em;
+	margin:0;
 }
 
 /* !== Lists */
@@ -57,5 +61,5 @@ li li {
 /* !== Code */
 code {
 	font-size:$basefontsize;
-	font-family:$codefontfamily;
+	font-family:consolas,monaco,monospace;
 }

@@ -7,14 +7,12 @@
   @return rgba(255,255,255,$opacity)
 }
 
-/* Hide text with indent */
 @mixin hide-text{
   overflow:hidden;
   text-indent:-9999px;
   display:block;
 }
 
-/* Set opacity with legacy browser fallbacks */
 @mixin opacity($trans) {
   filter: alpha(opactiy=($trans * 100));
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
@@ -23,7 +21,7 @@
   opacity: $trans;
 }
 
-/* !== Media Query Breakpoints mixin - includes Retina display */
+/* !== Media Query Breakpoints mixin  */
 @mixin mq($point) {
   @if $point == verysmall {
     @media (max-width: 480px) { @content; }
