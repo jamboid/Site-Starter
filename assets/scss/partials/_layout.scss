@@ -1,25 +1,23 @@
-/* != Document */
+/* != Layout  */
+
+/* !== Document */
 body {
 	margin:0;
 	padding:0;
-	background:$clrBlack;
-	color:$clrWhite;
-	font-size:62.5%; /* = 10px */
-	font-family:$basefontfamily;
-	line-height:1.5;
+	background:$clrBodyBackground;
 }
 
-/* != Framework Levels */
+/* !== Framework Levels */
 
 /* Basic styles for 5 levels of the framework */
 
-/* !== Stages (.st) */
+/* !=== Stages (.st) */
 .st {
 	width:100%;
 	position: relative;
 }
 
-/* !== Field (.fd) */
+/* !=== Field (.fd) */
 .fd {
 	clear:both;
 	margin:0 auto;
@@ -28,12 +26,12 @@ body {
 	max-width:1200px;
 }
 
-/* !== Region (.rg) */
+/* !=== Region (.rg) */
 .rg {
 
 }
 
-/* !== Group (.gp) */
+/* !=== Group (.gp) */
 .gp {
 	position:relative;
 	z-index:0;
@@ -45,16 +43,16 @@ body {
 	list-style:none;
 }
 
-/* !== Component (.cp) - Set outer dimensions and display */
+/* !=== Component (.cp) - Set outer dimensions (width, height) and display */
 .cp {
 	margin:0;
 	padding:0;
 	width:100%;
 }
 
-/* !== Inner (.in) - Set component layout */
+/* !=== Inner (.in) - Set component layout */
 .in {
-	margin:0 15px 30px;
+	margin:0 1.5em 3em;
 }
 
-/* !== Grid Alignment - margins */
+/* !=== Grid Alignment - margins */
