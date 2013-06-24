@@ -1,0 +1,17 @@
+/* != Style Guide  */
+
+.cpStyleGuide {
+
+  .compTitle {
+    font-size: 2.8em;
+  	margin:0 0 1em;
+  	padding:0.1em 0.25em;
+  	background:$clrCompTitleBack;
+    color:$clrCompTitleText;
+    border-top:2px solid $clrCompTitleBorder;
+  }
+
+  .sgLabel {
+    color:$clrStyleLabel;
+  }
+}

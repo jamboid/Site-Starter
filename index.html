@@ -5,13 +5,12 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width,intial-scale=1.0">
-  <title>Site boilerplate</title>
+  <title>Site Starter</title>
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" media="screen">
   <link rel="stylesheet" type="text/css" href="assets/css/screen.css" media="screen">
@@ -31,10 +30,207 @@
     })();
 
   </script>
-
 </head>
 <body>
 
+  <header class="stHeader st">
+    <div class="fdPageHeader fd">
+      <div class="cpBrand cp">
+      	<div class="in">
+        	<h1 class="pageTitle">Site Starter</h1>
+      	</div>
+      </div>
+    </div>
+  </header>
+  <div class="stPage st">
+    <div class="fdPageContent fd">
+      <!-- Introduction -->
+      <div class="rgIntro rgSection rg">
+        <div class="cpStyleGuide cp">
+        	<div class="in">
+            <h2 class="compTitle">Introduction</h2>
+            <div class="compContent bodyContent"></div>
+        	</div>
+        </div>
+      </div>
+      <!-- End of Introduction -->
+      <!-- Basic Elements -->
+      <div class="rgSection rg">
+        <div class="cpStyleGuide cp">
+        	<div class="in">
+          	<h2 class="compTitle">Styles for basic content elements (e.g. created in rich-text editor)</h2>
+          	<div class="compContent bodyContent">
+            	<section>
+            	  <h6 class="sgLabel">Headings</h6>
+              	<h1>Level 1 Heading</h1>
+              	<h2>Level 2 Heading</h2>
+              	<h3>Level 3 Heading</h3>
+              	<h4>Level 4 Heading</h4>
+              	<h5>Level 5 Heading</h5>
+              	<h6>Level 6 Heading</h6>
+            	</section>
+            	<section>
+                <h6 class="sgLabel">Paragraphs</h6>
+                <p>Paragraph lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe reprehenderit dolorem pariatur esse fugit. Ratione quod ad aspernatur dolore eveniet itaque recusandae alias dignissimos aut aperiam repellendus quisquam atque. Earum assumenda laboriosam distinctio obcaecati vero dolorum totam aliquam aut. </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ab placeat necessitatibus veniam reprehenderit excepturi laudantium in ipsam tenetur sequi fugit labore beatae suscipit repellendus molestiae quam enim. Autem aliquid voluptas nihil aliquam recusandae non sed debitis adipisci temporibus aut suscipit dolorum animi fugit ad cupiditate distinctio vero sequi architecto.</p>
+                <h6 class="sgLabel"l>Strong text</h6>
+                <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex libero.</strong></p>
+
+                <h6 class="sgLabel">Emphasised text</h6>
+                <p><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In quos!</em></p>
+              </section>
+              <section>
+                <h6 class="sgLabel">Unordered list</h6>
+                <!-- Unordered List  -->
+                <ul>
+                	<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
+                	<li>Sequi possimus quasi vitae nulla culpa cupiditate nemo:
+                  	<ul>
+                  		<li>Lorem ipsum dolor sit amet.</li>
+                  		<li>Perspiciatis tempore aliquam corporis eum?</li>
+                  		<li>Harum doloremque delectus facilis inventore!</li>
+                  	</ul>
+
+                	</li>
+                	<li>Libero id sed accusantium corporis nemo.</li>
+                </ul>
+                <!-- Ordered List  -->
+                <h6 class="sgLabel">Ordered list</h6>
+                <ol>
+                	<li>Lorem ipsum dolor sit amet.</li>
+                	<li>Sequi possimus quasi vitae nulla culpa cupiditate nemo.</li>
+                	<li>Libero id sed accusantium corporis nemo dolorem odit temporibus recusandae maxime.</li>
+                </ol>
+                <!-- Definition List  -->
+                <h6 class="sgLabel">Definition list</h6>
+                <dl>
+                  <dt>Lorem ipsum dolor sit.</dt>
+                  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vero adipisci possimus quam deleniti dolorum!</dd>
+                  <dt>Lorem ipsum dolor sit.</dt>
+                  <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia vero adipisci possimus quam deleniti dolorum!</dd>
+                </dl>
+              </section>
+              <section>
+                <h6 class="sgLabel">Block Quote</h6>
+                <blockquote>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est quos delectus esse ipsa eius tempora.</p>
+                </blockquote>
+              </section>
+          	</div>
+        	</div>
+        </div>
+        <div class="cpStyleGuide cp">
+        	<div class="in">
+        		<h2 class="compTitle">Form elements</h2>
+            <div class="compContent bodyContent">
+              <form action="">
+                <fieldset>
+                  <legend>Fieldset legend</legend>
+                  <div class="formItem">
+                    <label>Text field</label>
+                    <input type="text" placeholder="e.g. Some text" />
+                  </div>
+                  <div class="formItem">
+                    <label>Select input</label>
+                    <select name="" id="">
+                      <option value="0">Please select...</option>
+                     	<option value="val1">Option 1</option>
+                    	<option value="val2">Option 1</option>
+                    	<option value="val3">Longer option with more text</option>
+                    	<option value="val4">Option 4</option>
+                    </select>
+                  </div>
+                  <div class="formItem">
+                    <label>Text area</label>
+                    <textarea placeholder="e.g. your message to us"></textarea>
+                  </div>
+                  <div class="formItem">
+                  	<label for="radio1"><input type="radio" id="radio1" name="radioGroup"/>Radio Button 1</label>
+                  	<label for="radio2"><input type="radio" id="radio2" name="radioGroup"/>Radio Button 2</label>
+                  </div>
+                  <div class="formItem">
+                  	<label for="checkbox1"><input type="checkbox" id="checkbox1" />Checkbox</label>
+                  </div>
+                  <div class="formItem">
+                  	<label>Multi-select List</label>
+                  	<select multiple size="5">
+                  		<option>Please select</option>
+                  		<option>Longer selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  		<option>Another selection option</option>
+                  	</select>
+                  </div>
+                  <div class="formItem">
+                  	<label>File Upload</label>
+                      <input type="file" />
+                  </div>
+
+                  <div class="formItem">
+                  	<label>Search Field (type=search)</label>
+                    <input type="search" placeholder="keyword" />
+                  </div>
+                  <div class="formItem">
+                  	<label>Datalist Field</label>
+                    <input type="text" placeholder="keyword" list="datalist" />
+                    <datalist id="datalist">
+                    	<option value="Mr" />
+                    	<option value="Mrs" />
+                    	<option value="Miss" />
+                    	<option value="Duke"/>
+                    </datalist>
+                  </div>
+                  <div class="formItem">
+                  	<label>Date Field (type=date)</label>
+                    <input type="date" value="2011-03-02" />
+                  </div>
+                  <div class="formItem">
+                  	<label>Month Field (type=month)</label>
+                    <input type="month" value="2011-03"/>
+                  </div>
+
+                  <div class="formItem">
+                  	<label>Number Field (type=number)</label>
+                    <input type="number" max="100" max="0" step="5" value="0" />
+                  </div>
+                  <div class="formItem">
+                  	<label>Email Field (type=email)</label>
+                    <input type="email" placeholder="Email address here" />
+                  </div>
+                  <div class="formItem">
+                  	<label>Telephone Field (type=tel)</label>
+                    <input type="tel" placeholder="Phone number here" />
+                  </div>
+
+                  <div class="formItem">
+                  	<label>Range Field (type=range)</label>
+                    <input type="range" max="100" min="0" step="10" value="0" />
+                  </div>
+
+                  <div class="formItem">
+                    <input type="submit" value="Submit button" />
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="stFooter st">
+    <div class="fdPageFooter fd">
+      <div class="cpLegal cp">
+      	<div class="in">
+        	<p class="copyright">Copyright &copy; Jamie Boyd 2013</p>
+      	</div>
+      </div>
+    </div>
+  </footer>
   <!-- Scripts -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/Site.js"></script>

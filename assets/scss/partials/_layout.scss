@@ -17,6 +17,24 @@ body {
 	position: relative;
 }
 
+.stHeader {
+  background:$clrHeaderBackground;
+  color:$clrHeaderText;
+  padding:0;
+}
+
+.stPage {
+  background:$clrPageBackground;
+  color:$clrPageText;
+  padding:0;
+}
+
+.stFooter {
+  background:$clrFooterBackground;
+  color:$clrFooterText;
+  padding: 2em 0;
+}
+
 /* !=== Field (.fd) */
 .fd {
 	clear:both;
