@@ -1,15 +1,45 @@
 /* != Style Guide  */
-
+/* NOTES: Styles to create a flat style guide */
 .cpStyleGuide {
 
   .compTitle {
     font-size: 2.8em;
   	margin:0 0 1em;
-  	padding:0.1em 0.25em;
+  	padding:0.25em 40px 0.25em 0.5em;
   	background:$clrCompTitleBack;
     color:$clrCompTitleText;
-    border-top:2px solid $clrCompTitleBorder;
+    /* border-top:2px solid $clrCompTitleBorder; */
   }
+
+  &[data-plugin=showhide] {
+    .compTitle {
+      position: relative;
+      cursor: pointer;
+
+        &:after {
+        content:"–";
+        font-size:1.2em;
+        position: absolute;
+        right: 5px;
+        top: 0;
+        width:30px;
+        height:30px;
+        text-align: center;
+        vertical-align: middle;
+        z-index: 100;
+        @include inline-block;
+      }
+    }
+
+    &.isHiding {
+      .compTitle{
+        &:after {
+          content:"+";
+        }
+      }
+    }
+  }
+
 
   .sgLabel {
     color:$clrStyleLabel;

@@ -41,7 +41,7 @@ body {
 	margin:0 auto;
 	padding:0;
 	width:100%;
-	max-width:1200px;
+	max-width:$fullWidth;
 }
 
 /* !=== Region (.rg) */
@@ -74,3 +74,12 @@ body {
 }
 
 /* !=== Grid Alignment - margins */
+
+/* !== Display Classes  */
+.isShowing {
+  display: block;
+}
+
+.isHidden {
+  display: none;
+}

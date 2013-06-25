@@ -1,14 +1,9 @@
 /* != Links / Buttons */
 a {
-	color:#5561b9;
+	color:$clrLink;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
-}
 
-a:active {
-	position:relative;
-	top:1px;
-}
-
-a:hover,a:focus {
-	color:#494f7c;
+	&:hover, &:focus, &:active {
+    color:$clrLinkHover;
+	}
 }

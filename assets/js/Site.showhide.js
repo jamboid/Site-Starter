@@ -8,25 +8,43 @@ Site.showhide = (function ($) {
     "use strict";
     // Variables
     var defaults = {
-          selPlugin : "[data-plugin=showHide]",
+          selPlugin : "[data-plugin=showhide]",
           selAction : "[data-action=toggle]",
-          selContent : "[data-content=showHide]"
+          selContent : "[data-content=showhide]"
         },
 
-        bindShowHideEvents = function (component) {
+        bindShowHideEvents = function (component, config) {
           var thisComp = component,
-            thisAction = $(thisComp).find(defaults.selAction).eq(0),
-            thisContent = $(thisComp).find(defaults.selContent).eq(0);
-            $(thisAction).click(function (e) {
-              e.preventDefault();
-              if($(thisComp).hasClass('isShowing')){
-                $(thisContent).slideUp();
-                $(thisComp).removeClass('isShowing');
-              } else {
+              thisAction = $(thisComp).find(defaults.selAction).eq(0),
+              thisContent = $(thisComp).find(defaults.selContent).eq(0),
+              thisConfig = config || {},
+              startState = thisConfig.open || false,
+              animate = thisConfig.animate || false;
+
+          Site.utils.cl(thisConfig);
+
+          if (startState === "closed"){
+            $(thisComp).addClass('isHiding');
+          }
+
+          $(thisAction).click(function (e) {
+            e.preventDefault();
+            if($(thisComp).hasClass('isHiding')){
+              if(animate === true){
                 $(thisContent).slideDown();
-                $(thisComp).addClass('isShowing');
+              } else {
+                $(thisContent).show();
               }
-            });
+              $(thisComp).removeClass('isHiding');
+            } else {
+              if(animate === true){
+                $(thisContent).slideUp();
+              } else {
+                $(thisContent).hide();
+              }
+              $(thisComp).addClass('isHiding');
+            }
+          });
         },
 
         setActiveStates = function (component) {
@@ -39,8 +57,10 @@ Site.showhide = (function ($) {
         setShowHideComponents = function () {
           var showHideComps = $(defaults.selPlugin);
           $(showHideComps).each(function () {
+
+            var config = $(this).attr('data-plugin-config');
             setActiveStates(this);
-            bindShowHideEvents(this);
+            bindShowHideEvents(this, config);
           });
         },
 

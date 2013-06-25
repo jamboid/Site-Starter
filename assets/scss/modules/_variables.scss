@@ -1,4 +1,5 @@
 /* != Variables */
+/* NOTES: This file should be imported by the /modules/_all.scss file */
 
 /* !== COLOURS */
 
@@ -17,6 +18,8 @@ RESULT: Colours are managed in one location and colour changes will not require 
 
 /* !=== COLOUR-DESCRIPTIVE VARIABLES */
 /* NOTE: Use these to define element and other colours below. These variables should not be used in any other SASS files. */
+
+/* ! Black to White */
 $clrBlack: #000;
 $clrDarkGrey: #333;
 $clrGrey: #666;
@@ -24,23 +27,29 @@ $clrLightGrey: #999;
 $clrVeryLightGrey: #efefef;
 $clrOffWhite: #f9f9f9;
 $clrWhite: #fff;
+
+/* ! e.g. Blues */
 $clrBlue: #5561b9;
 $clrLightBlue:#78a0da;
+
+/* ! e.g. Oranges */
+$clrOrange:#bc4100;
+
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
 $clrBodyBackground: $clrDarkGrey;
 $clrBodyText: $clrDarkGrey;
 
-/* Header */
+/* ! Header */
 $clrHeaderBackground:$clrWhite;
 $clrHeaderText:$clrLightGrey;
 
-/* Footer */
+/* ! Footer */
 $clrFooterBackground:$clrDarkGrey;
 $clrFooterText:$clrWhite;
 
-/* Page */
+/* ! Page */
 $clrPageBackground: $clrWhite;
 $clrPageText:$clrDarkGrey;
 
@@ -50,14 +59,14 @@ $clrCompTitleBorder: $clrLightGrey;
 
 $clrSectionBorder: $clrVeryLightGrey;
 
-/* Link Colours */
-$clrLink: $clrBlue;
-$clrLinkHover: lighten($clrBlue, 20%);
+/* ! Link Colours */
+$clrLink: $clrLightBlue;
+$clrLinkHover: $clrOrange;
 
-/* Form Colours */
+/* ! Form Colours */
 $clrFieldsetBack: $clrOffWhite;
 
-/* Style Guide */
+/* ! Style Guide */
 $clrStyleLabel: $clrLightBlue;
 
 
@@ -69,10 +78,25 @@ $basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
 $altfontfamily: "Cambria",Georgia,serif;
 $codefontfamily: "Consolas",monaco,monospace;
 
-/* Font Weights */
+/* ! Font Weights */
 $light: 100;
 $normal: 300;
 $heavy: 600;
 
-/* !== Layout */
+
+/* !== MEDIA QUERY PARAMETERS  */
+
+/* What parameter are you setting your Media Queries with? */
+$mqParameter: max-width;
+
+/* What are the parameter values for each Media Query */
+$mqVerySmallVal: 480px;
+$mqSmallVal: 610px;
+$mqMediumVal: 770px;
+$mqLargeVal: 900px;
+$mqFullWidthVal: 1000px;
+
+
+/* !== LAYOUT */
 $deviceWidth: device-width;
+$fullWidth: 1000px;

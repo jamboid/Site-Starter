@@ -10,3 +10,6 @@ img {
     max-width:none !important;
   }
 }
+
+/* !== IE image rendering - improves appearence of resized images in IE  */
+img { -ms-interpolation-mode: bicubic; }

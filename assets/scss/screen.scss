@@ -1,7 +1,9 @@
 /* !== Screen */
 /* NOTE: Master SASS file for screen display. Only add @import statements. No SASS/CSS code please */
 
-/* !== Frameworks  */
+/* !== Frameworks */
+
+/* Bourbon Framework - http://bourbon.io/docs/ */
 @import "bourbon";
 
 /* !== Generic Rules */
@@ -24,3 +26,5 @@
 @import "partials/utilities";
 @import "partials/style-guide";
 @import "partials/shame";
+
+/* !== Vendor */
