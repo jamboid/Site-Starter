@@ -35,6 +35,14 @@ $clrLightBlue:#78a0da;
 /* ! e.g. Oranges */
 $clrOrange:#bc4100;
 
+/* ! Gradients */
+/* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
+         e.g. @include background(linear-gradient($gradient...));
+*/
+$gradBlue:$clrLightBlue, $clrBlue;
+$gradLightGrey:lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
+$gradDarkGrey:$clrGrey, $clrDarkGrey;
+
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
@@ -63,6 +71,11 @@ $clrSectionBorder: $clrVeryLightGrey;
 $clrLink: $clrLightBlue;
 $clrLinkHover: $clrOrange;
 
+$clrMoreLink: $clrWhite;
+$clrMoreLinkBack: $gradBlue;
+$clrMoreLinkBackHover: $gradLightGrey;
+$clrMoreLinkBackActive: $gradDarkGrey;
+
 /* ! Form Colours */
 $clrFieldsetBack: $clrOffWhite;
 
@@ -79,8 +92,9 @@ $altfontfamily: "Cambria",Georgia,serif;
 $codefontfamily: "Consolas",monaco,monospace;
 
 /* ! Font Weights */
-$light: 100;
-$normal: 300;
+$thin: 100;
+$light: 200;
+$normal: 400;
 $heavy: 600;
 
 

@@ -1,4 +1,6 @@
 /* != Links / Buttons */
+
+/* !== Default Link Styles  */
 a {
 	color:$clrLink;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -6,4 +8,26 @@ a {
 	&:hover, &:focus, &:active {
     color:$clrLinkHover;
 	}
+}
+
+
+/* !==  More/Action link */
+.moreLink {
+  a {
+    color:$clrMoreLink;
+    padding:5px 10px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius:3px;
+    @include linear-gradient($clrMoreLinkBack...);
+
+    &:hover, &:focus {
+      background:$clrMoreLinkBackHover;
+      @include background(linear-gradient($clrMoreLinkBackHover...));
+    }
+
+    &:active {
+      @include background(linear-gradient($clrMoreLinkBackActive...));
+    }
+  }
 }

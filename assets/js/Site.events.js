@@ -7,7 +7,9 @@ var Site = Site || {};
 Site.events = (function ($) {
     "use strict";
     // Variables
-    var setFastTapEvents = function () {
+    var defaults = {},
+        /* Use fastclick plugin to remove tap delay on touch devices */
+        setFastTapEvents = function () {
           if(FastClick){
             FastClick.attach(document.body);
           }

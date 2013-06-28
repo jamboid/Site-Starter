@@ -6,14 +6,16 @@ var Site = Site || {};
 // Site.analytics namespace
 Site.analytics = (function ($) {
     "use strict";
+     var defaults = {},
+
         // Track a virtual page view
         // - handles Asynchronous and Universal Analytics
-    var trackPageView = function (url) {
+        trackPageView = function (url) {
           var thisURL = url;
 
           if (typeof ga != 'undefined'){ // Using Google Universal Analytics
 
-            ga('send','pageview',url);
+            ga('send','pageview',thisURL);
 
             /*
             Site.utils.cl("Page view tracked");
