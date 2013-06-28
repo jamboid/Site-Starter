@@ -25,6 +25,15 @@
   opacity: $trans;
 }
 
+/* Add robust display:inline-block rule (taken from Bourbon library) */
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
+
 /* !== Media Query Breakpoints mixin - includes Retina display */
 /* NOTE: Failure to set the media query parameters in the _variables.scss file will result in a compile error */
 @mixin mq($point) {
