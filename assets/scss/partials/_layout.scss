@@ -17,26 +17,26 @@ body {
 
 /* !=== Stages (.st) */
 .st {
-	width:100%;
 	position: relative;
+	width:100%;
 }
 
 .stHeader {
+  padding:0;
   background:$clrHeaderBackground;
   color:$clrHeaderText;
-  padding:0;
 }
 
 .stPage {
+  padding:0;
   background:$clrPageBackground;
   color:$clrPageText;
-  padding:0;
 }
 
 .stFooter {
+  padding: 2em 0;
   background:$clrFooterBackground;
   color:$clrFooterText;
-  padding: 2em 0;
 }
 
 /* !=== Field (.fd) */

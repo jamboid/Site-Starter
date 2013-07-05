@@ -8,7 +8,7 @@ Also included is a basic HTML email template for creating Responsive HTML newsle
 
 - JavaScript library of useful modules is based on the jQuery framework
 - I currently use the [Bourbon](http://bourbon.io) Mixin Library for SASS
-- My workflow uses CodeKit, so Bourbon is referenced with that in mind
+- My workflow uses CodeKit as the SASS compiler, so Bourbon is referenced with that in mind
 
 ## Author
 
