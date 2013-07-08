@@ -61,10 +61,12 @@ $clrFooterText:$clrWhite;
 $clrPageBackground: $clrWhite;
 $clrPageText:$clrDarkGrey;
 
+/* ! Typographic Elements */
 $clrCompTitleBack: $clrVeryLightGrey;
 $clrCompTitleText: $clrBlack;
 $clrCompTitleBorder: $clrLightGrey;
 
+/* ! Borders */
 $clrSectionBorder: $clrVeryLightGrey;
 
 /* ! Link Colours */
@@ -111,5 +113,9 @@ $mqLargeVal: 900px;
 $mqFullWidthVal: 1000px;
 
 /* !== LAYOUT */
+
+/* !=== Used in _configuration.scss partial to set viewport  */
 $deviceWidth: device-width;
-$fullWidth: 1000px;
+
+/* !=== Used in _layout.scss partial to set maximum page width in responsive layout  */
+$maxPageWidth: 1000px;
