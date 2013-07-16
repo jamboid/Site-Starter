@@ -1,7 +1,7 @@
 /* != Generic Page Styles */
 
 /* !== Body Content Styles */
-/* NOTE: generic styles for e.g. RTE content  */
+/* NOTE: generic styles for RTE content. Create a class (e.g. bodyContent) you can apply to any container that is going to contain this kind of content.  */
 .bodyContent {
 
   section {
@@ -45,6 +45,14 @@
   }
 
   /* Lists */
+
+  ul {
+    list-style:disc;
+  }
+
+  ol {
+    list-style:decimal;
+  }
 
   ul, ol {
     margin: 1em 0em 3em 3em;
