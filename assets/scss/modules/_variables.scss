@@ -39,9 +39,9 @@ $clrOrange:#bc4100;
 /* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
          e.g. @include background(linear-gradient($gradient...));
 */
-$gradBlue:$clrLightBlue, $clrBlue;
-$gradLightGrey:lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
-$gradDarkGrey:$clrGrey, $clrDarkGrey;
+$gradBlue: $clrLightBlue, $clrBlue;
+$gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
+$gradDarkGrey: $clrGrey, $clrDarkGrey;
 
 
 /* !=== SEMANTIC VARIABLES */
@@ -93,12 +93,21 @@ $basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
 $altfontfamily: "Cambria",Georgia,serif;
 $codefontfamily: "Consolas",monaco,monospace;
 
+
+/* ! Font Sizes */
+
+$alpha: 4em;
+$beta: 3.6em;
+$gamma: 3.2em;
+$delta: 2.8em;
+$epsilon: 2.4em;
+$theta: 2em;
+
 /* ! Font Weights */
 $thin: 100;
 $light: 200;
 $normal: 400;
 $heavy: 600;
-
 
 /* !== MEDIA QUERY PARAMETERS  */
 

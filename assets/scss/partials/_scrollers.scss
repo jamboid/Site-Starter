@@ -1,4 +1,6 @@
-/* !== Scrollers  */
+/* != Scrollers  */
+/* NOTE: These are basic styles for the JS scroller module (Site.scroller.js) in the /assets/js folder */
+
 .cpScroller {
     margin:20px 0;
     position:relative;
@@ -22,10 +24,10 @@
     background:#ddd;
 
     li {
-      display:inline-block;
       vertical-align:top;
       width:25%;
       position:relative;
+      @include inline-block;
 
       .content {
         margin:10px 0 10px 20px;
@@ -57,8 +59,12 @@
   }
 }
 
-.js .cpScroller ul {
-    overflow:hidden;
+.js {
+  .cpScroller {
+    ul {
+      overflow:hidden;
+    }
+  }
 }
 
 .actionButton {
@@ -74,8 +80,14 @@
 }
 
 /*  IE7 styles */
-.ie7 .cpScroller ul li {
-    display:inline;
-    zoom:1;
-    white-space:nowrap;
+.ie7 {
+  .cpScroller {
+    ul {
+      li {
+        display:inline;
+        zoom:1;
+        white-space:nowrap;
+      }
+    }
+  }
 }

@@ -61,7 +61,7 @@ h1,h2,h3,h4,h5,h6 {
 	margin:0;
 	font-size:2em;
 	color:$clrHeaderText;
-	font-weight: $normal;
+	font-weight:$normal;
 }
 
 .pageTitle {
@@ -81,7 +81,7 @@ p {
 
 /* !== Lists */
 li,dt,dd {
-	font-size:2em;
+	font-size:$basefontsize;
 }
 
 li li {
@@ -92,6 +92,16 @@ li li {
 	margin:0;
 	padding:0;
 	list-style:none;
+}
+
+/* !== Type Styles */
+
+strong {
+  font-weight:$heavy;
+}
+
+em {
+  font-style: italic;
 }
 
 /* !== Code */

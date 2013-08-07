@@ -16,6 +16,8 @@ ul.menu {
 }
 
 /* !== Forms */
-.resizable-textarea .grippie {
-  display: none;
+.resizable-textarea {
+  .grippie {
+    display: none;
+  }
 }

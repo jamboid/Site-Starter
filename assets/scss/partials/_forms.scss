@@ -6,7 +6,8 @@ fieldset {
 	background:$clrFieldsetBack;
 }
 
-.formItem, .form-item {
+.formItem,
+.form-item {
 	margin:0 0 2em;
 }
 
@@ -18,7 +19,10 @@ legend {
   margin-bottom: 1em;
 }
 
-label,input,select,textarea {
+label,
+input,
+select,
+textarea {
 	font-size:$basefontsize;
 	font-family:Helvetica,sans-serif;
 	@include box-sizing(border-box);
