@@ -11,6 +11,7 @@ Site.scroller = (function ($) {
         selScrollerContent : ".scrollContent",
         selPlugin : "[data-plugin=scroller]"
         },
+        
         buildScroller = function (scroller, config) {
           var thisScroller = scroller,
               scrollerConfig = config || {},
@@ -26,7 +27,7 @@ Site.scroller = (function ($) {
               itemsToScroll,
               scrollTime,
               moveWidth,
-              timeOut = false,
+              timeOut = false, 
 
               // Set dimensions and other parameters for scroll. Called on page load and whenever window is resized
               setupLayout = function () {
