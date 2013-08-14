@@ -1,7 +1,7 @@
 /* != Utilities */
 
 /* !== Self-Clearing Floats */
-.fd, .rg, .in {
+.fd, .rg, .in, .clearfix {
   zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 
   &:before, &:after {
@@ -14,8 +14,8 @@
   }
 }
 
-/* !== Display Classes  */
-.isShowing {
+/* !== Display State Classes  */
+.isVisible {
   display: block;
 }
 

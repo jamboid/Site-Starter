@@ -41,3 +41,8 @@ Thumbs.db
 /.dropbox
 /Icon
 *.scssc
+
+.sass-cache
+
+*.sublime-project
+*.sublime-workspace

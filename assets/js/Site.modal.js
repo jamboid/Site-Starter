@@ -48,7 +48,6 @@ Site.modal = (function ($) {
                         buildModalPanel();
                         // Track modal panel opening as GA Pageview
                         Site.analytics.trackPageView(thisLinkURL);
-
                       }
                     },
                     failure: function () {
@@ -128,9 +127,6 @@ Site.modal = (function ($) {
                       // Track modal panel opening as GA Pageview
                       Site.analytics.trackPageView(thisLinkURL);
                     }
-
-
-
                   } else {
 
                   }
