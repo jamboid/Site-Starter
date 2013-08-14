@@ -13,7 +13,7 @@ Site.analytics = (function ($) {
         trackPageView = function (url) {
           var thisURL = url;
 
-          if (typeof ga != 'undefined'){ // Using Google Universal Analytics
+          if (typeof ga !== 'undefined'){ // Using Google Universal Analytics
 
             ga('send','pageview',thisURL);
 
@@ -23,7 +23,7 @@ Site.analytics = (function ($) {
             Site.utils.cl(thisURL);
             */
 
-          } else if (typeof _gaq != 'undefined'){ // Using Asynchronous Analytics
+          } else if (typeof _gaq !== 'undefined'){ // Using Asynchronous Analytics
 
             _gaq.push(['trackPageview'], url);
 
@@ -51,7 +51,7 @@ Site.analytics = (function ($) {
               thisEventType = eventType,
               thisDetail = detail;
 
-              if(typeof ga != 'undefined'){ // Using Google Universal Analytics
+              if(typeof ga !== 'undefined'){ // Using Google Universal Analytics
 
                 ga('send', 'event' , thisCategory, thisEventType, thisDetail);
 
@@ -65,7 +65,7 @@ Site.analytics = (function ($) {
                 Site.utils.cl(thisDetail);
                 */
 
-              } else if (typeof _gaq != 'undefined'){ // Using Asynchronous Analytics
+              } else if (typeof _gaq !== 'undefined'){ // Using Asynchronous Analytics
 
                 _gaq.push(['_trackEvent', thisCategory, thisEventType, thisDetail]);
 
@@ -100,8 +100,39 @@ Site.analytics = (function ($) {
           $("a[href$='pdf']").on('click', function () {
             Site.utils.cl('PDF link tracked');
             var thisURL = $(this).attr('href');
-            trackPageView(thisURL)
+            trackPageView(thisURL);
           });
+        },
+
+        // Set Custom variable for Responsive Design layout
+        trackPageLayout = function () {
+
+          var screenWidth = $(window).width(),
+              layoutCategory;
+
+          //Site.utils.cl(screenWidth);
+          
+          // Custom set of conditions to set variable value
+          if (screenWidth > 768 ) {
+            layoutCategory = "Desktop";
+          } else if (screenWidth > 520) {
+            layoutCategory = "Tablet";
+          } else {
+            layoutCategory = "Phone";
+          }
+
+          //Site.utils.cl(layoutCategory);
+          if (typeof _gaq !== 'undefined') {
+            _gaq.push(['_setCustomVar', 1 , 'Layout', layoutCategory, 3]);
+          }
+          //Site.utils.cl("Breakpoint custom variable set for this page view");
+        },
+
+        // Call custom functions before standard Page View call is made
+        // - e.g. Set Custom variables to pass to server with page view call
+        trackPageLoadInformation = function () {
+          // Call custom functions
+          trackPageLayout();
         },
 
         // Initialisation
@@ -114,7 +145,8 @@ Site.analytics = (function ($) {
     return {
         init: init,
         trackPageView: trackPageView,
-        trackPageEvent: trackPageEvent
+        trackPageEvent: trackPageEvent,
+        trackPageLoadInformation: trackPageLoadInformation
     };
 
 }(jQuery));
