@@ -13,13 +13,13 @@ Site.webfonts = (function ($) {
 
         // Give the wf-loader script 5 seconds to begin loading any webfonts used
         // and then call the setDisplayOverride function
-        setLoadedFlag = function () {
-          setTimeout(setDisplayOverride, 5000);
+        setLoadedFlag = function (delay) {
+          setTimeout(setDisplayOverride, delay);
         },
 
         init = function () {
           Site.utils.cl("Site.webfonts initialised");
-          setLoadedFlag();
+          setLoadedFlag(5000);
         };
 
     // Return Public API
