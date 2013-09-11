@@ -4,9 +4,9 @@
 
   .compTitle {
     font-size: 2.8em;
-  	margin:0 0 1em;
-  	padding:0.25em 40px 0.25em 0.5em;
-  	background:$clrCompTitleBack;
+    margin:0 0 1em;
+    padding:0.25em 40px 0.25em 0.5em;
+    background:$clrCompTitleBack;
     color:$clrCompTitleText;
     /* border-top:2px solid $clrCompTitleBorder; */
   }
@@ -39,7 +39,6 @@
       }
     }
   }
-
 
   .sgLabel {
     color:$clrStyleLabel;

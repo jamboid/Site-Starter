@@ -5,15 +5,14 @@ var Site = Site || {};
 
 // Create child layout
 Site.layout = (function ($) {
-    "use strict";
-    // Variables
-    var init = function () {
-          Site.utils.cl("Site.layout initialised");
-        };
+  "use strict";
+  // Variables
+  var init = function () {
+        Site.utils.cl("Site.layout initialised");
+      };
 
-    // Return Public API
-    return {
-      init: init
-    };
-
+  // Return Public API
+  return {
+    init: init
+  };
 }(jQuery));

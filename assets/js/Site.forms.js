@@ -81,7 +81,6 @@ Site.forms = (function ($) {
           }
         },
 
-
         init = function () {
           Site.utils.cl("Site.forms initialised");
         };

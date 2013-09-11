@@ -1,21 +1,21 @@
 /* != Forms */
 fieldset {
-	margin:0;
-	padding:20px;
-	border:none;
-	background:$clrFieldsetBack;
+  margin:0;
+  padding:20px;
+  border:none;
+  background:$clrFieldsetBack;
 }
 
 .formItem,
 .form-item {
-	margin:0 0 2em;
+  margin:0 0 2em;
 }
 
 legend {
   display: block;
   width: 100%;
   font-size:$basefontsize;
-  font-weight: $heavy;
+  font-weight: $bold;
   margin-bottom: 1em;
 }
 
@@ -23,9 +23,9 @@ label,
 input,
 select,
 textarea {
-	font-size:$basefontsize;
-	font-family:Helvetica,sans-serif;
-	@include box-sizing(border-box);
+  font-size:$basefontsize;
+  font-family:$basefontfamily;
+  @include box-sizing(border-box);
 }
 
 input,select,textarea {
@@ -34,21 +34,20 @@ input,select,textarea {
 
 input[type=radio],
 input[type=checkbox]{
-	display:inline;
-	margin-right:3px;
+  display:inline;
+  margin-right:3px;
 }
 
 input[type=submit] {
-	cursor:pointer;
+  cursor:pointer;
 }
 
 label {
   display: block;
-  font-weight: $heavy;
+  font-weight: $bold;
 }
 
 /* !== Validation */
-
 .error {
 
 }

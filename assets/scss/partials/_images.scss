@@ -1,7 +1,13 @@
 /* != Images */
 img {
-	max-width:100%;
-	height:auto !important;
+  max-width:100%;
+  height:auto !important;
+}
+
+.image {
+  img {
+    @include box-sizing(border-box);
+  }
 }
 
 /* IE8 doesn't like max-width, so remove it and make sure any images have a correct width set */

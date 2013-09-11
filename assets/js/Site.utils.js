@@ -62,6 +62,23 @@ Site.utils = (function ($) {
           return vars;
         },
 
+        // Check if element is currently displayed in the viewport - returns bool
+        isElementInView = function (element) {
+
+          var $element = $(element),
+              $window = $(window),
+              windowHeight = $window.height(),
+              scrollTop = $window.scrollTop(),
+              elementOffset = $element.offset(),
+              top = elementOffset.top;
+
+              if ( (scrollTop + windowHeight) > (top) && (top + $element.height()) > scrollTop ) {
+              return true;
+            } else {
+              return false;
+            }
+        },
+
         // Remove the style attribute from an element
         resetStyles = function (element) {
           $(element).removeAttr("style");
@@ -79,6 +96,7 @@ Site.utils = (function ($) {
       equaliseMinHeights: equaliseMinHeights,
       placeholderIsSupported: placeholderIsSupported,
       getURLQueryString: getURLQueryString,
+      isElementInView: isElementInView,
       init: init
     };
 

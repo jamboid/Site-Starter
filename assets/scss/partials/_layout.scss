@@ -1,24 +1,24 @@
 /* != Layout  */
 /*
 NOTE: Styles to set the layout of the larger containers and regions in the template.
-      Uses the FUZZ framework hierarchy
+      Uses the FUZZ framework hierarchy (https://github.com/jamboid/Fuzz)
 */
 
 /* !== Document */
 body {
-	margin:0;
-	padding:0;
-	background:$clrBodyBackground;
+  margin:0;
+  padding:0;
+  background:$clrBodyBackground;
 }
 
 /* !== Framework Levels */
 
 /* Basic styles for 5 levels of the framework */
 
-/* !=== Stages (.st) */
+/* !=== Stages (.st) - Level 1 - Full Width Container(s) */
 .st {
-	position: relative;
-	width:100%;
+  position: relative;
+  width:100%;
 }
 
 .stHeader {
@@ -39,42 +39,47 @@ body {
   color:$clrFooterText;
 }
 
-/* !=== Field (.fd) */
+/* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
 .fd {
-	clear:both;
-	margin:0 auto;
-	padding:0;
-	width:100%;
-	max-width:$maxPageWidth;
+  clear:both;
+  margin:0 auto;
+  padding:0;
+  width:100%;
+  max-width:$maxPageWidth;
 }
 
-/* !=== Region (.rg) */
+/* Set fixed width on .fd containers for browsers that don't support media queries */
+.ie7, 
+.ie8 {
+  .fd {
+    width:$maxPageWidth;
+  }
+}
+
+/* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
 .rg {
 
 }
 
-/* !=== Group (.gp) */
+/* !=== Group (.gp) - Level 4 - Semantic Groups of Components */
 .gp {
-	position:relative;
-	z-index:0;
-	float:left;
-	clear:both;
-	margin:0;
-	padding:0;
-	width:100%;
-	list-style:none;
+  position:relative;
+  z-index:0;
+  clear:both;
+  margin:0;
+  padding:0;
+  width:100%;
+  list-style:none;
 }
 
-/* !=== Component (.cp) - Set outer dimensions (width, height) and display */
+/* !=== Component (.cp) - Self-Contained Functional Modules (e.g. Main Navigation, Carousel, Body Content) */
 .cp {
-	margin:0;
-	padding:0;
-	width:100%;
+  margin:0;
+  padding:0;
+  width:100%;
 }
 
-/* !=== Inner (.in) - Set component layout */
+/* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
-	margin:0 1.5em 3em;
+  margin:0 1.5em 3em;
 }
-
-/* !=== Grid Alignment - margins */

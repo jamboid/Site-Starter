@@ -16,13 +16,13 @@
       @font-face{
         font-family:"WebfontName";
         src:url("/fonts/webfont_normal.file");
-        font-weight:$normal;
+        font-weight:$regular;
       }
 
        @font-face{
         font-family:"WebfontName";
         src:url("/fonts/webfont_heavy.file");
-        font-weight:$heavy;
+        font-weight:$bold;
       }
 
   This allows you to declare a single font-family and then use font-weight and font-style in the normal way, rather
@@ -38,35 +38,35 @@
       url("../fonts/Example_Normal.woff") format("woff"),
       url("../fonts/Example_Normal.ttf") format("truetype"),
       url("../fonts/Example_Normal.svg") format("svg");
-  font-weight:$normal;
+  font-weight:$regular;
 }
 
 
 /* !== Document */
 body {
-	font-size:62.5%; /* = 10px */
-	font-family:$basefontfamily;
-	line-height:1.5;
-	color:$clrBodyText;
+  font-size:62.5%; /* = 10px */
+  font-family:$basefontfamily;
+  line-height:1.5;
+  color:$clrBodyText;
 }
 
 /* !== Headings */
 h1,h2,h3,h4,h5,h6 {
-	font-weight:$heavy;
-	line-height: 1.3;
-	margin:0;
+  font-weight:$bold;
+  line-height: 1.3;
+  margin:0;
 }
 
 .siteTitle {
-	margin:0;
-	font-size:2em;
-	color:$clrHeaderText;
-	font-weight:$normal;
+  margin:0;
+  font-size:2em;
+  color:$clrHeaderText;
+  font-weight:$regular;
 }
 
 .pageTitle {
-	font-size:3.6em;
-	margin:1em 0 0.5em;
+  font-size:3.6em;
+  margin:1em 0 0.5em;
 }
 
 .compTitle {
@@ -75,29 +75,29 @@ h1,h2,h3,h4,h5,h6 {
 
 /* !== Paragraphs */
 p {
-	margin:0 0 1em;
-	font-size:$basefontsize;
+  margin:0 0 1em;
+  font-size:$basefontsize;
 }
 
 /* !== Lists */
 li,dt,dd {
-	font-size:$basefontsize;
+  font-size:$basefontsize;
 }
 
 li li {
-	font-size:0.9em;
+  font-size:0.9em;
 }
 
 .featList {
-	margin:0;
-	padding:0;
-	list-style:none;
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
 /* !== Type Styles */
 
 strong {
-  font-weight:$heavy;
+  font-weight:$bold;
 }
 
 em {
@@ -106,6 +106,6 @@ em {
 
 /* !== Code */
 code {
-	font-size:$basefontsize;
-	font-family:$codefontfamily;
+  font-size:$basefontsize;
+  font-family:$codefontfamily;
 }

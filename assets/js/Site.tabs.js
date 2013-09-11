@@ -48,7 +48,7 @@ Site.tabs = (function ($) {
           $('li:first-child', tabControls).addClass('current');
         },
 
-        setupTabbedPanels = function () {
+        initialiseTabbedPanels = function () {
           $(tabContainerSel).each(function(){
             buildTabs(this);
           });
@@ -56,7 +56,7 @@ Site.tabs = (function ($) {
 
         init = function () {
           Site.utils.cl("Site.tabs initialised");
-          setupTabbedPanels();
+          initialiseTabbedPanels();
         };
 
     // Return Public API

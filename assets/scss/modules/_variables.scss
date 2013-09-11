@@ -9,15 +9,18 @@ HOW TO USE COLOUR VARIABLES IN THIS SASS PROJECT
 ------------------------------------------------
 
 1. Define your colour palette as a set of COLOUR-DESCRIPTIVE VARIABLES (e.g. $clrPaleBlue)
-2. Define a set of SEMANTIC-STRUCTURAL VARIABLES to use throughout your SASS files (e.g. $clrPageHeaderBackground)
+2. Define a set of SEMANTIC-STRUCTURAL VARIABLES to use throughout your Sass files (e.g. $clrPageHeaderBackground)
 3. Set the SEMANTIC VARIABLES using the COLOUR-DESCRIPTIVE VARIABLES in this file only
 
-RESULT: Colours are managed in one location and colour changes will not require renaming variables throughout the set of SASS files
+RESULT: Colours are managed in one location and colour changes will not require renaming variables throughout the set of Sass files
 
 */
 
 /* !=== COLOUR-DESCRIPTIVE VARIABLES */
-/* NOTE: Use these to define element and other colours below. These variables should not be used in any other SASS files. */
+/* NOTE: Use these to define element and other colours below. These variables should not be used in any other Sass files. */
+
+$clrNone: none;
+$clrInvsibile: rgba(0,0,0,0);
 
 /* ! Black to White */
 $clrBlack: #000;
@@ -35,13 +38,18 @@ $clrLightBlue:#78a0da;
 /* ! e.g. Oranges */
 $clrOrange:#bc4100;
 
+/* ! e.g. Reds */
+$clrRed:#dd0000;
+$clrLightPink:#ffdddd;
+
+
 /* ! Gradients */
 /* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
          e.g. @include background(linear-gradient($gradient...));
 */
-$gradBlue: $clrLightBlue, $clrBlue;
-$gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
-$gradDarkGrey: $clrGrey, $clrDarkGrey;
+$gradBlue: $clrLightBlue, $clrBlue; // default
+$gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%); // default
+$gradDarkGrey: $clrGrey, $clrDarkGrey; // default
 
 
 /* !=== SEMANTIC VARIABLES */
@@ -80,22 +88,16 @@ $clrMoreLinkBackActive: $gradDarkGrey;
 
 /* ! Form Colours */
 $clrFieldsetBack: $clrOffWhite;
+$clrErrorText: $clrRed;
+$clrErrorPanelBackground: $clrLightPink;
+$clrErrorPanelBorder: $clrRed;
 
 /* ! Style Guide */
 $clrStyleLabel: $clrLightBlue;
 
-
 /* !== TYPOGRAPHY */
-$basefontsize : 1.6em;
-$baselineheight : 1.5;
-
-$basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
-$altfontfamily: "Cambria",Georgia,serif;
-$codefontfamily: "Consolas",monaco,monospace;
-
 
 /* ! Font Sizes */
-
 $alpha: 4em;
 $beta: 3.6em;
 $gamma: 3.2em;
@@ -103,23 +105,61 @@ $delta: 2.8em;
 $epsilon: 2.4em;
 $theta: 2em;
 
+/* ! Base Styles */
+$basefontsize : 1.6em;
+$baselineheight : 1.5;
+
+/* ! Font Families */
+$basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
+$altfontfamily: "Cambria",Georgia,serif;
+$codefontfamily: "Consolas",monaco,monospace;
+
 /* ! Font Weights */
-$thin: 100;
+$extralight: 100;
 $light: 200;
-$normal: 400;
-$heavy: 600;
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+$black: 900;
 
 /* !== MEDIA QUERY PARAMETERS  */
 
-/* What parameter are you setting your Media Queries with? */
-$mqParameter: max-width;
+/* What is the base font size (in pixels), so the mixin can convert to ems */
+$docFontSize: 16;
+$docLineHeight: 24;
+
+/*
+
+Potential Names??
+
+$mqYoda
+$mqArtoo
+$mqEwok
+$mqJawa
+
+$mqThreepio
+$mqLeia
+$mwLuke
+$mqHan
+$mqBoba
+$mqLando
+$mqLobot
+
+$mqVader
+$mqChewie
+$mqJabba
+$mqRancor
+
+*/
 
 /* What are the parameter values for each Media Query */
-$mqVerySmallVal: 480px;
-$mqSmallVal: 610px;
-$mqMediumVal: 770px;
-$mqLargeVal: 900px;
-$mqFullWidthVal: 1000px;
+$mqVerySmallVal: 480;
+$mqSmallVal: 610;
+$mqMediumVal: 770;
+$mqLargeVal: 900;
+$mqFullWidthVal: 1000;
+
+
 
 /* !== LAYOUT */
 

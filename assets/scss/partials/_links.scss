@@ -2,14 +2,14 @@
 
 /* !== Default Link Styles  */
 a {
-	color:$clrLink;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  color:$clrLink;
+  -webkit-tap-highlight-color: $clrNone;
+  -webkit-tap-highlight-color: $clrInvsibile;
 
-	&:hover, &:focus, &:active {
+  &:hover, &:focus, &:active {
     color:$clrLinkHover;
-	}
+  }
 }
-
 
 /* !==  More/Action link */
 .moreLink {
