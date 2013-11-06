@@ -24,12 +24,12 @@ input,
 select,
 textarea {
   font-size:$basefontsize;
-  font-family:$basefontfamily;
+  font-family:$bodyfontfamily;
   @include box-sizing(border-box);
 }
 
 input,select,textarea {
-  
+
 }
 
 input[type=radio],

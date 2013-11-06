@@ -3,8 +3,8 @@
 .cpStyleGuide {
 
   .compTitle {
-    font-size: 2.8em;
-    margin:0 0 1em;
+    font-size: em(28) ;
+    margin:0 0 em(14, 28);
     padding:0.25em 40px 0.25em 0.5em;
     background:$clrCompTitleBack;
     color:$clrCompTitleText;
@@ -41,6 +41,8 @@
   }
 
   .sgLabel {
+    font-size: em(20);
+    margin-bottom:em(10,20);
     color:$clrStyleLabel;
   }
 }

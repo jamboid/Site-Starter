@@ -1,0 +1,67 @@
+/* != Variables - MEDIA QUERIES */
+
+/*
+
+MQ Names - Star Wars Theme
+==========================
+
+Small
+------------
+
+- Main
+$mqYoda
+$mqArtoo
+
+- Intermediate
+$mqEwok
+$mqJawa
+
+Medium
+------------
+
+- Main
+$mqLeia
+$mqLuke
+$mqHan
+$mqThreepio
+
+- Intermediate
+$mqLando
+$mqBoba
+$mqLobot
+
+
+Large
+------------
+
+- Main
+$mqVader
+$mqChewie
+
+- Intermediate
+$mqJabba
+$mqWampa
+$mqRancor
+
+
+Very Large
+------------
+
+- Main
+$mqDeathStar
+
+
+*/
+
+/* What are the parameter values for each Media Query */
+$mqArtoo: 480;
+$mqLeia: 610;
+$mqLuke: 770;
+$mqHan: 900;
+$mqChewie: 1000;
+
+
+/* !== Sprite Image */
+$spriteFile: url(img/hb_sprite.png);
+$spriteFileRetina: url(img/hb_sprite@2x.png);
+$spriteSize: 327px 116px;

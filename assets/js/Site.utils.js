@@ -1,4 +1,4 @@
-// Site.helpers.js
+// Site.utils.js
 
 // Check if base namespace is defined
 var Site = Site || {};
@@ -11,10 +11,8 @@ Site.utils = (function ($) {
         // Console.log function with check for browsers that don't support it
         logMessage = function (logMessage) {
           if (debugMode === true) {
-            if (window.console) {
-              if (console.log) {
-                console.log(logMessage);
-              }
+            if (typeof console !== undefined) {
+              console.log(logMessage);
             }
           }
         },
@@ -64,7 +62,6 @@ Site.utils = (function ($) {
 
         // Check if element is currently displayed in the viewport - returns bool
         isElementInView = function (element) {
-
           var $element = $(element),
               $window = $(window),
               windowHeight = $window.height(),
@@ -84,6 +81,14 @@ Site.utils = (function ($) {
           $(element).removeAttr("style");
         },
 
+        // Add "odd" and "even" classes
+        addOddAndEvenClasses = function (elements) {
+          var $theseElements = $(elements);
+          $theseElements.filter(':nth-child(2n-1)').addClass('odd');
+          $theseElements.filter(':nth-child(2n)').addClass('even');
+
+        },
+
         // Initialisation
         init = function () {
           Site.utils.cl("Site.utils.init called");
@@ -92,11 +97,12 @@ Site.utils = (function ($) {
     // Return Public API
     return {
       cl: logMessage,
-      rs: resetStyles,
+      resetStyles: resetStyles,
       equaliseMinHeights: equaliseMinHeights,
       placeholderIsSupported: placeholderIsSupported,
       getURLQueryString: getURLQueryString,
       isElementInView: isElementInView,
+      addOddAndEvenClasses: addOddAndEvenClasses,
       init: init
     };
 

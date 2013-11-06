@@ -1,0 +1,29 @@
+/* != Variables - TYPOGRAPHY */
+
+/* ! Font Sizes */
+$alpha: em(40);
+$beta: em(36);
+$gamma: em(32);
+$delta: em(28);
+$epsilon: em(24);
+$theta: em(20);
+
+/* ! Font Families */
+$bodyfontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
+$displayfontfamily: "Cambria",Georgia,serif;
+$codefontfamily: "Consolas",monaco,monospace;
+
+/* ! Font Weights */
+$extralight: 100;
+$light: 200;
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+$black: 900;
+
+/* Base Document Values */
+$docFontSize: 16;
+$docLineHeight: 24;
+
+$basefontsize : em(16);
+$baselineheight : 1.5;

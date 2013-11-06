@@ -1,0 +1,3 @@
+@function em($pixels, $context: $docFontSize) {
+  @return #{$pixels/$context}em
+}

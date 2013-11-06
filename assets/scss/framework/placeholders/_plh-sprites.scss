@@ -1,0 +1,15 @@
+/* !== Sprites */
+
+/* !=== Sprite Base - for position:absolute sprite image in :before/:after content */
+%spriteBase {
+  content: " ";
+  display: block;
+  position: absolute;
+  background-repeat:no-repeat;
+  background-image:$spriteFile;
+  background-size:$spriteSize;
+
+  @include mq(retina){
+    background-image:$spriteFileRetina;
+  }
+}

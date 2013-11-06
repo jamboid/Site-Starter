@@ -15,19 +15,21 @@ a {
 .moreLink {
   a {
     color:$clrMoreLink;
+    background:$clrMoreLinkBack;
     padding:5px 10px;
     display: inline-block;
     text-decoration: none;
     border-radius:3px;
-    @include linear-gradient($clrMoreLinkBack...);
+    @include transition(background-color 0.1s linear);
+    
 
     &:hover, &:focus {
       background:$clrMoreLinkBackHover;
-      @include background(linear-gradient($clrMoreLinkBackHover...));
+      
     }
 
     &:active {
-      @include background(linear-gradient($clrMoreLinkBackActive...));
+      background:$clrMoreLinkBackActive;
     }
   }
 }

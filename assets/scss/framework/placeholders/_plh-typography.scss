@@ -1,0 +1,23 @@
+/* != Placeholders - TYPOGRAPHY */
+
+/* !== Heading Styles */
+
+// Base class for using display font
+%displayText {
+  font-family: $displayfontfamily;
+  font-weight:$bold;
+  text-transform: uppercase;
+}
+
+// Extended class for heading-specific styles
+%headingText {
+  @extend %displayText;
+  line-height: 1.1;
+}
+
+/* !== Clean List - remove default list styles */
+%cleanlist {
+  margin:0;
+  padding:0;
+  list-style:none;
+}

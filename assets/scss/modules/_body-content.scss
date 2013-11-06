@@ -15,37 +15,36 @@
   }
 
   h1 {
-    font-size: $alpha;
+    font-size: em(30);
   }
 
   h2 {
-    font-size: $beta;
+    font-size: em(24);
   }
 
   h3 {
-    font-size: $gamma;
+    font-size: em(20);
   }
 
   h4 {
-    font-size: $delta;
+    font-size: em(18);
   }
 
   h5 {
-    font-size: $epsilon;
+    font-size: em(16);
   }
 
   h6 {
-    font-size: $theta;
+    font-size: em(14);
   }
 
   /* Paragraphs */
 
   p {
-    margin:1em 0;
+    margin: 0 0 1em;
   }
 
   /* Lists */
-
   ul {
     list-style:disc;
   }
@@ -89,11 +88,37 @@
   }
 
   /* Blockquotes */
-
   blockquote {
     font-size: 1.5em;
-    font-family:$altfontfamily;
+    font-family:$displayfontfamily;
     padding-left: 1em;
     border-left:5px solid $clrSectionBorder;
+  }
+
+  /* Tables */
+  table {
+    max-width: 100% !important;
+    margin:2em 0;
+    position: relative;
+    @include mq($mqLuke){
+      width: 100% !important;
+    }
+
+    th, td {
+      font-size: 1.4em;
+      line-height: 1.3;
+      text-align: center;
+      vertical-align:middle;
+      padding:0.5em 0.75em;
+
+      p, li {
+        font-size: 1em;
+        margin: 0;
+      }
+    }
+
+    th {
+      font-weight: $bold;
+    }    
   }
 }

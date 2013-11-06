@@ -111,8 +111,11 @@ Site.scroller = (function ($) {
                   moveScroller(direction);
                 });
 
-                // Touch events
-                $(defaults.selScrollerContent).swipeEvents().bind("swipeLeft",  function(){ moveScroller('next'); }).bind("swipeRight",  function(){ moveScroller('previous'); });
+                // Touch events - using jQuery touchwipe plugin
+               $(defaults.selScrollerContent).touchwipe({
+                  wipeLeft: function () { moveScroller('next'); },
+                  wipeRight: function () { moveScroller('previous'); }
+                });
               };
 
             // Debug log for configuration

@@ -4,14 +4,19 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
       Uses the FUZZ framework hierarchy (https://github.com/jamboid/Fuzz)
 */
 
+/* !== Set viewport and initial zoom for browsers that support CSS viewport functionality */
+@-webkit-viewport { width: $deviceWidth; }
+@-moz-viewport { width: $deviceWidth; }
+@-ms-viewport { width: $deviceWidth; }
+@-o-viewport { width: $deviceWidth; }
+@viewport { width: $deviceWidth; }
+
 /* !== Document */
 body {
-  margin:0;
-  padding:0;
   background:$clrBodyBackground;
 }
 
-/* !== Framework Levels */
+/* !== Fuzz Framework Levels */
 
 /* Basic styles for 5 levels of the framework */
 
@@ -41,16 +46,19 @@ body {
 
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
 .fd {
+  @extend %clearfix;
   clear:both;
   margin:0 auto;
   padding:0;
-  width:100%;
-  max-width:$maxPageWidth;
+  width:900px;
+  @include mq(null){
+    width:100%;
+    max-width:$maxPageWidth;
+  }
 }
 
 /* Set fixed width on .fd containers for browsers that don't support media queries */
-.ie7, 
-.ie8 {
+.ie {
   .fd {
     width:$maxPageWidth;
   }
@@ -58,18 +66,16 @@ body {
 
 /* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
 .rg {
-
+  @extend %clearfix;
 }
 
 /* !=== Group (.gp) - Level 4 - Semantic Groups of Components */
 .gp {
-  position:relative;
   z-index:0;
   clear:both;
   margin:0;
   padding:0;
   width:100%;
-  list-style:none;
 }
 
 /* !=== Component (.cp) - Self-Contained Functional Modules (e.g. Main Navigation, Carousel, Body Content) */
@@ -81,5 +87,6 @@ body {
 
 /* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
+  @extend %clearfix;
   margin:0 1.5em 3em;
 }

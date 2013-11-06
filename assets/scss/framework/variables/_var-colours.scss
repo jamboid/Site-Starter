@@ -1,7 +1,4 @@
-/* != Variables */
-/* NOTES: This file should be imported by the /modules/_all.scss file */
-
-/* !== COLOURS */
+/* != Variables - Colour */
 
 /*
 
@@ -82,9 +79,9 @@ $clrLink: $clrLightBlue;
 $clrLinkHover: $clrOrange;
 
 $clrMoreLink: $clrWhite;
-$clrMoreLinkBack: $gradBlue;
-$clrMoreLinkBackHover: $gradLightGrey;
-$clrMoreLinkBackActive: $gradDarkGrey;
+$clrMoreLinkBack: $clrDarkGrey;
+$clrMoreLinkBackHover: $clrGrey;
+$clrMoreLinkBackActive: $clrLightGrey;
 
 /* ! Form Colours */
 $clrFieldsetBack: $clrOffWhite;
@@ -94,77 +91,3 @@ $clrErrorPanelBorder: $clrRed;
 
 /* ! Style Guide */
 $clrStyleLabel: $clrLightBlue;
-
-/* !== TYPOGRAPHY */
-
-/* ! Font Sizes */
-$alpha: 4em;
-$beta: 3.6em;
-$gamma: 3.2em;
-$delta: 2.8em;
-$epsilon: 2.4em;
-$theta: 2em;
-
-/* ! Base Styles */
-$basefontsize : 1.6em;
-$baselineheight : 1.5;
-
-/* ! Font Families */
-$basefontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
-$altfontfamily: "Cambria",Georgia,serif;
-$codefontfamily: "Consolas",monaco,monospace;
-
-/* ! Font Weights */
-$extralight: 100;
-$light: 200;
-$regular: 400;
-$semibold: 600;
-$bold: 700;
-$black: 900;
-
-/* !== MEDIA QUERY PARAMETERS  */
-
-/* What is the base font size (in pixels), so the mixin can convert to ems */
-$docFontSize: 16;
-$docLineHeight: 24;
-
-/*
-
-Potential Names??
-
-$mqYoda
-$mqArtoo
-$mqEwok
-$mqJawa
-
-$mqThreepio
-$mqLeia
-$mwLuke
-$mqHan
-$mqBoba
-$mqLando
-$mqLobot
-
-$mqVader
-$mqChewie
-$mqJabba
-$mqRancor
-
-*/
-
-/* What are the parameter values for each Media Query */
-$mqVerySmallVal: 480;
-$mqSmallVal: 610;
-$mqMediumVal: 770;
-$mqLargeVal: 900;
-$mqFullWidthVal: 1000;
-
-
-
-/* !== LAYOUT */
-
-/* !=== Used in _configuration.scss partial to set viewport  */
-$deviceWidth: device-width;
-
-/* !=== Used in _layout.scss partial to set maximum page width in responsive layout  */
-$maxPageWidth: 1000px;

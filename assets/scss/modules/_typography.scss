@@ -44,8 +44,8 @@
 
 /* !== Document */
 body {
-  font-size:62.5%; /* = 10px */
-  font-family:$basefontfamily;
+  font-size:100%;
+  font-family:$bodyfontfamily;
   line-height:1.5;
   color:$clrBodyText;
 }
@@ -59,13 +59,13 @@ h1,h2,h3,h4,h5,h6 {
 
 .siteTitle {
   margin:0;
-  font-size:2em;
+  font-size:em(20);
   color:$clrHeaderText;
   font-weight:$regular;
 }
 
 .pageTitle {
-  font-size:3.6em;
+  font-size:em(36);
   margin:1em 0 0.5em;
 }
 
@@ -89,9 +89,7 @@ li li {
 }
 
 .featList {
-  margin:0;
-  padding:0;
-  list-style:none;
+  @extend %cleanlist;
 }
 
 /* !== Type Styles */
