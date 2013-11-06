@@ -1,5 +1,5 @@
-/* != Framework - All */
-/* NOTE: imports all other files in the /modules folder  */
+/* != Framework - ALL */
+/* NOTE: imports all other files in the /framework folder  */
 
 /* !== Variables */
 @import "variables/var-colours";
@@ -10,6 +10,7 @@
 
 /* !== Functions */
 @import "functions/fnc-em";
+@import "functions/fnc-maths";
 
 /* !== Mixins */
 @import "mixins/mix-flexbox";

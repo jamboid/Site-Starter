@@ -5,6 +5,8 @@
 MQ Names - Star Wars Theme
 ==========================
 
+Use the Main names for main media queries and the Intermediate names for MQs for more specific rules and edge cases
+
 Small
 ------------
 
@@ -42,12 +44,15 @@ $mqChewie
 $mqJabba
 $mqWampa
 $mqRancor
+$mqSarlacc
 
 
 Very Large
 ------------
 
 - Main
+$mqATAT
+$mqStarDestroyer
 $mqDeathStar
 
 

@@ -20,7 +20,7 @@
   // Standard viewport characteristics
   // default values give a "max-width" media query but can be customised
   @else {
-    @media screen and (#{$query1}-#{$query2}: $point / $docFontSize) {
+    @media screen and (#{$query1}-#{$query2}: $point / $docFontSize +em) {
       @content;
     }
   }

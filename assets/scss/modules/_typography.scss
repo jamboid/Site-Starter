@@ -48,6 +48,9 @@ body {
   font-family:$bodyfontfamily;
   line-height:1.5;
   color:$clrBodyText;
+  @include mq(plusOne($mqHan), $query1: min){
+    font-size: 125%
+  }
 }
 
 /* !== Headings */

@@ -53,7 +53,6 @@ body {
   width:900px;
   @include mq(null){
     width:100%;
-    max-width:$maxPageWidth;
   }
 }
 
