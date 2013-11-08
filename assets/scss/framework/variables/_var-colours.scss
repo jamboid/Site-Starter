@@ -1,5 +1,38 @@
 /* != Variables - COLOUR */
 
+/*
+
+HOW TO USE COLOUR VARIABLES IN THIS SASS PROJECT
+------------------------------------------------
+
+There are a couple of options available to you:
+
+================
+1-STEP SYSTEM
+================
+
+1. Define your colour palette as a set of COLOUR-DESCRIPTIVE VARIABLES (e.g. $clrPaleBlue)
+2. Use these COLOUR-DESCRIPTIVE VARIABLES directly, throughout the project's other .scss files
+
+RESULT: Colours are presented in the code in a much more readable and meaningful format
+
+BEST FOR: Projects with one theme
+
+
+================
+2-STEP SYSTEM
+================
+
+1. Define your colour palette as a set of COLOUR-DESCRIPTIVE VARIABLES (e.g. $clrPaleBlue)
+2. Define a set of SEMANTIC-STRUCTURAL VARIABLES to use throughout your Sass files (e.g. $clrPageHeaderBackground)
+3. Set the SEMANTIC VARIABLES using the COLOUR-DESCRIPTIVE VARIABLES in this file only
+
+RESULT: Colours are managed in one location and colour changes will not require renaming variables throughout the set of Sass files
+
+BEST FOR: Projects that involve multiple themes or skins
+
+*/
+
 /* !== COLOUR-DESCRIPTIVE VARIABLES */
 $clrNone: none;
 $clrInvsibile: rgba(0,0,0,0);
@@ -14,7 +47,6 @@ $clrOffWhite: #f9f9f9;
 $clrWhite: #fff;
 
 /* ! Blues */
-//$clrBlue: #5561b9;
 $clrLightBlue:#78a0da;
 
 /* ! Oranges */
@@ -34,3 +66,6 @@ $gradient: $gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
 @include background(linear-gradient($gradient...));
 
 */
+
+/* !=== SEMANTIC VARIABLES */
+/* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
