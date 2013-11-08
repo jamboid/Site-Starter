@@ -3,10 +3,10 @@
 /* !== Add 1 to a number */
 // Useful for setting a min-width MQ using an existing "max-width" breakpoint
 @function plusOne($number) {
-  @return $number  +  1
+  @return $number + 1
 }
 
 /* !== Subtract 1 from a number */
 @function minusOne($number) {
-  @return $number  -  1
+  @return $number - 1
 }

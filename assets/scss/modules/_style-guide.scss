@@ -1,4 +1,5 @@
 /* != Style Guide  */
+
 /* NOTES: Styles to create a flat style guide */
 .cpStyleGuide {
 
@@ -6,8 +7,8 @@
     font-size: em(28) ;
     margin:0 0 em(14, 28);
     padding:0.25em 40px 0.25em 0.5em;
-    background:$clrCompTitleBack;
-    color:$clrCompTitleText;
+    background:$clrVeryLightGrey;
+    color:$clrBlack;
     /* border-top:2px solid $clrCompTitleBorder; */
   }
 
@@ -20,22 +21,26 @@
         content:"–";
         font-size:1.2em;
         position: absolute;
-        right: 5px;
+        right: 15px;
         top: 0;
         width:30px;
         height:30px;
         text-align: center;
         vertical-align: middle;
         z-index: 100;
-        @include inline-block;
+        display: inline-block;
       }
     }
 
-    &.isHiding {
+    &.isClosed {
       .compTitle{
         &:after {
           content:"+";
         }
+      }
+
+      [data-content=showhide] {
+        display: none
       }
     }
   }
@@ -43,6 +48,6 @@
   .sgLabel {
     font-size: em(20);
     margin-bottom:em(10,20);
-    color:$clrStyleLabel;
+    color:$clrLightBlue;
   }
 }

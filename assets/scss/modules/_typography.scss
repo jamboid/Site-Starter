@@ -30,7 +30,6 @@
 
 */
 
-
 @font-face{
   font-family:"Example";
   src:url("../fonts/Example_Normal.eot?#iefix");
@@ -39,6 +38,7 @@
       url("../fonts/Example_Normal.ttf") format("truetype"),
       url("../fonts/Example_Normal.svg") format("svg");
   font-weight:$regular;
+  font-style: normal;
 }
 
 
@@ -47,7 +47,7 @@ body {
   font-size:100%;
   font-family:$bodyfontfamily;
   line-height:1.5;
-  color:$clrBodyText;
+  color:$clrDarkGrey;
   @include mq(plusOne($mqHan), $query1: min){
     font-size: 125%
   }
@@ -63,7 +63,6 @@ h1,h2,h3,h4,h5,h6 {
 .siteTitle {
   margin:0;
   font-size:em(20);
-  color:$clrHeaderText;
   font-weight:$regular;
 }
 
@@ -87,11 +86,15 @@ li,dt,dd {
   font-size:$basefontsize;
 }
 
+li {
+  margin: 0 0 1em;
+}
+
 li li {
   font-size:0.9em;
 }
 
-.featList {
+.cleanList {
   @extend %cleanlist;
 }
 
@@ -106,7 +109,7 @@ em {
 }
 
 /* !== Code */
-code {
+code, pre {
   font-size:$basefontsize;
   font-family:$codefontfamily;
 }

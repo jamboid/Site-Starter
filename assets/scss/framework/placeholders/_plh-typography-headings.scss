@@ -1,4 +1,4 @@
-/* != Placeholders - TYPOGRAPHY */
+/* != Placeholders - Typography - HEADING STYLES */
 
 /* !== Heading Styles */
 
@@ -13,11 +13,4 @@
 %headingText {
   @extend %displayText;
   line-height: 1.1;
-}
-
-/* !== Clean List - remove default list styles */
-%cleanlist {
-  margin:0;
-  padding:0;
-  list-style:none;
 }

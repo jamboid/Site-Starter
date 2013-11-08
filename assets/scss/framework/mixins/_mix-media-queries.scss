@@ -4,7 +4,7 @@
 @mixin mq($point, $query1: max, $query2: width) {
 
   // If media queries are supported...
-  @if $point == null {
+  @if $point == empty {
     @media screen {
       @content;
     }

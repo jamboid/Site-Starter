@@ -1,13 +1,13 @@
-/* != Generic Page Styles */
+/* != Body Content Styles */
 
-/* !== Body Content Styles */
 /* NOTE: generic styles for RTE content. Create a class (e.g. bodyContent) you can apply to any container that is going to contain this kind of content.  */
+
 .bodyContent {
 
   section {
     margin: 0;
     padding:2em 0;
-    border-bottom:1px solid $clrSectionBorder;
+    border-bottom:1px solid $clrVeryLightGrey;
 
     &:last-child {
       border:none;
@@ -92,7 +92,7 @@
     font-size: 1.5em;
     font-family:$displayfontfamily;
     padding-left: 1em;
-    border-left:5px solid $clrSectionBorder;
+    border-left:5px solid $clrVeryLightGrey;
   }
 
   /* Tables */
@@ -119,6 +119,6 @@
 
     th {
       font-weight: $bold;
-    }    
+    }
   }
 }

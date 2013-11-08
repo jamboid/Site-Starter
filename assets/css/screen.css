@@ -5,41 +5,28 @@
 /* Bourbon Library - http://bourbon.io/docs/  - @import statement tells CodeKit to use Bourbon automatically */
 /* Framework - Variables, Mixins, Functions, Resets, Placeholders */
 /* != Framework - ALL */
-/* NOTE: imports all other files in the /framework folder  */
-/* !== Variables */
-/* != Variables - Colour */
 /*
-
-HOW TO USE COLOUR VARIABLES IN THIS SASS PROJECT
-------------------------------------------------
-
-1. Define your colour palette as a set of COLOUR-DESCRIPTIVE VARIABLES (e.g. $clrPaleBlue)
-2. Define a set of SEMANTIC-STRUCTURAL VARIABLES to use throughout your Sass files (e.g. $clrPageHeaderBackground)
-3. Set the SEMANTIC VARIABLES using the COLOUR-DESCRIPTIVE VARIABLES in this file only
-
-RESULT: Colours are managed in one location and colour changes will not require renaming variables throughout the set of Sass files
-
+NOTE: Imports all other files in the /framework folder
+      Files should be imported in the order indicated
 */
-/* !=== COLOUR-DESCRIPTIVE VARIABLES */
-/* NOTE: Use these to define element and other colours below. These variables should not be used in any other Sass files. */
+/* !== 1. Variables */
+/* != Variables - COLOUR */
+/* !== COLOUR-DESCRIPTIVE VARIABLES */
 /* ! Black to White */
-/* ! e.g. Blues */
-/* ! e.g. Oranges */
-/* ! e.g. Reds */
+/* ! Blues */
+/* ! Oranges */
 /* ! Gradients */
 /* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
-         e.g. @include background(linear-gradient($gradient...));
+
+e.g.
+
+$gradient: $gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
+
+...
+
+@include background(linear-gradient($gradient...));
+
 */
-/* !=== SEMANTIC VARIABLES */
-/* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
-/* ! Header */
-/* ! Footer */
-/* ! Page */
-/* ! Typographic Elements */
-/* ! Borders */
-/* ! Link Colours */
-/* ! Form Colours */
-/* ! Style Guide */
 /* != Variables - MEDIA QUERIES */
 /*
 
@@ -109,19 +96,20 @@ $mqDeathStar
 /* ! Font Families */
 /* ! Font Weights */
 /* Base Document Values */
-/* !== Functions */
+/* !== 2. Functions */
 /* != Functions - CONVERT TO EMS */
 /* != Functions - MATHS */
 /* !== Add 1 to a number */
 /* !== Subtract 1 from a number */
-/* !== Mixins */
+/* !== 3. Mixins */
 /* != Media Query Mixins */
 /* !== Media Query Breakpoints mixin - includes Retina display */
 /* != Opacity */
 /* !== Set opacity with legacy browser fallbacks */
 /* != Mixins - TYPOGRAPHY */
 /* !== Hide Text */
-/* !== Resets */
+/* != Mixin - FLEX VIDEO */
+/* !== 4. Resets */
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
  * http://cssreset.com
@@ -196,27 +184,36 @@ ul.menu li, ul.menu li.leaf {
   display: none;
 }
 
-/* !== Placeholders */
-/* != Placeholders - CLEARFIX */
+/* !== 5. Placeholders */
+/* != Placeholders - Layout - CLEARFIX */
+/* !== Modern Version - IE8+ */
 .fd:after, .rg:after, .in:after {
   content: "";
   display: table;
   clear: both;
 }
 
+/* !== Legacy Version - IE6/7+ */
+/* != Placeholders - Layout - BORDER BOX */
+/* !== Border Box */
+.image img {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* !== Sprites */
 /* !=== Sprite Base - for position:absolute sprite image in :before/:after content */
-/* != Placeholders - TYPOGRAPHY */
-/* !== Heading Styles */
-/* !== Clean List - remove default list styles */
-.featList {
+/* != Placeholder - Typography - CLEAN LIST */
+/* NOTES: remove default list styles */
+.cleanList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* != Placeholders - LAYOUT */
-/* !== Border Box */
+/* != Placeholders - Typography - HEADING STYLES */
+/* !== Heading Styles */
 /* !== Generic Rules */
 /* !== Typography  */
 /* !== Typefaces */
@@ -253,6 +250,7 @@ ul.menu li, ul.menu li.leaf {
   src: url("../fonts/Example_Normal.eot?#iefix");
   src: url("../fonts/Example_Normal.eot?#iefix") format("eot"), url("../fonts/Example_Normal.woff") format("woff"), url("../fonts/Example_Normal.ttf") format("truetype"), url("../fonts/Example_Normal.svg") format("svg");
   font-weight: 400;
+  font-style: normal;
 }
 
 /* !== Document */
@@ -278,7 +276,6 @@ h1, h2, h3, h4, h5, h6 {
 .siteTitle {
   margin: 0;
   font-size: 1.25em;
-  color: #999999;
   font-weight: 400;
 }
 
@@ -298,6 +295,10 @@ li, dt, dd {
   font-size: 1em;
 }
 
+li {
+  margin: 0 0 1em;
+}
+
 li li {
   font-size: 0.9em;
 }
@@ -312,7 +313,7 @@ em {
 }
 
 /* !== Code */
-code {
+code, pre {
   font-size: 1em;
   font-family: "Consolas", monaco, monospace;
 }
@@ -345,7 +346,7 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 
 /* !== Document */
 body {
-  background: #333333;
+  background: white;
 }
 
 /* !== Fuzz Framework Levels */
@@ -375,6 +376,7 @@ body {
 }
 
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
+/* NOTES: Set fixed/non-MQ width and then add a null MQ to set width for MQ-compatible browsers */
 .fd {
   clear: both;
   margin: 0 auto;
@@ -385,11 +387,6 @@ body {
   .fd {
     width: 100%;
   }
-}
-
-/* Set fixed width on .fd containers for browsers that don't support media queries */
-.ie .fd {
-  width: 1000px;
 }
 
 /* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
@@ -415,6 +412,7 @@ body {
 }
 
 /* != Forms */
+/* !== Default Styles */
 fieldset {
   margin: 0;
   padding: 20px;
@@ -425,14 +423,6 @@ fieldset {
 .formItem,
 .form-item {
   margin: 0 0 2em;
-}
-
-legend {
-  display: block;
-  width: 100%;
-  font-size: 1em;
-  font-weight: 700;
-  margin-bottom: 1em;
 }
 
 label,
@@ -461,7 +451,7 @@ label {
   font-weight: 700;
 }
 
-/* !== Validation */
+/* !=== Validation */
 /* != Links / Buttons */
 /* !== Default Link Styles  */
 a {
@@ -498,15 +488,12 @@ img {
   height: auto !important;
 }
 
-.image img {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 /* IE8 doesn't like max-width, so remove it and make sure any images have a correct width set */
 .ie8 img {
   max-width: none !important;
+}
+.ie8 .image img {
+  width: 100%;
 }
 
 /* !== IE image rendering - improves appearence of resized images in IE  */
@@ -515,8 +502,7 @@ img {
 }
 
 /* !== Components */
-/* != Generic Page Styles */
-/* !== Body Content Styles */
+/* != Body Content Styles */
 /* NOTE: generic styles for RTE content. Create a class (e.g. bodyContent) you can apply to any container that is going to contain this kind of content.  */
 .bodyContent {
   /* Paragraphs */
@@ -625,7 +611,25 @@ img {
 /* != NAVIGATION */
 /* NOTE: Put styles for all navigation menu in here */
 /* !== Main Navigation  */
+.cpMainNav .menu {
+  display: table;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.cpMainNav .menu li {
+  display: table-cell;
+}
+
 /* !== Sub Navigation */
+.cpSubNav .menu li {
+  display: block;
+}
+
 /* !== Extras */
 /* != Utilities */
 /* !== Display State Classes  */
@@ -655,7 +659,7 @@ img {
   content: "–";
   font-size: 1.2em;
   position: absolute;
-  right: 5px;
+  right: 15px;
   top: 0;
   width: 30px;
   height: 30px;
@@ -663,13 +667,12 @@ img {
   vertical-align: middle;
   z-index: 100;
   display: inline-block;
-  vertical-align: baseline;
-  zoom: 1;
-  *display: inline;
-  *vertical-align: auto;
 }
-.cpStyleGuide[data-plugin=showhide].isHiding .compTitle:after {
+.cpStyleGuide[data-plugin=showhide].isClosed .compTitle:after {
   content: "+";
+}
+.cpStyleGuide[data-plugin=showhide].isClosed [data-content=showhide] {
+  display: none;
 }
 .cpStyleGuide .sgLabel {
   font-size: 1.25em;

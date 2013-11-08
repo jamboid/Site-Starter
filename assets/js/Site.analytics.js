@@ -111,7 +111,7 @@ Site.analytics = (function ($) {
               layoutCategory;
 
           //Site.utils.cl(screenWidth);
-          
+
           // Custom set of conditions to set variable value
           if (screenWidth > 768 ) {
             layoutCategory = "Desktop";
@@ -122,24 +122,24 @@ Site.analytics = (function ($) {
           }
 
           //Site.utils.cl(layoutCategory);
-          
+
           if (ga !== 'undefined') {
             // This needs to be configured to match the Custom Dimension setup
-            // in your Universal Analytics account 
+            // in your Universal Analytics account
             ga('set', 'dimension1', layoutCategory);
             Site.utils.cl("Layout custom dimension set for this page view (Universal Analytics)");
 
           } else if (typeof _gaq !== 'undefined') {
             _gaq.push(['_setCustomVar', 1 , 'Layout', layoutCategory, 3]);
             Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
-          }   
-          
+          }
+
           //Site.utils.cl("Breakpoint custom variable set for this page view");
         },
 
         // Call custom functions before standard Page View call is made
         // - e.g. Set Custom variables to pass to server with page view call
-        // This function can be called before the default 'trackPageView' function 
+        // This function should be called before the default 'trackPageView' function
         // call in the on-page Google Analytics script
         trackPageLoadInformation = function () {
           // Call custom functions

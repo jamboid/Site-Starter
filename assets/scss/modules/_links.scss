@@ -2,34 +2,33 @@
 
 /* !== Default Link Styles  */
 a {
-  color:$clrLink;
+  color:$clrLightBlue;
   -webkit-tap-highlight-color: $clrNone;
   -webkit-tap-highlight-color: $clrInvsibile;
 
   &:hover, &:focus, &:active {
-    color:$clrLinkHover;
+    color:$clrOrange;
   }
 }
 
 /* !==  More/Action link */
 .moreLink {
   a {
-    color:$clrMoreLink;
-    background:$clrMoreLinkBack;
+    color:$clrWhite;
+    background:$clrDarkGrey;
     padding:5px 10px;
     display: inline-block;
     text-decoration: none;
     border-radius:3px;
     @include transition(background-color 0.1s linear);
-    
 
     &:hover, &:focus {
-      background:$clrMoreLinkBackHover;
-      
+      background:$clrGrey;
+
     }
 
     &:active {
-      background:$clrMoreLinkBackActive;
+      background:$clrLightGrey;
     }
   }
 }

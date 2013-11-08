@@ -8,7 +8,7 @@ Site.images = (function ($) {
     "use strict";
     // Variables
     var defaults { },
-        
+
         // Load any images that are wrapped in <noscript> tags and marked for loading
         // after page load
         // Dependency: ImagesLoaded jQuery plugin
@@ -49,4 +49,4 @@ Site.images = (function ($) {
       init: init
     };
 
-}(jQuery)); 
+}(jQuery));

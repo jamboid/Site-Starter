@@ -33,7 +33,7 @@ Site.navigation = (function ($) {
 
         // Add event handler for main navigation toggle
         bindMainNavEvents = function () {
-          $(selNavToggle).on("click", function (event) {
+          $(selNavToggle).bind("tap", function (event) {
             event.preventDefault();
             var mainNav = $(this).closest(selNav),
                 navMenu = $(mainNav).find(selNavMenu).eq(0);

@@ -6,7 +6,7 @@ img {
 
 .image {
   img {
-    @include box-sizing(border-box);
+    @extend %borderBox;
   }
 }
 
@@ -14,6 +14,12 @@ img {
 .ie8 {
   img {
     max-width:none !important;
+  }
+
+  .image {
+    img {
+      width: 100%;
+    }
   }
 }
 

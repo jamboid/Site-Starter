@@ -1,21 +1,6 @@
-/* != Variables - Colour */
+/* != Variables - COLOUR */
 
-/*
-
-HOW TO USE COLOUR VARIABLES IN THIS SASS PROJECT
-------------------------------------------------
-
-1. Define your colour palette as a set of COLOUR-DESCRIPTIVE VARIABLES (e.g. $clrPaleBlue)
-2. Define a set of SEMANTIC-STRUCTURAL VARIABLES to use throughout your Sass files (e.g. $clrPageHeaderBackground)
-3. Set the SEMANTIC VARIABLES using the COLOUR-DESCRIPTIVE VARIABLES in this file only
-
-RESULT: Colours are managed in one location and colour changes will not require renaming variables throughout the set of Sass files
-
-*/
-
-/* !=== COLOUR-DESCRIPTIVE VARIABLES */
-/* NOTE: Use these to define element and other colours below. These variables should not be used in any other Sass files. */
-
+/* !== COLOUR-DESCRIPTIVE VARIABLES */
 $clrNone: none;
 $clrInvsibile: rgba(0,0,0,0);
 
@@ -28,66 +13,24 @@ $clrVeryLightGrey: #efefef;
 $clrOffWhite: #f9f9f9;
 $clrWhite: #fff;
 
-/* ! e.g. Blues */
-$clrBlue: #5561b9;
+/* ! Blues */
+//$clrBlue: #5561b9;
 $clrLightBlue:#78a0da;
 
-/* ! e.g. Oranges */
+/* ! Oranges */
 $clrOrange:#bc4100;
 
-/* ! e.g. Reds */
-$clrRed:#dd0000;
-$clrLightPink:#ffdddd;
 
 
 /* ! Gradients */
 /* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
-         e.g. @include background(linear-gradient($gradient...));
+
+e.g.
+
+$gradient: $gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
+
+...
+
+@include background(linear-gradient($gradient...));
+
 */
-$gradBlue: $clrLightBlue, $clrBlue; // default
-$gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%); // default
-$gradDarkGrey: $clrGrey, $clrDarkGrey; // default
-
-
-/* !=== SEMANTIC VARIABLES */
-/* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
-$clrBodyBackground: $clrDarkGrey;
-$clrBodyText: $clrDarkGrey;
-
-/* ! Header */
-$clrHeaderBackground:$clrWhite;
-$clrHeaderText:$clrLightGrey;
-
-/* ! Footer */
-$clrFooterBackground:$clrDarkGrey;
-$clrFooterText:$clrWhite;
-
-/* ! Page */
-$clrPageBackground: $clrWhite;
-$clrPageText:$clrDarkGrey;
-
-/* ! Typographic Elements */
-$clrCompTitleBack: $clrVeryLightGrey;
-$clrCompTitleText: $clrBlack;
-$clrCompTitleBorder: $clrLightGrey;
-
-/* ! Borders */
-$clrSectionBorder: $clrVeryLightGrey;
-
-/* ! Link Colours */
-$clrLink: $clrLightBlue;
-$clrLinkHover: $clrOrange;
-
-$clrMoreLink: $clrWhite;
-$clrMoreLinkBack: $clrDarkGrey;
-$clrMoreLinkBackHover: $clrGrey;
-$clrMoreLinkBackActive: $clrLightGrey;
-
-/* ! Form Colours */
-$clrFieldsetBack: $clrOffWhite;
-$clrErrorText: $clrRed;
-$clrErrorPanelBackground: $clrLightPink;
-$clrErrorPanelBorder: $clrRed;
-
-/* ! Style Guide */
-$clrStyleLabel: $clrLightBlue;

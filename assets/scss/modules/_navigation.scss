@@ -3,10 +3,21 @@
 
 /* !== Main Navigation  */
 .cpMainNav {
+  .menu {
+    display: table;
+    @include display(flex);
 
+    li {
+      display: table-cell;
+    }
+  }
 }
 
 /* !== Sub Navigation */
 .cpSubNav {
-
+  .menu {
+    li {
+      display: block
+    }
+  }
 }

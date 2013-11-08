@@ -13,7 +13,7 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 
 /* !== Document */
 body {
-  background:$clrBodyBackground;
+  background:$clrWhite;
 }
 
 /* !== Fuzz Framework Levels */
@@ -28,38 +28,32 @@ body {
 
 .stHeader {
   padding:0;
-  background:$clrHeaderBackground;
-  color:$clrHeaderText;
+  background:$clrWhite;
+  color:$clrLightGrey;
 }
 
 .stPage {
   padding:0;
-  background:$clrPageBackground;
-  color:$clrPageText;
+  background:$clrWhite;
+  color:$clrDarkGrey;
 }
 
 .stFooter {
   padding: 2em 0;
-  background:$clrFooterBackground;
-  color:$clrFooterText;
+  background:$clrDarkGrey;
+  color:$clrWhite;
 }
 
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
+/* NOTES: Set fixed/non-MQ width and then add a null MQ to set width for MQ-compatible browsers */
 .fd {
   @extend %clearfix;
   clear:both;
   margin:0 auto;
   padding:0;
   width:900px;
-  @include mq(null){
+  @include mq(empty){
     width:100%;
-  }
-}
-
-/* Set fixed width on .fd containers for browsers that don't support media queries */
-.ie {
-  .fd {
-    width:$maxPageWidth;
   }
 }
 

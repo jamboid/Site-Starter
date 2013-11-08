@@ -1,0 +1,24 @@
+/* != Placeholders - Layout - CLEARFIX */
+
+/* !== Modern Version - IE8+ */
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* !== Legacy Version - IE6/7+ */
+%clearfixLegacy {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}

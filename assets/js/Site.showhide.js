@@ -19,30 +19,37 @@ Site.showhide = (function ($) {
               thisContent = $(thisComp).find(defaults.selContent).eq(0),
               thisConfig = config || {},
               startState = thisConfig.open || false,
-              animate = thisConfig.animate || false;
+              animate = thisConfig.animate || false,
+              speed = thisConfig.speed || 200;
 
-          Site.utils.cl(thisConfig);
+          //Site.utils.cl(thisConfig);
 
-          if (startState === "closed"){
-            $(thisComp).addClass('isHiding');
+          if (startState === false){
+            $(thisComp).addClass('isClosed');
           }
 
-          $(thisAction).click(function (e) {
+          $(thisAction).bind('tap',function (e) {
             e.preventDefault();
-            if($(thisComp).hasClass('isHiding')){
+            if($(thisComp).hasClass('isClosed')){
               if(animate === true){
-                $(thisContent).slideDown();
+                $(thisContent).slideDown(function () {
+                  $(thisComp).removeClass('isClosed');
+                });
               } else {
                 $(thisContent).show();
+                $(thisComp).removeClass('isClosed');
               }
-              $(thisComp).removeClass('isHiding');
+
             } else {
               if(animate === true){
-                $(thisContent).slideUp();
+                $(thisContent).slideUp(function () {
+                  $(thisComp).addClass('isClosed');
+                });
               } else {
                 $(thisContent).hide();
+                $(thisComp).addClass('isClosed');
               }
-              $(thisComp).addClass('isHiding');
+
             }
           });
         },
@@ -58,7 +65,9 @@ Site.showhide = (function ($) {
           var showHideComps = $(defaults.selPlugin);
           $(showHideComps).each(function () {
 
-            var config = $(this).attr('data-plugin-config');
+            var config = $(this).data('plugin-config');
+
+            Site.utils.cl(config);
             setActiveStates(this);
             bindShowHideEvents(this, config);
           });

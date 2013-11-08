@@ -1,29 +1,34 @@
 /* != Framework - ALL */
-/* NOTE: imports all other files in the /framework folder  */
+/*
+NOTE: Imports all other files in the /framework folder
+      Files should be imported in the order indicated
+*/
 
-/* !== Variables */
+/* !== 1. Variables */
 @import "variables/var-colours";
 @import "variables/var-media-queries";
 @import "variables/var-sprites";
 @import "variables/var-layout";
 @import "variables/var-typography";
 
-/* !== Functions */
+/* !== 2. Functions */
 @import "functions/fnc-em";
 @import "functions/fnc-maths";
 
-/* !== Mixins */
+/* !== 3. Mixins */
 @import "mixins/mix-flexbox";
 @import "mixins/mix-media-queries";
 @import "mixins/mix-opacity";
 @import "mixins/mix-typography";
+@import "mixins/mix-flex-video";
 
-/* !== Resets */
+/* !== 4. Resets */
 @import "resets/reset";
 @import "resets/drupal-reset";
 
-/* !== Placeholders */
-@import "placeholders/plh-clearfix";
+/* !== 5. Placeholders */
+@import "placeholders/plh-layout-clearfix";
+@import "placeholders/plh-layout-borderbox";
 @import "placeholders/plh-sprites";
-@import "placeholders/plh-typography";
-@import "placeholders/plh-layout";
+@import "placeholders/plh-typography-cleanlist";
+@import "placeholders/plh-typography-headings";
