@@ -132,6 +132,8 @@ Site.analytics = (function ($) {
           } else if (typeof _gaq !== 'undefined') {
             _gaq.push(['_setCustomVar', 1 , 'Layout', layoutCategory, 3]);
             Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
+          } else {
+            Site.utils.cl('Google Analytics not available');
           }
 
           //Site.utils.cl("Breakpoint custom variable set for this page view");

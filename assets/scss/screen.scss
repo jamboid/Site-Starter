@@ -9,7 +9,7 @@
 /* Framework - Variables, Mixins, Functions, Resets, Placeholders */
 @import "framework/all";
 
-/* !== Generic Rules */
+/* !== Global Rules */
 @import "modules/typography";
 @import "modules/layout";
 @import "modules/forms";
@@ -20,7 +20,7 @@
 @import "modules/body-content";
 @import "modules/brand";
 @import "modules/navigation";
-//@import "partials/scrollers";
+//@import "modules/scrollers";
 
 /* !== Extras */
 @import "modules/utilities";

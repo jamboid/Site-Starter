@@ -39,7 +39,7 @@ body {
 }
 
 .stFooter {
-  padding: 2em 0;
+  padding: em(20) 0;
   background:$clrDarkGrey;
   color:$clrWhite;
 }
@@ -81,5 +81,5 @@ body {
 /* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
   @extend %clearfix;
-  margin:0 1.5em 3em;
+  margin:0 em(15) em(30);
 }

@@ -9,8 +9,9 @@ $epsilon: em(24);
 $theta: em(20);
 
 /* ! Font Families */
-$bodyfontfamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
-$displayfontfamily: "Cambria",Georgia,serif;
+$bodyfontfamily: "Myriad Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+$displayfontfamily: $bodyfontfamily;
+$formfontfamily: $bodyfontfamily;
 $codefontfamily: "Consolas",monaco,monospace;
 
 /* ! Font Weights */
@@ -26,4 +27,4 @@ $docFontSize: 16;
 $docLineHeight: 24;
 
 $basefontsize : em(16);
-$baselineheight : 1.5;
+$baselineheight : 1.3;

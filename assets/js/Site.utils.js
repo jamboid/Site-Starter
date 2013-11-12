@@ -70,10 +70,10 @@ Site.utils = (function ($) {
               top = elementOffset.top;
 
               if ( (scrollTop + windowHeight) > (top) && (top + $element.height()) > scrollTop ) {
-              return true;
-            } else {
-              return false;
-            }
+                return true;
+              } else {
+                return false;
+              }
         },
 
         // Remove the style attribute from an element

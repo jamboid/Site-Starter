@@ -14,21 +14,6 @@ a {
 /* !==  More/Action link */
 .moreLink {
   a {
-    color:$clrWhite;
-    background:$clrDarkGrey;
-    padding:5px 10px;
-    display: inline-block;
-    text-decoration: none;
-    border-radius:3px;
-    @include transition(background-color 0.1s linear);
-
-    &:hover, &:focus {
-      background:$clrGrey;
-
-    }
-
-    &:active {
-      background:$clrLightGrey;
-    }
+    @extend %basicButton;
   }
 }

@@ -54,10 +54,10 @@
   }
 
   ul, ol {
-    margin: 1em 0em 3em 3em;
+    margin: em(10) 0 em(20) em(25);
 
     ul, ol {
-      margin: 1em 0em 1em 1em;
+      margin: em(10) 0 em(10) em(10);
     }
 
     li {
@@ -71,7 +71,7 @@
   }
 
   dl {
-    margin: 1em 0em 3em;
+    margin: em(10) 0em em(20);
 
     dt, dd {
       font-size: $basefontsize;
@@ -84,6 +84,10 @@
 
     dd {
       margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 

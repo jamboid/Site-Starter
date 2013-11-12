@@ -3,14 +3,14 @@
 /* !== Default Styles */
 fieldset {
   margin:0;
-  padding:20px;
+  padding:em(20);
   border:none;
   background:$clrOffWhite;
 }
 
 .formItem,
 .form-item {
-  margin:0 0 2em;
+  margin:0 0 em(20);
 }
 
 legend {
@@ -22,7 +22,7 @@ input,
 select,
 textarea {
   font-size:$basefontsize;
-  font-family:$bodyfontfamily;
+  font-family:$formfontfamily;
   @include box-sizing(border-box);
 }
 
@@ -37,7 +37,9 @@ input[type=checkbox]{
 }
 
 input[type=submit] {
+  @extend %basicButton;
   cursor:pointer;
+  border:none;
 }
 
 label {

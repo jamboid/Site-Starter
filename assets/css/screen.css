@@ -131,7 +131,10 @@ $mqDeathStar
 /* ! Font Weights */
 /* Base Document Values */
 /* !== 2. Functions */
-/* != Functions - CONVERT TO EMS */
+/* != Functions - CONVERT PIXELS TO EMS */
+/*
+Parameters: @pixels value (no units), optional @context value (no units) e.g. if you are calculating padding on an element that has a font size applied already.
+*/
 /* != Functions - MATHS */
 /* !== Add 1 to a number */
 /* !== Subtract 1 from a number */
@@ -219,6 +222,28 @@ ul.menu li, ul.menu li.leaf {
 }
 
 /* !== 5. Placeholders */
+/* != Placeholders - BUTTONS */
+/* !== Basic Button Style */
+input[type=submit], .moreLink a {
+  color: white;
+  background: #333333;
+  padding: 5px 10px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 3px;
+  -webkit-transition: background-color 0.1s linear;
+  -moz-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+}
+input[type=submit]:hover, .moreLink a:hover, input[type=submit]:focus, .moreLink a:focus {
+  color: white;
+  background: #666666;
+}
+input[type=submit]:active, .moreLink a:active {
+  color: white;
+  background: #999999;
+}
+
 /* != Placeholders - Layout - CLEARFIX */
 /* !== Modern Version - IE8+ */
 .fd:after, .rg:after, .in:after {
@@ -248,7 +273,7 @@ ul.menu li, ul.menu li.leaf {
 
 /* != Placeholders - Typography - HEADING STYLES */
 /* !== Heading Styles */
-/* !== Generic Rules */
+/* !== Global Rules */
 /* !== Typography  */
 /* !== Typefaces */
 /* NOTE: Declare any @font-face rules here
@@ -290,7 +315,7 @@ ul.menu li, ul.menu li.leaf {
 /* !== Document */
 body {
   font-size: 100%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Myriad Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   color: #333333;
 }
@@ -311,6 +336,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-size: 1.25em;
   font-weight: 400;
+  color: #428bca;
 }
 
 .pageTitle {
@@ -404,7 +430,7 @@ body {
 }
 
 .stFooter {
-  padding: 2em 0;
+  padding: 1.25em 0;
   background: #333333;
   color: white;
 }
@@ -442,21 +468,21 @@ body {
 
 /* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
-  margin: 0 1.5em 3em;
+  margin: 0 0.9375em 1.875em;
 }
 
 /* != Forms */
 /* !== Default Styles */
 fieldset {
   margin: 0;
-  padding: 20px;
+  padding: 1.25em;
   border: none;
   background: #f9f9f9;
 }
 
 .formItem,
 .form-item {
-  margin: 0 0 2em;
+  margin: 0 0 1.25em;
 }
 
 label,
@@ -464,7 +490,7 @@ input,
 select,
 textarea {
   font-size: 1em;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Myriad Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -478,6 +504,7 @@ input[type=checkbox] {
 
 input[type=submit] {
   cursor: pointer;
+  border: none;
 }
 
 label {
@@ -498,28 +525,38 @@ a:hover, a:focus, a:active {
 }
 
 /* !==  More/Action link */
-.moreLink a {
-  color: white;
-  background: #333333;
-  padding: 5px 10px;
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 3px;
-  -webkit-transition: background-color 0.1s linear;
-  -moz-transition: background-color 0.1s linear;
-  transition: background-color 0.1s linear;
-}
-.moreLink a:hover, .moreLink a:focus {
-  background: #666666;
-}
-.moreLink a:active {
-  background: #999999;
-}
-
 /* != Images */
 img {
   max-width: 100%;
   height: auto !important;
+}
+
+.image {
+  line-height: 0;
+}
+.image[data-loading=click] {
+  cursor: pointer;
+}
+.image.lazyLoader {
+  background: #efefef url(img/ajax_loader.gif) center center no-repeat;
+  padding-top: 50%;
+}
+.image.lazyLoader img {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+}
+.image.imageLoaded {
+  padding-top: 0;
+  background-image: none;
+}
+.image.imageDisplayed img {
+  opacity: 1;
+}
+.image img {
+  padding: 0;
+  border: 5px solid black;
 }
 
 /* IE8 doesn't like max-width, so remove it and make sure any images have a correct width set */
@@ -580,10 +617,10 @@ img {
   list-style: decimal;
 }
 .bodyContent ul, .bodyContent ol {
-  margin: 1em 0em 3em 3em;
+  margin: 0.625em 0 1.25em 1.5625em;
 }
 .bodyContent ul ul, .bodyContent ul ol, .bodyContent ol ul, .bodyContent ol ol {
-  margin: 1em 0em 1em 1em;
+  margin: 0.625em 0 0.625em 0.625em;
 }
 .bodyContent ul li, .bodyContent ol li {
   font-size: 1em;
@@ -593,7 +630,7 @@ img {
   font-size: 1em;
 }
 .bodyContent dl {
-  margin: 1em 0em 3em;
+  margin: 0.625em 0em 1.25em;
 }
 .bodyContent dl dt, .bodyContent dl dd {
   font-size: 1em;
@@ -605,9 +642,12 @@ img {
 .bodyContent dl dd {
   margin-bottom: 1em;
 }
+.bodyContent dl dd:last-child {
+  margin-bottom: 0;
+}
 .bodyContent blockquote {
   font-size: 1.5em;
-  font-family: "Cambria", Georgia, serif;
+  font-family: "Myriad Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-left: 1em;
   border-left: 5px solid #efefef;
 }
@@ -677,24 +717,43 @@ img {
 
 /* != Style Guide  */
 /* NOTES: Styles to create a flat style guide */
-.cpStyleGuide .compTitle {
-  font-size: 1.75em;
-  margin: 0 0 0.5em;
+/* !== Page Title - override for Style Guide page */
+.pageTitle {
+  font-size: 1.875em;
+  padding: 0.33333em 0;
+  border-bottom: 2px solid #efefef;
+}
+
+/* !== Style Guide label */
+.sgLabel {
+  font-size: 1.25em !important;
+  margin-bottom: 0.5em;
+  color: #428bca;
+}
+
+/* !== Section Toggle Component */
+.cpSectionToggle .in {
+  margin-bottom: 1.25em;
+}
+.cpSectionToggle .compTitle {
+  font-size: 1.125em;
+  text-transform: uppercase;
+  margin: 0;
   padding: 0.25em 40px 0.25em 0.5em;
   background: #efefef;
-  color: black;
-  /* border-top:2px solid $clrCompTitleBorder; */
 }
-.cpStyleGuide[data-plugin=showhide] .compTitle {
+
+/* !== Show/Hide widget components - selected by data-* attributes */
+[data-plugin=showhide] [data-action=toggle] {
   position: relative;
   cursor: pointer;
 }
-.cpStyleGuide[data-plugin=showhide] .compTitle:after {
+[data-plugin=showhide] [data-action=toggle]:after {
   content: "–";
   font-size: 1.2em;
   position: absolute;
-  right: 15px;
-  top: 0;
+  right: 0.9375em;
+  top: 0em;
   width: 30px;
   height: 30px;
   text-align: center;
@@ -702,16 +761,11 @@ img {
   z-index: 100;
   display: inline-block;
 }
-.cpStyleGuide[data-plugin=showhide].isClosed .compTitle:after {
+[data-plugin=showhide].isClosed [data-action=toggle]:after {
   content: "+";
 }
-.cpStyleGuide[data-plugin=showhide].isClosed [data-content=showhide] {
+[data-plugin=showhide].isClosed [data-content=showhide] {
   display: none;
-}
-.cpStyleGuide .sgLabel {
-  font-size: 1.25em;
-  margin-bottom: 0.5em;
-  color: #78a0da;
 }
 
 /* != Shame */

@@ -1,0 +1,22 @@
+/* != Placeholders - BUTTONS */
+
+/* !== Basic Button Style */
+%basicButton {
+  color:$clrWhite;
+  background:$clrDarkGrey;
+  padding:5px 10px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius:3px;
+  @include transition(background-color 0.1s linear);
+
+  &:hover, &:focus {
+    color:$clrWhite;
+    background:$clrGrey;
+  }
+
+  &:active {
+    color:$clrWhite;
+    background:$clrLightGrey;
+  }
+}

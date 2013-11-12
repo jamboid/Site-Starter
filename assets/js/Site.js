@@ -16,7 +16,8 @@ Site.init = (function ($) {
         Site.utils.init();
         Site.events.init();
         Site.showhide.init();
-        Site.forms.init()
+        Site.forms.init();
+        Site.images.init();
       });
     };
 

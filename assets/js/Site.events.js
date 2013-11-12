@@ -17,7 +17,7 @@ Site.events = (function ($) {
 
         init = function () {
           Site.utils.cl("Site.events initialised");
-          setFastTapEvents();
+          //setFastTapEvents();
         };
 
     // Return Public API

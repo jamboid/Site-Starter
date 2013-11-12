@@ -42,6 +42,8 @@ Thumbs.db
 /Icon
 *.scssc
 
+node_modules
+
 .sass-cache
 
 *.sublime-project
