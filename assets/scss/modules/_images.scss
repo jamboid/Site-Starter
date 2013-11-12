@@ -5,8 +5,38 @@ img {
 }
 
 .image {
+  line-height: 0;
+
+  &[data-loading=click] {
+    cursor:pointer;
+  }
+
+  &.lazyLoader {
+    background:$clrVeryLightGrey url(img/ajax_loader.gif) center center no-repeat;
+    padding-top: 50%;
+
+    img {
+      opacity:0;
+      @include transition(opacity .5s linear);
+    }
+  }
+
+  &.imageLoaded {
+    padding-top: 0;
+    background-image:none;
+
+  }
+
+  &.imageDisplayed {
+    img {
+      opacity:1;
+    }
+  }
+
   img {
     @extend %borderBox;
+    padding: 0;
+    border:5px solid $clrBlack;
   }
 }
 
