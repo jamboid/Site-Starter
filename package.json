@@ -1,0 +1,27 @@
+{
+  "name": "Site-Starter",
+  "version": "0.1.0",
+  "description": "A framework for front-end web projects",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamboid/Site-Starter.git"
+  },
+  "author": "Jamie Boyd",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/jamboid/Site-Starter/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-uglify": "~0.2.5",
+    "grunt-imageoptim": "~1.4.0",
+    "node-bourbon": "~1.0.0"
+  }
+}
