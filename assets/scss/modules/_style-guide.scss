@@ -26,7 +26,7 @@
     font-size: em(18);
     text-transform: uppercase;
     margin:0;
-    padding:0.25em 40px 0.25em 0.5em;
+    padding:0.5em 40px 0.3em 0.5em;
     background:$clrVeryLightGrey;
   }
 }
@@ -43,7 +43,7 @@
       font-size:1.2em;
       position: absolute;
       right: em(15);
-      top: em(0);
+      top: em(4);
       width:30px;
       height:30px;
       text-align: center;

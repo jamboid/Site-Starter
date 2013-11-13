@@ -67,7 +67,7 @@ $gradient: $gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
 MQ Names - Star Wars Theme
 ==========================
 
-Use the Main names for main media queries and the Intermediate names for MQs for more specific rules and edge cases
+Use the Main names for main breakpoints and the Intermediate names for BPs for more specific rules and edge cases
 
 Small
 ------------
@@ -119,8 +119,10 @@ $mqDeathStar
 
 
 */
-/* What are the parameter values for each Media Query */
-/* !== Sprite Image */
+/*
+What are the parameter values for each Media Query?
+- Set these values without units, these'll be added in the mixin
+*/
 /* != Variables - SPRITES */
 /* != Variables - LAYOUT */
 /* !== Used in _configuration.scss partial to set viewport  */
@@ -254,7 +256,6 @@ input[type=submit]:active, .moreLink a:active {
 
 /* !== Legacy Version - IE6/7+ */
 /* != Placeholders - Layout - BORDER BOX */
-/* !== Border Box */
 .image img {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -707,14 +708,6 @@ img {
 /* !== Extras */
 /* != Utilities */
 /* !== Display State Classes  */
-.isVisible {
-  display: block;
-}
-
-.isHidden {
-  display: none;
-}
-
 /* != Style Guide  */
 /* NOTES: Styles to create a flat style guide */
 /* !== Page Title - override for Style Guide page */
@@ -739,7 +732,7 @@ img {
   font-size: 1.125em;
   text-transform: uppercase;
   margin: 0;
-  padding: 0.25em 40px 0.25em 0.5em;
+  padding: 0.5em 40px 0.3em 0.5em;
   background: #efefef;
 }
 
@@ -753,7 +746,7 @@ img {
   font-size: 1.2em;
   position: absolute;
   right: 0.9375em;
-  top: 0em;
+  top: 0.25em;
   width: 30px;
   height: 30px;
   text-align: center;

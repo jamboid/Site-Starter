@@ -7,8 +7,15 @@ var Site = Site || {};
 Site.layout = (function ($) {
   "use strict";
   // Variables
-  var init = function () {
+  var defaults = {},
+
+      bindGlobalLayoutEvents = function () {
+
+      },
+
+      init = function () {
         Site.utils.cl("Site.layout initialised");
+        //bindGlobalLayoutEvents();
       };
 
   // Return Public API

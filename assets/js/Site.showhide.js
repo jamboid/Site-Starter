@@ -13,6 +13,13 @@ Site.showhide = (function ($) {
           selContent : "[data-content=showhide]"
         },
 
+        triggerLayoutUpdateEvent = function (elem) {
+          Site.utils.cl('Triggering layout event');
+          if(Site.images.updateLazyImages !== undefined) {
+            Site.images.updateLazyImages();
+          }
+        },
+
         bindShowHideEvents = function (component, config) {
           var thisComp = component,
               thisAction = $(thisComp).find(defaults.selAction).eq(0),
@@ -34,20 +41,24 @@ Site.showhide = (function ($) {
               if(animate === true){
                 $(thisContent).slideDown(function () {
                   $(thisComp).removeClass('isClosed');
+                  triggerLayoutUpdateEvent($(thisComp));
                 });
               } else {
                 $(thisContent).show();
                 $(thisComp).removeClass('isClosed');
+                triggerLayoutUpdateEvent($(thisComp));
               }
 
             } else {
               if(animate === true){
                 $(thisContent).slideUp(function () {
                   $(thisComp).addClass('isClosed');
+                  triggerLayoutUpdateEvent($(thisComp));
                 });
               } else {
                 $(thisContent).hide();
                 $(thisComp).addClass('isClosed');
+                triggerLayoutUpdateEvent($(thisComp));
               }
 
             }

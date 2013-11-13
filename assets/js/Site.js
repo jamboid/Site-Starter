@@ -1,6 +1,3 @@
-// Site.js
-
-// Check if namespace is defined
 var Site = Site || {};
 
 // Site namespace
@@ -14,10 +11,12 @@ Site.init = (function ($) {
     modules.init = function () {
       $(document).ready(function () {
         Site.utils.init();
+        Site.layout.init();
         Site.events.init();
         Site.showhide.init();
         Site.forms.init();
         Site.images.init();
+        Site.analytics.init();
       });
     };
 

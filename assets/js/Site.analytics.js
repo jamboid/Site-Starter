@@ -127,13 +127,13 @@ Site.analytics = (function ($) {
             // This needs to be configured to match the Custom Dimension setup
             // in your Universal Analytics account
             ga('set', 'dimension1', layoutCategory);
-            Site.utils.cl("Layout custom dimension set for this page view (Universal Analytics)");
+            //Site.utils.cl("Layout custom dimension set for this page view (Universal Analytics)");
 
           } else if (typeof _gaq !== 'undefined') {
             _gaq.push(['_setCustomVar', 1 , 'Layout', layoutCategory, 3]);
-            Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
+            //Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
           } else {
-            Site.utils.cl('Google Analytics not available');
+            //Site.utils.cl('Google Analytics not available');
           }
 
           //Site.utils.cl("Breakpoint custom variable set for this page view");

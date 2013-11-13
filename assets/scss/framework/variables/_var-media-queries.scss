@@ -5,7 +5,7 @@
 MQ Names - Star Wars Theme
 ==========================
 
-Use the Main names for main media queries and the Intermediate names for MQs for more specific rules and edge cases
+Use the Main names for main breakpoints and the Intermediate names for BPs for more specific rules and edge cases
 
 Small
 ------------
@@ -58,15 +58,12 @@ $mqDeathStar
 
 */
 
-/* What are the parameter values for each Media Query */
+/*
+What are the parameter values for each Media Query?
+- Set these values without units, these'll be added in the mixin
+*/
 $mqArtoo: 480;
 $mqLeia: 610;
 $mqLuke: 770;
 $mqHan: 900;
 $mqChewie: 1000;
-
-
-/* !== Sprite Image */
-$spriteFile: url(img/hb_sprite.png);
-$spriteFileRetina: url(img/hb_sprite@2x.png);
-$spriteSize: 327px 116px;

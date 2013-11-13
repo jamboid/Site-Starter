@@ -9,6 +9,7 @@
   }
 }
 
+// Placeholder for sprite image added as :before/:after pseudo-content
 %spriteBase {
   @extend  %spriteFile;
   content: " ";
