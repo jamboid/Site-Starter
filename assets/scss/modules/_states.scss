@@ -2,9 +2,9 @@
 
 /* !== Display State Classes  */
 .isVisible {
-  display: block;
+  @extend %isVisible;
 }
 
 .isHidden {
-  display: none;
+  @extend %isHidden;
 }
