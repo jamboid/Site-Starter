@@ -1,13 +1,23 @@
 <div class="fdPageSection fd">
-  <div class="rgSection rg" data-plugin="showhide" data-plugin-config='{"animate": true, "open": true}'>
+  <div class="rgSection rg" data-plugin="showhide" data-plugin-config='{"animate": true, "open": false}'>
 
   <!-- $sectionTitle = Images -->
   <!-- @include ../partials/section-title.kit -->
 
     <div class="cpImageLoader cp" data-content="showhide">
       <div class="in">
-        <div class="image lazyLoader" data-loading="view">
-          <noscript data-src="assets/img/placeholder_image.jpg" data-alt="A Shrubbery!!!">
+        <div class="image lazyLoader" data-loading="view" data-src="assets/img/placeholder_image.jpg" data-alt="A Shrubbery!!!">
+          <noscript >
+            <img src="assets/img/placeholder_image.jpg" alt="Placeholder" />
+          </noscript>
+        </div>
+        <div class="image lazyLoader" data-loading="click" data-src="assets/img/placeholder_image.jpg" data-alt="A Shrubbery!!!">
+          <noscript >
+            <img src="assets/img/placeholder_image.jpg" alt="Placeholder" />
+          </noscript>
+        </div>
+        <div class="image lazyLoader" data-loading="view" data-src="assets/img/placeholder_image.jpg" data-alt="A Shrubbery!!!">
+          <noscript >
             <img src="assets/img/placeholder_image.jpg" alt="Placeholder" />
           </noscript>
         </div>
