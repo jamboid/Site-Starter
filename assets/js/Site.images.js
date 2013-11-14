@@ -10,85 +10,91 @@ Site.images = (function ($) {
   var defaults = { },
       $lazyLoadImages = $('.lazyLoader'),
 
-      // lazyImage class
-      lazyImage = function (sprite) {
-        var $thisSprite = $(sprite),
-            loadingMethod = $thisSprite.data('loading'),
-            $spriteImageDataSource = $thisSprite.find('noscript').eq(0),
-            $spriteImageHolder = $spriteImageDataSource.parent(),
-            imageSrc = $spriteImageDataSource.data('src'),
-            imageWidth = $spriteImageDataSource.data('width'),
-            imageAlt = $spriteImageDataSource.data('alt'),
-            imageToAdd = new Image(),
+      // Display a pre-loaded lazy image, adding atrributes set on
+      // the sprite container
+      displaySpriteImageInContainer = function (container, image) {
+        var $thisContainer = $(container),
+            $thisImage = $(image),
+            imageAlt = $thisContainer.data('alt') || 'image',
+            imageWidth = $thisContainer.data('width') || '';
 
-            displayImage = function () {
-              if (imageAlt === "") {
-                imageAlt = "gallery image";
-              }
-              $(imageToAdd).attr('width', imageWidth).attr('alt', imageAlt);
-              $spriteImageHolder.prepend(imageToAdd).addClass('imageLoaded');
-              // Need to allow browser a moment to process the addition of the image before diplaying it
-              window.setTimeout(function () {$spriteImageHolder.addClass('imageDisplayed');}, 100);
-              Site.utils.cl("Image loaded and displayed");
-            },
-
-            getImageFile = function () {
-              imageToAdd.src = imageSrc;
-              $(imageToAdd).imagesLoaded(displayImage);
-            },
-
-            loadImageIfInView = function () {
-              if(Site.utils.isElementInView($thisSprite)){
-                getImageFile();
-              }
-            };
-
-            this.bindViewEvents = function () {
-              // If image is set to load/display on user click/tap
-              if(loadingMethod === 'click') {
-                $thisSprite.bind('tap', function () {
-                  if (!$thisSprite.hasClass('imageLoaded')) {
-                    getImageFile();
-                  }
-                });
-              }
-              // If image is set to display when container is in view
-              else if (loadingMethod === 'view') {
-
-                // Check image is in view on page load
-                   // Check if image comes into view on scroll
-                $(window).on('scroll debouncedresize', function () {
-                  if (!$thisSprite.hasClass('imageLoaded')) {
-                    loadImageIfInView();
-                  }
-                });
-              }
-              // Otherwise load the image on page load
-              else {
-                getImageFile();
-              }
-
-              // Bind to custom event so we can load any images moved into view when e.g. a show/hide control is closed/opened
-              $thisSprite.on('layoutUpdate', function () {
-                Site.utils.cl('listening for layoutUpdate event');
-                loadImageIfInView();
-              });
-            };
+        $thisImage.attr('width', imageWidth).attr('alt', imageAlt);
+        $thisContainer.prepend($thisImage).addClass('imageLoaded');
+        // Need to allow browser a moment to process the addition of the image before diplaying it
+        window.setTimeout(function () {$thisContainer.addClass('imageDisplayed');}, 100);
+        Site.utils.cl("Image loaded and displayed");
       },
 
+      // Create and preload a new image based on a sprite src
+      // then call a function once the image is loaded into memory
+      getSpriteImageFile = function (sprite) {
+        var $thisSprite = sprite,
+            thisImageUrl = $thisSprite.data('src'),
+            imageToAdd = new Image();
 
-      // Load any images that are wrapped in <noscript> tags and marked for loading after page load
-      // Dependency: ImagesLoaded jQuery plugin
+            imageToAdd.src = thisImageUrl;
+            $(imageToAdd).imagesLoaded(displaySpriteImageInContainer($thisSprite, imageToAdd));
+      },
+
+      loadSpriteImageIfInView = function (sprite) {
+        var $thisSprite = sprite;
+        if(Site.utils.isElementInView($thisSprite)){
+          getSpriteImageFile($thisSprite);
+        }
+      },
+
+      // lazyImage class
+      buildLazyImage = function (sprite) {
+        var $thisSprite = $(sprite),
+            loadingMethod = $thisSprite.data('loading');
+
+        if(loadingMethod === 'click') {
+          $thisSprite.bind('tap', function () {
+            if (!$thisSprite.hasClass('imageLoaded')) {
+              getSpriteImageFile($thisSprite);
+            }
+          });
+        }
+        // If image is set to display when container is in view
+        else if (loadingMethod === 'view') {
+          // Load image if it is in view
+          loadSpriteImageIfInView($thisSprite);
+
+          // Load image if it comes into view on scroll or window resize
+          $(window).on('scroll debouncedresize', function () {
+            if (!$thisSprite.hasClass('imageLoaded')) {
+              loadSpriteImageIfInView($thisSprite);
+            }
+          });
+        }
+        // Otherwise load the image on page load
+        else {
+          getSpriteImageFile($thisSprite);
+        }
+
+        // Bind to custom event so we can load any images moved into view when e.g. a show/hide control is closed/opened
+        $thisSprite.on('layoutUpdate', function () {
+          Site.utils.cl('listening for layoutUpdate event');
+          loadSpriteImageIfInView($thisSprite);
+        });
+      },
+
+      // Set up all lazy images on the page
       buildLazyImages = function () {
         $lazyLoadImages.each(function () {
-          var newLazyImage = new lazyImage(this);
-          newLazyImage.bindViewEvents();
+          buildLazyImage(this);
         });
       },
 
       // Exposed function to update images when the page layout changes
+      // - checks if image is loaded already
       updateLazyImages = function () {
-        $lazyLoadImages.trigger('layoutUpdate');
+        $lazyLoadImages.each(function () {
+          var $thisSprite = $(this);
+          if(!$thisSprite.hasClass('imageLoaded') && $thisSprite.data('loading') === 'view' ) {
+            $thisSprite.trigger('layoutUpdate');
+          }
+        });
       },
 
       init = function () {

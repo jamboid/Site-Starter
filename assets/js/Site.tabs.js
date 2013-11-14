@@ -22,13 +22,22 @@ Site.tabs = (function ($) {
                   e.preventDefault();
                   Site.utils.cl('Tab control clicked');
 
-                  if(!$(this).hasClass('current')) {
+                  var $thisControl = $(this),
+
+                  // Function to call when tab-switching complete
+                  transitionComplete = function () {
+                    // Fire event to be heard by global delegate (Site.events.js)
+                    $(thisAction).trigger('layoutchange');
+                  };
+
+                  if(!$thisControl.hasClass('current')) {
                     var newPos = $(this).index();
                     $('.current',tabControls).removeClass('current');
                     $(tabControlCurrentSel, thisTabbedComponent).removeClass('current');
 
                     $(tabControlSel,tabControls).eq(newPos).addClass('current');
                     $(tabPanelSel, thisTabbedComponent).eq(newPos).addClass('current');
+                    transitionComplete();
                   }
                 });
               };

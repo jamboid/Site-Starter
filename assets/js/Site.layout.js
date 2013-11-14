@@ -8,18 +8,12 @@ Site.layout = (function ($) {
   "use strict";
   // Variables
   var defaults = {},
-
-      bindGlobalLayoutEvents = function () {
-
-      },
-
       init = function () {
         Site.utils.cl("Site.layout initialised");
-        //bindGlobalLayoutEvents();
       };
 
   // Return Public API
   return {
-    init: init
+    init: init,
   };
 }(jQuery));

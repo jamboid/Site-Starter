@@ -20,17 +20,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/Gruntfile.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Gruntfile.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/Gruntfile.min.js",
-      "fileType" : 64
-    },
     "\/_source\/sections\/_layout.kit" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -51,17 +40,6 @@
       "outputAbbreviatedPath" : "\/assets\/js\/Site.animate.min.js",
       "fileType" : 64
     },
-    "\/assets\/js\/Site.layout.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/Site.layout.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/Site.layout.min.js",
-      "fileType" : 64
-    },
     "\/assets\/scss\/framework\/placeholders\/_plh-layout-clearfix.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -74,6 +52,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/assets\/js\/Site.layout.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/Site.layout.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/Site.layout.min.js",
+      "fileType" : 64
+    },
     "\/_source\/partials\/_section-title.kit" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -82,18 +71,6 @@
       "inputAbbreviatedPath" : "\/_source\/partials\/_section-title.kit",
       "outputAbbreviatedPath" : "\/_section-title.html",
       "fileType" : 65536
-    },
-    "\/assets\/scss\/framework\/variables\/_var-media-queries.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/variables\/_var-media-queries.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_var-media-queries.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/assets\/scss\/modules\/_typography.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -104,6 +81,18 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/css\/_typography.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/assets\/scss\/framework\/variables\/_var-media-queries.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/variables\/_var-media-queries.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_var-media-queries.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -164,6 +153,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/assets\/css\/ie.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/css\/ie.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/assets\/scss\/modules\/_images.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -187,15 +185,6 @@
       "outputAbbreviatedPath" : "\/assets\/js\/Site.analytics.min.js",
       "fileType" : 64
     },
-    "\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/assets\/js\/Site.navigation.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -206,6 +195,15 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/assets\/js\/Site.navigation.min.js",
       "fileType" : 64
+    },
+    "\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/assets\/scss\/modules\/_brand.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -218,15 +216,6 @@
       "outputAbbreviatedPath" : "\/assets\/scss\/css\/_brand.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/assets\/css\/ie.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/css\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/assets\/scss\/modules\/_navigation.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -439,15 +428,6 @@
       "outputAbbreviatedPath" : "\/assets\/js\/Site.tabs.min.js",
       "fileType" : 64
     },
-    "\/_source\/sections\/_form-elements.kit" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/_source\/sections\/_form-elements.kit",
-      "outputAbbreviatedPath" : "\/_form-elements.html",
-      "fileType" : 65536
-    },
     "\/assets\/scss\/modules\/_states.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -460,29 +440,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/scss\/framework\/variables\/_var-sprites.scss" : {
+    "\/_source\/sections\/_form-elements.kit" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/variables\/_var-sprites.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_var-sprites.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/assets\/scss\/framework\/placeholders\/_plh-states.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-states.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-states.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/_source\/sections\/_form-elements.kit",
+      "outputAbbreviatedPath" : "\/_form-elements.html",
+      "fileType" : 65536
     },
     "\/assets\/scss\/framework\/placeholders\/_plh-typography-headings.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -493,6 +458,29 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-typography-headings.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/assets\/js\/libs\/Site.libs.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.min.js",
+      "fileType" : 64
+    },
+    "\/assets\/scss\/framework\/variables\/_var-sprites.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/variables\/_var-sprites.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_var-sprites.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -508,6 +496,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/assets\/scss\/framework\/placeholders\/_plh-layout-borderbox.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-layout-borderbox.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-layout-borderbox.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/assets\/scss\/modules\/_style-guide.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -520,26 +520,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/js\/libs\/Site.libs.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.min.js",
-      "fileType" : 64
-    },
-    "\/assets\/scss\/framework\/placeholders\/_plh-layout-borderbox.scss" : {
+    "\/assets\/scss\/framework\/placeholders\/_plh-states.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-layout-borderbox.scss",
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-states.scss",
       "outputStyle" : 3,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-layout-borderbox.css",
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-states.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -638,7 +627,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/Site.js",
-      "outputStyle" : 1,
+      "outputStyle" : 0,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/assets\/js\/Site.min.js",
       "fileType" : 64
@@ -655,17 +644,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/js\/Site.scroller.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/Site.scroller.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/Site.scroller.min.js",
-      "fileType" : 64
-    },
     "\/assets\/scss\/framework\/_all.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -677,6 +655,17 @@
       "outputAbbreviatedPath" : "\/assets\/scss\/css\/_all.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/assets\/js\/Site.scroller.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/Site.scroller.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/Site.scroller.min.js",
+      "fileType" : 64
     },
     "\/assets\/scss\/modules\/_webfonts.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -759,7 +748,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/scss\/screen.scss",
-      "outputStyle" : 1,
+      "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/css\/screen.css",
       "fileType" : 4,
@@ -900,71 +889,71 @@
     {
       "type" : 1,
       "position" : 2,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.events.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 3,
       "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.showhide.js",
       "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
-      "position" : 4,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.forms.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 5,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.images.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 6,
+      "position" : 3,
       "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.analytics.js",
       "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
       "followForSyntaxChecking" : 1
     },
     {
       "type" : 1,
-      "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/fastclick.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 1,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.imagesloaded.min.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 2,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.debouncedresize.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 3,
-      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/tappy.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
       "position" : 4,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.events.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 5,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.forms.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 6,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/Site.images.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 7,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/fastclick.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 8,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.debouncedresize.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 9,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.imagesloaded.min.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 10,
       "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.touchSwipe.js",
-      "baseFileAbbreviatedPath" : "\/assets\/js\/libs\/Site.libs.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 11,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/tappy.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/Site.js",
       "followForSyntaxChecking" : 1
     }
   ],
@@ -1143,8 +1132,8 @@
   },
   "projectAttributes" : {
     "bourbonEnabled" : 1,
-    "displayValue" : "Site Starter",
-    "displayValueWasSetByUser" : 1,
+    "displayValue" : "Site-Starter",
+    "displayValueWasSetByUser" : 0,
     "compassEnabled" : 0
   }
 }

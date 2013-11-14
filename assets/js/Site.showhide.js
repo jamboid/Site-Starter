@@ -13,13 +13,6 @@ Site.showhide = (function ($) {
           selContent : "[data-content=showhide]"
         },
 
-        triggerLayoutUpdateEvent = function (elem) {
-          Site.utils.cl('Triggering layout event');
-          if(Site.images.updateLazyImages !== undefined) {
-            Site.images.updateLazyImages();
-          }
-        },
-
         bindShowHideEvents = function (component, config) {
           var thisComp = component,
               thisAction = $(thisComp).find(defaults.selAction).eq(0),
@@ -27,9 +20,14 @@ Site.showhide = (function ($) {
               thisConfig = config || {},
               startState = thisConfig.open || false,
               animate = thisConfig.animate || false,
-              speed = thisConfig.speed || 200;
+              speed = thisConfig.speed || 200,
 
-          //Site.utils.cl(thisConfig);
+          // Function called when show/hide transition is complete
+          transitionComplete = function () {
+            // Fire event to be heard by global delegate (Site.events.js)
+            $(thisAction).trigger('layoutchange');
+          };
+
 
           if (startState === false){
             $(thisComp).addClass('isClosed');
@@ -41,24 +39,24 @@ Site.showhide = (function ($) {
               if(animate === true){
                 $(thisContent).slideDown(function () {
                   $(thisComp).removeClass('isClosed');
-                  triggerLayoutUpdateEvent($(thisComp));
+                  transitionComplete();
                 });
               } else {
                 $(thisContent).show();
                 $(thisComp).removeClass('isClosed');
-                triggerLayoutUpdateEvent($(thisComp));
+                transitionComplete();
               }
 
             } else {
               if(animate === true){
                 $(thisContent).slideUp(function () {
                   $(thisComp).addClass('isClosed');
-                  triggerLayoutUpdateEvent($(thisComp));
+                  transitionComplete();
                 });
               } else {
                 $(thisContent).hide();
                 $(thisComp).addClass('isClosed');
-                triggerLayoutUpdateEvent($(thisComp));
+                transitionComplete();
               }
 
             }
