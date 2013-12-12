@@ -104,6 +104,7 @@ Site.analytics = (function ($) {
           });
         },
 
+
         // Set Custom variable for Responsive Design layout
         trackPageLayout = function () {
 

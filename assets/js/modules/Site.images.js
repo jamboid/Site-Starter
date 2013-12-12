@@ -49,34 +49,17 @@ Site.images = (function ($) {
             loadingMethod = $thisSprite.data('loading');
 
         if(loadingMethod === 'click') {
-          $thisSprite.bind('tap', function () {
-            if (!$thisSprite.hasClass('imageLoaded')) {
-              getSpriteImageFile($thisSprite);
-            }
-          });
+          // Do nothing
         }
         // If image is set to display when container is in view
         else if (loadingMethod === 'view') {
           // Load image if it is in view
           loadSpriteImageIfInView($thisSprite);
-
-          // Load image if it comes into view on scroll or window resize
-          $(window).on('scroll debouncedresize', function () {
-            if (!$thisSprite.hasClass('imageLoaded')) {
-              loadSpriteImageIfInView($thisSprite);
-            }
-          });
         }
         // Otherwise load the image on page load
         else {
           getSpriteImageFile($thisSprite);
         }
-
-        // Bind to custom event so we can load any images moved into view when e.g. a show/hide control is closed/opened
-        $thisSprite.on('layoutUpdate', function () {
-          Site.utils.cl('listening for layoutUpdate event');
-          loadSpriteImageIfInView($thisSprite);
-        });
       },
 
       // Set up all lazy images on the page
@@ -92,9 +75,18 @@ Site.images = (function ($) {
         $lazyLoadImages.each(function () {
           var $thisSprite = $(this);
           if(!$thisSprite.hasClass('imageLoaded') && $thisSprite.data('loading') === 'view' ) {
-            $thisSprite.trigger('layoutUpdate');
+            loadSpriteImageIfInView($thisSprite);
           }
         });
+      },
+
+      // Exposed function to load/display image when it is clicked on
+      //
+      loadClickedImage = function (sprite) {
+        var $thisSprite = $(sprite);
+        if(!$thisSprite.hasClass('imageLoaded') && $thisSprite.data('loading') === 'click' ) {
+          getSpriteImageFile($thisSprite);
+        }
       },
 
       init = function () {
@@ -105,7 +97,8 @@ Site.images = (function ($) {
   // Return Public API
   return {
     init: init,
-    updateLazyImages: updateLazyImages
+    updateLazyImages: updateLazyImages,
+    loadClickedImage: loadClickedImage
   };
 
 }(jQuery));

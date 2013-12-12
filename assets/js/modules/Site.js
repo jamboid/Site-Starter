@@ -16,6 +16,7 @@ Site.init = (function ($) {
         Site.showhide.init();
         Site.forms.init();
         Site.images.init();
+        Site.carousel.init();
         Site.analytics.init();
       });
     };

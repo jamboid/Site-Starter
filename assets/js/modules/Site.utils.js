@@ -11,8 +11,8 @@ Site.utils = (function ($) {
         // Console.log function with check for browsers that don't support it
         logMessage = function (logMessage) {
           if (debugMode === true) {
-            if (typeof console !== undefined) {
-              console.log(logMessage);
+            if (typeof window.console !== undefined) {
+              window.console.log(logMessage);
             }
           }
         },
@@ -65,7 +65,7 @@ Site.utils = (function ($) {
           var $element = $(element),
               $window = $(window),
               windowHeight = $window.height(),
-              scrollTop = $window.scrollTop(),
+            scrollTop = $window.scrollTop(),
               elementOffset = $element.offset(),
               top = elementOffset.top;
 
@@ -86,7 +86,6 @@ Site.utils = (function ($) {
           var $theseElements = $(elements);
           $theseElements.filter(':nth-child(2n-1)').addClass('odd');
           $theseElements.filter(':nth-child(2n)').addClass('even');
-
         },
 
         // Initialisation
