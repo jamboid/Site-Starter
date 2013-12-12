@@ -29,7 +29,6 @@ Site.carousel = (function ($) {
               },
 
               advanceCarousel = function () {
-
                 // Fade in next slide to sit over current slide
                 $nextSlide.fadeIn(transition, function () {
                   $currentSlide.removeClass('current');
@@ -52,9 +51,8 @@ Site.carousel = (function ($) {
                 });
               },
 
+              // Switch the auto-cycling of the carousel on and off
               toggleAutoCycle = function () {
-
-
                 if(!carouselPaused) {
                   carouselPaused = true;
                   clearTimeout(cycleTimeout);
@@ -66,12 +64,13 @@ Site.carousel = (function ($) {
 
               // Bind Custom Events to allow Object messaging
               bindCustomMessageEvents = function () {
-                $thisCarousel.on('toggleCarousel', function (e) {
+                $thisCarousel.on('toggleAutoCycle', function (e) {
                   e.preventDefault();
                   toggleAutoCycle();
                 });
               },
 
+              // Setup the carousel to an initial state
               setInitialState = function () {
                 $firstSlide = $slides.eq(0);
                 $currentSlide = $firstSlide;

@@ -13,68 +13,75 @@ Site.showhide = (function ($) {
           selContent : "[data-content=showhide]"
         },
 
-        // Set initial state of component based on data-config
-        setInitialState = function (component, config) {
-          var thisComp = component,
-              thisAction = $(thisComp).find(defaults.selAction).eq(0),
-              thisContent = $(thisComp).find(defaults.selContent).eq(0),
-              thisConfig = config || {},
-              startState = thisConfig.open || false;
+        // ShowHide object
+        ShowHider = function (elem) {
+          var $thisShowHider = $(elem),
+              $thisContent = $(thisComp).find(defaults.selContent).eq(0),
+              config = $thisShowHider.data('plugin-config'),
+              animate = config.animate || false,
+              speed = config.speed || 200,
+              startState = thisConfig.open || false,
 
-          if (startState === false){
-            $(thisComp).addClass('isClosed');
-          }
-        },
+              // Toggle Show/Hide control
+              toggleControl = function () {
+                var
+                // Function called when show/hide transition is complete
+                transitionComplete = function () {
+                  // Fire event to be heard by global delegate (Site.events.js)
+                  $thisShowHider.trigger('layoutchange');
+                };
 
-        // Toggle Show/Hide control
-        toggleControl = function (component, config) {
-          var thisComp = component,
-              thisContent = $(thisComp).find(defaults.selContent).eq(0),
-              thisConfig = config || {},
-              animate = thisConfig.animate || false,
-              speed = thisConfig.speed || 200,
 
-          // Function called when show/hide transition is complete
-          transitionComplete = function () {
-            // Fire event to be heard by global delegate (Site.events.js)
-            $(thisComp).trigger('layoutchange');
+                if($thisShowHider.hasClass('isClosed')){
+                  if(animate === true){
+                    $thisContent .slideDown(function () {
+                      $thisShowHider.removeClass('isClosed');
+                      transitionComplete();
+                    });
+                  } else {
+                    $thisContent.show();
+                    $thisShowHider.removeClass('isClosed');
+                    transitionComplete();
+                  }
+
+                } else {
+                  if(animate === true){
+                    $thisContent.slideUp(function () {
+                      $thisShowHider.addClass('isClosed');
+                      transitionComplete();
+                    });
+                  } else {
+                    $thisContent.hide();
+                    $thisShowHider.addClass('isClosed');
+                    transitionComplete();
+                  }
+                }
+              },
+
+              setInitialState = function () {
+                if (startState === false){
+                  $thisShowHider.addClass('isClosed');
+                }
+              },
+
+              bindCustomMessageEvents = function () {
+                $thisShowHider.on('toggleShowHide', function (e) {
+                  e.preventDefault();
+                  toggleControl();
+                });
+              },
+
+          this.init = function () {
+
           };
-
-
-          if($(thisComp).hasClass('isClosed')){
-            if(animate === true){
-              $(thisContent).slideDown(function () {
-                $(thisComp).removeClass('isClosed');
-                transitionComplete();
-              });
-            } else {
-              $(thisContent).show();
-              $(thisComp).removeClass('isClosed');
-              transitionComplete();
-            }
-
-          } else {
-            if(animate === true){
-              $(thisContent).slideUp(function () {
-                $(thisComp).addClass('isClosed');
-                transitionComplete();
-              });
-            } else {
-              $(thisContent).hide();
-              $(thisComp).addClass('isClosed');
-              transitionComplete();
-            }
-          }
         },
 
         setShowHideComponents = function () {
           var showHideComps = $(defaults.selPlugin);
           $(showHideComps).each(function () {
 
-            var config = $(this).data('plugin-config');
-
-            Site.utils.cl(config);
-            setInitialState(this, config);
+            var thisShowHider = new ShowHider(this);
+            thisShowHider.init();
           });
         },
 

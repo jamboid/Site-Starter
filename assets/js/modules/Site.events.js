@@ -32,10 +32,7 @@ Site.events = (function ($) {
           // Handle 'click' event on show/hide control
           $body.on('click','[data-plugin=showhide] [data-action=toggle]', function (e) {
             e.preventDefault();
-            var control = $(this).closest('[data-plugin=showhide]'),
-                config = $(control).data('plugin-config');
-
-            Site.showhide.toggleControl(control, config);
+            $(e.target).trigger('toggleShowHide');
           });
 
           // Handle click on 'click-to-load' lazy image
@@ -46,7 +43,7 @@ Site.events = (function ($) {
 
           $body.on('click','[data-plugin=carousel] .slide a', function (e) {
             e.preventDefault();
-            $(e.target).trigger('toggleCarousel');
+            $(e.target).trigger('toggleAutoCycle');
           });
 
           // Handle page scroll or (debounced) resize
