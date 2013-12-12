@@ -10,80 +10,99 @@ Site.carousel = (function ($) {
     var defaults = {},
         carouselSel = "[data-plugin=carousel]",
 
-        getNextSlide = function (carousel) {
-          var $thisCarousel = $(carousel);
-        },
-
-        getPreviousSlide = function (carousel) {
-          var $thisCarousel = $(carousel);
-        },
-
-        getCarouselSlides = function (carousel) {
-          var $slides = $(carousel).find('.slide');
-          return $slides;
-        },
-
-        setAutoAdvance = function () {
-
-        },
-
-        advanceCarousel = function (carousel, nextSlide) {
-          var $thisCarousel = $(carousel),
-              $slides = getCarouselSlides($thisCarousel),
-              $currentSlide = $thisCarousel.find('.slide.current'),
-              $nextSlide = $thisCarousel.find('.slide.next'),
-              $firstSlide = $slides.eq(0),
+        //Carousel class
+        Carousel = function (elem) {
+          var $thisCarousel = $(elem),
+              $slideContainer = $thisCarousel.find('.slides').eq(0),
+              $slides = $thisCarousel.find('.slide'),
               numOfSlides = $slides.length,
               config = $thisCarousel.data('config'),
               interval = config.interval || 5000,
-              transition = config.transition || 1000;
+              transition = config.transition || 1000,
+              $currentSlide, $nextSlide, $firstSlide, currentHeight, cycleTimeout,
+              carouselPaused = config.paused || true,
 
-          // Fade in next slide to sit over current slide
-          $nextSlide.fadeIn(transition, function () {
-            $currentSlide.removeClass('current');
-            $nextSlide.addClass('current').removeClass('next');
-            Site.utils.resetStyles($nextSlide);
-            $currentSlide = $nextSlide;
+              setCycle = function () {
+                if(!carouselPaused) {
+                  cycleTimeout = setTimeout(advanceCarousel, interval);
+                }
+              },
 
-            // Set next slide
-            var currentPos = $slides.index($currentSlide);
-            if((currentPos+1) < numOfSlides){
-              $nextSlide = $currentSlide.next();
-              $nextSlide.addClass('next');
-            } else {
-              $nextSlide = $firstSlide;
-              $nextSlide.addClass('next');
-            }
+              advanceCarousel = function () {
 
-            // Set the carousel to loop through the slides
-            setTimeout(function(){ advanceCarousel($thisCarousel, $nextSlide) }, interval);
-          });
-        },
+                // Fade in next slide to sit over current slide
+                $nextSlide.fadeIn(transition, function () {
+                  $currentSlide.removeClass('current');
+                  $nextSlide.addClass('current').removeClass('next');
+                  Site.utils.resetStyles($nextSlide);
+                  $currentSlide = $nextSlide;
 
-        buildCarousel = function (carousel) {
-          var $thisCarousel = $(carousel),
-              $firstSlide = getCarouselSlides($thisCarousel).eq(0),
-              $currentSlide = $firstSlide,
-              $nextSlide = $currentSlide.next(),
-              config = $thisCarousel.data('config'),
-              interval = config.interval || 5000;
+                  // Set next slide
+                  var currentPos = $slides.index($currentSlide);
+                  if((currentPos+1) < numOfSlides){
+                    $nextSlide = $currentSlide.next();
+                    $nextSlide.addClass('next');
+                  } else {
+                    $nextSlide = $firstSlide;
+                    $nextSlide.addClass('next');
+                  }
 
-          $currentSlide.addClass('current');
-          $nextSlide.addClass('next');
+                  // Set the carousel to loop through the slides
+                  setCycle();
+                });
+              },
 
-          setTimeout(function(){ advanceCarousel($thisCarousel, $nextSlide) }, interval);
+              toggleAutoCycle = function () {
+
+
+                if(!carouselPaused) {
+                  carouselPaused = true;
+                  clearTimeout(cycleTimeout);
+                } else {
+                  carouselPaused = false;
+                  setCycle ();
+                }
+              },
+
+              // Bind Custom Events to allow Object messaging
+              bindCustomMessageEvents = function () {
+                $thisCarousel.on('toggleCarousel', function (e) {
+                  e.preventDefault();
+                  toggleAutoCycle();
+                });
+              },
+
+              setInitialState = function () {
+                $firstSlide = $slides.eq(0);
+                $currentSlide = $firstSlide;
+                $nextSlide = $currentSlide.next();
+                //currentHeight = $currentSlide.height();
+                //$slideContainer.css('height',currentHeight);
+                $currentSlide.addClass('current');
+                $nextSlide.addClass('next');
+                bindCustomMessageEvents();
+                setCycle();
+              };
+
+              this.init = function () {
+                setInitialState();
+              };
+
         },
 
         buildCarousels = function () {
           $(carouselSel).each(function () {
-            buildCarousel(this);
-          })
+            //buildCarousel(this);
+            var thisCarousel = new Carousel(this);
+            thisCarousel.init();
+          });
         },
 
         init = function () {
           Site.utils.cl("Site.carousel initialised");
           buildCarousels();
-        }
+        };
+
 
     // Return Public API
     return {

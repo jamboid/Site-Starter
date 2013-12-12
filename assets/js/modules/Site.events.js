@@ -7,7 +7,7 @@ var Site = Site || {};
 Site.events = (function ($) {
     "use strict";
     // Variables
-    var defaults = {},
+    var
         /* Use fastclick plugin to remove tap delay on touch devices */
         setFastTapEvents = function () {
           if(typeof FastClick !== undefined){
@@ -44,9 +44,13 @@ Site.events = (function ($) {
             Site.images.loadClickedImage(this);
           });
 
+          $body.on('click','[data-plugin=carousel] .slide a', function (e) {
+            e.preventDefault();
+            $(e.target).trigger('toggleCarousel');
+          });
+
           // Handle page scroll or (debounced) resize
           $(window).on('scroll debouncedresize', function () {
-
             // Load any lazy images that are now in view
             if(Site.images.updateLazyImages !== undefined) {
               Site.images.updateLazyImages();
