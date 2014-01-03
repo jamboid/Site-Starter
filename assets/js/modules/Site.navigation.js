@@ -12,38 +12,49 @@ Site.navigation = (function ($) {
         selNavMenu = ".menu",
         transitionTime = 200,
 
-        // Show/Hide main navigation menu when in mobile/small-screen configuration
-        // NOTES: This uses a jQuery-powered animation
-        toggleMainNav = function (mainNav, navMenu) {
-          if ($(mainNav).hasClass("isVisible") === true) {
-            $('html, body').animate({
-              scrollTop: $('html, body').offset().top
-            }, transitionTime);
-            $(navMenu).slideUp(transitionTime, function () {
-              $(mainNav).removeClass("isVisible");
-              Site.utils.resetStyles(navMenu);
-            });
-          } else {
-            $(navMenu).slideDown(transitionTime, function () {
-              $(mainNav).addClass("isVisible");
-              Site.utils.resetStyles(navMenu);
-            });
-          }
-        },
+        // Main Navigation Menu Object
+        MainNavMenu = function (elem) {
+          var $thisMainNav = $(elem),
+              $menu = $thisMainNav.find('ul.menu').eq(0),
 
-        // Add event handler for main navigation toggle
-        bindMainNavEvents = function () {
-          $(selNavToggle).bind("tap", function (event) {
-            event.preventDefault();
-            var mainNav = $(this).closest(selNav),
-                navMenu = $(mainNav).find(selNavMenu).eq(0);
-            toggleMainNav(mainNav, navMenu);
-          });
+              // Show/Hide main navigation menu when in mobile/small-screen configuration
+              // NOTES: This uses a jQuery-powered animation
+              toggleMainNav = function () {
+                if ($thisMainNav.hasClass("isVisible") === true) {
+                  $('html, body').animate({
+                    scrollTop: $('html, body').offset().top
+                  }, transitionTime);
+                  $menu.slideUp(transitionTime, function () {
+                    $thisMainNav.removeClass("isVisible");
+                    Site.utils.resetStyles(navMenu);
+                  });
+                } else {
+                  $menu.slideDown(transitionTime, function () {
+                    $thisMainNav.addClass("isVisible");
+                    Site.utils.resetStyles(navMenu);
+                  });
+                }
+              },
+
+              // Add event handler for main navigation toggle
+              bindCustomMessageEvents = function () {
+                $thisMainNav.on('toggleMainNav', function () {
+                  e.preventDefault();
+                  toggleMainNav();
+                };
+              };
+
+          this.init = function () {
+            bindCustomMessageEvents();
+          };
         },
 
         init = function () {
           Site.utils.cl("Site.navigation initialised");
-          bindMainNavEvents();
+          $(selNav).each(function () {
+            var newNav = new MainNavMenu(this);
+            newNav.init();
+          });
         };
 
     // Return Public API
