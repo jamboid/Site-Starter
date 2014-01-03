@@ -1,1 +1,71 @@
-@page{margin:2cm 1.5cm}body{font-size:12pt;line-height:18pt;color:#000}h1,h2,h3,h4,h5,h6{font-family:"Cambria",Georgia,serif;page-break-after:avoid}h1{font-size:24pt}h2{font-size:21.6pt}h3{font-size:19.2pt}h4{font-size:16.8pt}p,li,dt,dd{font-size:12pt}abbr[title]:after{content:" (" attr(title) ")"}a[href]:after{content:" (" attr(title) ")"}a[href^="#"]:after,a[href^="javascript"]:after{content:""}table{width:100%}th,td{padding:10px 20px}.rg,.gp,.cp{display:block}nav{display:none}
+/* != Print Styles */
+/* !== Print Variables */
+/* Typography */
+/* !== Base Styles */
+@page {
+  margin: 2cm 1.5cm;
+}
+
+body {
+  font-size: 12pt;
+  line-height: 18pt;
+  color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cambria", Georgia, serif;
+  page-break-after: avoid;
+}
+
+h1 {
+  font-size: 24pt;
+}
+
+h2 {
+  font-size: 21.6pt;
+}
+
+h3 {
+  font-size: 19.2pt;
+}
+
+h4 {
+  font-size: 16.8pt;
+}
+
+p, li, dt, dd {
+  font-size: 12pt;
+}
+
+abbr[title]:after {
+  content: " (" attr(title) ")";
+}
+
+/* !== Links */
+a[href]:after {
+  content: " (" attr(title) ")";
+}
+
+a[href^="#"]:after,
+a[href^="javascript"]:after {
+  content: "";
+}
+
+/* !== Tables */
+table {
+  width: 100%;
+}
+
+th, td {
+  padding: 10px 20px;
+}
+
+/* !== Fuzz Containers */
+.rg, .gp, .cp {
+  display: block;
+}
+
+/* !== Hidden Elements */
+nav {
+  display: none;
+}

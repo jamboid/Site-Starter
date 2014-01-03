@@ -8,13 +8,6 @@ Site.events = (function ($) {
     "use strict";
     // Variables
     var
-        /* Use fastclick plugin to remove tap delay on touch devices */
-        setFastTapEvents = function () {
-          if(typeof FastClick !== undefined){
-            //FastClick.attach(document.body);
-          }
-        },
-
         // Bind delegated events
         bindDelegatedEvents = function () {
           var $body = $('body');
@@ -29,6 +22,14 @@ Site.events = (function ($) {
             }
           });
 
+          // Handle page scroll or (debounced) resize
+          $(window).on('scroll debouncedresize', function () {
+            // Load any lazy images that are now in view
+            if(Site.images.updateLazyImages !== undefined) {
+              Site.images.updateLazyImages();
+            }
+          });
+
           // Handle 'click' event on show/hide control
           $body.on('click','[data-plugin=showhide] [data-action=toggle]', function (e) {
             e.preventDefault();
@@ -38,26 +39,25 @@ Site.events = (function ($) {
           // Handle click on 'click-to-load' lazy image
           $body.on('click','.lazyLoader[data-loading=click]', function (e) {
             e.preventDefault();
-            Site.images.loadClickedImage(this);
+            $(e.target).trigger('loadLazyImage');
           });
 
+          // Handle click on Carousel slide
           $body.on('click','[data-plugin=carousel] .slide a', function (e) {
             e.preventDefault();
             $(e.target).trigger('toggleAutoCycle');
           });
 
-          // Handle page scroll or (debounced) resize
-          $(window).on('scroll debouncedresize', function () {
-            // Load any lazy images that are now in view
-            if(Site.images.updateLazyImages !== undefined) {
-              Site.images.updateLazyImages();
-            }
+          // Handle click on Mobile Main Nav Menu toggle
+          $body.on('click','.cpMainNav .navTitle a', function (e) {
+            e.preventDefault();
+            $(e.target).trigger('toggleMainNav');
           });
+
         },
 
         init = function () {
           Site.utils.cl("Site.events initialised");
-          setFastTapEvents();
           bindDelegatedEvents();
         };
 

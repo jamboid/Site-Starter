@@ -10,7 +10,7 @@ Site.carousel = (function ($) {
     var defaults = {},
         carouselSel = "[data-plugin=carousel]",
 
-        //Carousel class
+        // Carousel class
         Carousel = function (elem) {
           var $thisCarousel = $(elem),
               $slideContainer = $thisCarousel.find('.slides').eq(0),
