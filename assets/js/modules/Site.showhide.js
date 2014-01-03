@@ -13,14 +13,15 @@ Site.showhide = (function ($) {
           selContent : "[data-content=showhide]"
         },
 
-        // ShowHide object
-        ShowHider = function (elem) {
-          var $thisShowHider = $(elem),
-              $thisContent = $(thisComp).find(defaults.selContent).eq(0),
-              config = $thisShowHider.data('plugin-config'),
+        // Show/Hide "Nipper" object
+        // NOTE: The term "Nipper" is Copyright Rob Graham (@restlesslake)
+        Nipper = function (elem) {
+          var $thisNipper = $(elem),
+              $thisContent = $thisNipper.find(defaults.selContent).eq(0),
+              config = $thisNipper.data('plugin-config'),
               animate = config.animate || false,
               speed = config.speed || 200,
-              startState = thisConfig.open || false,
+              startState = config.open || false,
 
               // Toggle Show/Hide control
               toggleControl = function () {
@@ -28,31 +29,31 @@ Site.showhide = (function ($) {
                 // Function called when show/hide transition is complete
                 transitionComplete = function () {
                   // Fire event to be heard by global delegate (Site.events.js)
-                  $thisShowHider.trigger('layoutchange');
+                  $thisNipper.trigger('layoutchange');
                 };
 
 
-                if($thisShowHider.hasClass('isClosed')){
+                if($thisNipper.hasClass('isClosed')){
                   if(animate === true){
-                    $thisContent .slideDown(function () {
-                      $thisShowHider.removeClass('isClosed');
+                    $thisContent .slideDown(speed, function () {
+                      $thisNipper.removeClass('isClosed');
                       transitionComplete();
                     });
                   } else {
                     $thisContent.show();
-                    $thisShowHider.removeClass('isClosed');
+                    $thisNipper.removeClass('isClosed');
                     transitionComplete();
                   }
 
                 } else {
                   if(animate === true){
-                    $thisContent.slideUp(function () {
-                      $thisShowHider.addClass('isClosed');
+                    $thisContent.slideUp(speed, function () {
+                      $thisNipper.addClass('isClosed');
                       transitionComplete();
                     });
                   } else {
                     $thisContent.hide();
-                    $thisShowHider.addClass('isClosed');
+                    $thisNipper.addClass('isClosed');
                     transitionComplete();
                   }
                 }
@@ -60,19 +61,19 @@ Site.showhide = (function ($) {
 
               setInitialState = function () {
                 if (startState === false){
-                  $thisShowHider.addClass('isClosed');
+                  $thisNipper.addClass('isClosed');
                 }
               },
 
               bindCustomMessageEvents = function () {
-                $thisShowHider.on('toggleShowHide', function (e) {
+                $thisNipper.on('toggleShowHide', function (e) {
                   e.preventDefault();
                   toggleControl();
                 });
-              },
+              };
 
           this.init = function () {
-
+            bindCustomMessageEvents();
           };
         },
 
@@ -80,8 +81,8 @@ Site.showhide = (function ($) {
           var showHideComps = $(defaults.selPlugin);
           $(showHideComps).each(function () {
 
-            var thisShowHider = new ShowHider(this);
-            thisShowHider.init();
+            var thisNipper = new Nipper(this);
+            thisNipper.init();
           });
         },
 
@@ -93,8 +94,7 @@ Site.showhide = (function ($) {
 
     // Return Public API
     return {
-        init: init,
-        toggleControl: toggleControl
+      init: init
     };
 
 }(jQuery));
