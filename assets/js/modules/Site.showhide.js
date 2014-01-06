@@ -70,10 +70,15 @@ Site.showhide = (function ($) {
                   e.preventDefault();
                   toggleControl();
                 });
+              },
+
+              delegateEvents = function () {
+                Site.events.delegatedEventFactory('click', '[data-plugin=showhide] [data-action=toggle]', 'toggleShowHide');
               };
 
           this.init = function () {
             bindCustomMessageEvents();
+            delegateEvents();
           };
         },
 

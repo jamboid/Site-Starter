@@ -154,15 +154,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/css\/ie.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/css\/ie.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/assets\/scss\/modules\/_images.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -175,9 +166,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/assets\/css\/ie.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/css\/ie.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/assets\/js\/modules\/Site.showhide.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.showhide.js",
@@ -221,7 +221,7 @@
     },
     "\/assets\/js\/libs\/jquery.touchSwipe.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.touchSwipe.js",
@@ -229,18 +229,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.touchSwipe.min.js",
       "fileType" : 64
-    },
-    "\/assets\/scss\/framework\/mixins\/_mix-opacity.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/mixins\/_mix-opacity.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_mix-opacity.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/assets\/scss\/framework\/variables\/_var-colours.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -251,6 +239,18 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_var-colours.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/assets\/scss\/framework\/mixins\/_mix-opacity.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/mixins\/_mix-opacity.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_mix-opacity.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -279,7 +279,7 @@
     },
     "\/assets\/js\/modules\/Site.events.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.events.js",
@@ -362,7 +362,7 @@
     },
     "\/assets\/js\/modules\/Site.images.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.images.js",
@@ -394,17 +394,6 @@
       "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.animate.min.js",
       "fileType" : 64
     },
-    "\/assets\/js\/modules\/Site.carousel.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.carousel.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.carousel.min.js",
-      "fileType" : 64
-    },
     "\/assets\/js\/modules\/Site.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -427,6 +416,28 @@
       "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.navigation.min.js",
       "fileType" : 64
     },
+    "\/assets\/js\/modules\/Site.carousel.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.carousel.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.carousel.min.js",
+      "fileType" : 64
+    },
+    "\/assets\/js\/modules\/Site.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.min.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.min.min.js",
+      "fileType" : 64
+    },
     "\/_source\/index.kit" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -434,6 +445,15 @@
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/_source\/index.kit",
       "outputAbbreviatedPath" : "\/index.html",
+      "fileType" : 65536
+    },
+    "\/_source\/sections\/_form-elements.kit" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/_source\/sections\/_form-elements.kit",
+      "outputAbbreviatedPath" : "\/_form-elements.html",
       "fileType" : 65536
     },
     "\/assets\/scss\/modules\/_states.scss" : {
@@ -445,27 +465,6 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/css\/_states.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/_source\/sections\/_form-elements.kit" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/_source\/sections\/_form-elements.kit",
-      "outputAbbreviatedPath" : "\/_form-elements.html",
-      "fileType" : 65536
-    },
-    "\/assets\/scss\/framework\/placeholders\/_plh-typography-headings.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-typography-headings.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-typography-headings.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -490,6 +489,18 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-states.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/assets\/scss\/framework\/placeholders\/_plh-typography-headings.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/placeholders\/_plh-typography-headings.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_plh-typography-headings.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -529,28 +540,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/js\/libs\/imagesloaded.pkgd.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/libs\/imagesloaded.pkgd.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/libs\/imagesloaded.pkgd.min.js",
-      "fileType" : 64
-    },
-    "\/assets\/js\/libs\/jquery.pubsub.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.pubsub.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.pubsub.min.js",
-      "fileType" : 64
-    },
     "\/assets\/js\/modules\/Site.tabs.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -560,6 +549,28 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.tabs.min.js",
+      "fileType" : 64
+    },
+    "\/assets\/js\/libs\/jquery.pubsub.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.pubsub.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/libs\/jquery.pubsub.min.js",
+      "fileType" : 64
+    },
+    "\/assets\/js\/libs\/imagesloaded.pkgd.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/js\/libs\/imagesloaded.pkgd.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/assets\/js\/libs\/imagesloaded.pkgd.min.js",
       "fileType" : 64
     },
     "\/assets\/js\/Site.min.js" : {
@@ -587,7 +598,7 @@
     },
     "\/assets\/js\/modules\/Site.analytics.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.analytics.js",
@@ -701,7 +712,7 @@
     },
     "\/assets\/js\/modules\/Site.utils.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.utils.js",
@@ -721,18 +732,9 @@
       "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.webfonts.min.js",
       "fileType" : 64
     },
-    "\/_source\/sections\/_basic-styles.kit" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/_source\/sections\/_basic-styles.kit",
-      "outputAbbreviatedPath" : "\/_basic-styles.html",
-      "fileType" : 65536
-    },
     "\/assets\/js\/modules\/Site.layout.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/assets\/js\/modules\/Site.layout.js",
@@ -740,6 +742,18 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/assets\/js\/modules\/Site.layout.min.js",
       "fileType" : 64
+    },
+    "\/assets\/scss\/framework\/mixins\/_mix-typography.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/mixins\/_mix-typography.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_mix-typography.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/assets\/js\/modules\/Site.forms.js" : {
       "ignoreWasSetByUser" : 0,
@@ -764,17 +778,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/assets\/scss\/framework\/mixins\/_mix-typography.scss" : {
+    "\/_source\/sections\/_basic-styles.kit" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/framework\/mixins\/_mix-typography.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/scss\/framework\/css\/_mix-typography.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/_source\/sections\/_basic-styles.kit",
+      "outputAbbreviatedPath" : "\/_basic-styles.html",
+      "fileType" : 65536
     },
     "\/_source\/partials\/_footer.kit" : {
       "ignoreWasSetByUser" : 0,
@@ -794,18 +805,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/assets\/scss\/screen.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/assets\/scss\/screen.scss",
-      "outputStyle" : 3,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/assets\/css\/screen.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/assets\/scss\/modules\/_layout.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -815,6 +814,18 @@
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/assets\/scss\/css\/_layout.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/assets\/scss\/screen.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/assets\/scss\/screen.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/assets\/css\/screen.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -891,7 +902,83 @@
     }
   },
   "manualImportLinks" : [
-
+    {
+      "type" : 0,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/imagesloaded.pkgd.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 1,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.pubsub.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 2,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.debouncedresize.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 3,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/libs\/jquery.touchSwipe.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 4,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.utils.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 5,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.events.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 6,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.layout.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 7,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.images.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 8,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.showhide.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 9,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.carousel.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 10,
+      "linkedFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.analytics.js",
+      "baseFileAbbreviatedPath" : "\/assets\/js\/modules\/Site.js",
+      "followForSyntaxChecking" : 1
+    }
   ],
   "projectSettings" : {
     "hamlNoEscapeInAttributes" : 0,
@@ -955,7 +1042,7 @@
     "coffeeAutoOutputPathReplace1" : "",
     "hamlUseDoubleQuotes" : 0,
     "coffeeAutoOutputPathReplace2" : "",
-    "kitAutoOutputPathReplace1" : "\/_source\/",
+    "kitAutoOutputPathReplace1" : "",
     "uglifyReservedNamesString" : "",
     "coffeeOutputStyle" : 0,
     "slimAutoOutputPathRelativePath" : "",
@@ -1060,7 +1147,7 @@
     "slimAutoOutputPathReplace2" : "",
     "jadeCompileDebug" : 1,
     "slimRailsCompatible" : 0,
-    "kitAutoOutputPathReplace2" : "\/build\/",
+    "kitAutoOutputPathReplace2" : "",
     "lessRelativeURLS" : 0,
     "lessDebugStyle" : 0,
     "javascriptAutoOutputPathRelativePath" : "",

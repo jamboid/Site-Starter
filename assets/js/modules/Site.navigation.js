@@ -41,11 +41,17 @@ Site.navigation = (function ($) {
                 $thisMainNav.on('toggleMainNav', function () {
                   e.preventDefault();
                   toggleMainNav();
-                };
+                });
+              },
+
+              // Delegate events to an event listener on the <body> tag
+              delegateEvents = function () {
+                Site.events.delegatedEventFactory('click', '.cpMainNav .navTitle a', 'toggleMainNav');
               };
 
           this.init = function () {
             bindCustomMessageEvents();
+            delegateEvents();
           };
         },
 

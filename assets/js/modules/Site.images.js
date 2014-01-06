@@ -13,6 +13,7 @@ Site.images = (function ($) {
       // LazyImage object
       LazyImage = function (elem) {
         var $thisSprite = $(elem),
+            loadingMethod = $thisSprite.data('loading'),
 
             // Display a pre-loaded lazy image, adding atrributes set on
             // the sprite container
@@ -46,8 +47,6 @@ Site.images = (function ($) {
 
             // lazyImage class
             buildLazyImage = function () {
-              var loadingMethod = $thisSprite.data('loading');
-
               if(loadingMethod === 'click') {
                 // Do nothing
               }
@@ -69,20 +68,29 @@ Site.images = (function ($) {
             bindCustomMessageEvents = function () {
               $thisSprite.on('loadLazyImage', function (e) {
                 e.preventDefault();
-                loadSpriteImageIfInView();
+                if (!$thisSprite.hasClass('imageLoaded')) {
+                  loadSpriteImageIfInView();
+                }
               });
             },
 
             subscribeToEvents = function () {
 
-            };
+              Site.utils.cl(loadingMethod);
 
-        this.loadLazyImage = function () {
-          loadSpriteImageIfInView();
-        };
+              if(loadingMethod !== 'click') {
+                $.subscribe('layoutChange', function () {$(this).trigger('loadLazyImage')},$thisSprite);
+              }
+            },
+
+            delegateEvents = function () {
+              Site.events.delegatedEventFactory('click', '.lazyLoader[data-loading=click]', 'loadLazyImage');
+            };
 
         this.init = function () {
           buildLazyImage();
+          delegateEvents();
+          subscribeToEvents();
         };
       },
 

@@ -1645,7 +1645,7 @@
         return {
             direction:dir,
             distance:0
-        }
+        };
     }
 
 
@@ -1788,7 +1788,7 @@
           right:offset.left+el.outerWidth(),
           top:offset.top,
           bottom:offset.top+el.outerHeight()
-          }
+          };
 
       return bounds;
     }
@@ -1807,7 +1807,7 @@
      */
     function isInBounds(point, bounds) {
       return (point.x > bounds.left && point.x < bounds.right && point.y > bounds.top && point.y < bounds.bottom);
-    };
+    }
 
 
   }

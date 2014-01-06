@@ -35,5 +35,4 @@ Site.data = {
   }
 };
 
-
 Site.utils.cl('Site.data loaded');

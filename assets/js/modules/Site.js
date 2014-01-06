@@ -11,10 +11,8 @@ Site.init = (function ($) {
     modules.init = function () {
       $(document).ready(function () {
         Site.utils.init();
-        Site.layout.init();
         Site.events.init();
         Site.showhide.init();
-        Site.forms.init();
         Site.images.init();
         Site.carousel.init();
         Site.analytics.init();

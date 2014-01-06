@@ -7,63 +7,38 @@ var Site = Site || {};
 Site.events = (function ($) {
     "use strict";
     // Variables
-    var
-        // Bind delegated events
-        bindDelegatedEvents = function () {
-          var $body = $('body');
+    var $body = $('body'),
 
+        // Bind delegated events
+        bindGlobalEvents = function () {
           // Handle 'layoutChange' event bubbled to <body> element
           $body.on('layoutchange', function () {
-            Site.utils.cl('layoutchange on body');
-
-            // Update any lazy-load images that may now be visible
-            if(Site.images.updateLazyImages !== undefined) {
-              Site.images.updateLazyImages();
-            }
+            $.publish('layoutChange');
           });
 
           // Handle page scroll or (debounced) resize
           $(window).on('scroll debouncedresize', function () {
-            // Load any lazy images that are now in view
-            if(Site.images.updateLazyImages !== undefined) {
-              Site.images.updateLazyImages();
-            }
+            $.publish('layoutChange');
           });
+        },
 
-          // Handle 'click' event on show/hide control
-          $body.on('click','[data-plugin=showhide] [data-action=toggle]', function (e) {
+        // Simple factory function to bind delegated event listeners to the <body> element
+        delegatedEventFactory = function (event, selector, triggerEvent) {
+          $body.on(event, selector, function (e) {
             e.preventDefault();
-            $(e.target).trigger('toggleShowHide');
+            $(e.target).trigger(triggerEvent);
           });
-
-          // Handle click on 'click-to-load' lazy image
-          $body.on('click','.lazyLoader[data-loading=click]', function (e) {
-            e.preventDefault();
-            $(e.target).trigger('loadLazyImage');
-          });
-
-          // Handle click on Carousel slide
-          $body.on('click','[data-plugin=carousel] .slide a', function (e) {
-            e.preventDefault();
-            $(e.target).trigger('toggleAutoCycle');
-          });
-
-          // Handle click on Mobile Main Nav Menu toggle
-          $body.on('click','.cpMainNav .navTitle a', function (e) {
-            e.preventDefault();
-            $(e.target).trigger('toggleMainNav');
-          });
-
         },
 
         init = function () {
           Site.utils.cl("Site.events initialised");
-          bindDelegatedEvents();
+          bindGlobalEvents();
         };
 
     // Return Public API
     return {
-      init: init
+      init: init,
+      delegatedEventFactory: delegatedEventFactory
     };
 
 }(jQuery));

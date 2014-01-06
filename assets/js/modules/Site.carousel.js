@@ -70,6 +70,11 @@ Site.carousel = (function ($) {
                 });
               },
 
+              delegateEvents = function () {
+                // Delegate 'click' event to start/stop cycling of carousel
+                Site.events.delegatedEventFactory('click', '[data-plugin=carousel] .slide a', 'toggleAutoCycle');
+              },
+
               // Setup the carousel to an initial state
               setInitialState = function () {
                 $firstSlide = $slides.eq(0);
@@ -85,6 +90,7 @@ Site.carousel = (function ($) {
 
               this.init = function () {
                 setInitialState();
+                delegateEvents();
               };
 
         },
