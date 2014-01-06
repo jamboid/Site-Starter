@@ -13,10 +13,6 @@ fieldset {
   margin:0 0 em(20);
 }
 
-legend {
-
-}
-
 label,
 input,
 select,
@@ -27,13 +23,24 @@ textarea {
 }
 
 input,select,textarea {
+  border:1px solid $clrLightGrey;
+  padding:em(5);
+}
 
+input[type=search] {
+  -webkit-appearance: none;
+  border:1px solid $clrLightGrey;
+  padding-left: 0;
+}
+
+input[type=file] {
+  background:$clrVeryLightGrey;
 }
 
 input[type=radio],
 input[type=checkbox]{
   display:inline;
-  margin-right:3px;
+  margin-right:8px;
 }
 
 input[type=submit] {
@@ -45,6 +52,18 @@ input[type=submit] {
 label {
   display: block;
   font-weight: $bold;
+}
+
+/* No label */
+.noLabel {
+  position: relative;
+  input {
+    margin-top: em(20);
+  }
+
+  label {
+    display: none;
+  }
 }
 
 /* !=== Validation */

@@ -4,7 +4,7 @@
 %basicButton {
   color:$clrWhite;
   background:$clrDarkGrey;
-  padding:5px 10px;
+  padding:em(8) em(20) em(5);
   display: inline-block;
   text-decoration: none;
   border-radius:3px;

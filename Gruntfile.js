@@ -13,69 +13,65 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Default task - Build order
-    grunt.registerTask('default',
-    [
-      'jshint',
-
-      // start new build
-      //'htmlizr:prod',
-
-      'watch',
-
-
-      // minimize JavaScript to ./build/assets/js/
-      'uglify:prod',
-
-      // optimise SVG in ./build/assets/img/
-      //'svgmin:prod',
-
-      // rasterize SVG in ./build/assets/img/
-      //'svg2png:prod',
-
-      // optimise images in ./build/assets/img/
-      'imageoptim:prod'
-    ]);
-
     // Metadata.
     meta: {
       basePath: '',
       srcPath: 'assets/scss/',
-      deployPath: 'assets/css/'
+      deployPath: 'assets/css/',
+      jsLibsPath: 'assets/js/libs',
+      jsModulesPath: 'assets/js/modules'
     },
 
-
-    // Task configuration.
     sass: {
       dist: {
         options: {
           loadPath: require('node-bourbon').includePaths,
-          style: 'compressed'
+          style: 'compressed',
         },
-        files: {
-          '<%= meta.deployPath %>screen.css': '<%= meta.srcPath %>screen.scss'
-        }
+        expand: true,
+        cwd: './assets/scss/',
+        src: ['*.scss'],
+        dest: './assets/css/',
+        ext: '.css'
+      },
+      dev: {
+        options: {
+          loadPath: require('node-bourbon').includePaths,
+          style: 'expanded',
+          debugInfo: false,
+          lineNumbers: false,
+        },
+        expand: true,
+        cwd: './assets/scss/',
+        src: ['*.scss'],
+        dest: './assets/css/',
+        ext: '.css'
       }
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'tasks/**/*.js']
+      all: ['Gruntfile.js', 'assets/**/*.js']
     },
 
     uglify: {
       options: {
         preserveComments: 'none'
       },
-      prod: {
-        files: [
-          {
-            expand: true,
-            cwd: 'src/',
-            src: ['assets/js/**/*.js', "!assets/js/**/*.min.js"],
-            dest: 'build/assets/',
-            ext: '.min.js'
-          }
-        ]
+      build: {
+        // files: [
+        //   {
+        //     expand: true,
+        //     flatten: true,
+        //     cwd: '',
+        //     src: ['assets/js/**/*.js', '!assets/js/**/*.min.js'],
+        //     dest: 'assets/js/build/',
+        //     ext: '.min.js'
+        //   }
+        // ]
+
+        files: {
+          'assets/js/build/Site.min.js': ['assets/js/libs/**/*.js','assets/js/modules/**/*.js', '!assets/js/**/*.min.js']
+        }
       }
     },
 
@@ -93,11 +89,46 @@ module.exports = function(grunt) {
         files: [
           '<%= meta.srcPath %>/**/*.scss'
         ],
-        tasks: ['sass'],
+        tasks: ['sass:dev'],
         options: {
           interrupt: true
         },
-      }
+      },
+
+      js: {
+          files: [
+            '<%= meta.jsLibsPath %>/**/*.js',
+            '<%= meta.jsModulesPath %>/**/*.js'
+          ],
+          tasks: ['uglify:build'],
+          options: {
+            interrupt: true
+          }
+      },
     }
   });
+
+
+// Default task - Build order
+    grunt.registerTask('default',
+    [
+      //'jshint',
+
+      // start new build
+      //'htmlizr:prod',
+
+      // minimize JavaScript to ./build/assets/js/
+      'uglify:build',
+
+      // optimise SVG in ./build/assets/img/
+      //'svgmin:prod',
+
+      // rasterize SVG in ./build/assets/img/
+      //'svg2png:prod',
+
+      // optimise images in ./build/assets/img/
+      'imageoptim:prod',
+
+      'watch'
+    ]);
 };

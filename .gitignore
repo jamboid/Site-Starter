@@ -42,10 +42,12 @@ Thumbs.db
 /Icon
 *.scssc
 
+# Installed Grunt modules
 node_modules
 
 .sass-cache
 
+# Sublime Text project files
 *.sublime-project
 *.sublime-workspace
 codekit-config.json

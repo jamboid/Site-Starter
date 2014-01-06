@@ -1,6 +1,6 @@
 <!-- Default Form Elements -->
 <div class="fdPageSection fd">
-  <div class="rgSection rg" data-plugin="showhide" data-plugin-config='{"animate": true, "open": false}'>
+  <div class="rgSection rg" data-plugin="showhide" data-plugin-config='{"animate": true, "open": true}'>
 
   <!-- $sectionTitle = Basic Form elements -->
   <!-- @include ../partials/section-title.kit -->
@@ -11,6 +11,10 @@
           <form action="">
             <fieldset>
               <legend>Fieldset legend</legend>
+              <div class="formItem noLabel">
+                <label>Your name</label>
+                <input type="text" placeholder="Your name" />
+              </div>
               <div class="formItem">
                 <label>Text field</label>
                 <input type="text" placeholder="e.g. Some text" />
