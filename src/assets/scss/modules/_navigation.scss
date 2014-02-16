@@ -1,0 +1,40 @@
+/* != NAVIGATION */
+/* NOTE: Put styles for all navigation menu in here */
+
+/* !== Main Navigation  */
+.cpMainNav {
+  .menuTitle {
+    display: none;
+  }
+
+  .menu {
+    display: table;
+    @include display(flex);
+
+    li {
+      display: table-cell;
+      a {
+        padding:em(5) em(10);
+        background:$clrVeryLightGrey;
+        margin-right: em(10);
+        display: block;
+        text-decoration: none;
+
+        &:hover, &:focus, &:active {
+          background:$clrLightGrey;
+          color:$clrWhite;
+        }
+      }
+    }
+  }
+}
+
+/* !== Sub Navigation */
+.cpSubNav {
+  .menu {
+    li {
+      display: block;
+
+    }
+  }
+}

@@ -1,0 +1,169 @@
+// Site.navigation.js
+
+// Check if base namespace is defined so it isn't overwritten
+var Site = Site || {};
+
+// Create child navigation
+Site.navigation = (function ($) {
+    "use strict";
+  ///////////////
+  // Variables //
+  ///////////////
+
+  var selNav = ".cpMainNav",
+      selNavToggle = ".cpMainNav [data-action=toggle]",
+      selNavMenu = "ul.menu",
+      transitionTime = 200,
+
+      selInPageLink = 'a.inPageLink',
+
+  /////////////
+  // Classes //
+  /////////////
+
+      // Main Navigation Menu Object
+      MainNavMenu = function (elem) {
+        var $thisMainNav = $(elem),
+            $menu = $thisMainNav.find(selNavMenu).eq(0),
+            $menuToggle = $thisMainNav.find('[data-action=toggle]').eq(0),
+            singleCellRatio = Site.grid.getSingleCellRatio(),
+            screenWidth, menuMinHeight,
+
+            // Show/Hide main navigation menu when in mobile/small-screen configuration
+            // NOTES: This uses a jQuery-powered animation
+            toggleMainNav = function () {
+
+              // if ($thisMainNav.hasClass("isVisible") === true) {
+              //   $('html, body').animate({
+              //     scrollTop: $('html, body').offset().top
+              //   }, transitionTime);
+              //   $menu.slideUp(transitionTime, function () {
+              //     $thisMainNav.removeClass("isVisible");
+              //     Site.utils.resetStyles($menu);
+              //   });
+              // } else {
+              //   $menu.slideDown(transitionTime, function () {
+              //     $thisMainNav.addClass("isVisible");
+              //     Site.utils.resetStyles($menu);
+              //   });
+              // }
+
+
+              if ($thisMainNav.hasClass("isVisible") === true) {
+                $thisMainNav.removeClass("isVisible");
+              } else {
+                $.publish('showMainNav');
+                $thisMainNav.addClass("isVisible");
+              }
+            },
+
+            updateMinHeight = function () {
+              screenWidth = $(window).width();
+              menuMinHeight = (screenWidth * singleCellRatio) - $menuToggle.height();
+              $menu.css('min-height', menuMinHeight);
+            },
+
+            // Subscribe object to Global Messages
+            subscribeToEvents = function () {
+              $.subscribe('debouncedresize', function () {$(this).trigger('updatelayout');},$thisMainNav);
+            },
+
+            // Add event handler for main navigation toggle
+            bindCustomMessageEvents = function () {
+              $thisMainNav.on('toggleMainNav', function (e) {
+                e.preventDefault();
+                toggleMainNav();
+              });
+
+              $thisMainNav.on('updatelayout', function (e) {
+                e.preventDefault();
+                updateMinHeight();
+              });
+            };
+
+        this.init = function () {
+          bindCustomMessageEvents();
+          subscribeToEvents();
+          updateMinHeight();
+        };
+      },
+
+      InPageLink = function (elem) {
+        var $thisInPageLink = $(elem),
+            link = $thisInPageLink.attr('href'),
+            queryTerm = $thisInPageLink.data('query'),
+
+        // Get #id from URL and rebuild URL with a query string
+        buildQueryUrlFromAnchorUrl = function (anchorUrl) {
+          var thisUrl = anchorUrl,
+              index = thisUrl.indexOf('#'),
+              baseUrl, hash, query;
+
+          if (index > 0) {
+            baseUrl = thisUrl.substring(0, index);
+            hash = thisUrl.substring(index + 1);
+            query = baseUrl + "?" + queryTerm + '=' + hash;
+
+          } else {
+            query = thisUrl;
+          }
+
+          return query;
+        },
+
+        // Go the page using a modified URL
+        goToLink = function () {
+          window.location = buildQueryUrlFromAnchorUrl(link);
+        },
+
+        // Add event handler for main navigation toggle
+        bindCustomMessageEvents = function () {
+          $thisInPageLink.on('inpagelink', function (e) {
+            e.preventDefault();
+            goToLink();
+          });
+        };
+
+        this.init = function () {
+          bindCustomMessageEvents();
+        };
+      },
+
+  ///////////////
+  // Functions //
+  ///////////////
+
+      // Create delegate event listeners for this module
+      delegateEvents = function () {
+        if(Modernizr.touch) {
+          Site.events.delegateEventFactory('click', selNavToggle, 'toggleMainNav');
+        } else {
+          Site.events.delegateEventFactory('click', selNavToggle, 'toggleMainNav');
+        }
+
+        Site.events.delegateEventFactory('click', selInPageLink, 'inpagelink');
+      },
+
+      init = function () {
+        Site.utils.cl("Site.navigation initialised");
+        $(selNav).each(function () {
+          var newNav = new MainNavMenu(this);
+          newNav.init();
+        });
+
+        $(selInPageLink).each(function () {
+          var thisInPageLink = new InPageLink(this);
+          thisInPageLink.init();
+        });
+
+        delegateEvents();
+      };
+
+  ///////////////////////
+  // Return Public API //
+  ///////////////////////
+
+  return {
+    init: init
+  };
+}(jQuery));

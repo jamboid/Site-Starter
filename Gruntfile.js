@@ -1,12 +1,64 @@
+/*
+
+TODO
+=======
+
+1. Development and Live Deployment Master tasks
+
+*/
+
 module.exports = function(grunt) {
 
-  //grunt.loadTasks('tasks');
   // Load packages
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-imageoptim');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('assemble');
+  grunt.loadNpmTasks('grunt-notify');
+
+  // Default task - Build order
+  grunt.registerTask('default',
+  [
+    'clean', 'assemble', 'jshint',
+
+    // minimize JavaScript to ./build/assets/js/
+    'uglify:dev',
+
+    // Compile Sass files
+    'sass:dist',
+
+    // Copy files to build directory
+    'copy:dev',
+
+    // optimise images in ./build/assets/img/
+    'imageoptim:dev',
+
+    'notify:watch',
+
+    // Start watch task to process ongoing changes
+    'watch'
+  ]);
+
+  // Default task - Build order
+  grunt.registerTask('production',
+  [
+    'clean', 'assemble', 'jshint',
+
+    // minimize JavaScript to ./build/assets/js/
+    'uglify:dist',
+
+    // Compile Sass files
+    'sass:dist',
+
+    // Copy files to build directory
+    'copy:dev',
+
+    // optimise images in ./build/assets/img/
+    'imageoptim:dev',
+
+    'notify:watch',
+
+    // Start watch task to process ongoing changes
+    'watch'
+  ]);
 
   // Project configuration.
   grunt.initConfig({
@@ -16,119 +68,199 @@ module.exports = function(grunt) {
     // Metadata.
     meta: {
       basePath: '',
-      srcPath: 'assets/scss/',
-      deployPath: 'assets/css/',
-      jsLibsPath: 'assets/js/libs',
-      jsModulesPath: 'assets/js/modules'
+      srcPath: 'src/assets/scss/',
+      deployPath: 'build/assets/css/',
+      jsLibsPath: '/src/assets/js/libs',
+      jsModulesPath: '/src/assets/js/modules'
     },
 
+    // Assemble Tasks
+    assemble: {
+      options: {
+        flatten: true,
+        layout: 'src/templates/layouts/default.hbs',
+        partials: 'src/templates/partials/*.hbs'
+      },
+      pages: {
+        files: {
+          'build/': ['src/templates/pages/*.hbs', '!src/templates/pages/index.hbs']
+        }
+      },
+      index: {
+        files: {
+          'build/': ['src/templates/pages/index.hbs']
+        }
+      }
+    },
+
+    // Clean tasks
+    clean: {
+      pages: {
+        src: ["build/**/*.html"]
+      }
+    },
+
+    // Sass Tasks
     sass: {
-      dist: {
-        options: {
-          loadPath: require('node-bourbon').includePaths,
-          style: 'compressed',
-        },
-        expand: true,
-        cwd: './assets/scss/',
-        src: ['*.scss'],
-        dest: './assets/css/',
-        ext: '.css'
+      options: {
+        loadPath: require('node-bourbon').includePaths
       },
       dev: {
         options: {
-          loadPath: require('node-bourbon').includePaths,
           style: 'expanded',
           debugInfo: false,
           lineNumbers: false,
         },
         expand: true,
-        cwd: './assets/scss/',
+        cwd: './src/assets/scss/',
         src: ['*.scss'],
-        dest: './assets/css/',
+        dest: './build/assets/css/',
         ext: '.css'
+      },
+      dist: {
+        options: {
+          style: 'compressed',
+        },
+        expand: true,
+        cwd: "<%= sass.dev.cwd %>",
+        src: "<%= sass.dev.src %>",
+        dest: "<%= sass.dev.dest %>",
+        ext: "<%= sass.dev.ext %>"
       }
     },
 
     jshint: {
-      all: ['Gruntfile.js', 'assets/**/*.js']
+      options: {
+        'force': true,
+        'reporter': require('jshint-stylish')
+      },
+      all: ['Gruntfile.js', 'src/assets/js/modules/**/*.js']
     },
 
+    // Uglify tasks
     uglify: {
       options: {
-        preserveComments: 'none'
+        report: 'min'
       },
-      build: {
-        // files: [
-        //   {
-        //     expand: true,
-        //     flatten: true,
-        //     cwd: '',
-        //     src: ['assets/js/**/*.js', '!assets/js/**/*.min.js'],
-        //     dest: 'assets/js/build/',
-        //     ext: '.min.js'
-        //   }
-        // ]
-
+      dev: {
+        options: {
+          mangle:false,
+          compress: false,
+          beautify: true,
+          preserveComments: 'all'
+        },
         files: {
-          'assets/js/build/Site.min.js': ['assets/js/libs/**/*.js','assets/js/modules/**/*.js', '!assets/js/**/*.min.js']
+          // Set destination file
+          'build/assets/js/Site.min.js':
+            [ // Set libraries and modules to for project
+              // Add js files in root of libs/ dir
+              'src/assets/js/libs/*.js',
+              // Set Site modules to be used
+              'src/assets/js/modules/Site.js',
+              'src/assets/js/modules/Site.utils.js',
+              'src/assets/js/modules/Site.events.js',
+              'src/assets/js/modules/Site.showhide.js',
+              'src/assets/js/modules/Site.carousel.js',
+              'src/assets/js/modules/Site.images.js',
+              'src/assets/js/modules/Site.media.js',
+              'src/assets/js/modules/Site.scroller.js',
+              'src/assets/js/modules/Site.layout.js',
+              'src/assets/js/modules/Site.analytics.js'
+            ]
         }
+      },
+      dist: {
+        options: {
+          mangle:true,
+          compress: true,
+          beautify: false,
+          preserveComments: 'none'
+        },
+        files: "<%= uglify.dev.files %>"
       }
     },
 
     imageoptim: {
-      prod: {
-        src: ['assets/img/, assets/css/img'],
+      dev: {
+        src: ['build/assets/img/, build/assets/css/img'],
         options: {
           quitAfter: true
         }
       }
     },
 
+    // Copy files and other assets from src to build
+    copy: {
+      dev: {
+        files: [
+          // Single JS Files that aren't to be concatenated
+          { expand: true, cwd: 'src/assets/js/libs/single/', src: ['**/*'], dest: 'build/assets/js/' },
+          // Inline Images
+          { expand: true, cwd: 'src/assets/img/inline/', src: ['**/*'], dest: 'build/assets/img' },
+          // CSS Images
+          { expand: true, cwd: 'src/assets/img/css/', src: ['**/*'], dest: 'build/assets/css/img' },
+          // Fonts
+          { expand: true, cwd: 'src/assets/', src: ['fonts/**/*'], dest: 'build/assets/' }
+        ]
+      },
+    },
+
+    // Watch tasks
     watch: {
       css: {
         files: [
           '<%= meta.srcPath %>/**/*.scss'
         ],
-        tasks: ['sass:dev'],
+        tasks: ['sass:dev', 'notify:sass'],
         options: {
           interrupt: true
         },
       },
 
       js: {
-          files: [
-            '<%= meta.jsLibsPath %>/**/*.js',
-            '<%= meta.jsModulesPath %>/**/*.js'
-          ],
-          tasks: ['uglify:build'],
-          options: {
-            interrupt: true
-          }
+        files: [
+          'src/assets/js/libs/**/*.js',
+          'src/assets/js/modules/**/*.js'
+        ],
+        tasks: ['jshint', 'uglify:dev', 'notify:js'],
+        options: {
+          interrupt: true
+        }
       },
+
+      pages: {
+        files: [
+          'src/templates/**/*.hbs'
+        ],
+        tasks: ['assemble'],
+        options: {
+          interrupt: true
+        }
+      }
+    },
+
+    // Notify Tasks
+    notify: {
+      watch: {
+        options: {
+          title: 'Default Task complete',  // optional
+          message: 'Watch is running...', //required
+        }
+      },
+
+      sass: {
+        options: {
+          title: 'Build Complete',  // optional
+          message: 'Sass files were compiled successfully', //required
+        }
+      },
+
+      js: {
+        options: {
+          title: 'Build Complete',  // optional
+          message: 'JS files were compiled successfully', //required
+        }
+      }
     }
   });
-
-
-// Default task - Build order
-    grunt.registerTask('default',
-    [
-      //'jshint',
-
-      // start new build
-      //'htmlizr:prod',
-
-      // minimize JavaScript to ./build/assets/js/
-      'uglify:build',
-
-      // optimise SVG in ./build/assets/img/
-      //'svgmin:prod',
-
-      // rasterize SVG in ./build/assets/img/
-      //'svg2png:prod',
-
-      // optimise images in ./build/assets/img/
-      'imageoptim:prod',
-
-      'watch'
-    ]);
 };

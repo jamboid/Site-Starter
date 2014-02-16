@@ -1,0 +1,67 @@
+/* != Style Guide  */
+
+/* NOTES: Styles to create a flat style guide */
+
+/* !== Page Title - override for Style Guide page */
+.pageTitle {
+  font-size: em(24);
+  padding:em(10,24) 0;
+  border-bottom:2px solid $clrVeryLightGrey;
+}
+
+/* !== Style Guide label */
+.sgLabel {
+  font-size: em(20) !important;
+  margin-bottom:em(10,20);
+  color:$clrBlue;
+}
+
+/* !== Section Toggle Component */
+.cpSectionToggle {
+  .in {
+    margin-bottom: em(20);
+  }
+
+  .compTitle {
+    font-size: em(18);
+    text-transform: uppercase;
+    margin:0;
+    padding:0.5em 40px 0.3em 0.5em;
+    background:$clrVeryLightGrey;
+  }
+}
+
+/* !== Show/Hide widget components - selected by data-* attributes */
+[data-plugin=showhide] {
+
+  [data-action=toggle] {
+    position: relative;
+    cursor: pointer;
+
+    &:after {
+      content:"–";
+      font-size:1.2em;
+      position: absolute;
+      right: em(15);
+      top: em(4);
+      width:30px;
+      height:30px;
+      text-align: center;
+      vertical-align: middle;
+      z-index: 100;
+      display: inline-block;
+    }
+  }
+
+  &.isClosed {
+    [data-action=toggle] {
+      &:after {
+        content:"+";
+      }
+    }
+
+    [data-content=showhide] {
+      display: none
+    }
+  }
+}
