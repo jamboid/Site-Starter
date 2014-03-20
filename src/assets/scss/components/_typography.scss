@@ -97,8 +97,10 @@ li li {
   font-size:0.9em;
 }
 
-.cleanList {
-  @extend %cleanlist;
+.cleanlist {
+  margin:0;
+  padding:0;
+  list-style:none;
 }
 
 /* !== Type Styles */
