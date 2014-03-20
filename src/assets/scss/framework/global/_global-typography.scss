@@ -1,4 +1,4 @@
-/* != Framework - Global Settings */
+/* != Framework - Global Typography Settings */
 
 // Variables and other settings that are used globally
 
@@ -22,14 +22,8 @@ $semibold: 600;
 $bold: 700;
 $black: 900;
 
-/* ! Base Font Values */
+/* ! Base Font Values - used as the default for things like basic paragraphs, lists, etc. */
 $baseFontSize : 20px;
 $baseLineHeight : 1.3;
 
 
-/* !== Used in _configuration.scss partial to set viewport  */
-$deviceWidth:device-width;
-
-/* !== Used in _layout.scss partial to set maximum page width in responsive layout  */
-$maxPageWidth: em(1200);
-$fixedContentWidth: em(900);

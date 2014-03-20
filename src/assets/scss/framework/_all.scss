@@ -5,7 +5,9 @@ NOTE: Imports all other files in the /framework folder
 */
 
 /* !== Global Settings */
-@import "global/global";
+@import "global/global-layout";
+@import "global/global-typography";
+@import "global/global-colours";
 
 /* !== Functions */
 @import "functions/fnc-em";
@@ -19,7 +21,6 @@ NOTE: Imports all other files in the /framework folder
 @import "modules/mod-units";
 @import "modules/mod-media-queries";
 @import "modules/mod-typography";
-@import "modules/mod-colours";
 @import "modules/mod-layout";
 @import "modules/mod-controls-buttons";
 @import "modules/mod-media";
