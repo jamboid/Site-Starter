@@ -1,4 +1,4 @@
-/* != Variables - COLOUR */
+/* != Colours */
 
 /*
 
@@ -50,23 +50,16 @@ $clrWhite: #fff;
 $clrBlue: #428BCA;
 $clrLightBlue:#78a0da;
 
+/* ! Greens */
+$clrGreen: #5d8c12;
+
 /* ! Oranges */
 $clrOrange:#bc4100;
 
 
 
-/* ! Gradients */
-/* NOTE: Create gradients as single variables and add them to a linear-gradient mixin as a variable argument
+/* !== Gradients */
 
-e.g.
-
-$gradient: $gradLightGrey: lighten($clrLightGrey, 10%), lighten($clrGrey, 10%);
-
-...
-
-@include background(linear-gradient($gradient...));
-
-*/
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */

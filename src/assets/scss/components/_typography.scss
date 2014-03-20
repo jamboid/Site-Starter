@@ -28,7 +28,7 @@
   This allows you to declare a single font-family and then use font-weight and font-style in the normal way, rather
   than declaring a different font-family for each type style.
 
-*/
+
 
 @font-face{
   font-family:"Example";
@@ -37,10 +37,11 @@
       url("../fonts/Example_Normal.woff") format("woff"),
       url("../fonts/Example_Normal.ttf") format("truetype"),
       url("../fonts/Example_Normal.svg") format("svg");
-  font-weight:$regular;
+  font-weight:$normal;
   font-style: normal;
 }
 
+*/
 
 /* !== Document */
 body {
@@ -48,7 +49,7 @@ body {
   font-family:$bodyfontfamily;
   line-height:1.5;
   color:$clrDarkGrey;
-  @include mq(plusOne($mqHan), $query1: min){
+  @include mq(plusOne($mqHan), $query1: min) {
     font-size: 125%
   }
 }
@@ -62,14 +63,14 @@ h1,h2,h3,h4,h5,h6 {
 
 .siteTitle {
   margin:0;
-  font-size:em(20);
-  font-weight:$regular;
+  @include rem(font-size, 24px);
+  font-weight:$normal;
   color:$clrBlue;
 }
 
 .pageTitle {
-  font-size:em(24);
-  font-weight: $regular;
+  @include rem(font-size, 28px);
+  font-weight: $normal;
   margin:1em 0 0.5em;
 }
 
@@ -80,12 +81,12 @@ h1,h2,h3,h4,h5,h6 {
 /* !== Paragraphs */
 p {
   margin:0 0 1em;
-  font-size:$basefontsize;
+  @include rem(font-size, $baseFontSize);
 }
 
 /* !== Lists */
 li,dt,dd {
-  font-size:$basefontsize;
+  @include rem(font-size, $baseFontSize);
 }
 
 li {
@@ -112,6 +113,6 @@ em {
 
 /* !== Code */
 code, pre {
-  font-size:$basefontsize;
+  @include rem(font-size, 16px);
   font-family:$codefontfamily;
 }

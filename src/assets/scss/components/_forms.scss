@@ -18,9 +18,8 @@ input,
 button,
 select,
 textarea {
-  font-size:$basefontsize;
+  font-size:$baseFontSize;
   font-family:$formfontfamily;
-  @include box-sizing(border-box);
 }
 
 input,select,textarea {
@@ -46,13 +45,11 @@ input[type=checkbox]{
 
 input[type=submit],
 button {
-  @extend %basicButton;
+  @extend %buttonBase;
+  @include basicButton($clrWhite, $clrBlue);
   cursor:pointer;
   border:none;
-}
-
-button {
-  background:$clrBlue;
+  -webkit-appearance:none;
 }
 
 label {

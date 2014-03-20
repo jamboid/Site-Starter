@@ -7,10 +7,18 @@ var Site = Site || {};
 Site.init = (function ($) {
     "use strict";
 
-    // Initialise Modules
-    var modules = {};
+  ///////////////
+  // Polyfills //
+  ///////////////
 
-    modules.init = function () {
+  ////////////////////////
+  // Initialise Modules //
+  ////////////////////////
+
+    // Modules object
+    var Modules = {};
+
+    Modules.init = function () {
       $(document).ready(function () {
         Site.utils.init();
         Site.events.init();
@@ -19,11 +27,13 @@ Site.init = (function ($) {
         Site.media.init();
         Site.carousel.init();
         Site.scroller.init();
+        Site.filter.init();
         Site.analytics.init();
+        Site.loading.init();
       });
     };
 
-    // Automatically call init function
-    return modules.init();
+    // Automatically call Modules.init function
+    return Modules.init();
 
 }(jQuery));

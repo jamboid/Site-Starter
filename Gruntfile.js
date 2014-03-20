@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-notify');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   // Default task - Build order
   grunt.registerTask('default',
@@ -23,7 +24,7 @@ module.exports = function(grunt) {
     'uglify:dev',
 
     // Compile Sass files
-    'sass:dist',
+    'sass:dev',
 
     // Copy files to build directory
     'copy:dev',
@@ -31,6 +32,10 @@ module.exports = function(grunt) {
     // optimise images in ./build/assets/img/
     'imageoptim:dev',
 
+    // Add vendor prefixes to CSS
+    'autoprefixer',
+
+    // Display status messages
     'notify:watch',
 
     // Start watch task to process ongoing changes
@@ -53,6 +58,9 @@ module.exports = function(grunt) {
 
     // optimise images in ./build/assets/img/
     'imageoptim:dev',
+
+    // Add vendor prefixes to CSS
+    'autoprefixer',
 
     'notify:watch',
 
@@ -100,16 +108,24 @@ module.exports = function(grunt) {
       }
     },
 
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 version','> 1%', 'ie 8', 'ie 9']
+      },
+
+      build: {
+        src: './build/assets/css/*.css'
+      },
+    },
+
     // Sass Tasks
     sass: {
-      options: {
-        loadPath: require('node-bourbon').includePaths
-      },
       dev: {
         options: {
           style: 'expanded',
           debugInfo: false,
           lineNumbers: false,
+          sourcemap: true
         },
         expand: true,
         cwd: './src/assets/scss/',
@@ -165,7 +181,9 @@ module.exports = function(grunt) {
               'src/assets/js/modules/Site.media.js',
               'src/assets/js/modules/Site.scroller.js',
               'src/assets/js/modules/Site.layout.js',
-              'src/assets/js/modules/Site.analytics.js'
+              'src/assets/js/modules/Site.filter.js',
+              'src/assets/js/modules/Site.analytics.js',
+              'src/assets/js/modules/Site.loading.js'
             ]
         }
       },
@@ -211,7 +229,7 @@ module.exports = function(grunt) {
         files: [
           '<%= meta.srcPath %>/**/*.scss'
         ],
-        tasks: ['sass:dev', 'notify:sass'],
+        tasks: ['sass:dev', 'autoprefixer', 'notify:sass'],
         options: {
           interrupt: true
         },

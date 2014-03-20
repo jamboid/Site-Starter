@@ -26,9 +26,9 @@ Site.grid = (function ($) {
       gdDoubleCellRatio = 750/640,
 
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
       // Show-Hide Grid class
       ShowHideGrid = function (elem) {

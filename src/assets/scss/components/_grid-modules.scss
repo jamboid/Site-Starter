@@ -4,7 +4,7 @@
   display: table;
   width: 100%;
   margin-bottom: em(20);
-  @include mq($mqLeia){
+  @include mq($mqLeia) {
     display: block;
   }
 }
@@ -14,7 +14,7 @@
   width: 50%;
   vertical-align: top;
   background:$clrOrange;
-  @include mq($mqLeia){
+  @include mq($mqLeia) {
     display: block;
     width: 100%;
   }

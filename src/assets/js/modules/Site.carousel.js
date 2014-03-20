@@ -14,9 +14,9 @@ Site.carousel = (function ($) {
     var defaults = {},
         carouselSel = "[data-plugin=carousel]",
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
         // Carousel class
         Carousel = function (elem) {

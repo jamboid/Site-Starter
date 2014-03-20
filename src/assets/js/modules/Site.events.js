@@ -21,16 +21,16 @@ Site.events = (function ($) {
         bindGlobalEvents = function () {
           // Handle 'layoutchange' event bubbled to <body> element
           $body.on('layoutchange', function () {
-            $.publish('layoutChange');
+            $.publish('layout/change');
           });
 
           // Handle page scroll or (debounced) resize
           $(window).on('scroll', function () {
-            $.publish('scroll');
+            $.publish('page/scroll');
           });
 
           $(window).on('debouncedresize', function () {
-            $.publish('debouncedresize');
+            $.publish('page/resize');
           });
 
           // Register Hammer touch events on body

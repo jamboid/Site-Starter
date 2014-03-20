@@ -31,13 +31,13 @@
     margin-bottom: 0;
     @include inline-block;
     vertical-align: top;
-    @include mq($mqHan){
+    @include mq($mqHan) {
       width: 33.333%;
     }
-    @include mq($mqLuke){
+    @include mq($mqLuke) {
       width: 50%;
     }
-    @include mq($mqArtoo){
+    @include mq($mqArtoo) {
       width: 100%;
     }
 
@@ -84,11 +84,7 @@
 }
 
 .actionButton {
-  @extend %basicButton;
-
-  &:hover, &:focus, &:active {
-    background:$clrOrange;
-  }
+  @include basicButton($clrWhite, $clrBlue);
 }
 
 /*  IE7 styles */

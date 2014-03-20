@@ -14,6 +14,14 @@ a {
 /* !==  More/Action link */
 .moreLink {
   a {
-    @extend %basicButton;
+    @extend %buttonBase;
+    @include basicButton($clrWhite, $clrGreen);
+  }
+}
+
+a {
+  .moreLink {
+    @extend %buttonBase;
+    @include basicButton($clrWhite, $clrGreen);
   }
 }

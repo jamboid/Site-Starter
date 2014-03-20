@@ -26,9 +26,9 @@ Site.scroller = (function ($) {
         selPlugin : "[data-plugin=scroller]"
         },
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
         // Scroller class
         Scroller = function (elem) {
@@ -162,7 +162,7 @@ Site.scroller = (function ($) {
               // Subscribe object to Global Messages
               subscribeToEvents = function () {
                 // Subscrive to layoutchange event to trigger scroller's updateLayout method
-                $.subscribe('debouncedresize', function () {$(this).trigger('updateLayout');} , $(thisScroller));
+                $.subscribe('page/resize', function () {$(this).trigger('updateLayout');} , $(thisScroller));
               };
 
             //** Object initialisation **//

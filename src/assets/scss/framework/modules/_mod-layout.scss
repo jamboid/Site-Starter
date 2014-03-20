@@ -1,0 +1,89 @@
+/* != Framework Module - LAYOUT */
+
+/*  !== Fixed Width Layout */
+@mixin page-content-width {
+  width:$fixedContentWidth;
+  @include mq(empty) {
+    width:100%;
+    max-width:$maxPageWidth;
+  }
+}
+
+
+/* !== Component Margins and Padding */
+
+// Mixins and Placeholders for default/base component layout padding and margins
+
+@mixin cpDefaultLayout {
+  @include rem(padding, 0);
+  @include rem(margin, 0 15px 30px);
+}
+
+%cpDefaultLayout {
+  @include cpDefaultLayout;
+}
+
+@mixin cpTextPadding {
+  @include rem(padding, 40px);
+
+  @include mq($mqHan) {
+    @include rem(padding, 30px);
+  }
+
+  @include mq($mqLuke) {
+    @include rem(padding, 20px);
+  }
+}
+
+%cpTextPadding {
+  @include cpTextPadding;
+}
+
+
+/* !== Set opacity with legacy browser fallbacks */
+@mixin opacity($trans) {
+  filter: unquote("alpha(opactiy=($trans * 100))");
+  -ms-filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})");
+  -moz-opacity: $trans;
+  -khtml-opacity: $trans;
+  opacity: $trans;
+}
+
+/* != Placeholders - Layout - CLEARFIX */
+
+/* !== Modern Version - IE8+ */
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Placeholder version of the modern clearfix mixin
+%clearfix {
+  @include clearfix;
+}
+
+/* !== Legacy Version - IE6/7+ */
+%clearfixLegacy {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// Legacy support for inline-block in IE7 (maybe IE6)
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}

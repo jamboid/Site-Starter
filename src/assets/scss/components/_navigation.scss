@@ -9,7 +9,7 @@
 
   .menu {
     display: table;
-    @include display(flex);
+    display:flex;
 
     li {
       display: table-cell;

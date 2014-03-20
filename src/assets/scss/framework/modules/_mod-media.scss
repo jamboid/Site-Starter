@@ -1,4 +1,10 @@
-/* != Mixin - FLEX VIDEO */
+/* != Framework Module - Media */
+
+//
+// @mixin
+//
+
+// Add CSS for Flex Video container
 @mixin flex-video-container($paddingTop: 75%) {
   position: relative;
   padding-top: $paddingTop;

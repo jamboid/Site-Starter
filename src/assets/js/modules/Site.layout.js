@@ -14,9 +14,9 @@ Site.layout = (function ($) {
   var responsiveSize = 'small',
 
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
       // Responsive Layout Manager
       ResponsiveLayoutManager = function () {

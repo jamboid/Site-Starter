@@ -45,7 +45,10 @@ Site.media = (function ($) {
               // Subscribe object to Global Messages
               subscribeToEvents = function () {
                 if(loadingMethod !== 'click') {
-                  $.subscribe('layoutChange, debouncedresize, scroll', function () {$(this).trigger('loadLazyMedia');}, $thisLazyVideo);
+                  $.subscribe('page/scroll', function () {$(this).trigger('loadLazyMedia');},$thisLazyVideo);
+                  $.subscribe('page/resize', function () {$(this).trigger('loadLazyMedia');},$thisLazyVideo);
+                  $.subscribe('layout/change', function () {$(this).trigger('loadLazyMedia');},$thisLazyVideo);
+                  $.subscribe('page/load', function () {$(this).trigger('loadLazyMedia');},$thisLazyVideo);
                 }
               };
 

@@ -11,10 +11,17 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 @-o-viewport { width: $deviceWidth; }
 @viewport { width: $deviceWidth; }
 
+/* !== Universal Border-Box Sizing  */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* !== Document */
 body {
   background:$clrWhite;
-  color:red;
+  color:$clrBlack;
 }
 
 /* !== Fuzz Framework Levels */
@@ -28,13 +35,11 @@ body {
 }
 
 .stHeader {
-  padding:0;
   background:$clrWhite;
   color:$clrLightGrey;
 }
 
 .stPage {
-  padding:0;
   background:$clrWhite;
   color:$clrDarkGrey;
 }
@@ -48,19 +53,26 @@ body {
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
 /* NOTES: Set fixed/non-MQ width and then add a null MQ to set width for MQ-compatible browsers */
 .fd {
-  @extend %clearfix;
+  @include clearfix;
   clear:both;
   margin:0 auto;
   padding:0;
-  width:900px;
-  @include mq(empty){
-    width:100%;
-  }
+  @include page-content-width;
 }
 
 /* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
 .rg {
-  @extend %clearfix;
+  @include clearfix;
+}
+
+.rgMainContent {
+  float: right;
+  width: 75%;
+}
+
+.rgSubContent {
+  float: left;
+  width: 25%;
 }
 
 /* !=== Group (.gp) - Level 4 - Semantic Groups of Components */
@@ -81,6 +93,6 @@ body {
 
 /* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
-  @extend %clearfix;
-  margin:0 em(15) em(30);
+  @include clearfix;
+  @include cpDefaultLayout;
 }

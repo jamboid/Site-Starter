@@ -14,9 +14,9 @@ Site.images = (function ($) {
   var defaults = { },
       lazyImageSel = $('[data-image-load]'),
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
       // LazyImage object
       LazyImage = function (elem) {
@@ -90,7 +90,7 @@ Site.images = (function ($) {
               $thisSprite.on('loadLazyImage', function (e) {
                 e.preventDefault();
                 if(imageLoaded === false){
-                  getSpriteImageFile($thisSprite);
+                  loadSpriteImageIfInView($thisSprite);
                 }
               });
             },
@@ -101,11 +101,10 @@ Site.images = (function ($) {
               Site.utils.cl(loadingMethod);
 
               if(loadingMethod !== 'click') {
-                $.subscribe('scroll', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('debouncedresize', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('layoutchange', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('pageload', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-
+                $.subscribe('page/scroll', function () {$(this).trigger('loadLazyImage');},$thisSprite);
+                $.subscribe('page/resize', function () {$(this).trigger('loadLazyImage');},$thisSprite);
+                $.subscribe('layout/change', function () {$(this).trigger('loadLazyImage');},$thisSprite);
+                $.subscribe('page/load', function () {$(this).trigger('loadLazyImage');},$thisSprite);
               }
             };
 
@@ -116,12 +115,15 @@ Site.images = (function ($) {
           }
           // If image is set to display when container is in view
           else if (loadingMethod === 'view') {
+
+            loadSpriteImageIfInView($thisSprite);
+
             // Do nothing - message on pageload will handle these
-            if(Modernizr.touch){
-              getSpriteImageFile($thisSprite);
-            } else {
-              getSpriteImageFile($thisSprite);
-            }
+            // if(Modernizr.touch){
+            //   getSpriteImageFile($thisSprite);
+            // } else {
+            //   getSpriteImageFile($thisSprite);
+            // }
 
           }
           // Otherwise load the image on page load

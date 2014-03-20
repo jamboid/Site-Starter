@@ -13,18 +13,22 @@ Site.namespace = (function ($) {
 
     var objectSel = "",
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
+        /**
+         * Creates an Object object
+         * @constructor
+         */
         Object = function () {
 
           var
           // Add event handler for staff profiles
           bindCustomMessageEvents = function () {
-            $thisMainNav.on('', function (e) {
-              e.preventDefault();
-            });
+            // $thisMainNav.on('', function (e) {
+            //   e.preventDefault();
+            // });
           },
 
           // Subscribe object to Global Messages
@@ -42,12 +46,19 @@ Site.namespace = (function ($) {
   // Functions //
   ///////////////
 
-        // Create delegate event listeners for this module
+        /**
+         * @function delegateEvents
+         * Create delegate event listeners for this module
+         */
         delegateEvents = function () {
           //Site.events.delegateEventFactory('click', sel, 'toggleMainNav');
 
         },
 
+        /**
+         * @function init
+         * init function for this module
+         */
         init = function () {
           Site.utils.cl("Site.namespace initialised");
 

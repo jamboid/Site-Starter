@@ -106,7 +106,7 @@ Site.analytics = (function ($) {
 
 
         // Set Custom variable for Responsive Design layout
-        trackPageLayout = function () {
+        trackPageLayout = function ($customVarNumber) {
 
           var screenWidth = $(window).width(),
               layoutCategory;
@@ -124,14 +124,14 @@ Site.analytics = (function ($) {
 
           //Site.utils.cl(layoutCategory);
 
-          if (ga !== 'undefined') {
+          if (typeof ga !== 'undefined') {
             // This needs to be configured to match the Custom Dimension setup
             // in your Universal Analytics account
             ga('set', 'dimension1', layoutCategory);
             //Site.utils.cl("Layout custom dimension set for this page view (Universal Analytics)");
 
           } else if (typeof _gaq !== 'undefined') {
-            _gaq.push(['_setCustomVar', 1 , 'Layout', layoutCategory, 3]);
+            _gaq.push(['_setCustomVar', $customVarNumber , 'Layout', layoutCategory, 3]);
             //Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
           } else {
             //Site.utils.cl('Google Analytics not available');

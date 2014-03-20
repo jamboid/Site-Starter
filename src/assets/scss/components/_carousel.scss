@@ -10,6 +10,7 @@
 
     &:first-child {
       display: block;
+
     }
 
 
@@ -23,11 +24,10 @@
 
 .js {
   .cpCarousel {
-
     .slides {
       position: relative;
       height:770px; // gets overriden by inline CSS applied by script
-      @include transition(height 0.5s linear);
+      transition:height 0.5s linear;
     }
 
     .slide {

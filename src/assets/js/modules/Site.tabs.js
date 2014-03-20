@@ -16,9 +16,9 @@ Site.tabs = (function ($) {
         tabControlSel = '[data-tabs=control]',
         tabControlCurrentSel = '.current[data-tabs=control]',
 
-  ///////////////
-  // Functions //
-  ///////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
         buildTabs = function (tabbedComponent) {
           var thisTabbedComponent = tabbedComponent,

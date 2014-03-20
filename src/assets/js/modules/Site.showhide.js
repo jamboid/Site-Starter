@@ -17,12 +17,12 @@ Site.showhide = (function ($) {
           selContent : "[data-content=showhide]"
         },
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
         // Show/Hide "Nipper" object
-        // NOTE: The term "Nipper" is Copyright Rob Graham (@restlesslake)
+        // NOTE: The term "Nipper" is Copyright © Rob Graham (@restlesslake)
         Nipper = function (elem) {
           var $thisNipper = $(elem),
               $thisContent = $thisNipper.find(defaults.selContent).eq(0),
@@ -31,14 +31,13 @@ Site.showhide = (function ($) {
               speed = config.speed || 200,
               startState = config.open || false,
 
+              transitionComplete = function () {
+                // Fire event to be heard by global delegate (Site.events.js)
+                $.publish('layout/change');
+              },
+
               // Toggle Show/Hide control
               toggleControl = function () {
-                    // Function called when show/hide transition is complete
-                var transitionComplete = function () {
-                  // Fire event to be heard by global delegate (Site.events.js)
-                  $thisNipper.trigger('layoutchange');
-                };
-
 
                 if($thisNipper.hasClass('isClosed')){
                   if(animate === true){

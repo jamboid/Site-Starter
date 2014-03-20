@@ -17,9 +17,9 @@ Site.navigation = (function ($) {
 
       selInPageLink = 'a.inPageLink',
 
-  /////////////
-  // Classes //
-  /////////////
+  //////////////////
+  // Constructors //
+  //////////////////
 
       // Main Navigation Menu Object
       MainNavMenu = function (elem) {
@@ -52,7 +52,7 @@ Site.navigation = (function ($) {
               if ($thisMainNav.hasClass("isVisible") === true) {
                 $thisMainNav.removeClass("isVisible");
               } else {
-                $.publish('showMainNav');
+                $.publish('layout/showmainnav');
                 $thisMainNav.addClass("isVisible");
               }
             },
@@ -65,7 +65,7 @@ Site.navigation = (function ($) {
 
             // Subscribe object to Global Messages
             subscribeToEvents = function () {
-              $.subscribe('debouncedresize', function () {$(this).trigger('updatelayout');},$thisMainNav);
+              $.subscribe('page/resize', function () {$(this).trigger('updatelayout');},$thisMainNav);
             },
 
             // Add event handler for main navigation toggle

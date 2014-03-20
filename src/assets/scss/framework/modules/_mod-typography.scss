@@ -1,3 +1,12 @@
+/* ! Framework Module - TYPOGRAPHY */
+
+/* !== Hide Text */
+@mixin hide-text{
+  overflow:hidden;
+  text-indent:-9999px;
+  display:block;
+}
+
 /* != Placeholder - Typography - CLEAN LIST */
 /* NOTES: remove default list styles */
 %cleanlist {
