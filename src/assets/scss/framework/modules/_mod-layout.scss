@@ -12,7 +12,9 @@
 
 /* !== Component Margins and Padding */
 
-// Mixins and Placeholders for default/base component layout padding and margins
+/*
+ * Mixins and Placeholders for default/base component layout padding and margins
+ */
 
 @mixin cpDefaultLayout {
   @include rem(padding, 0);
@@ -60,7 +62,9 @@
   }
 }
 
-// Placeholder version of the modern clearfix mixin
+/*
+ * Placeholder version of the modern clearfix mixin
+ */
 %clearfix {
   @include clearfix;
 }
@@ -79,7 +83,9 @@
   }
 }
 
-// Legacy support for inline-block in IE7 (maybe IE6)
+/*
+ * Legacy support for inline-block in IE7 (maybe IE6)
+ */
 @mixin inline-block {
   display: inline-block;
   vertical-align: baseline;

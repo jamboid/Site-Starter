@@ -106,6 +106,7 @@ Site.analytics = (function ($) {
 
 
         // Set Custom variable for Responsive Design layout
+        // @param int - set the number of the custom variable slot to use
         trackPageLayout = function ($customVarNumber) {
 
           var screenWidth = $(window).width(),
