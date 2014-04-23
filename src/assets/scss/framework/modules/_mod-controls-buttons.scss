@@ -2,8 +2,7 @@
 
 /* !== Basic Button Style */
 
-// Placeholder for static styles
-
+/* Placeholder for static styles */
 %buttonBase {
   @include rem(padding, 8px 20px 5px);
   display: inline-block;
@@ -12,6 +11,7 @@
   transition:background-color 0.1s linear;
 }
 
+/* Mixin for Basic Button Styles */
 @mixin basicButton($color, $background, $hoverColor: $color, $hoverBackground: darken($background, 12)) {
   @extend %buttonBase;
   color:$color;

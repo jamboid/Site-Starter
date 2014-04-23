@@ -40,17 +40,24 @@ Thumbs.db
 *.bbprojectd
 /.dropbox
 /Icon
-*.scssc
 
 # Installed Grunt modules
 node_modules
 
+# Sass
 .sass-cache
+*.scssc
+*.css.map
 
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
-codekit-config.json
+
+# Other Source Control
+.svn
+
+# Codekit
 .codekit-cache
 
-build
+# Build directory
+/build

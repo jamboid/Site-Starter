@@ -17,7 +17,10 @@ Site.events = (function ($) {
   // Functions //
   ///////////////
 
-        // Bind custom Global events that will result in a "Publish" message being broadcast
+        /**
+         * Bind custom Global events that will result in a "Publish" message being broadcast
+         * @function
+         */
         bindGlobalEvents = function () {
           // Handle 'layoutchange' event bubbled to <body> element
           $body.on('layoutchange', function () {
@@ -35,11 +38,17 @@ Site.events = (function ($) {
 
           // Register Hammer touch events on body
           // This lets you treat these touch events as the normal delegate events
-          $body.hammer();
+          //$body.hammer();
 
         },
 
-        // Simple factory function to bind delegated event listeners to the <body> element
+        /**
+         * Simple factory function to bind delegated event listeners to the <body> element
+         * @function
+         * @parameter eventType (string)
+         * @parameter selector (string)
+         * @parameter eventToTrigger (string)
+         */
         delegateEventFactory = function (eventType, selector, eventToTrigger) {
           $body.on(eventType, selector, function (e) {
             e.preventDefault();
@@ -48,6 +57,10 @@ Site.events = (function ($) {
           });
         },
 
+        /**
+         * Initialise this module
+         * @function
+         */
         init = function () {
           Site.utils.cl("Site.events initialised");
           bindGlobalEvents();

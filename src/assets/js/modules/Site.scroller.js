@@ -17,30 +17,30 @@ Site.scroller = (function ($) {
   ///////////////
 
     var defaults = {
-        // Selectors for scroller plugin
-        selControls: ".scrollControls",
-        selControl : "[data-action]",
-        selScrollerContent : ".scrollContent",
-        selScrollerItem : ".scrollItem",
-        selScrollerItemFirst : ".scrollItem:first-child",
-        selPlugin : "[data-plugin=scroller]"
+          // Selectors for scroller plugin
+          selControls: ".scrollControls",
+          selControl : "[data-action]",
+          selScrollerContent : ".scrollContent",
+          selScrollerItem : ".scrollItem",
+          selScrollerItemFirst : ".scrollItem:first-child",
+          selPlugin : "[data-plugin=scroller]"
         },
 
   //////////////////
   // Constructors //
   //////////////////
 
-        // Scroller class
+        // Scroller constructor
         Scroller = function (elem) {
-          var thisScroller = elem,
-              scrollerConfig = $(thisScroller).data('config') || {},
+          var $thisScroller = $(elem),
+              scrollerConfig = $thisScroller.data('config') || {},
               timeUnit = scrollerConfig.timeUnit || 250, // Set in data-config attribute, or use default
               maxScroll = scrollerConfig.maxScroll || 4, // Set in data-config attribute, or use default
-              $scrlItemContainer = $(defaults.selScrollerContent, thisScroller),
-              $scrlItems = $(defaults.selScrollerContent, thisScroller),
+              $scrlItemContainer = $(defaults.selScrollerContent, $thisScroller),
+              $scrlItems = $(defaults.selScrollerContent, $thisScroller),
               inTransition = false,
               animate = true,
-              controls = $(defaults.selControls, thisScroller),
+              controls = $(defaults.selControls, $thisScroller),
               scrlWidth,
               itemWidth,
               itemsToScroll,
@@ -51,7 +51,7 @@ Site.scroller = (function ($) {
               // Set dimensions and other parameters for scroll. Called on page load and whenever window is resized
               setupLayout = function () {
                 scrlWidth = $scrlItemContainer.width();
-                itemWidth = $(thisScroller).find("li").eq(0).width();
+                itemWidth = $thisScroller.find("li").eq(0).width();
                 // Set the number of items to scroll
                 itemsToScroll = Math.round(scrlWidth / itemWidth);
 
@@ -90,31 +90,31 @@ Site.scroller = (function ($) {
                 if (inTransition === false) {
                   inTransition = true;
                   if (direction === 'next') {
-                    itemsToClone = $(defaults.selScrollerItem, thisScroller).slice(0, itemsToScroll).clone();
+                    itemsToClone = $(defaults.selScrollerItem, $thisScroller).slice(0, itemsToScroll).clone();
                     $scrlItemContainer.append(itemsToClone);
 
                     if (animate === false) {
-                      $(defaults.selScrollerItem, thisScroller).slice(0, itemsToScroll).remove();
+                      $(defaults.selScrollerItem, $thisScroller).slice(0, itemsToScroll).remove();
                       inTransition = false;
                     } else {
                       $(defaults.selScrollerItemFirst, $scrlItemContainer).animate({ marginLeft: -moveWidth }, scrollTime, function () {
                         $(this).removeAttr("style");
-                        $(defaults.selScrollerItem, thisScroller).slice(0, itemsToScroll).remove();
+                        $(defaults.selScrollerItem, $thisScroller).slice(0, itemsToScroll).remove();
                         inTransition = false;
                       });
                     }
                   } else if (direction === 'previous') {
-                    itemsToClone = $(defaults.selScrollerItem, thisScroller).slice(-itemsToScroll).clone();
+                    itemsToClone = $(defaults.selScrollerItem, $thisScroller).slice(-itemsToScroll).clone();
                     if (animate === false) {
                       $scrlItemContainer.prepend(itemsToClone);
-                      $(defaults.selScrollerItem, thisScroller).slice(-itemsToScroll).remove();
+                      $(defaults.selScrollerItem, $thisScroller).slice(-itemsToScroll).remove();
                       inTransition = false;
                     } else {
                       $(itemsToClone).eq(0).css("margin-left", -moveWidth);
                       $scrlItemContainer.prepend(itemsToClone);
                       $(defaults.selScrollerItemFirst, $scrlItemContainer).animate({ marginLeft: 0 }, scrollTime, function () {
                         $(this).removeAttr("style");
-                        $(defaults.selScrollerItem, thisScroller).slice(-itemsToScroll).remove();
+                        $(defaults.selScrollerItem, $thisScroller).slice(-itemsToScroll).remove();
                         inTransition = false;
                       });
                     }
@@ -128,7 +128,7 @@ Site.scroller = (function ($) {
               bindCustomMessageEvents = function () {
 
                 // Bind moveScroller event listener for moving the scroller by control clicks
-                $(thisScroller).on('moveScroller', function (e) {
+                $thisScroller.on('moveScroller', function (e) {
                   e.preventDefault();
                   // If event target is a control and has a "data-action" attribute,
                   // advance the scroller in the direction the attribute states
@@ -138,31 +138,34 @@ Site.scroller = (function ($) {
                 });
 
                 // Bind moveScrollerNext event listener for external control of scroller
-                $(thisScroller).on('moveScrollerNext', function (e) {
+                $thisScroller.on('moveScrollerNext', function (e) {
                   e.preventDefault();
                   // If event target is a control, advance the scroller in the control direction
                   moveScroller('next');
                 });
 
                 // Bind moveScrollerPrevious event listener for external control of scroller
-                $(thisScroller).on('moveScrollerPrevious', function (e) {
+                $thisScroller.on('moveScrollerPrevious', function (e) {
                   e.preventDefault();
                   // If event target is a control, advance the scroller in the control direction
                   moveScroller('previous');
                 });
 
                 // Bind updateLayout event listener for updating scroller on global layoutChange message
-                $(thisScroller).on('updateLayout', function (e) {
+                $thisScroller.on('updateLayout', function (e) {
                   e.preventDefault();
 
                   setupLayout();
                 });
+
+                // Bind Hammer touch library events to scroller to allow swipe control
+                $thisScroller.hammer();
               },
 
               // Subscribe object to Global Messages
               subscribeToEvents = function () {
                 // Subscrive to layoutchange event to trigger scroller's updateLayout method
-                $.subscribe('page/resize', function () {$(this).trigger('updateLayout');} , $(thisScroller));
+                $.subscribe('page/resize', function () {$(this).trigger('updateLayout');} , $thisScroller);
               };
 
             //** Object initialisation **//

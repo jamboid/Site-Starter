@@ -31,11 +31,18 @@ Site.namespace = (function ($) {
             // });
           },
 
-          // Subscribe object to Global Messages
+          /**
+           * Subscribe object to Global Messages
+           * @function
+           */
           subscribeToEvents = function () {
 
           };
 
+          /**
+           * Initialise this object
+           * @function
+           */
           this.init = function () {
             bindCustomMessageEvents();
             subscribeToEvents();
@@ -47,8 +54,8 @@ Site.namespace = (function ($) {
   ///////////////
 
         /**
-         * @function delegateEvents
          * Create delegate event listeners for this module
+         * @function
          */
         delegateEvents = function () {
           //Site.events.delegateEventFactory('click', sel, 'toggleMainNav');
@@ -56,13 +63,13 @@ Site.namespace = (function ($) {
         },
 
         /**
-         * @function init
          * init function for this module
+         * @function
          */
         init = function () {
           Site.utils.cl("Site.namespace initialised");
 
-          // Initialise Objects objects
+          // Initialise Objects objects based on DOM objects
           $(objectSel).each(function () {
             var thisObject = new Object(this);
             thisObject.init();

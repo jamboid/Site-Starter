@@ -1,21 +1,21 @@
 /* != Framework Module - Sprites */
 
-//
-// @variables
-//
+/*
+ * @variables
+ */
 
-// Define the @1x and @2x Sprite files to use
+/* Define the @1x and @2x Sprite files to use */
 $spriteFile: url(path/to/sprite.png);
 $spriteFileRetina: url(path/to/sprite@2x.png);
 
-// Define the Sprite size - this is the @1x version's dimensions
+/* Define the Sprite size - this is the @1x version's dimensions */
 $spriteSize: 200px 100px;
 
-//
-// @mixins
-//
+/*
+ * @mixins
+ */
 
-// Add basic Sprite CSS
+/* Add basic Sprite CSS */
 @mixin spriteFile {
   background-image:$spriteFile;
   background-size:$spriteSize;
@@ -24,7 +24,7 @@ $spriteSize: 200px 100px;
   }
 }
 
-// Add CSS for sprite image as :before/:after content
+/* Add CSS for sprite image as :before/:after content */
 @mixin spriteBase {
   @include spriteFile;
   content: " ";
@@ -33,16 +33,16 @@ $spriteSize: 200px 100px;
   background-repeat:no-repeat;
 }
 
-//
-// @placeholders
-//
+/*
+ * @placeholders
+ */
 
-// Provide a placeholder version of the Sprite File @mixin
+/* Provide a placeholder version of the Sprite File @mixin */
 %spriteFile {
   @include spriteFile;
 }
 
-// Provide a placeholder version of the Sprite Base @mixin
+/* Provide a placeholder version of the Sprite Base @mixin */
 %spriteBase {
   @include spriteBase;
 }

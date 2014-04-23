@@ -20,7 +20,7 @@ module.exports = function(grunt) {
   [
     'clean', 'assemble', 'jshint',
 
-    // minimize JavaScript to ./build/assets/js/
+    // Minimise JavaScript to ./build/assets/js/
     'uglify:dev',
 
     // Compile Sass files
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
   [
     'clean', 'assemble', 'jshint',
 
-    // minimize JavaScript to ./build/assets/js/
+    // Minimise JavaScript to ./build/assets/js/
     'uglify:dist',
 
     // Compile Sass files
@@ -62,6 +62,7 @@ module.exports = function(grunt) {
     // Add vendor prefixes to CSS
     'autoprefixer',
 
+    // Notify
     'notify:watch',
 
     // Start watch task to process ongoing changes
@@ -73,7 +74,7 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    // Metadata.
+    // Metadata - paths and whatnot
     meta: {
       basePath: '',
       srcPath: 'src/assets/scss/',
@@ -82,7 +83,9 @@ module.exports = function(grunt) {
       jsModulesPath: '/src/assets/js/modules'
     },
 
-    // Assemble Tasks
+    /** Assemble Tasks
+     * - optional task for development. Remove this when using in a project
+     */
     assemble: {
       options: {
         flatten: true,
@@ -124,8 +127,7 @@ module.exports = function(grunt) {
         options: {
           style: 'expanded',
           debugInfo: false,
-          lineNumbers: false,
-          sourcemap: true
+          lineNumbers: false
         },
         expand: true,
         cwd: './src/assets/scss/',
@@ -200,7 +202,7 @@ module.exports = function(grunt) {
 
     imageoptim: {
       dev: {
-        src: ['build/assets/img/, build/assets/css/img'],
+        src: ['build/img/, build/css/img'],
         options: {
           quitAfter: true
         }
@@ -214,9 +216,9 @@ module.exports = function(grunt) {
           // Single JS Files that aren't to be concatenated
           { expand: true, cwd: 'src/assets/js/libs/single/', src: ['**/*'], dest: 'build/assets/js/' },
           // Inline Images
-          { expand: true, cwd: 'src/assets/img/inline/', src: ['**/*'], dest: 'build/assets/img' },
+          { expand: true, cwd: 'src/assets/img/inline/', src: ['**/*'], dest: 'build/assets/img/' },
           // CSS Images
-          { expand: true, cwd: 'src/assets/img/css/', src: ['**/*'], dest: 'build/assets/css/img' },
+          { expand: true, cwd: 'src/assets/img/css/', src: ['**/*'], dest: 'build/assets/css/img/' },
           // Fonts
           { expand: true, cwd: 'src/assets/', src: ['fonts/**/*'], dest: 'build/assets/' }
         ]

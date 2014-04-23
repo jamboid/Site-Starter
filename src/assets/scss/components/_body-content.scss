@@ -1,6 +1,9 @@
 /* != Body Content Styles */
 
-/* NOTE: generic styles for RTE content. Create a class (e.g. bodyContent) you can apply to any container that is going to contain this kind of content.  */
+/**
+ * NOTE: generic styles for RTE content. Create a class (e.g. bodyContent) you
+ * can apply to any container that is going to contain this kind of content.
+ */
 
 .bodyContent {
 
@@ -39,7 +42,6 @@
   }
 
   /* Paragraphs */
-
   p {
     margin: 0 0 1em;
   }

@@ -6,10 +6,22 @@ var Site = Site || {};
 // Site.analytics namespace
 Site.analytics = (function ($) {
     "use strict";
+
+  ///////////////
+  // Variables //
+  ///////////////
+
      var defaults = {},
 
-        // Track a virtual page view
-        // - handles Asynchronous and Universal Analytics
+  ///////////////
+  // Functions //
+  ///////////////
+
+        /**
+         * Track a virtual page view
+         * @function
+         * @parameter {string} url - The url you want to track as a page view
+         */
         trackPageView = function (url) {
           var thisURL = url;
 
@@ -44,8 +56,13 @@ Site.analytics = (function ($) {
           }
         },
 
-        // Track an in-page event
-        // - handles Asynchronous and Universal Analytics
+        /**
+         * Track an in-page event as a Google Analytics Page Event
+         * @function
+         * @parameter {string} category
+         * @parameter {string} eventType
+         * @parameter {string} detail
+         */
         trackPageEvent = function (category, eventType, detail) {
           var thisCategory = category,
               thisEventType = eventType,
@@ -95,7 +112,10 @@ Site.analytics = (function ($) {
               }
         },
 
-        // Track PDF views, passing the path to the PDF as the URL
+        /**
+         * Track PDF views, passing the path to the PDF as the URL
+         * @function
+         */
         trackPDFLinks = function () {
           $("a[href$='pdf']").on('click', function () {
             Site.utils.cl('PDF link tracked');
@@ -105,9 +125,12 @@ Site.analytics = (function ($) {
         },
 
 
-        // Set Custom variable for Responsive Design layout
-        // @param int - set the number of the custom variable slot to use
-        trackPageLayout = function ($customVarNumber) {
+        /**
+         * Set Custom variable for Responsive Design layout
+         * @function
+         * @param {int} customVarNumber - set the number of the custom variable slot to use
+         */
+        trackPageLayout = function (customVarNumber) {
 
           var screenWidth = $(window).width(),
               layoutCategory;
@@ -115,6 +138,7 @@ Site.analytics = (function ($) {
           //Site.utils.cl(screenWidth);
 
           // Custom set of conditions to set variable value
+          // ** CUSTOMISE THIS BASED ON EACH SITE'S BREAKPOINTS **
           if (screenWidth > 768 ) {
             layoutCategory = "Desktop";
           } else if (screenWidth > 520) {
@@ -123,8 +147,6 @@ Site.analytics = (function ($) {
             layoutCategory = "Phone";
           }
 
-          //Site.utils.cl(layoutCategory);
-
           if (typeof ga !== 'undefined') {
             // This needs to be configured to match the Custom Dimension setup
             // in your Universal Analytics account
@@ -132,7 +154,7 @@ Site.analytics = (function ($) {
             //Site.utils.cl("Layout custom dimension set for this page view (Universal Analytics)");
 
           } else if (typeof _gaq !== 'undefined') {
-            _gaq.push(['_setCustomVar', $customVarNumber , 'Layout', layoutCategory, 3]);
+            _gaq.push(['_setCustomVar', customVarNumber , 'Layout', layoutCategory, 3]);
             //Site.utils.cl("Layout custom variable set for this page view (Trad Analytics)");
           } else {
             //Site.utils.cl('Google Analytics not available');
@@ -141,31 +163,44 @@ Site.analytics = (function ($) {
           //Site.utils.cl("Breakpoint custom variable set for this page view");
         },
 
-        // Call custom functions before standard Page View call is made
-        // - e.g. Set Custom variables to pass to server with page view call
-        // This function should be called before the default 'trackPageView' function
-        // call in the on-page Google Analytics script
+        /**
+         * Call custom functions before standard Page View call is made
+         * - e.g. Set Custom variables to pass to server with page view call
+         * This function should be called before the default 'trackPageView' function
+         * call in the on-page Google Analytics script
+         * @function
+         */
         trackPageLoadInformation = function () {
           // Call custom functions
           trackPageLayout();
         },
 
-        // Delete custom variable
-        deleteCustomVariable = function (index) {
+        /**
+         * Delete a Google Analytics custom variable
+         * @function
+         * @parameter {int} variablePosition - The position of the custom variable (1-5)
+         */
+        deleteCustomVariable = function (variablePosition) {
           if (typeof ga !== 'undefined'){ // Using Google Universal Analytics
 
           } else if (typeof _gaq !== 'undefined'){ // Using Asynchronous Analytics
-            _gaq.push(['_deleteCustomVar', index]);
+            _gaq.push(['_deleteCustomVar', variablePosition]);
           }
         },
 
-        // Initialisation
+        /**
+         * Initialise this module
+         * @function
+         */
         init = function () {
             Site.utils.cl("Site.analytics.init called");
             trackPDFLinks();
         };
 
-    // Return Public API
+  ///////////////////////
+  // Return Public API //
+  ///////////////////////
+
     return {
       init: init,
       trackPageView: trackPageView,

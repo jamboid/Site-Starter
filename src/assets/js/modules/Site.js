@@ -18,6 +18,10 @@ Site.init = (function ($) {
     // Modules object
     var Modules = {};
 
+    /**
+     * Initialise the modules used in this project
+     * @function
+     */
     Modules.init = function () {
       $(document).ready(function () {
         Site.utils.init();

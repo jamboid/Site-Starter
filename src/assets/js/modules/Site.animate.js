@@ -13,7 +13,8 @@ var Site = Site || {};
 
 // Create child namespace
 Site.animate = (function ($) {
-    "use strict";
+  "use strict";
+
   var $window = $(window),
       panelSel = "[data-type=panel]",
       spriteSel = "[data-type=sprite]",

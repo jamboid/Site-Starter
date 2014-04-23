@@ -1,4 +1,4 @@
-// Site.staff.js
+// Site.grid.js
 
 // Check if base namespace is defined so it isn't overwritten
 var Site = Site || {};
@@ -300,16 +300,25 @@ Site.grid = (function ($) {
   // Functions //
   ///////////////
 
-      // Create delegate event listeners for this module
+      /**
+       * Create delegate event listeners for this module
+       * @function
+       */
       delegateEvents = function () {
         Site.events.delegateEventFactory('click', shGridHeadlineSel, 'toggle');
       },
 
-      // Function to get grid ratio for use by other modules
+      /**
+       * Returns grid ratio for use by other modules
+       */
       getSingleCellRatio = function () {
         return gdSingleCellRatio;
       },
 
+      /**
+       * Initialise this module
+       * @function
+       */
       init = function () {
         Site.utils.cl("Site.grid initialised");
 

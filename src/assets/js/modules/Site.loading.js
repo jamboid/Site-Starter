@@ -30,23 +30,26 @@ Site.loading = (function ($) {
        */
       LoadingManager = function () {
 
+        /* Scope variables */
         var
 
         /**
-         * @function showPageContent
          * Adds a class to the HTML body tag to allow control display of the page
+         * @function
          */
         pageIsLoaded = function () {
+          // Add class for CSS styling
           $body.addClass('pageLoaded');
+          // Publish message for JS modules
           $.publish('page/loaded');
         };
 
         /**
-         * @function this.init
-         * init function for this object
+         * Initialise this object
+         * @function
          */
         this.init = function () {
-          // Set flags that page has loaded after a defined delay
+          // Set flags that page has loaded after a defined delay to allow page rendering
           var pageLoadTimeout = setTimeout(pageIsLoaded,loadDelay);
         };
       },
@@ -56,8 +59,8 @@ Site.loading = (function ($) {
   ///////////////
 
       /**
-       * @function init
-       * init function for this module
+       * Initialised this module
+       * @function
        */
       init = function () {
         Site.utils.cl("Site.loading initialised");

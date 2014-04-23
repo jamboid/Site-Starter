@@ -19,7 +19,7 @@ Site.carousel = (function ($) {
   //////////////////
 
         // Carousel class
-        Carousel = function (elem) {
+        Carousel = function (elem) { 
           var $thisCarousel = $(elem),
               $slideContainer = $thisCarousel.find('.slides').eq(0),
               $slides = $thisCarousel.find('.slide'),

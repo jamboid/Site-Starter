@@ -18,10 +18,17 @@ Site.layout = (function ($) {
   // Constructors //
   //////////////////
 
-      // Responsive Layout Manager
+      /**
+       * Creates a ResponsiveLayoutManager object to manage general layout state
+       * @constructor
+       */
       ResponsiveLayoutManager = function () {
         var
 
+        /**
+         * Set and update the responsiveSize variable based on current screen width
+         * @function
+         */
         updateResponsiveSize = function () {
           var screenWidth = $(window).width(),
               screenSizeIs = {
@@ -50,18 +57,29 @@ Site.layout = (function ($) {
           }
         },
 
-        // Subscribe object to Global Messages
+        /**
+         * Subscribe object to Global Messages
+         * @function
+         */
         subscribeToEvents = function () {
           $.subscribe('debouncedresize', function () { updateResponsiveSize(); });
         };
 
+        /**
+         * Initialise this object
+         * @function
+         */
         this.init = function () {
           subscribeToEvents();
           updateResponsiveSize();
         };
       },
 
-      // Responsive Layout Manager class
+      /**
+       * Creates a ResponsiveTextManager object to manage responsive text
+       * - uses the FitText jQuery plugin so make sure this is included in the src/assets/js/libs folder
+       * @constructor
+       */
       ResponsiveTextManager = function () {
         var fitTextSel = '.cpResult .result',
 
@@ -69,18 +87,30 @@ Site.layout = (function ($) {
           $(fitTextSel).fitText(0.4, { minFontSize: '100px', maxFontSize: '180px' });
         };
 
+
+        /**
+         * Initialise this object
+         * @function
+         */
         this.init = function () {
           setFitText();
         };
       },
 
-      // Scroll Manager class
+      /**
+       * Creates a ScrollManager object to manage scrolling events
+       * @constructor
+       */
       ScrollManager = function () {
 
         var $pageFooter = $('.stFooter').eq(0),
             footerReached = false,
 
-        checkForElementsInView = function () {
+        /**
+         * Check if the page footer has been reached when the page is scrolled
+         * @function
+         */
+        checkIfFooterHasBeenReached = function () {
 
           if(Site.utils.isElementInView($pageFooter) && !footerReached){
             footerReached = true;
@@ -88,35 +118,51 @@ Site.layout = (function ($) {
           }
         },
 
-        // Subscribe object to Global Messages
+        /**
+         * Subscribe object to Global Messages
+         * @function
+         */
         subscribeToEvents = function () {
-          $.subscribe('scroll', function () { checkForElementsInView(); });
+          $.subscribe('scroll', function () { checkIfFooterHasBeenReached(); });
         };
 
+        /**
+         * Initialise this object
+         * @function
+         */
         this.init = function () {
           subscribeToEvents();
         };
       },
 
-
   ///////////////
   // Functions //
   ///////////////
 
-      // Get screen size
-
+      /**
+       * Return the value of the responsiveSize variable
+       * @function
+       */
       getResponsiveSize = function () {
         return responsiveSize;
       },
 
+      /**
+       * Initialise this module
+       * @function
+       */
       init = function () {
         Site.utils.cl("Site.layout initialised");
+
+        // Create a new ResponsiveLayoutManager object
         var thisResponsiveLayoutManager = new ResponsiveLayoutManager();
         thisResponsiveLayoutManager.init();
 
+        // Create a new ResponsiveTextManager object
         var thisResponsiveTextManager = new ResponsiveTextManager();
         thisResponsiveTextManager.init();
 
+        // Create a new ScrollManager object
         var thisScrollManager = new ScrollManager();
         thisScrollManager.init();
       };
