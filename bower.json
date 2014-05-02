@@ -1,0 +1,17 @@
+{
+  "name": "Site-Starter",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jamboid/Site-Starter",
+  "authors": [
+    "Jamie Boyd <jamie@wearegood.com>"
+  ],
+  "description": "A boilerplate of assets for developing websites",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

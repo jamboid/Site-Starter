@@ -172,7 +172,7 @@ Site.analytics = (function ($) {
          */
         trackPageLoadInformation = function () {
           // Call custom functions
-          trackPageLayout();
+          trackPageLayout(1); // Set parameter to number of custom variable configured in Google Analytics
         },
 
         /**

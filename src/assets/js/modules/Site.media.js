@@ -18,7 +18,6 @@ Site.media = (function ($) {
               loadingMethod = $thisLazyVideo.data('loading'),
               videoEmbed = $('<object width="400" height="300" type="movie" data="http://www.youtube.com/v/' + videoID + '?version=3&amp;hl=en_US&amp;rel=0"><param name="movie" value="http://www.youtube.com/v/'+ videoID + '?version=3&amp;hl=en_US&amp;rel=0"></param><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><embed src="http://www.youtube.com/v/'+ videoID + '?version=3&amp;hl=en_US&amp;rel=0" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object>'),
 
-
               loadLazyVideo = function () {
                 $(placeholder).remove();
                 $thisLazyVideo.append(videoEmbed).addClass('videoLoaded');
@@ -77,7 +76,7 @@ Site.media = (function ($) {
 
         // Set Event Listeners for events associated with this module
         delegateEvents = function () {
-          Site.events.delegateEventFactory('click', lazyVideoActionSel, 'loadLazyMedia');
+          Site.events.createDelegatedEventListener('click', lazyVideoActionSel, 'loadLazyMedia');
         },
 
         setLazyVideos = function () {

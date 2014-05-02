@@ -18,7 +18,10 @@ Site.images = (function ($) {
   // Constructors //
   //////////////////
 
-      // LazyImage object
+      /**
+       * Creates a LazyImage object to manage a lazy-loaded image component
+       * @constructor
+       */
       LazyImage = function (elem) {
         var $thisSprite = $(elem),
             $placeholderImage = $thisSprite.find('img.placeholder').eq(0),
@@ -142,7 +145,7 @@ Site.images = (function ($) {
 
       // Add delegate event listeners for this module
       delegateEvents = function () {
-        Site.events.delegateEventFactory('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
+        Site.events.createDelegatedEventListener('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
       },
 
       setLazyLoadImages = function () {

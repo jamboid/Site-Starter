@@ -30,7 +30,10 @@ Site.scroller = (function ($) {
   // Constructors //
   //////////////////
 
-        // Scroller constructor
+        /**
+         * Creates a Scroller object to manage a responsive scroller component
+         * @constructor
+         */
         Scroller = function (elem) {
           var $thisScroller = $(elem),
               scrollerConfig = $thisScroller.data('config') || {},
@@ -195,25 +198,32 @@ Site.scroller = (function ($) {
   // Functions //
   ///////////////
 
-        // Delegate events to Global Event Listeners
+        /**
+         * Create delegate event listeners for this module
+         * @function
+         */
         delegateEvents = function () {
           // Delegate 'click' events on scroller controls
-          Site.events.delegateEventFactory('click', '.scrollControls [data-action]', 'moveScroller');
-          Site.events.delegateEventFactory('swipeleft', '[data-plugin=scroller]', 'moveScrollerNext');
-          Site.events.delegateEventFactory('swiperight', '[data-plugin=scroller]', 'moveScrollerPrevious');
+          Site.events.createDelegatedEventListener('click', '.scrollControls [data-action]', 'moveScroller');
+          Site.events.createDelegatedEventListener('swipeleft', '[data-plugin=scroller]', 'moveScrollerNext');
+          Site.events.createDelegatedEventListener('swiperight', '[data-plugin=scroller]', 'moveScrollerPrevious');
         },
 
-        setupScrollers = function () {
+        /**
+         * Initialise this module
+         * @function
+         */
+        init = function () {
+
+          // Create Scroller object(s)
           $(defaults.selPlugin).each(function () {
             var thisScroller = new Scroller(this);
             thisScroller.init();
           });
-          delegateEvents();
-        },
 
-        // Initialise Module
-        init = function () {
-          setupScrollers();
+          // Delegate events for this module's objects
+          delegateEvents();
+
           Site.utils.cl("Site.Scroller.init called");
         };
 

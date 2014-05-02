@@ -21,7 +21,7 @@ Site.events = (function ($) {
          * Bind custom Global events that will result in a "Publish" message being broadcast
          * @function
          */
-        bindGlobalEvents = function () {
+        bindGlobalMessages = function () {
           // Handle 'layoutchange' event bubbled to <body> element
           $body.on('layoutchange', function () {
             $.publish('layout/change');
@@ -43,13 +43,13 @@ Site.events = (function ($) {
         },
 
         /**
-         * Simple factory function to bind delegated event listeners to the <body> element
+         * Simple factory function to bind a common delegated event listener to the <body> element
          * @function
          * @parameter eventType (string)
          * @parameter selector (string)
          * @parameter eventToTrigger (string)
          */
-        delegateEventFactory = function (eventType, selector, eventToTrigger) {
+        createDelegatedEventListener = function (eventType, selector, eventToTrigger) {
           $body.on(eventType, selector, function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -63,7 +63,7 @@ Site.events = (function ($) {
          */
         init = function () {
           Site.utils.cl("Site.events initialised");
-          bindGlobalEvents();
+          bindGlobalMessages();
         };
 
   ///////////////////////
@@ -72,7 +72,7 @@ Site.events = (function ($) {
 
     return {
       init: init,
-      delegateEventFactory: delegateEventFactory
+      createDelegatedEventListener: createDelegatedEventListener
     };
 
 }(jQuery));
