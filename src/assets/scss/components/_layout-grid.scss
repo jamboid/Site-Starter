@@ -1,26 +1,8 @@
-/* != Layout  */
+/* != Layout - Grid  */
 /*
 NOTE: Styles to set the layout of the larger containers and regions in the template.
       Uses the FUZZ framework hierarchy (https://github.com/jamboid/Fuzz)
 */
-
-/* !== Set viewport and initial zoom for browsers that support CSS viewport functionality */
-@-webkit-viewport { width: $deviceWidth; }
-@-moz-viewport { width: $deviceWidth; }
-@-ms-viewport { width: $deviceWidth; }
-@-o-viewport { width: $deviceWidth; }
-@viewport { width: $deviceWidth; }
-
-/* !== Universal Border-Box Sizing  */
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-/* !== Document */
-body {
-  background:$clrWhite;
-  color:$clrBlack;
-}
 
 /* !== Fuzz Framework Levels */
 

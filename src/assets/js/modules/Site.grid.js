@@ -30,7 +30,10 @@ Site.grid = (function ($) {
   // Constructors //
   //////////////////
 
-      // Show-Hide Grid class
+      /**
+       * Creates a ShowHideGrid object to manage a show/hide grid widget
+       * @constructor
+       */
       ShowHideGrid = function (elem) {
 
         var $thisGrid = $(elem),
@@ -264,7 +267,10 @@ Site.grid = (function ($) {
         };
       },
 
-      // Grid Flex Cell class
+      /**
+       * Creates a GridFlexCell object to manage a flexible grid cell
+       * @constructor
+       */
       GridFlexCell = function (elem) {
         var $thisCell = $(elem),
             cellWidth = $thisCell.width(),
@@ -305,7 +311,7 @@ Site.grid = (function ($) {
        * @function
        */
       delegateEvents = function () {
-        Site.events.delegateEventFactory('click', shGridHeadlineSel, 'toggle');
+        Site.events.createDelegatedEventListener('click', shGridHeadlineSel, 'toggle');
       },
 
       /**

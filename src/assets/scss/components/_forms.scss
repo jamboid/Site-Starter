@@ -18,8 +18,13 @@ input,
 button,
 select,
 textarea {
-  font-size:$baseFontSize;
+  @include rem(font-size, $baseFontSize);
   font-family:$formfontfamily;
+}
+
+/* Select Dropdown Styles */
+select {
+
 }
 
 input,select,textarea {

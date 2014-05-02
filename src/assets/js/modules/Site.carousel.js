@@ -19,7 +19,7 @@ Site.carousel = (function ($) {
   //////////////////
 
         // Carousel class
-        Carousel = function (elem) { 
+        Carousel = function (elem) {
           var $thisCarousel = $(elem),
               $slideContainer = $thisCarousel.find('.slides').eq(0),
               $slides = $thisCarousel.find('.slide'),
@@ -100,23 +100,29 @@ Site.carousel = (function ($) {
   // Functions //
   ///////////////
 
-        // Create delegate event listeners for this module
+        /**
+         * Create delegate event listeners for this module
+         * @function
+         */
         delegateEvents = function () {
           // Delegate 'click' event to start/stop cycling of carousel
-          Site.events.delegateEventFactory('click', '[data-plugin=carousel] .slide a', 'toggleAutoCycle');
+          Site.events.createDelegatedEventListener('click', '[data-plugin=carousel] .slide a', 'toggleAutoCycle');
         },
 
-        buildCarousels = function () {
+        /**
+         * Initialise this module
+         * @function
+         */
+        init = function () {
+          Site.utils.cl("Site.carousel initialised");
+
           $(carouselSel).each(function () {
             //buildCarousel(this);
             var thisCarousel = new Carousel(this);
             thisCarousel.init();
           });
           delegateEvents();
-        },
 
-        init = function () {
-          Site.utils.cl("Site.carousel initialised");
           buildCarousels();
         };
 

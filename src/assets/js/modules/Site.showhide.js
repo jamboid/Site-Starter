@@ -21,8 +21,11 @@ Site.showhide = (function ($) {
   // Constructors //
   //////////////////
 
-        // Show/Hide "Nipper" object
-        // NOTE: The term "Nipper" is Copyright © Rob Graham (@restlesslake)
+        /**
+         * Creates a Nipper object to manage a show/hide component
+         * NOTE: The term "Nipper" is Copyright © Rob Graham (@restlesslake)
+         * @constructor
+         */
         Nipper = function (elem) {
           var $thisNipper = $(elem),
               $thisContent = $thisNipper.find(defaults.selContent).eq(0),
@@ -87,24 +90,30 @@ Site.showhide = (function ($) {
   // Functions //
   ///////////////
 
+        /**
+         * Create delegate event listeners for this module
+         * @function
+         */
         delegateEvents = function () {
-          Site.events.delegateEventFactory('click', defaults.selAction, 'toggleShowHide');
+          Site.events.createDelegatedEventListener('click', defaults.selAction, 'toggleShowHide');
         },
 
-        setShowHideComponents = function () {
+        /**
+         * Initialise this module
+         * @function
+         */
+        init = function () {
+          Site.utils.cl("Site.showhide.init called");
+
+          // Setup show/hide components
           var showHideComps = $(defaults.selPlugin);
           $(showHideComps).each(function () {
-
             var thisNipper = new Nipper(this);
             thisNipper.init();
           });
-          delegateEvents();
-        },
 
-        // Initialisation
-        init = function () {
-          Site.utils.cl("Site.showhide.init called");
-          setShowHideComponents();
+          // Delegate module events
+          delegateEvents();
         };
 
   ///////////////////////

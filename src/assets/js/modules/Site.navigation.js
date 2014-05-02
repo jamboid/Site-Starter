@@ -21,7 +21,10 @@ Site.navigation = (function ($) {
   // Constructors //
   //////////////////
 
-      // Main Navigation Menu Object
+      /**
+       * Creates a MainNavMenu object to manage a responsive main navigation menu
+       * @constructor
+       */
       MainNavMenu = function (elem) {
         var $thisMainNav = $(elem),
             $menu = $thisMainNav.find(selNavMenu).eq(0),
@@ -65,7 +68,7 @@ Site.navigation = (function ($) {
 
             // Subscribe object to Global Messages
             subscribeToEvents = function () {
-              $.subscribe('page/resize', function () {$(this).trigger('updatelayout');},$thisMainNav);
+              $.subscribe('page/resize', function () { $(this).trigger('updatelayout');} , $thisMainNav);
             },
 
             // Add event handler for main navigation toggle
@@ -88,6 +91,10 @@ Site.navigation = (function ($) {
         };
       },
 
+      /**
+       * Creates an InPageLink object to manage an deep-link navigation item
+       * @constructor
+       */
       InPageLink = function (elem) {
         var $thisInPageLink = $(elem),
             link = $thisInPageLink.attr('href'),
@@ -133,17 +140,24 @@ Site.navigation = (function ($) {
   // Functions //
   ///////////////
 
-      // Create delegate event listeners for this module
+      /**
+       * Create delegate event listeners for this module
+       * @function
+       */
       delegateEvents = function () {
         if(Modernizr.touch) {
-          Site.events.delegateEventFactory('click', selNavToggle, 'toggleMainNav');
+          Site.events.createDelegatedEventListener('click', selNavToggle, 'toggleMainNav');
         } else {
-          Site.events.delegateEventFactory('click', selNavToggle, 'toggleMainNav');
+          Site.events.createDelegatedEventListener('click', selNavToggle, 'toggleMainNav');
         }
 
-        Site.events.delegateEventFactory('click', selInPageLink, 'inpagelink');
+        Site.events.createDelegatedEventListener('click', selInPageLink, 'inpagelink');
       },
 
+      /**
+       * Initialise this module
+       * @function
+       */
       init = function () {
         Site.utils.cl("Site.navigation initialised");
         $(selNav).each(function () {

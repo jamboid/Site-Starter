@@ -1,4 +1,4 @@
-// Site.<toolbar></toolbar>.js
+// Site.toolbar.js
 
 // Check if base namespace is defined so it isn't overwritten
 var Site = Site || {};
@@ -38,7 +38,7 @@ Site.toolbar = (function ($) {
 
               // Subscribe object to Global Messages
               subscribeToEvents = function () {
-                $.subscribe('layout/showmainnav', function () {$(this).trigger('closetool');}, $thisTool);
+                $.subscribe('layout/showmainnav', function () {$(this).trigger('closeTool');}, $thisTool);
               },
 
               // Add event handler for main toolbar toggle
@@ -49,7 +49,7 @@ Site.toolbar = (function ($) {
                   toggleTool();
                 });
 
-                $thisTool.on('closetool', function (e) {
+                $thisTool.on('closeTool', function (e) {
                   e.preventDefault();
                   closeTool();
                 });
@@ -68,7 +68,7 @@ Site.toolbar = (function ($) {
 
         // Delegate events to an event listener on the <body> tag
         delegateEvents = function () {
-          Site.events.delegateEventFactory('click', selToolToggle, 'toggleTool');
+          Site.events.createDelegatedEventListener('click', selToolToggle, 'toggleTool');
         },
 
         init = function () {

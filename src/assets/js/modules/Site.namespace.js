@@ -58,7 +58,7 @@ Site.namespace = (function ($) {
          * @function
          */
         delegateEvents = function () {
-          //Site.events.delegateEventFactory('click', sel, 'toggleMainNav');
+          //Site.events.createDelegatedEventListener('click', sel, 'toggleMainNav');
 
         },
 
