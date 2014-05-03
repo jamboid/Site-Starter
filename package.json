@@ -1,34 +1,34 @@
 {
-  "name": "Site-Starter",
+  "name": "Gulp-Test",
   "version": "0.1.0",
-  "description": "A framework for front-end web projects",
+  "description": "Playing with Gulp",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jamboid/Site-Starter.git"
-  },
   "author": "Jamie Boyd",
   "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/jamboid/Site-Starter/issues"
-  },
   "devDependencies": {
-    "grunt": "latest",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-imageoptim": "latest",
-    "assemble": "latest",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-concat": "latest",
-    "load-grunt-tasks": "latest",
-    "jshint-stylish": "latest",
-    "grunt-notify": "latest",
-    "grunt-contrib-clean": "latest",
-    "grunt-autoprefixer": "latest"
+    "gulp": "~3.6.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-livereload": "~1.2.0",
+    "tiny-lr": "0.0.5",
+    "gulp-concat": "~2.1.7",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-ruby-sass": "~0.4.0",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-uglify": "~0.2.1",
+    "gulp-notify": "~1.1.1",
+    "gulp-jshint": "~1.5.0",
+    "gulp-imagemin": "~0.1.5",
+    "gulp-cache": "~0.1.3",
+    "jshint-stylish": "~0.1.5",
+    "gulp-sass": "latest",
+    "gulp-filesize": "0.0.6",
+    "gulp-shell": "~0.2.4",
+    "node-sass": "^0.8.6",
+    "gulp-plumber": "^0.6.1",
+    "gulp-util": "^2.2.14"
   }
 }

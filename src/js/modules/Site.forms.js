@@ -7,7 +7,7 @@ var Site = Site || {};
 Site.forms = (function ($) {
     "use strict";
     // Variables
-    var isPlaceholderSupported = Site.utils.placeholderIsSupported(),
+    var isPlaceholderSupported,
 
         // Set placeholder attribute using label text
         setPlaceholders = function () {
@@ -22,6 +22,8 @@ Site.forms = (function ($) {
 
           // Now the placeholders have been set, make sure the fallback is in place for
           // browsers that don't have native support for the attribute
+          isPlaceholderSupported = Site.utils.placeholderIsSupported();
+
           if(!isPlaceholderSupported){
             setPlaceholderFallback();
           }

@@ -122,8 +122,6 @@ Site.carousel = (function ($) {
             thisCarousel.init();
           });
           delegateEvents();
-
-          buildCarousels();
         };
 
   ///////////////////////
