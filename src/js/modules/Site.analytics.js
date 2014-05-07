@@ -12,6 +12,77 @@ Site.analytics = (function ($) {
   ///////////////
 
      var defaults = {},
+         externalTest = new RegExp('^((f|ht)tps?:)?//(?!' + location.host + ')'),
+         externalLinkSel = 'a.external',
+
+  //////////////////
+  // Constructors //
+  //////////////////
+
+        /**
+         * Create a pageLink object to manange a page link
+         * @constructor
+         */
+        PageLink = function (elem) {
+
+          var $thisLink = $(elem),
+              thisLinkUrl = $thisLink.attr('href'),
+              thisLinkType,
+
+          /**
+           * Check to see what type of link this is and add an appropriate class
+           * @function
+           */
+          checkLinkType = function () {
+            thisLinkType = ((externalTest.test(thisLinkUrl)) ? 'external' : 'local');
+            $thisLink.addClass(thisLinkType);
+          },
+
+          /**
+           * Track outbound link
+           * @function
+           * @parameter thisEvent (object)
+           */
+          trackOutboundLink = function (thisEvent) {
+            trackPageEvent('Outbound Link', 'click', thisLinkUrl);
+
+            // If the outbound link is not opened in a new window set a delay to allow the GA code to fire
+            // before setting the window url to the external link
+            if ( $thisLink.attr('target') === undefined || $thisLink.attr('target').toLowerCase() !== '_blank') {
+              thisEvent.preventDefault();
+              setTimeout(function() { location.href = thisLinkUrl; }, 400);
+            }
+          },
+
+          /**
+           * Bind custom message events for this object
+           * @function
+           */
+          bindCustomMessageEvents = function () {
+            $thisLink.on('trackExternalLink', function (e) {
+              trackOutboundLink(e);
+            });
+          },
+
+          /**
+           * Subscribe object to Global Messages
+           * @function
+           */
+          subscribeToEvents = function () {
+
+          };
+
+          /**
+           * Initialise this object
+           * @function
+           */
+          this.init = function () {
+            bindCustomMessageEvents();
+            subscribeToEvents();
+            checkLinkType();
+          };
+        },
+
 
   ///////////////
   // Functions //
@@ -106,9 +177,9 @@ Site.analytics = (function ($) {
                 Site.utils.cl(thisEventType);
                 Site.utils.cl('Event Detail:');
                 Site.utils.cl(thisDetail);
-                */
 
                 Site.utils.cl("Google Analytics not available");
+                */
               }
         },
 
@@ -189,12 +260,26 @@ Site.analytics = (function ($) {
         },
 
         /**
+         * Create delegate event listeners for this module
+         * @function
+         */
+        delegateEvents = function () {
+          Site.events.createDelegatedEventListener('click', externalLinkSel, 'trackExternalLink');
+        },
+
+        /**
          * Initialise this module
          * @function
          */
         init = function () {
             Site.utils.cl("Site.analytics.init called");
             trackPDFLinks();
+            delegateEvents();
+
+            $('a').each(function () {
+              var thisLink = new PageLink(this);
+              thisLink.init();
+            });
         };
 
   ///////////////////////
