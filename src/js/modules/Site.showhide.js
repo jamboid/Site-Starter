@@ -83,6 +83,7 @@ Site.showhide = (function ($) {
 
           this.init = function () {
             bindCustomMessageEvents();
+            setInitialState();
           };
         },
 
