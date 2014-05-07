@@ -24,7 +24,11 @@ Site.namespace = (function ($) {
         Object = function () {
 
           var
-          // Add event handler for staff profiles
+
+          /**
+           * Bind custom message events for this object
+           * @function
+           */
           bindCustomMessageEvents = function () {
             // $thisMainNav.on('', function (e) {
             //   e.preventDefault();

@@ -17,7 +17,10 @@ Site.utils = (function ($) {
   // Functions //
   ///////////////
 
-        // Console.log function with check for browsers that don't support it
+        /**
+         * Console.log function with check for browsers that don't support it
+         * @function
+         */
         logMessage = function (logMessage) {
           if (debugMode === true) {
             if (window.console) {
@@ -28,7 +31,10 @@ Site.utils = (function ($) {
           }
         },
 
-        // Get maximum height of a set of elements
+        /**
+         * Get maximum height of a set of elements
+         * @function
+         */
         getMaxHeight = function (elements) {
           var theseElements = elements,
               maxHeight = 0,
@@ -43,7 +49,10 @@ Site.utils = (function ($) {
           return maxHeight;
         },
 
-        // Equalise the minimum heights of a set of elements
+        /**
+         * Equalise the minimum heights of a set of elements
+         * @function
+         */
         equaliseMinHeights = function (elements) {
           var theseElements = elements,
               maxHeight = getMaxHeight(theseElements);
@@ -52,13 +61,19 @@ Site.utils = (function ($) {
           $(theseElements).css('min-height', maxHeight);
         },
 
-        // Check if placeholder attribute is supported
+        /**
+         * Check if placeholder attribute is supported
+         * @function
+         */
         placeholderIsSupported = function () {
           var test = document.createElement('input');
           return ('placeholder' in test);
         },
 
-        // Read a page's GET URL query string variables and return them as an associative array.
+        /**
+         * Read a page's GET URL query string variables and return them as an associative array.
+         * @function
+         */
         getURLQueryString = function () {
           var vars = [], hash;
           var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -71,7 +86,10 @@ Site.utils = (function ($) {
           return vars;
         },
 
-        // Check if element is currently displayed in the viewport - returns bool
+        /**
+         * Check if element is currently displayed in the viewport - returns bool
+         * @function
+         */
         isElementInView = function (element) {
           var $element = $(element),
               $window = $(window),
@@ -90,19 +108,28 @@ Site.utils = (function ($) {
               }
         },
 
-        // Remove the style attribute from an element
+        /**
+         * Remove the style attribute from an element
+         * @function
+         */
         resetStyles = function (element) {
           $(element).removeAttr("style");
         },
 
-        // Add "odd" and "even" classes
+        /**
+         * Add "odd" and "even" classes
+         * @function
+         */
         addOddAndEvenClasses = function (elements) {
           var $theseElements = $(elements);
           $theseElements.filter(':nth-child(2n-1)').addClass('odd');
           $theseElements.filter(':nth-child(2n)').addClass('even');
         },
 
-        // Initialisation
+        /**
+         * Initialise this module
+         * @function
+         */
         init = function () {
           Site.utils.cl("Site.utils.init called");
         };

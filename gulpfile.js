@@ -177,4 +177,3 @@ gulp.task('default', ['styles', 'scripts-development', 'watch']);
 
 // Production task - AKA the top-level workflow task for creating production-ready code
 gulp.task('production', ['styles', 'scripts-production']);
-
