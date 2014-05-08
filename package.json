@@ -1,7 +1,7 @@
 {
-  "name": "Gulp-Test",
+  "name": "Site Starter",
   "version": "0.1.0",
-  "description": "Playing with Gulp",
+  "description": "Boilerplate assets files and workflow for a website project's Front-End",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

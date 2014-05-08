@@ -40,6 +40,12 @@ Site.grid = (function ($) {
             $gridCells = $thisGrid.find(shGridCellSel),
             $currentCell,
 
+            /**
+             * Calculate the number of grid cells in a row
+             * @function
+             * @param {object} cell
+             * @returns {number} cellWidth
+             */
             calculateCellsPerRow = function (cell) {
               var windowWidthPix = $(window).width(),
                   cellWidthPix = $(cell).width(),
@@ -48,7 +54,12 @@ Site.grid = (function ($) {
                   return cellWidth;
             },
 
-            // Get position to insert Details component based on current staff member's position and the page layout
+            /**
+             * Get position to insert Details component based on current staff member's position and the page layout
+             * @function
+             * @param {object} cell
+             * @returns {number} indexOfCellToInsertAfter
+             */
             getInsertPosition = function (cell) {
               var thisCell = cell,
                   cellPosition = parseInt($gridCells.index(thisCell) + 1),
@@ -62,7 +73,12 @@ Site.grid = (function ($) {
                 return indexOfCellToInsertAfter;
             },
 
-            // Takes URL with Anchor and returns anchor
+            /**
+             * Takes URL with Anchor and returns anchor
+             * @function
+             * @param {string} anchorUrl
+             * @returns {string} anchor
+             */
             getAnchorFromAnchorUrl = function (anchorUrl) {
               var thisUrl = anchorUrl,
                   index = thisUrl.indexOf('#'),
