@@ -14,6 +14,7 @@ Site.analytics = (function ($) {
      var defaults = {},
          externalTest = new RegExp('^((f|ht)tps?:)?//(?!' + location.host + ')'),
          externalLinkSel = 'a.external',
+         modalLinkSel = 'modalLinkExternal',
 
   //////////////////
   // Constructors //
@@ -43,14 +44,22 @@ Site.analytics = (function ($) {
            * @function
            * @parameter thisEvent (object)
            */
-          trackOutboundLink = function (thisEvent) {
-            trackPageEvent('Outbound Link', 'click', thisLinkUrl);
+          trackOutboundLink = function () {
+            Site.utils.cl('track outbound link...');
 
-            // If the outbound link is not opened in a new window set a delay to allow the GA code to fire
-            // before setting the window url to the external link
-            if ( $thisLink.attr('target') === undefined || $thisLink.attr('target').toLowerCase() !== '_blank') {
-              thisEvent.preventDefault();
-              setTimeout(function() { location.href = thisLinkUrl; }, 400);
+            // If the outbound link opens in a modal, track it as such
+            if ($thisLink.hasClass(modalLinkSel)) {
+              trackPageEvent('Outbound Link', 'modal', thisLinkUrl);
+            } else {
+              trackPageEvent('Outbound Link', 'click', thisLinkUrl);
+              // If the outbound link is not opened in a new window set a delay to allow the GA code to fire
+              // before setting the window url to the external link
+              if ( $thisLink.attr('target') === undefined || $thisLink.attr('target').toLowerCase() !== '_blank') {
+                setTimeout(function() { location.href = thisLinkUrl; }, 400);
+              } else {
+                // The original click event was stopped so we need to replicate the default link click manually
+                window.open(thisLinkUrl,'_blank');
+              }
             }
           },
 
@@ -60,7 +69,8 @@ Site.analytics = (function ($) {
            */
           bindCustomMessageEvents = function () {
             $thisLink.on('trackExternalLink', function (e) {
-              trackOutboundLink(e);
+              e.preventDefault();
+              trackOutboundLink();
             });
           },
 
@@ -153,6 +163,7 @@ Site.analytics = (function ($) {
                 Site.utils.cl(thisDetail);
                 */
 
+
               } else if (typeof _gaq !== 'undefined'){ // Using Asynchronous Analytics
 
                 _gaq.push(['_trackEvent', thisCategory, thisEventType, thisDetail]);
@@ -180,6 +191,7 @@ Site.analytics = (function ($) {
 
                 Site.utils.cl("Google Analytics not available");
                 */
+
               }
         },
 
@@ -243,7 +255,7 @@ Site.analytics = (function ($) {
          */
         trackPageLoadInformation = function () {
           // Call custom functions
-          trackPageLayout(1); // Set parameter to number of custom variable configured in Google Analytics
+          // trackPageLayout(1); // Set parameter to number of custom variable configured in Google Analytics
         },
 
         /**
@@ -264,7 +276,7 @@ Site.analytics = (function ($) {
          * @function
          */
         delegateEvents = function () {
-          Site.events.createDelegatedEventListener('click', externalLinkSel, 'trackExternalLink');
+          Site.events.delegateEventFactory('click', externalLinkSel, 'trackExternalLink');
         },
 
         /**
@@ -276,10 +288,12 @@ Site.analytics = (function ($) {
             trackPDFLinks();
             delegateEvents();
 
+
             $('a').each(function () {
               var thisLink = new PageLink(this);
               thisLink.init();
             });
+
         };
 
   ///////////////////////
