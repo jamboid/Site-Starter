@@ -17,7 +17,7 @@ The following Tools are required to process this Sass framework correctly:
 
 
 /* Framework - Variables, Mixins, Functions, Resets, Placeholders */
-@import "framework/all";
+@import "base/all";
 
 /* !== Global Rules */
 @import "components/document";
@@ -30,7 +30,7 @@ The following Tools are required to process this Sass framework correctly:
 @import "components/videos";
 
 /* !== Components */
-@import "components/body-content";
+@import "components/prose";
 @import "components/brand";
 @import "components/navigation";
 @import "components/carousel";

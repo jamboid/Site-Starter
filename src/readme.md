@@ -4,22 +4,36 @@
 
 This document is an introduction to the Site Starter asset files and how to use them.
 
+## General Structure
+
+To keep a clean separation between source files and the final, compiled production files, the assets folder is split into two main directories:
+
+* /src
+* /build
+
+The **src/** directory contains all source files, including images and font files, and the **build/** directory contains all the final production files compiled and copied from the /src directory.
+
 ## CSS/Sass
 
 CSS for this project is created using the Sass pre-processor. The **/assets/sass/** directory contains the source files and these should be compiled to the **assets/css/** directory.
 
 ### 1. Framework
 
-The **Framework** directory contains 
+The **Framework** directory contains an assortment of files
 
 
 ### 2. Components
 
-The **Components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code will go. How the Components files are organised depends on the overall approach
+The **Components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code should go. How the Components files are organised depends on the overall approach taken, but generally you should create more files, rather than longer files.
 
 ### 3. Dependencies
 
+The framework does not currently rely on any 3rd-party Sass libraries, although it does require that you use Autoprefixer in a post-compilation processing step to add vendor prefixes.
 
+### Authoring Style
+
+1. Do not add any vendor prefixes unless the non-vendor syntax for a property doesn't yet exist. **Autoprefixer** should used to do this in a post-compilation processing step.
+2. 
 
 ## JavaScript
 
@@ -74,7 +88,7 @@ The functions of a page component should be triggered and controlled via custom 
 
 ### Publish/Subscribe Messaging
 
-In addition to the targeted event-based messaging described above, the framework also uses a **Publish/Subscribe** system (currently provided by a simple jQuery plugin) for fully decoupled, global messaging.
+In addition to the targeted, event-based messaging described above, the framework also uses a **Publish/Subscribe** system (currently provided by a simple jQuery plugin) for fully decoupled, global messaging.
 
 Each Object Constructor should include a **subscribeToEvents** method that subscription calls using the **jQuery.pubsub** plugin's **$.subscribe** function.
 
