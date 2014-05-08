@@ -47,7 +47,16 @@ var paths = {
   // Root script for manging modules
   rootScript: 'src/js/Site.js',
   // Root directory for compiled JS file
-  jsRoot : 'build/js/'
+  jsRoot : 'build/js/',
+  // Inline images source
+  inlineImagesSrc : '/src/img/inline',
+  // Inline images destination
+  inlineImages : '/build/img',
+  // CSS images source
+  cssImagesSrc: '/src/img/css',
+  // CSS images destination
+  cssImages: '/build/css/img'
+
 };
 
 ///////////////
@@ -97,7 +106,7 @@ gulp.task('styles', function() {
     .pipe(autoprefixer('last 2 versions','> 1%', 'ie 8', 'ie 9'))
     .pipe(minifycss())
     .pipe(size())
-    .pipe(gulp.dest(paths.cssRoot))
+    .pipe(gulp.dest(paths.cssRoot));
 });
 
 
