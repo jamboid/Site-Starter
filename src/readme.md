@@ -15,16 +15,23 @@ The **src/** directory contains all source files, including images and font file
 
 ## CSS/Sass
 
-CSS for this project is created using the Sass pre-processor. The **/assets/sass/** directory contains the source files and these should be compiled to the **assets/css/** directory.
+CSS for this project is created using the Sass pre-processor. The **/src/sass/** directory contains the source files and these should be compiled to the **/build/css/** directory.
 
-### 1. Framework
+### 1. The /base directory
 
-The **Framework** directory contains an assortment of files
+The **/scss/base** directory files contain an assortment of global variables, resets, mixins, functions and other helper code that isn't directly compiled into CSS. The majority of the code is structured in self-contained modules.
 
+### 2. The /components directory
 
-### 2. Components
+The **/scss/components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code should go. How the component files are organised depends on the overall approach taken, but generally you should create more files, rather than longer files. Large components should be broken down across several files if necessary, to keep each one a manageable size. 
 
-The **Components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code should go. How the Components files are organised depends on the overall approach taken, but generally you should create more files, rather than longer files.
+E.g. A 'product' component could be broken up as follows:
+
+* _product.scss
+* _product-intro.scss
+* _product_cross-sell.scss
+* _product-buy.scss
+
 
 ### 3. Dependencies
 
