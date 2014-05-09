@@ -55,8 +55,11 @@ var paths = {
   // CSS images source
   cssImagesSrc: '/src/img/css',
   // CSS images destination
-  cssImages: '/build/css/img'
-
+  cssImages: '/build/css/img',
+  // Fonts source
+  fontsSrc: '/src/fonts',
+  // Fonts destination
+  fontsBuild: '/build/fonts'
 };
 
 ///////////////

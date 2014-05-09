@@ -9,16 +9,13 @@ NOTE: Imports all other files in the /framework folder
 @import "global/global-typography";
 @import "global/global-colours";
 
-/* !== Functions */
-@import "functions/fnc-em";
-@import "functions/fnc-maths";
-
 /* !== Resets */
 @import "resets/reset";
 @import "resets/drupal-reset";
 
 /* !== Modules */
 @import "modules/mod-units";
+@import "modules/mod-maths";
 @import "modules/mod-media-queries";
 @import "modules/mod-typography";
 @import "modules/mod-layout";

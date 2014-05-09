@@ -1,21 +1,31 @@
-/* != Framework Module - UNITS */
+/* != Base Module - UNITS */
 
 //
 // @variables
 //
 
-$remBase: $textBase;
-
 //
-// Functions
+// @functions
 //
 
 @function parseInt($n) {
   @return $n / ($n * 0 + 1);
 }
 
+/* CONVERT PIXELS TO EMS */
+/*
+Parameters: @pixels value (no units), optional @context value (no units) e.g. if you are calculating padding on an element that has a font size applied already.
+*/
+@function em($pixels, $context: $textBase) {
+  @return #{$pixels/$context}em;
+}
+
+@function px($pixels) {
+  @return #{$pixels}px;
+}
+
 //
-// Mixins
+// @mixins
 //
 
 // Converts pixels to rems + pixel fallback
@@ -37,16 +47,16 @@ $remBase: $textBase;
 
       @if $unit == "px" {
         $px : append($px,  $value);
-        $rem: append($rem, ($val / $remBase  + rem));
+        $rem: append($rem, ($val / $textBase  + rem));
       }
 
       @if $unit == "" {
         $px : append($px,  $value);
-        $rem: append($rem, ($val / $remBase  + rem));
+        $rem: append($rem, ($val / $textBase  + rem));
       }
 
       @if $unit == "rem" {
-        $px : append($px,  ($val * $remBase  + px));
+        $px : append($px,  ($val * $textBase  + px));
         $rem: append($rem, $value);
       }
     }
