@@ -58,10 +58,14 @@ $clrGreen: #5d8c12;
 /* ! Oranges */
 $clrOrange:#bc4100;
 
-
-
 /* !== Gradients */
 
+$clrExampleGradient: linear-gradient($clrGrey, $clrDarkGrey);
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
+
+/* Forms */
+$clrFormFieldBack: $clrLightGrey;
+$clrFormSearchBorder:$clrLightGrey;
+$clrFormFileBack:$clrVeryLightGrey;

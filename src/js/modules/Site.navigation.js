@@ -17,6 +17,8 @@ Site.navigation = (function ($) {
 
       selInPageLink = 'a.inPageLink',
 
+      $body = $('body').eq(0),
+
   //////////////////
   // Constructors //
   //////////////////
@@ -33,31 +35,26 @@ Site.navigation = (function ($) {
             screenWidth, menuMinHeight,
 
             // Show/Hide main navigation menu when in mobile/small-screen configuration
-            // NOTES: This uses a jQuery-powered animation
+            // Show/Hide main navigation menu when in mobile/small-screen configuration
             toggleMainNav = function () {
 
-              // if ($thisMainNav.hasClass("isVisible") === true) {
-              //   $('html, body').animate({
-              //     scrollTop: $('html, body').offset().top
-              //   }, transitionTime);
-              //   $menu.slideUp(transitionTime, function () {
-              //     $thisMainNav.removeClass("isVisible");
-              //     Site.utils.resetStyles($menu);
-              //   });
-              // } else {
-              //   $menu.slideDown(transitionTime, function () {
-              //     $thisMainNav.addClass("isVisible");
-              //     Site.utils.resetStyles($menu);
-              //   });
-              // }
-
-
-              if ($thisMainNav.hasClass("isVisible") === true) {
-                $thisMainNav.removeClass("isVisible");
+              if ($body.hasClass("navVisible") === true) {
+                $body.removeClass("navVisible");
               } else {
-                $.publish('layout/showmainnav');
-                $thisMainNav.addClass("isVisible");
+                //$.publish('showMainNav');
+                $body.addClass("navVisible");
               }
+            },
+
+            closeMainNav = function () {
+              if ($body.hasClass("navVisible") === true) {
+                $body.removeClass("navVisible");
+              }
+            },
+
+            createSlideMenu = function () {
+              var $slideMenu = $('<div class="cpSlideMenu cp">').append($menu.clone());
+              $body.append($slideMenu);
             },
 
             updateMinHeight = function () {
@@ -80,14 +77,15 @@ Site.navigation = (function ($) {
 
               $thisMainNav.on('updatelayout', function (e) {
                 e.preventDefault();
-                updateMinHeight();
+                //updateMinHeight();
               });
             };
 
         this.init = function () {
           bindCustomMessageEvents();
           subscribeToEvents();
-          updateMinHeight();
+          createSlideMenu();
+          //updateMinHeight();
         };
       },
 

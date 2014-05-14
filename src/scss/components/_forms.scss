@@ -28,18 +28,18 @@ select {
 }
 
 input,select,textarea {
-  border:1px solid $clrLightGrey;
+  border:1px solid $clrFormFieldBack;
   padding:em(5);
 }
 
 input[type=search] {
   -webkit-appearance: none;
-  border:1px solid $clrLightGrey;
+  border:1px solid $clrFormSearchBorder;
   padding-left: 0;
 }
 
 input[type=file] {
-  background:$clrVeryLightGrey;
+  background:$clrFormFileBack;
 }
 
 input[type=radio],

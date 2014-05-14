@@ -45,24 +45,25 @@ Site.showhide = (function ($) {
                 if($thisNipper.hasClass('isClosed')){
                   if(animate === true){
                     $thisContent .slideDown(speed, function () {
-                      $thisNipper.removeClass('isClosed');
                       transitionComplete();
                     });
+                    $thisNipper.removeClass('isClosed').addClass('isOpen');
                   } else {
                     $thisContent.show();
-                    $thisNipper.removeClass('isClosed');
+                    $thisNipper.removeClass('isClosed').addClass('isOpen');
                     transitionComplete();
                   }
 
                 } else {
                   if(animate === true){
                     $thisContent.slideUp(speed, function () {
-                      $thisNipper.addClass('isClosed');
+
                       transitionComplete();
                     });
+                    $thisNipper.addClass('isClosed').removeClass('isOpen');
                   } else {
                     $thisContent.hide();
-                    $thisNipper.addClass('isClosed');
+                    $thisNipper.addClass('isClosed').removeClass('isOpen');
                     transitionComplete();
                   }
                 }

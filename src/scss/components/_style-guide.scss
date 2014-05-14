@@ -39,19 +39,21 @@
     cursor: pointer;
 
     &:after {
-      content:"+";
-      transform: rotate(45deg);
-      transition:all .1s linear;
+      content:"";
+      transform: rotate(135deg);
+      transition:all .2s linear;
       font-size:1.2em;
       position: absolute;
       right: em(15);
-      top: em(4);
-      width:30px;
-      height:30px;
+      top: em(8);
+      width:20px;
+      height:20px;
       text-align: center;
       vertical-align: middle;
       z-index: 100;
-      display: inline-block;
+      display: block;
+      background:url(img/plus.svg) center center no-repeat;
+      background-size:20px 20px;
     }
   }
 
@@ -63,7 +65,7 @@
     }
 
     [data-content=showhide] {
-      display: none
+      //display: none
     }
   }
 }

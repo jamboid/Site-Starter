@@ -3,17 +3,18 @@
 
 /* !== Main Navigation  */
 .cpMainNav {
-  .menuTitle {
-    display: none;
-  }
-
   .menu {
     display: table;
     display:flex;
+    flex-wrap:wrap;
+
+    @include mq($mqLuke){
+      display: none;
+    }
   }
 
   li {
-    display: table-cell;
+    display: inline-block;
 
     a {
       padding:em(5) em(10);

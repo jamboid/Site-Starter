@@ -1,4 +1,4 @@
-# Site Starter - Assets Workflow
+# Site Starter - Assets Workflow (v 0.1.0)
 
 ## Introduction
 
@@ -29,13 +29,13 @@ E.g. A 'product' component could be broken up as follows:
 
 * _product.scss
 * _product-intro.scss
-* _product_cross-sell.scss
+* _product-cross-sell.scss
 * _product-buy.scss
 
 
 ### 3. Dependencies
 
-The framework does not currently rely on any 3rd-party Sass libraries, although it does require that you use Autoprefixer in a post-compilation processing step to add vendor prefixes.
+The framework does not currently rely on any 3rd-party Sass libraries by default, although it does require that you use Autoprefixer in a post-compilation processing step to add vendor prefixes.
 
 ### Authoring Style
 
@@ -43,6 +43,13 @@ The framework does not currently rely on any 3rd-party Sass libraries, although 
 2. 
 
 ## JavaScript
+
+### Overview
+
+JavaScript for a project can be divided into two main types:
+
+1. 3rd-Party Plugins and Scripts
+2. Custom-written Modules
 
 ### Modules and Constructor Objects
 
@@ -86,11 +93,11 @@ While this approach is a little convoluted, it has the following advantages:
 
 * A single event listener handles events for all instances of a component, current and future.
 * User-generated events are decoupled from the functionality of a component so it can be controlled and communicated with more flexibly.
-* Accessing and controlling functionality with custom events reduces potential conflicts and effects due to bubbling of standard events.
+* Accessing and controlling functionality with custom events reduces potential conflicts and effects due to the bubbling of standard events.
 
 #### Custom Events
 
-The functions of a page component should be triggered and controlled via custom event listeners within the component object. This provides a uniform interface for both targeted and global messages.
+The functions of a page component should be triggered and controlled via custom event listeners within the component object. This provides a uniform interface for both targeted and global messages, and also for user- and code-initiated events.
 
 
 ### Publish/Subscribe Messaging
@@ -105,15 +112,21 @@ The format of the publish/subscribe messages should take the following form:
 
 This is to maintain a level of organisation of messages and also to avoid confusion with custom event names.
 
+### Optimising the JavaScript for production
 
+All the individual files should be uglified and combined into one minified Site.min.js file for optimum performance.
+
+This will also reduce the chances of a particular piece of JavaScript executing while it still has unloaded dependencies.
 
 ## Images and Fonts
+
+
 
 ## Workflow Tools
 
 ### CodeKit
 
-CodeKit is an app that wraps a lot of CLI-based front-end workflow tools, such as Sass, JSHint and Autoprefixer, in a nice  GUI. It is the default tool for our Build Workflow.
+CodeKit is a Mac app that wraps a lot of CLI-based front-end workflow tools, such as Sass, JSHint and Autoprefixer, in a nice  GUI. It is the current default tool for our Build Workflow.
 
 #### Setting up a CodeKit project
 
@@ -133,3 +146,6 @@ With the addition of Autoprefixer, CodeKit 2 removes the need to use the Bourbon
 
 Legacy projects using earlier versions of the Site Starter framework can be used with CodeKit 2 and it will automatically detect the requirement for Bourbon. You should make sure the options to use Autoprefixer is turned off for these projects.
 
+### Gulp
+
+Gulp is a Node-based command line task-runner that can be used to combine and sequence a large number of front-end tools. It is similar to CodeKit in this respect, but is a lot more flexible and extensible. It is also free and cross-platform.

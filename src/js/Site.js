@@ -27,6 +27,7 @@ Site.init = (function ($) {
         Site.utils.init();
         Site.events.init();
         Site.showhide.init();
+        Site.navigation.init();
         Site.images.init();
         Site.media.init();
         Site.carousel.init();

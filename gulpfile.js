@@ -6,19 +6,18 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     //sass = require('gulp-ruby-sass'),
     sass = require('gulp-sass'),
+    //sasslinter = require('gulp-scss-lint'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     size = require('gulp-filesize'),
-    shell = require('gulp-shell'),
     plumber = require('gulp-plumber');
 
 ///////////
@@ -26,6 +25,8 @@ var gulp = require('gulp'),
 ///////////
 
 var paths = {
+
+  buildRoot: 'build',
 
   buildDirs: [
     'build/css',
@@ -35,7 +36,7 @@ var paths = {
   // CSS Root
   cssRoot: 'build/css',
   // Sass files
-  sassFiles: 'src/scss/**/*',
+  sassFiles: 'src/scss/**/*.scss',
   // 3rd party scripts
   libScripts : 'src/js/libs/*.js',
   // Standalone scripts
@@ -49,17 +50,19 @@ var paths = {
   // Root directory for compiled JS file
   jsRoot : 'build/js/',
   // Inline images source
-  inlineImagesSrc : '/src/img/inline',
+  inlineImagesSrc : 'src/img/inline/**/*',
   // Inline images destination
-  inlineImages : '/build/img',
+  inlineImagesBuild : 'build/img',
   // CSS images source
-  cssImagesSrc: '/src/img/css',
+  cssImagesSrc: 'src/img/css/**/*',
   // CSS images destination
-  cssImages: '/build/css/img',
+  cssImagesBuild: 'build/css/img',
   // Fonts source
-  fontsSrc: '/src/fonts',
+  fontsSrc: 'src/fonts/**/*',
   // Fonts destination
-  fontsBuild: '/build/fonts'
+  fontsBuild: 'build/fonts',
+  // Pages source
+  pageSource: 'src/pages/*.html'
 };
 
 ///////////////
@@ -71,6 +74,13 @@ var paths = {
 ////////////////
 // Sass tasks //
 ////////////////
+
+// Sass linter task
+gulp.task('lint-sass', function() {
+  gulp.src(paths.sassFiles)
+    .pipe(sasslinter()); //you can set scss-lint parameters
+});
+
 
 // gulp-ruby-sass version
 // - this version uses the installed ruby version of sass, so check this is up-to-date
@@ -98,9 +108,8 @@ gulp.task('styles', function() {
 
 // gulp-sass version
 // - this uses the libsass implementation and so is missing the most cutting-edge features
-
 gulp.task('styles', function() {
-  return gulp.src('src/scss/*.scss')
+  return gulp.src(paths.sassFiles)
     .pipe(sass({
       style: 'expanded',
       includePaths : ['src/scss/'],
@@ -171,6 +180,42 @@ gulp.task('scripts-development', ['lintJS','copyStandaloneScripts','processJS-de
 // Scripts task for production workflow
 gulp.task('scripts-production', ['lintJS','copyStandaloneScripts','processJS-production']);
 
+////////////////
+// Copy tasks //
+////////////////
+
+gulp.task('copyInlineImages', function () {
+  return gulp.src(paths.inlineImagesSrc)
+    .pipe(gulp.dest(paths.inlineImagesBuild));
+});
+
+gulp.task('copyCssImages', function () {
+  return gulp.src(paths.cssImagesSrc)
+    .pipe(gulp.dest(paths.cssImagesBuild));
+});
+
+gulp.task('copyFonts', function () {
+  return gulp.src(paths.fontsSrc)
+    .pipe(gulp.dest(paths.fontsBuild));
+});
+
+gulp.task('copyPages', function () {
+  return gulp.src(paths.pageSource)
+    .pipe(gulp.dest(paths.buildRoot));
+});
+
+// Composite Tasks
+gulp.task('copy-files', ['copyInlineImages','copyCssImages','copyFonts', 'copyPages']);
+
+/////////////////
+// Clean tasks //
+/////////////////
+
+gulp.task('clean', function() {
+  return gulp.src(paths.buildRoot, {read: false})
+    .pipe(clean());
+});
+
 /////////////////
 // Watch tasks //
 /////////////////
@@ -185,7 +230,7 @@ gulp.task('watch', function() {
 /////////////////////
 
 // Default gulp task - AKA the top-level Development workflow task
-gulp.task('default', ['styles', 'scripts-development', 'watch']);
+gulp.task('default', ['styles', 'scripts-development','copy-files', 'watch']);
 
 // Production task - AKA the top-level workflow task for creating production-ready code
-gulp.task('production', ['styles', 'scripts-production']);
+gulp.task('production', ['styles', 'scripts-production', 'copy-files']);
