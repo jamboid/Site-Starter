@@ -28,18 +28,22 @@ select {
 }
 
 input,select,textarea {
-  border:1px solid $clrFormFieldBack;
+  border:1px solid $clr-forms-FieldBack;
   padding:em(5);
 }
 
 input[type=search] {
   -webkit-appearance: none;
-  border:1px solid $clrFormSearchBorder;
+  border:1px solid $clr-forms-SearchBorder;
   padding-left: 0;
 }
 
 input[type=file] {
-  background:$clrFormFileBack;
+  background:$clr-forms-FileBack;
+
+  @include mq($mqArtoo){
+    width: 100%;
+  }
 }
 
 input[type=radio],
@@ -51,7 +55,7 @@ input[type=checkbox]{
 input[type=submit],
 button {
   @extend %buttonBase;
-  @include basicButton($clrWhite, $clrBlue);
+  @include basicButton($clrWhite, $clrBlueGradient, $hoverBackground: $clrBlueGradientHover);
   cursor:pointer;
   border:none;
   -webkit-appearance:none;

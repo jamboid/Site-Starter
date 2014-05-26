@@ -93,6 +93,11 @@ Site.grid = (function ($) {
               return anchor;
             },
 
+            /**
+             * If details pane is being displayed, reposition it in the correct
+             * position for the current grid layout
+             * @function
+             */
             updateLayout = function () {
               var $currentWindow = $thisGrid.find(shGridDetailsWindowSel);
 
@@ -107,7 +112,10 @@ Site.grid = (function ($) {
               }
             },
 
-            // Use an animated scroll to position at the top of the cell passed in
+            /**
+             * Use an animated scroll to position at the top of the cell passed in
+             * @function
+             */
             repositionView = function (cell) {
               var cellTopPos = cell.offset().top,
                   scrollTop = $(window).scrollTop();
@@ -119,7 +127,10 @@ Site.grid = (function ($) {
               }
             },
 
-            // Get the scroll position to the top of the cell passed in - no animation
+            /**
+             * Get the scroll position to the top of the cell passed in - no animation
+             * @function
+             */
             setView = function (cell) {
               var cellTopPos = cell.offset().top,
                   scrollTop = $(window).scrollTop();

@@ -18,27 +18,27 @@
   }
 
   h1 {
-    font-size: em(30);
+    @include rem(font-size, 30px);
   }
 
   h2 {
-    font-size: em(24);
+    @include rem(font-size, 24px);
   }
 
   h3 {
-    font-size: em(20);
+    @include rem(font-size, 20px);
   }
 
   h4 {
-    font-size: em(18);
+    @include rem(font-size, 18px);
   }
 
   h5 {
-    font-size: em(16);
+    @include rem(font-size, 16px);
   }
 
   h6 {
-    font-size: em(14);
+    @include rem(font-size, 14px);
   }
 
   /* Paragraphs */

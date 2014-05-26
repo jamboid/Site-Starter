@@ -60,12 +60,20 @@ $clrOrange:#bc4100;
 
 /* !== Gradients */
 
-$clrExampleGradient: linear-gradient($clrGrey, $clrDarkGrey);
+$clrDarkGreyGradient: linear-gradient($clrGrey, $clrDarkGrey);
+$clrDarkGreyGradientHover: linear-gradient(darken($clrGrey,10), darken($clrDarkGrey, 10));
+
+$clrBlueGradient:linear-gradient(lighten($clrBlue, 15), $clrBlue);
+$clrBlueGradientHover:linear-gradient($clrBlue, darken($clrBlue, 15));
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
 
+/* Document */
+$clr-body-Back: $clrDarkGrey;
+$clr-body-Text: $clrBlack;
+
 /* Forms */
-$clrFormFieldBack: $clrLightGrey;
-$clrFormSearchBorder:$clrLightGrey;
-$clrFormFileBack:$clrVeryLightGrey;
+$clr-forms-FieldBack: $clrLightGrey;
+$clr-forms-SearchBorder:$clrLightGrey;
+$clr-forms-FileBack:$clrVeryLightGrey;

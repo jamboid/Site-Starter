@@ -3,7 +3,7 @@
 /* NOTES: Styles to create a flat style guide */
 
 /* !== Page Title - override for Style Guide page */
-.pageTitle {
+.ttPage {
   font-size: em(24);
   padding:em(10,24) 0;
   border-bottom:2px solid $clrVeryLightGrey;
@@ -22,18 +22,16 @@
     margin-bottom: em(20);
   }
 
-  .compTitle {
+  .ttComp {
     font-size: em(18);
-    text-transform: uppercase;
     margin:0;
-    padding:0.5em 40px 0.3em 0.5em;
+    padding: em(12,18) em(50,18) em(12,18) em(10,18) ;
     background:$clrVeryLightGrey;
   }
 }
 
 /* !== Show/Hide widget components - selected by data-* attributes */
 [data-plugin=showhide] {
-
   [data-action=toggle] {
     position: relative;
     cursor: pointer;
@@ -45,7 +43,7 @@
       font-size:1.2em;
       position: absolute;
       right: em(15);
-      top: em(8);
+      top: em(10);
       width:20px;
       height:20px;
       text-align: center;

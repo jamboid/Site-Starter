@@ -1,11 +1,9 @@
 /* != Framework Module - BUTTONS */
 
 /* !== Basic Button Style */
-
-
-
 @mixin buttonBase {
-  @include rem(padding, 8px 20px 5px);
+  @include rem(padding, 6px 20px );
+  font-weight: bold;
   display: inline-block;
   text-decoration: none;
   border-radius:3px;

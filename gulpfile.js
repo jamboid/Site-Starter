@@ -223,6 +223,7 @@ gulp.task('clean', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.processScripts, ['scripts-development']);
   gulp.watch(paths.sassFiles, ['styles']);
+  gulp.watch(paths.pageSource,['copyPages']);
 });
 
 /////////////////////

@@ -12,7 +12,7 @@ Site.toolbar = (function ($) {
   ///////////////
 
     var selTool = ".cpTool",
-        selToolToggle = ".cpTool .compTitle",
+        selToolToggle = ".cpTool .ttComp",
 
   //////////////////
   // Constructors //

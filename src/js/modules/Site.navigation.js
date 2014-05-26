@@ -11,7 +11,7 @@ Site.navigation = (function ($) {
   ///////////////
 
   var selNav = ".cpMainNav",
-      selNavToggle = ".cpMainNav [data-action=toggle]",
+      selNavToggle = ".nvToggle [data-action=toggle]",
       selNavMenu = "ul.menu",
       transitionTime = 200,
 
@@ -34,8 +34,10 @@ Site.navigation = (function ($) {
             singleCellRatio = Site.grid.getSingleCellRatio(),
             screenWidth, menuMinHeight,
 
-            // Show/Hide main navigation menu when in mobile/small-screen configuration
-            // Show/Hide main navigation menu when in mobile/small-screen configuration
+            /**
+             * Show/Hide main navigation menu when in mobile/small-screen configuration
+             * @function
+             */
             toggleMainNav = function () {
 
               if ($body.hasClass("navVisible") === true) {
@@ -46,29 +48,47 @@ Site.navigation = (function ($) {
               }
             },
 
+            /**
+             * Close Nav Menu if it is open
+             * @function
+             */
             closeMainNav = function () {
               if ($body.hasClass("navVisible") === true) {
                 $body.removeClass("navVisible");
               }
             },
 
+            /**
+             * Clone main nav menu into a slide menu container and append it inside the <body> tag
+             * @function
+             */
             createSlideMenu = function () {
-              var $slideMenu = $('<div class="cpSlideMenu cp">').append($menu.clone());
+              var $slideMenu = $('<div class="cpSlideMenu cp">').append($menu.clone().addClass('mnSlide'));
               $body.append($slideMenu);
             },
 
+            /**
+             * Update the minimum height of the nav menu based on the width of the viewport
+             * @function
+             */
             updateMinHeight = function () {
               screenWidth = $(window).width();
               menuMinHeight = (screenWidth * singleCellRatio) - $menuToggle.height();
               $menu.css('min-height', menuMinHeight);
             },
 
-            // Subscribe object to Global Messages
+            /**
+             * Subscribe object to Global Messages
+             * @function
+             */
             subscribeToEvents = function () {
               $.subscribe('page/resize', function () { $(this).trigger('updatelayout');} , $thisMainNav);
             },
 
-            // Add event handler for main navigation toggle
+            /**
+             * Add event handler for main navigation toggle
+             * @function
+             */
             bindCustomMessageEvents = function () {
               $thisMainNav.on('toggleMainNav', function (e) {
                 e.preventDefault();
@@ -81,6 +101,10 @@ Site.navigation = (function ($) {
               });
             };
 
+        /**
+         * Initialise this object
+         * @function
+         */
         this.init = function () {
           bindCustomMessageEvents();
           subscribeToEvents();

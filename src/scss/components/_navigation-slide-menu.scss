@@ -2,8 +2,8 @@
 
 .wrapper,
 .cpSlideMenu,
-.cpSlideMenu .menu {
-  transition:all 0.35s ease;
+.mnSlide {
+  transition:left .25s ease, transform .4s ease-out;
   position: relative;
 }
 
@@ -17,31 +17,31 @@
   box-shadow:-5px 0 35px rgba($clrBlack, 0.4);
 }
 
-// Basic styles for the .menuTitle toggle button including the breakpoint
+// Basic styles for the .nvToggle toggle button including the breakpoint
 // to make it visible
-.cpMainNav {
-  .menuTitle {
-    display: none;
-    position: absolute;
-    top:30px;
-    left: 20px;
+
+.nvToggle {
+  display: none;
+  position: absolute;
+  top:30px;
+  left: 20px;
+  width: 30px;
+  height: 28px;
+  text-indent: -9999px;
+  background:transparent url(img/nav_icon.svg);
+  background-size:30px 28px;
+
+  @include mq($mqLuke){
+    display: block;
+  }
+
+  a {
+    display: block;
     width: 30px;
-    height: 28px;
-    text-indent: -9999px;
-    background:transparent url(img/nav_icon.svg);
-    background-size:30px 28px;
-
-    @include mq($mqLuke){
-      display: block;
-    }
-
-    a {
-      display: block;
-      width: 30px;
-      height: 30px;
-    }
+    height: 30px;
   }
 }
+
 
 .cpSlideMenu {
   width: 260px;
@@ -60,7 +60,7 @@
     width: calc(100% - 58px);
   }
 
-  .menu {
+  .mnSlide {
     @include rem(padding, 15px 0);
     position: relative;
     left:-80px;
@@ -77,7 +77,6 @@
 
   li {
     a {
-      //@include whiteToGold;
       text-decoration: none;
       display: block;
       background:rgba(255,255,255,0.1);
@@ -88,11 +87,6 @@
       &:hover, &:focus, &:active {
         background:rgba(255,255,255,0.2);
         color:$clrVeryLightGrey;
-      }
-
-      &.active-trail,
-      &.active {
-        //color:$clrGold;
       }
     }
 
@@ -144,12 +138,10 @@
 
 
 .navVisible {
-  .cpMainNav {
-    .menuTitle {
-      a{
-        &:after {
-          background-position: -255px -31px;
-        }
+  .nvToggle {
+    a {
+      &:after {
+        background-position: -255px -31px;
       }
     }
   }

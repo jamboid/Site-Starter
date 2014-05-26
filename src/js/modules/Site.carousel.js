@@ -18,7 +18,10 @@ Site.carousel = (function ($) {
   // Constructors //
   //////////////////
 
-        // Carousel class
+        /**
+         * Carousel object constructor
+         * @constructor
+         */
         Carousel = function (elem) {
           var $thisCarousel = $(elem),
               $slideContainer = $thisCarousel.find('.slides').eq(0),

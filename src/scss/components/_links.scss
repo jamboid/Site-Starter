@@ -5,6 +5,7 @@ a {
   color:$clrLightBlue;
   -webkit-tap-highlight-color: $clrNone;
   -webkit-tap-highlight-color: $clrInvsibile;
+  transition:all .2s ease;
 
   &:hover, &:focus, &:active {
     color:$clrOrange;
