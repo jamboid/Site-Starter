@@ -15,9 +15,36 @@
 #### .gp - Fuzz Group
 #### .cp - Fuzz Component Shell
 
-.cpNav
+.cp-Nav
 .cpMainNav
-.cpSubNav
+.cp-SubNav__toggle 
+
+<div class="cp-MainNav is-Open">
+	<ul class="cp-MainNav__list">
+		<li class="cp-MainNav__list-item"></li>
+	</ul>
+</div>
+
+[class^=cp-] {
+
+}
+
+.cp-MainNav {
+
+	&.is-Open {
+
+	}
+
+	&__list {
+
+	}
+
+	&__list-item {
+
+	}
+}
+
+
 
 #### .in - Fuzz Component Inner
 
@@ -32,9 +59,11 @@
 
 #### .lst - List
 
-.lstClean
-.lstNavSlide
-.lstNavMain
+.list__Clean
+.list__NavSlide
+.list__NavMain
+
+
 
 #### .ttl - Title
 #### .act - Action

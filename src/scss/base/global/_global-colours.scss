@@ -70,10 +70,10 @@ $clrBlueGradientHover:linear-gradient($clrBlue, darken($clrBlue, 15));
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
 
 /* Document */
-$clr-body-Back: $clrDarkGrey;
-$clr-body-Text: $clrBlack;
+$clrBodyBack: $clrDarkGrey;
+$clrBodyText: $clrBlack;
 
 /* Forms */
-$clr-forms-FieldBack: $clrLightGrey;
-$clr-forms-SearchBorder:$clrLightGrey;
-$clr-forms-FileBack:$clrVeryLightGrey;
+$clrFormsFieldBack: $clrLightGrey;
+$clrFormsSearchBorder:$clrLightGrey;
+$clrFormsFileBack:$clrVeryLightGrey;

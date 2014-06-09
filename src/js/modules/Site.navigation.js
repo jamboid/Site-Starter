@@ -63,7 +63,7 @@ Site.navigation = (function ($) {
              * @function
              */
             createSlideMenu = function () {
-              var $slideMenu = $('<div class="cpSlideMenu cp">').append($menu.clone().addClass('mnSlide'));
+              var $slideMenu = $('<div class="cpSlideMenu">').append($menu.clone().addClass('mnSlide'));
               $body.append($slideMenu);
             },
 

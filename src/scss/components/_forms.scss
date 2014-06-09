@@ -24,22 +24,22 @@ textarea {
 
 /* Select Dropdown Styles */
 select {
-
+  //-webkit-appearance:button;
 }
 
 input,select,textarea {
-  border:1px solid $clr-forms-FieldBack;
+  border:1px solid $clrFormsFieldBack;
   padding:em(5);
 }
 
 input[type=search] {
   -webkit-appearance: none;
-  border:1px solid $clr-forms-SearchBorder;
+  border:1px solid $clrFormsSearchBorder;
   padding-left: 0;
 }
 
 input[type=file] {
-  background:$clr-forms-FileBack;
+  background:$clrFormsFileBack;
 
   @include mq($mqArtoo){
     width: 100%;

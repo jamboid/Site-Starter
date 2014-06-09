@@ -10,6 +10,6 @@ body {
   line-height:1.5;
   color:$clrDarkGrey;
   @include mq(plusOne($mqHan), $query1: min) {
-    font-size: 125%
+    font-size: 125%;
   }
 }

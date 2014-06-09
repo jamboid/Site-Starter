@@ -13,7 +13,7 @@ To keep a clean separation between source files and the final, compiled producti
 
 The **src/** directory contains all source files, including images and font files, and the **build/** directory contains all the final production files compiled and copied from the /src directory.
 
-## CSS/Sass
+## Sass-CSS
 
 CSS for this project is created using the Sass pre-processor. The **/src/sass/** directory contains the source files and these should be compiled to the **/build/css/** directory.
 
@@ -23,7 +23,7 @@ The **/scss/base** directory files contain an assortment of global variables, re
 
 ### 2. The /components directory
 
-The **/scss/components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code should go. How the component files are organised depends on the overall approach taken, but generally you should create more files, rather than longer files. Large components should be broken down across several files if necessary, to keep each one a manageable size. 
+The **/scss/components** directory contains Sass files that correspond to page components and other elements such the page grid. This is where the bulk of a project's custom Sass code should go. How the component files are organised depends on the overall approach taken, but generally you should create more files, rather than longer files. Large components should be broken down across several files if necessary, to keep each one a manageable size.
 
 E.g. A 'product' component could be broken up as follows:
 
@@ -40,7 +40,8 @@ The framework does not currently rely on any 3rd-party Sass libraries by default
 ### Authoring Style
 
 1. Do not add any vendor prefixes unless the non-vendor syntax for a property doesn't yet exist. **Autoprefixer** should used to do this in a post-compilation processing step.
-2. 
+
+
 
 ## JavaScript
 

@@ -9,7 +9,7 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 /* Basic styles for 5 levels of the framework */
 
 /* !=== Stages (.st) - Level 1 - Full Width Container(s) */
-.st {
+[class^=st] {
   position: relative;
   width:100%;
 }
@@ -32,7 +32,7 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
 /* NOTES: Set fixed/non-MQ width and then add a null MQ to set width for MQ-compatible browsers */
-.fd {
+[class^=fd] {
   @include clearfix;
   clear:both;
   margin:0 auto;
@@ -41,7 +41,7 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 }
 
 /* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
-.rg {
+[class^=rg] {
   @include clearfix;
 }
 
@@ -65,7 +65,8 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 }
 
 /* !=== Component (.cp) - Self-Contained Functional Modules (e.g. Main Navigation, Carousel, Body Content) */
-.cp {
+.cp,
+[class^=cp] {
   margin:0;
   padding:0;
   width:100%;

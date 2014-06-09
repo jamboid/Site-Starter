@@ -3,7 +3,6 @@
 .rgGridModule {
   display: table;
   width: 100%;
-  margin-bottom: em(20);
   @include mq($mqLeia) {
     display: block;
   }
@@ -13,7 +12,7 @@
   display: table-cell;
   width: 50%;
   vertical-align: top;
-  background:$clrOrange;
+  background:$clrWhite;
   @include mq($mqLeia) {
     display: block;
     width: 100%;
@@ -37,6 +36,25 @@
       width: 100%;
     }
   }
+}
+
+.gpGridImage {
+  background-size:contain;
+  vertical-align:top;
+
+  @include mq($mqArtoo){
+    display: none;
+  }
+}
+
+.gpTopGrid {
+  background:$clrWhite url(img/top_image_back.png) bottom center repeat-y;
+  background-size:contain;
+}
+
+.gpBottomGrid {
+  background:$clrWhite url(img/bottom_image_back.png) bottom center repeat-y;
+  background-size:contain;
 }
 
 .cpGridCopy {

@@ -61,4 +61,4 @@ npm-debug.log
 .codekit-cache
 
 # Build directory
-# /build
+/build
