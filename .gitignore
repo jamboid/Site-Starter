@@ -43,6 +43,7 @@ Thumbs.db
 
 # Installed Grunt modules
 node_modules
+npm-debug.log
 
 # Sass
 .sass-cache

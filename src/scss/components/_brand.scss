@@ -1,0 +1,12 @@
+/* != Brand Styles */
+
+.cpBrand {
+  .in {
+    padding:em(10) 0;
+    margin-bottom: 0;
+
+    @include mq($mqLuke){
+      text-align: center;
+    }
+  }
+}
