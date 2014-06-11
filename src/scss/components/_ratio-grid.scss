@@ -1,0 +1,31 @@
+/* != Ratio Grid Styles */
+
+.cpGridComp {
+  float: left;
+
+  .in {
+    height:400px;
+    background:rgb(200,200,255);
+    margin:0 em(5) em(15);
+  }
+}
+
+.rg1 {
+  @include ratioGrid(1);
+}
+
+.rg2 {
+  @include ratioGrid(2);
+}
+
+.rg3 {
+  @include ratioGrid(3);
+}
+
+.rg4 {
+  @include ratioGrid(4);
+}
+
+.rg5 {
+  @include ratioGrid(5);
+}

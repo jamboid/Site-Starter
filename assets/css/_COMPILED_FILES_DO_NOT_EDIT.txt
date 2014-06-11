@@ -1,3 +1,0 @@
-The CSS files in this folder are compiled from .scss source files.
-
-Do not edit these. Any changes will be lost when the source files are next recompiled.
