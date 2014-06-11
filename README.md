@@ -10,7 +10,7 @@ This is my personal boilerplate for beginning front-end development projects usi
 
 ## Workflow
 
-The assets are located in the root directory. A Gulp-based workflow is included that processes them and outputs demo files to a /build directory.
+The assets are located in the /src directory. A Gulp-based workflow is included that processes them and outputs demo files to a /build directory.
 
 ### Sass Versions
 
