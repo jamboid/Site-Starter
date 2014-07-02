@@ -11,21 +11,28 @@
 
 /* !== Style Guide label */
 .sgLabel {
-  font-size: em(20) !important;
-  margin-bottom:em(10,20);
-  color:$clrBlue;
+  font-size: em(18) !important;
+  color:$clrSchemeColour;
+  padding:em(5, 15);
+  margin:0 0 em(10,14);
+  background:lighten($clrSchemeColour, 43);
+}
+
+.cp_StyleGuide {
+  .in {
+    padding-bottom: em(40);
+  }
 }
 
 /* !== Section Toggle Component */
 .cpSectionToggle {
   .in {
-    margin-bottom: em(20);
   }
 
   .ttComp {
-    font-size: em(18);
+    font-size: em(28);
     margin:0;
-    padding: em(12,18) em(50,18) em(12,18) em(10,18) ;
+    @include rem(padding, 12px 50px 12px 10px);
     background:$clrVeryLightGrey;
   }
 }

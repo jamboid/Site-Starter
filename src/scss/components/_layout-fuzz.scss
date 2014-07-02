@@ -14,19 +14,19 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
   width:100%;
 }
 
-.stHeader {
+.st_Header {
   background:$clrWhite;
   color:$clrLightGrey;
 }
 
-.stPage {
+.st_Page {
   background:$clrWhite;
   color:$clrDarkGrey;
 }
 
-.stFooter {
+.st_Footer {
   padding: em(20) 0;
-  background:$clrDarkGreyGradient;
+  background:darken($clrSchemeColour,25);
   color:$clrWhite;
 }
 
@@ -45,18 +45,18 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
   @include clearfix;
 }
 
-.rgMainContent {
+.rg_MainContent {
   float: right;
   width: 75%;
 }
 
-.rgSubContent {
+.rg_SubContent {
   float: left;
   width: 25%;
 }
 
 /* !=== Group (.gp) - Level 4 - Semantic Groups of Components */
-.gp {
+[class^="gp_"] {
   z-index:0;
   clear:both;
   margin:0;
@@ -65,7 +65,6 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 }
 
 /* !=== Component (.cp) - Self-Contained Functional Modules (e.g. Main Navigation, Carousel, Body Content) */
-.cp,
 [class^=cp] {
   margin:0;
   padding:0;

@@ -43,6 +43,22 @@ Site.events = (function ($) {
         },
 
         /**
+         * Simple factory function to trigger a global message upon a delegated event
+         * @function
+         * @parameter eventType (string)
+         * @parameter selector (string)
+         * @parameter message (string)
+         *
+         */
+        createGlobalMessenger = function (eventType, selector, message) {
+          $body.on(eventType, selector, function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.publish(message);
+          });
+        },
+
+        /**
          * Simple factory function to bind a common delegated event listener to the <body> element
          * @function
          * @parameter eventType (string)
@@ -72,7 +88,8 @@ Site.events = (function ($) {
 
     return {
       init: init,
-      createDelegatedEventListener: createDelegatedEventListener
+      createDelegatedEventListener: createDelegatedEventListener,
+      createGlobalMessenger: createGlobalMessenger
     };
 
 }(jQuery));

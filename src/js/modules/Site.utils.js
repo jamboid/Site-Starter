@@ -99,13 +99,13 @@ Site.utils = (function ($) {
               elementTop = elementOffset.top,
               elementHeight = $element.height();
 
-              if ( elementTop < (scrollTop + windowHeight)  && (elementTop + elementHeight) > scrollTop ) {
-                return true;
-              } else if ( (elementTop + elementHeight) > scrollTop && (elementTop + elementHeight) < (scrollTop + windowHeight) ) {
-                return true;
-              } else {
-                return false;
-              }
+          if ( elementTop < (scrollTop + windowHeight)  && (elementTop + elementHeight) > scrollTop ) {
+            return true;
+          } else if ( (elementTop + elementHeight) > scrollTop && (elementTop + elementHeight) < (scrollTop + windowHeight) ) {
+            return true;
+          } else {
+            return false;
+          }
         },
 
         /**
