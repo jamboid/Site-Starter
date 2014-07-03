@@ -1,7 +1,12 @@
 /* != Framework Module - LAYOUT */
 
+//
+// @variables
+//
+
 $maxPageWidth: em(1000);
 $fixedContentWidth: em(900);
+$deviceWidth:device-width;
 
 /*  !== Fixed Width Layout */
 @mixin page-content-width {
