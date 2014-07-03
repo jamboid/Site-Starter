@@ -1,15 +1,13 @@
 /* != Scrollers  */
 /* NOTE: These are basic styles for the JS scroller module (Site.scroller.js) in the /assets/js folder */
 
-.cpScroller {
+.cp_Scroller {
     margin:20px 0;
     position:relative;
     height:100%;
     overflow:hidden;
 
   .in {
-      padding:0 0 3px;
-      margin:0 15px;
       position:relative;
       height:100%;
       background:none;
@@ -76,7 +74,7 @@
 }
 
 .js {
-  .cpScroller {
+  .cp_Scroller {
     ul {
       overflow:hidden;
     }
@@ -89,7 +87,7 @@
 
 /*  IE7 styles */
 .ie7 {
-  .cpScroller {
+  .cp_Scroller {
     ul {
       li {
         display:inline;

@@ -18,7 +18,11 @@
 
 @mixin cpDefaultLayout {
   @include rem(padding, 0);
-  @include rem(margin, 0 15px 30px);
+  @include rem(margin, 0 45px 45px);
+
+  @include mq($mqLuke){
+    @include rem(margin, 0 20px 30px);
+  }
 }
 
 %cpDefaultLayout {

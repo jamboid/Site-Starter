@@ -50,6 +50,11 @@ Site.images = (function ($) {
               imageLoaded = true;
             },
 
+            /**
+             * Display a lazy-loading image as a CSS background image
+             * @function
+             * @parameter path (String)
+             */
             displaySpriteImageAsBackground = function (path) {
               var spriteImage = 'url(' + path + ')',
                   spriteBackgroundPos = $thisSprite.data('position'),
@@ -60,8 +65,11 @@ Site.images = (function ($) {
               imageLoaded = true;
             },
 
-            // Create and preload a new image based on a sprite src
-            // then call a function once the image is loaded into memory
+            /**
+             * Create and preload a new image based on a sprite src
+             * then call a function once the image is loaded into memory
+             * @function
+             */
             getSpriteImageFile = function () {
               var thisImageData = 'src-' + Site.layout.getResponsiveSize(),
                   thisImageUrl = $thisSprite.data(thisImageData);
@@ -75,7 +83,10 @@ Site.images = (function ($) {
                 }
             },
 
-            // Check if a sprite is in view, and if so load and display it
+            /**
+             * Check if a sprite is in view, and if so load and display it
+             * @function
+             */
             loadSpriteImageIfInView = function () {
               if(imageType === 'inline') {
                 if(Site.utils.isElementInView($thisSprite) && imageLoaded === false){
@@ -88,6 +99,10 @@ Site.images = (function ($) {
               }
             },
 
+            /**
+             * Bind custom message events for this object
+             * @function
+             */
             bindCustomMessageEvents = function () {
               // Load lazy images
               $thisSprite.on('loadLazyImage', function (e) {
@@ -98,7 +113,10 @@ Site.images = (function ($) {
               });
             },
 
-            // Subscribe object to Global Messages
+            /**
+             * Subscribe object to Global Messages
+             * @function
+             */
             subscribeToEvents = function () {
 
               Site.utils.cl(loadingMethod);
@@ -111,6 +129,10 @@ Site.images = (function ($) {
               }
             };
 
+        /**
+         * Initialise this object
+         * @function
+         */
         this.init = function () {
 
           if(loadingMethod === 'click') {
@@ -143,22 +165,27 @@ Site.images = (function ($) {
   // Functions //
   ///////////////
 
-      // Add delegate event listeners for this module
+      /**
+       * Create delegate event listeners for this module
+       * @function
+       */
       delegateEvents = function () {
         Site.events.createDelegatedEventListener('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
       },
 
-      setLazyLoadImages = function () {
+      /**
+       * init function for this module
+       * @function
+       */
+      init = function () {
+        Site.utils.cl("Site.images initialised");
+
         $(lazyImageSel).each(function () {
           var thisLazyImage = new LazyImage(this);
           thisLazyImage.init();
         });
-        delegateEvents();
-      },
 
-      init = function () {
-        Site.utils.cl("Site.images initialised");
-        setLazyLoadImages();
+        delegateEvents();
       };
 
   ///////////////////////

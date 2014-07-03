@@ -30,6 +30,8 @@ The following Tools are required to process this Sass framework correctly:
 @import "components/videos";
 
 /* !== Components */
+@import "components/atom-animations";
+@import "components/atom-buttons";
 @import "components/prose";
 @import "components/brand";
 @import "components/navigation";
@@ -39,7 +41,7 @@ The following Tools are required to process this Sass framework correctly:
 @import "components/grid-modules";
 @import "components/filter";
 @import "components/ratio-grid";
-@import "components/animations";
+
 
 
 /* !== Extras */

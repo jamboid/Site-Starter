@@ -1,6 +1,6 @@
 /* != Grid Modules Styles */
 
-.rgGridModule {
+.rg_GridModule {
   display: table;
   width: 100%;
   @include mq($mqLeia) {
@@ -8,7 +8,7 @@
   }
 }
 
-.gpGrid {
+.gp_Grid {
   display: table-cell;
   width: 50%;
   vertical-align: top;
@@ -18,12 +18,7 @@
     width: 100%;
   }
 
-  &.gpFlexImage {
-    background:url("http://placehold.it/600x1000/333333/CCFF49/&text=Portrait Image") bottom left no-repeat;
-    background-size:cover;
-  }
-
-  .cp {
+  [class^="cp_"] {
     .in {
       margin: 0;
     }
@@ -36,28 +31,32 @@
       width: 100%;
     }
   }
-}
 
-.gpGridImage {
-  background-size:contain;
-  vertical-align:top;
+  // Flex image variant
+  &--flex-image {
+    background:url("http://placehold.it/600x1000/333333/CCFF49/&text=Portrait Image") bottom left no-repeat;
+    background-size:cover;
+    vertical-align:top;
 
-  @include mq($mqArtoo){
-    display: none;
+    @include mq($mqArtoo){
+      display: none;
+    }
   }
 }
 
-.gpTopGrid {
+
+
+.gp_TopGrid {
   background:$clrWhite url(img/top_image_back.png) bottom center repeat-y;
   background-size:contain;
 }
 
-.gpBottomGrid {
+.gp_BottomGrid {
   background:$clrWhite url(img/bottom_image_back.png) bottom center repeat-y;
   background-size:contain;
 }
 
-.cpGridCopy {
+.cp_GridCopy {
   .in {
     padding:em(20);
     background:$clrWhite;

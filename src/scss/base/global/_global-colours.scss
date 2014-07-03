@@ -52,6 +52,9 @@ $clrWhite: #fff;
 $clrBlue: #428BCA;
 $clrLightBlue:#78a0da;
 
+/* ! Reds */
+$clrRed:#ca1b1b;
+
 /* ! Greens */
 $clrGreen: #5d8c12;
 
@@ -68,6 +71,9 @@ $clrBlueGradientHover:linear-gradient($clrBlue, darken($clrBlue, 15));
 
 /* !=== SEMANTIC VARIABLES */
 /* NOTE: Use COLOUR-DESCRIPTIVE VARIABLES to define these. Don't add hex/rgb/rgba values directly */
+
+
+$clrSchemeColour: $clrBlue;
 
 /* Document */
 $clrBodyBack: $clrDarkGrey;

@@ -41,7 +41,6 @@ Site.showhide = (function ($) {
 
               // Toggle Show/Hide control
               toggleControl = function () {
-
                 if($thisNipper.hasClass('isClosed')){
                   if(animate === true){
                     $thisContent .slideDown(speed, function () {
@@ -108,8 +107,7 @@ Site.showhide = (function ($) {
           Site.utils.cl("Site.showhide.init called");
 
           // Setup show/hide components
-          var showHideComps = $(defaults.selPlugin);
-          $(showHideComps).each(function () {
+          $(defaults.selPlugin).each(function () {
             var thisNipper = new Nipper(this);
             thisNipper.init();
           });

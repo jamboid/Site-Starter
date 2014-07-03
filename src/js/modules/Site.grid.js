@@ -50,7 +50,6 @@ Site.grid = (function ($) {
               var windowWidthPix = $(window).width(),
                   cellWidthPix = $(cell).width(),
                   cellWidth = Math.round(windowWidthPix / cellWidthPix);
-
                   return cellWidth;
             },
 

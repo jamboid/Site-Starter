@@ -18,7 +18,9 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     size = require('gulp-filesize'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+    assemble = require('gulp-assemble');
+
 
 ///////////
 // Paths //
@@ -34,7 +36,7 @@ var paths = {
     'build/img'
   ],
   // CSS Root
-  cssRoot: 'build/css',
+  cssRoot: 'build/assets/css',
   // Sass files
   sassFiles: 'src/scss/**/*.scss',
   // 3rd party scripts
@@ -48,22 +50,34 @@ var paths = {
   // Root script for manging modules
   rootScript: 'src/js/Site.js',
   // Root directory for compiled JS file
-  jsRoot : 'build/js/',
+  jsRoot : 'build/assets/js/',
   // Inline images source
   inlineImagesSrc : 'src/img/inline/**/*',
   // Inline images destination
-  inlineImagesBuild : 'build/img',
+  inlineImagesBuild : 'build/assets/img',
   // CSS images source
   cssImagesSrc: 'src/img/css/**/*',
   // CSS images destination
-  cssImagesBuild: 'build/css/img',
+  cssImagesBuild: 'build/assets/css/img',
   // Fonts source
   fontsSrc: 'src/fonts/**/*',
   // Fonts destination
-  fontsBuild: 'build/fonts',
-  // Pages source
-  pageSource: 'src/pages/*.html'
+  fontsBuild: 'build/assets/fonts',
+  // Templates source
+  templateFiles: 'src/templates/**/*.hbs'
 };
+
+var options = {
+  data: 'data/*.json',
+  partials: 'src/templates/partials/**/*.hbs',
+  layout: 'src/templates/layouts/default.hbs'
+};
+
+gulp.task('assemble', function () {
+  gulp.src('src/templates/pages/*.hbs')
+    .pipe(assemble(options))
+    .pipe(gulp.dest('build/'));
+});
 
 ///////////////
 // Functions //
@@ -113,12 +127,17 @@ gulp.task('styles', function() {
     .pipe(sass({
       style: 'expanded',
       includePaths : ['src/scss/'],
-      errLogToConsole: true
+      errLogToConsole: false,
+      onError: function(err) {
+        return notify().write(err);
+      }
     }))
+    .on('error', notify.onError(options))
     .pipe(autoprefixer('last 2 versions','> 1%', 'ie 8', 'ie 9'))
     .pipe(minifycss())
     .pipe(size())
-    .pipe(gulp.dest(paths.cssRoot));
+    .pipe(gulp.dest(paths.cssRoot))
+    .pipe(notify("CSS Compiled"));
 });
 
 
@@ -128,7 +147,8 @@ gulp.task('styles', function() {
 
 gulp.task('clean', function () {
   return gulp.src(path.buildDirs, {read: false} )
-    .pipe(clean());
+    .pipe(clean())
+    .pipe(notify("Files cleaned"));
 });
 
 //////////////////////
@@ -148,7 +168,8 @@ gulp.task('processJS-development',['lintJS'], function () {
   return gulp.src([paths.libScripts, paths.rootScript, paths.moduleScripts])
   .pipe(concat('Site.min.js'))
   .pipe(gulp.dest(paths.jsRoot))
-  .pipe(size());
+  .pipe(size())
+  .pipe(notify("JS Compiled"));
 });
 
 // Process JS files with production settings
@@ -159,7 +180,8 @@ gulp.task('processJS-production',['lintJS'], function () {
   }))
   .pipe(concat('Site.min.js'))
   .pipe(gulp.dest(paths.jsRoot))
-  .pipe(size());
+  .pipe(size())
+  .pipe(notify("JS Compiled"));
 });
 
 // Minify standalone JS library files and copy them to the build/js folder
@@ -205,7 +227,7 @@ gulp.task('copyPages', function () {
 });
 
 // Composite Tasks
-gulp.task('copy-files', ['copyInlineImages','copyCssImages','copyFonts', 'copyPages']);
+gulp.task('copy-files', ['copyInlineImages','copyCssImages','copyFonts']);
 
 /////////////////
 // Clean tasks //
@@ -223,7 +245,7 @@ gulp.task('clean', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.processScripts, ['scripts-development']);
   gulp.watch(paths.sassFiles, ['styles']);
-  gulp.watch(paths.pageSource,['copyPages']);
+  gulp.watch(paths.templateFiles,['assemble']);
 });
 
 /////////////////////
@@ -231,7 +253,7 @@ gulp.task('watch', function() {
 /////////////////////
 
 // Default gulp task - AKA the top-level Development workflow task
-gulp.task('default', ['styles', 'scripts-development','copy-files', 'watch']);
+gulp.task('default', ['styles', 'scripts-development','copy-files','assemble', 'watch']);
 
 // Production task - AKA the top-level workflow task for creating production-ready code
-gulp.task('production', ['styles', 'scripts-production', 'copy-files']);
+gulp.task('production', ['styles', 'scripts-production', 'copy-files','assemble']);

@@ -26,10 +26,10 @@ Site.init = (function ($) {
       $(document).ready(function () {
         Site.utils.init();
         Site.events.init();
-        Site.showhide.init();
         Site.navigation.init();
         Site.images.init();
         Site.media.init();
+        Site.showhide.init();
         Site.carousel.init();
         Site.scroller.init();
         Site.filter.init();

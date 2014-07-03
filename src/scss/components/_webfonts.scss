@@ -3,24 +3,24 @@
 /* !== Styles for hiding text until webfonts load and then fading it on nicely */
 
 /* !=== For use with the Site.webfonts.js module */
-.js .st {
+.js [class^="st_"] {
   opacity:0;
   filter: alpha(opacity=0);
 }
 
-.js .showText .st {
+.js .showText [class^="st_"] {
   opacity:1;
   filter: alpha(opacity=1);
 }
 
 /* Styles for Google Webfont loader */
-.wf-loading body .st {
+.wf-loading body [class^="st_"] {
   opacity:0 !important;
   filter: alpha(opacity=0)!important;
 }
 
-.wf-active body .st,
-.wf-inactive body .st {
+.wf-active body [class^="st_"],
+.wf-inactive body [class^="st_"] {
   opacity:1 !important;
   filter: alpha(opacity=1)!important;
   -webkit-transition: opacity .5s ease-out;

@@ -1,12 +1,18 @@
 /* != Brand Styles */
 
-.cpBrand {
+.cp_Brand {
   .in {
     padding:em(10) 0;
     margin-bottom: 0;
+  }
+}
 
-    @include mq($mqLuke){
-      text-align: center;
-    }
+.brandName {
+  @include rem(font-size, 32px);
+  @include rem(margin, 10px 0 10px 50px);
+  color: $clrSchemeColour;
+
+  span {
+    color:lighten($clrSchemeColour,20);
   }
 }
