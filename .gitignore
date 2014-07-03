@@ -55,7 +55,7 @@ npm-debug.log
 *.sublime-workspace
 codekit-config.json
 
-# Other Source Control
+# Other Source Control systems
 .svn
 
 # Codekit
