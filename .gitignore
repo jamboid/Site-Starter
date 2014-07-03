@@ -62,4 +62,4 @@ codekit-config.json
 .codekit-cache
 
 # Build directory
-/build
+build

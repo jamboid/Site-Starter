@@ -1,5 +1,8 @@
 /* != Framework Module - LAYOUT */
 
+$maxPageWidth: em(1000);
+$fixedContentWidth: em(900);
+
 /*  !== Fixed Width Layout */
 @mixin page-content-width {
   width:$fixedContentWidth;
