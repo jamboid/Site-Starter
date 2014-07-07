@@ -33,12 +33,12 @@
   @include mq($mqLuke){
     left:20px;
   }
+}
 
-  a {
-    display: block;
-    width: 30px;
-    height: 30px;
-  }
+.toggleAction {
+  display: block;
+  width: 30px;
+  height: 30px;
 }
 
 .navIconLine {
@@ -141,11 +141,9 @@
 
 
 .navVisible {
-  .nvToggle {
-    a {
-      &:after {
-        background-position: -255px -31px;
-      }
+  .toggleAction {
+    &:after {
+      background-position: -255px -31px;
     }
   }
 }
