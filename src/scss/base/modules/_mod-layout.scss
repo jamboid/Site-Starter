@@ -18,42 +18,6 @@ $deviceWidth:device-width;
 }
 
 
-/* !== Component Margins and Padding */
-
-/*
- * Mixins and Placeholders for default/base component layout padding and margins
- */
-
-@mixin cpDefaultLayout {
-  @include rem(padding, 0);
-  @include rem(margin, 0 45px 45px);
-
-  @include mq($mqLuke){
-    @include rem(margin, 0 20px 30px);
-  }
-}
-
-%cpDefaultLayout {
-  @include cpDefaultLayout;
-}
-
-@mixin cpTextPadding {
-  @include rem(padding, 40px);
-
-  @include mq($mqHan) {
-    @include rem(padding, 30px);
-  }
-
-  @include mq($mqLuke) {
-    @include rem(padding, 20px);
-  }
-}
-
-%cpTextPadding {
-  @include cpTextPadding;
-}
-
-
 /* !== Set opacity with legacy browser fallbacks */
 @mixin opacity($trans) {
   -ms-filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})");
