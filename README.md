@@ -10,7 +10,7 @@ This is my personal boilerplate for beginning front-end development projects usi
 
 ## Workflow
 
-The assets are located in the /src directory. A Gulp-based workflow is included that processes them and outputs demo files to a /build directory.
+This boilerplate uses CodeKit 2 for its asset pipeline and the generation of the included demo pages.
 
 ### Sass Versions
 
