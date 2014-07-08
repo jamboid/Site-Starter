@@ -35,7 +35,7 @@ Site.tabs = (function ($) {
                   // Function to call when tab-switching complete
                   transitionComplete = function () {
                     // Fire event to be heard by global delegate (Site.events.js)
-                    $(thisAction).trigger('layoutchange');
+                    $(thisAction).trigger('layout/change');
                   };
 
                   if(!$thisControl.hasClass('current')) {

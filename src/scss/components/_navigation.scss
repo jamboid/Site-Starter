@@ -2,15 +2,15 @@
 /* NOTE: Put styles for all navigation menu in here */
 
 /* !== Main Navigation  */
-.cpMainNav {
+.cp_MainNav {
   .menu {
     display: table;
     display:flex;
     flex-wrap:wrap;
 
-    @include mq($mqLuke){
+    //@include mq($mqLuke){
       display: none;
-    }
+    //}
   }
 
   li {
@@ -32,7 +32,7 @@
 }
 
 /* !== Sub Navigation */
-.cpSubNav {
+.cp_SubNav {
   .menu {
     li {
       display: block;

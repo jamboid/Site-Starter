@@ -11,9 +11,9 @@ Site.filter = (function($) {
           plugin: '[data-plugin=filterList]',
           pluginFilterList: '[data-filter-list=list]',
           pluginFilterControl: '[data-filter-list=filter]',
-          filterSel: '.cpFilter .filterCategories li, .cpFilter .filterReset',
+          filterSel: '.cp_Filter .filterCategories li, .cp_Filter .filterReset',
           categorySel: '.indexCategory .delta',
-          letterSel: '.cpAtoZ [data-filter]',
+          letterSel: '.cp_Filter--a-to-z [data-filter]',
           itemSel: '.categoryList li',
           transitionSpeed: 500
         },

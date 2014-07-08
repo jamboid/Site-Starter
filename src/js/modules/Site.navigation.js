@@ -10,7 +10,8 @@ Site.navigation = (function ($) {
   // Variables //
   ///////////////
 
-  var selNav = ".cpMainNav",
+  var selNav = ".cp_MainNav",
+      selWrapper = ".wrapper",
       selNavToggle = ".nvToggle [data-action=toggle]",
       selNavMenu = "ul.menu",
       transitionTime = 200,
@@ -59,11 +60,21 @@ Site.navigation = (function ($) {
             },
 
             /**
+             * Open Nav Menu if it is closed
+             * @function
+             */
+            openMainNav = function () {
+              if ($body.hasClass("navVisible") === false) {
+                $body.addClass("navVisible");
+              }
+            },
+
+            /**
              * Clone main nav menu into a slide menu container and append it inside the <body> tag
              * @function
              */
             createSlideMenu = function () {
-              var $slideMenu = $('<div class="cpSlideMenu">').append($menu.clone().addClass('mnSlide'));
+              var $slideMenu = $('<div class="cp_SlideMenu">').append($menu.clone().addClass('mnSlide'));
               $body.append($slideMenu);
             },
 
@@ -83,6 +94,7 @@ Site.navigation = (function ($) {
              */
             subscribeToEvents = function () {
               $.subscribe('page/resize', function () { $(this).trigger('updatelayout');} , $thisMainNav);
+              $.subscribe('navigation/close', function () { $(this).trigger('closeMainNav');} , $thisMainNav);
             },
 
             /**
@@ -93,6 +105,16 @@ Site.navigation = (function ($) {
               $thisMainNav.on('toggleMainNav', function (e) {
                 e.preventDefault();
                 toggleMainNav();
+              });
+
+              $thisMainNav.on('openMainNav', function (e) {
+                e.preventDefault();
+                openMainNav();
+              });
+
+              $thisMainNav.on('closeMainNav', function (e) {
+                e.preventDefault();
+                closeMainNav();
               });
 
               $thisMainNav.on('updatelayout', function (e) {
@@ -114,7 +136,7 @@ Site.navigation = (function ($) {
       },
 
       /**
-       * Creates an InPageLink object to manage an deep-link navigation item
+       * Creates an InPageLink object to manage a deep-link navigation item
        * @constructor
        */
       InPageLink = function (elem) {
@@ -167,6 +189,8 @@ Site.navigation = (function ($) {
        * @function
        */
       delegateEvents = function () {
+
+        // Create delegated event listeners
         if(Modernizr.touch) {
           Site.events.createDelegatedEventListener('click', selNavToggle, 'toggleMainNav');
         } else {
@@ -174,6 +198,9 @@ Site.navigation = (function ($) {
         }
 
         Site.events.createDelegatedEventListener('click', selInPageLink, 'inpagelink');
+
+        // Create global messengers
+        Site.events.createGlobalMessenger('click', selWrapper, 'navigation/close');
       },
 
       /**

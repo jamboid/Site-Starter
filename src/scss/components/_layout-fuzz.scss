@@ -9,71 +9,73 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
 /* Basic styles for 5 levels of the framework */
 
 /* !=== Stages (.st) - Level 1 - Full Width Container(s) */
-[class^=st] {
+[class^=st_] {
   position: relative;
   width:100%;
 }
 
-.stHeader {
+.st_Header {
   background:$clrWhite;
   color:$clrLightGrey;
 }
 
-.stPage {
+.st_Page {
   background:$clrWhite;
   color:$clrDarkGrey;
 }
 
-.stFooter {
+.st_Footer {
   padding: em(20) 0;
-  background:$clrDarkGreyGradient;
+  background:darken($clrSchemeColour,25);
   color:$clrWhite;
 }
 
 /* !=== Field (.fd) - Level 2 - Horizontal Page Sections (e.g. Header, Page Content, Footer) */
 /* NOTES: Set fixed/non-MQ width and then add a null MQ to set width for MQ-compatible browsers */
-[class^=fd] {
-  @include clearfix;
+[class^=fd_] {
+  @extend %clearfix;
   clear:both;
-  margin:0 auto;
-  padding:0;
+  position: relative;
   @include page-content-width;
 }
 
 /* !=== Region (.rg) - Level 3 - Significant Page Regions (e.g. Main Content, Sub Content) */
-[class^=rg] {
-  @include clearfix;
+[class^=rg_] {
+  @extend %clearfix;
 }
 
-.rgMainContent {
+.rg_MainContent {
   float: right;
   width: 75%;
 }
 
-.rgSubContent {
+.rg_SubContent {
   float: left;
   width: 25%;
 }
 
 /* !=== Group (.gp) - Level 4 - Semantic Groups of Components */
-.gp {
+[class^="gp_"] {
   z-index:0;
   clear:both;
-  margin:0;
-  padding:0;
   width:100%;
 }
 
 /* !=== Component (.cp) - Self-Contained Functional Modules (e.g. Main Navigation, Carousel, Body Content) */
-.cp,
-[class^=cp] {
-  margin:0;
-  padding:0;
+[class^=cp_] {
   width:100%;
 }
 
 /* !=== Inner (.in) - Component Inner Container - Set Component styles and layout using this element */
 .in {
-  @include clearfix;
-  @include cpDefaultLayout;
+  @extend %clearfix;
+  @include rem(margin, 0 45px 45px);
+
+  @include mq($mqHan) {
+    @include rem(margin, 0 30px 30px);
+  }
+
+  @include mq($mqLuke){
+    @include rem(margin, 0 20px 30px);
+  }
 }

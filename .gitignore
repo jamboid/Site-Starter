@@ -53,12 +53,13 @@ npm-debug.log
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
+codekit-config.json
 
-# Other Source Control
+# Other Source Control systems
 .svn
 
 # Codekit
 .codekit-cache
 
 # Build directory
-/build
+build

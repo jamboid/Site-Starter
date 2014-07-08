@@ -1,7 +1,7 @@
 /* !== Slide Menu */
 
 .wrapper,
-.cpSlideMenu,
+.cp_SlideMenu,
 .mnSlide {
   transition:left .25s ease, transform .4s ease-out;
   position: relative;
@@ -14,7 +14,7 @@
   z-index: 10;
   left: 0;
   background:$clrWhite;
-  box-shadow:-5px 0 35px rgba($clrBlack, 0.4);
+  //box-shadow:-5px 0 35px rgba($clrBlack, 0.4);
 }
 
 // Basic styles for the .nvToggle toggle button including the breakpoint
@@ -24,26 +24,29 @@
   display: none;
   position: absolute;
   top:30px;
-  left: 20px;
-  width: 30px;
-  height: 28px;
-  text-indent: -9999px;
-  background:transparent url(img/nav_icon.svg);
-  background-size:30px 28px;
+  left: 45px;
+  width: 24px;
+  height: 24px;
+  text-align: left;
+  display: block;
 
   @include mq($mqLuke){
-    display: block;
-  }
-
-  a {
-    display: block;
-    width: 30px;
-    height: 30px;
+    left:20px;
   }
 }
 
+.toggleAction {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
 
-.cpSlideMenu {
+.navIconLine {
+  fill:$clrSchemeColour;
+}
+
+
+.cp_SlideMenu {
   width: 260px;
   z-index: 0;
   position: absolute;
@@ -51,9 +54,9 @@
   left:0;
   display: none;
 
-  @include mq($mqLuke){
+  //@include mq($mqLuke){
     display: block;
-  }
+  //}
 
   @include mq($mqArtoo){
     width: 260px;
@@ -71,7 +74,7 @@
     }
 
     li {
-      margin-bottom: 5px;
+      margin-bottom: 1px;
     }
   }
 
@@ -98,7 +101,7 @@
   }
 }
 
-@include mq($mqLuke){
+//@include mq($mqLuke){
   html {
     overflow-x: hidden !important;
   }
@@ -116,7 +119,7 @@
       //left:calc(100% - 58px);
     }
 
-    .cpSlideMenu {
+    .cp_SlideMenu {
       left: 0;
 
       .menu {
@@ -125,7 +128,7 @@
       }
     }
   }
-}
+//}
 
 @include mq($mqArtoo) {
   .navVisible {
@@ -138,11 +141,9 @@
 
 
 .navVisible {
-  .nvToggle {
-    a {
-      &:after {
-        background-position: -255px -31px;
-      }
+  .toggleAction {
+    &:after {
+      background-position: -255px -31px;
     }
   }
 }
