@@ -52,8 +52,6 @@ Site.events = (function ($) {
          */
         createGlobalMessenger = function (eventType, selector, message) {
           $body.on(eventType, selector, function (e) {
-            e.preventDefault();
-            e.stopPropagation();
             $.publish(message);
           });
         },
