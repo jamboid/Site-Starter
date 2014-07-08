@@ -14,7 +14,7 @@ This boilerplate uses CodeKit 2 for its asset pipeline and the generation of the
 
 ### Sass Versions
 
-The Gulp file allows for the use both the gulp-sass (using libsass) and gulp-ruby-sass (using ruby sass) packages. If you need to use the latest Sass features found in Sass 3.3, using the gulp-ruby-sass package. Otherwise, the gulp-sass is much faster and the preferred choice.
+Sass 3.3 is the default configuration. Libsass, the implementation of Sass in C, still isn't mature enough for me to use in production, although CodeKit has it built in if required.
 
 ## Author
 
