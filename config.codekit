@@ -165,6 +165,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/assets\/js\/modules\/min\/Site.namespace-ck.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/modules\/min\/Site.namespace-ck.js",
+		"outputAbbreviatedPath": "\/assets\/js\/modules\/min\/min\/Site.namespace-ck-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/assets\/js\/modules\/Site.analytics.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -283,7 +294,7 @@
 		"outputAbbreviatedPath": "\/assets\/js\/Site.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/assets\/js\/modules\/Site.layout.js": {

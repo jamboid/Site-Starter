@@ -279,6 +279,16 @@ Site.analytics = (function ($) {
           Site.events.createDelegatedEventListener('click', externalLinkSel, 'trackExternalLink');
         },
 
+
+        /**
+         * Create new PageLink object for anchors added to DOM after 'document ready'
+         * @function
+         */
+        createPageLink = function (elem) {
+          var thisLink = new PageLink(elem);
+          thisLink.init();
+        },
+
         /**
          * Initialise this module
          * @function
@@ -305,6 +315,7 @@ Site.analytics = (function ($) {
       trackPageView: trackPageView,
       trackPageEvent: trackPageEvent,
       trackPageLoadInformation: trackPageLoadInformation,
-      deleteCustomVariable: deleteCustomVariable
+      deleteCustomVariable: deleteCustomVariable,
+      createPageLink: createPageLink
     };
 }(jQuery));

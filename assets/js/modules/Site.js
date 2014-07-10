@@ -26,6 +26,7 @@ Site.init = (function ($) {
       $(document).ready(function () {
         Site.utils.init();
         Site.events.init();
+        Site.analytics.init();
         Site.layout.init();
         Site.navigation.init();
         Site.images.init();
@@ -34,7 +35,6 @@ Site.init = (function ($) {
         Site.carousel.init();
         Site.scroller.init();
         Site.filter.init();
-        Site.analytics.init();
         Site.loading.init();
       });
     };
