@@ -199,7 +199,7 @@ Site.navigation = (function ($) {
 
         Site.events.createDelegatedEventListener('click', selInPageLink, 'inpagelink');
 
-        // Create global messengers
+        // Create a global messenger for a click event on the page wrapper (or any child element)
         Site.events.createGlobalMessenger('click', selWrapper, 'navigation/close');
       },
 

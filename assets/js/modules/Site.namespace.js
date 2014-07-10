@@ -67,6 +67,15 @@ Site.namespace = (function ($) {
         },
 
         /**
+         * Initialise a new Object for an element added after the DOM is ready
+         * @function
+         */
+         createObject = function (elem) {
+           var newObject = new Object(elem);
+            newObject.init();
+         },
+
+        /**
          * init function for this module
          * @function
          */
@@ -88,7 +97,8 @@ Site.namespace = (function ($) {
   ///////////////////////
 
     return {
-      init: init
+      init: init,
+      createObject:createObject
     };
 
 }(jQuery));

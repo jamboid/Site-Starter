@@ -13,16 +13,19 @@ a {
 }
 
 /* !==  More/Action link */
+
 .moreLink {
-  a {
-    @extend %buttonBase;
-    @include basicButton($clrWhite, $clrGreen);
-  }
+  @include buttonBase;
+  @include basicButton($clrWhite, $clrBlue);
 }
 
-a {
-  .moreLink {
-    @extend %buttonBase;
+// Colour variants
+.moreLink {
+  &--negative {
+    @include basicButton($clrWhite, $clrRed);
+  }
+
+  &--positive {
     @include basicButton($clrWhite, $clrGreen);
   }
 }

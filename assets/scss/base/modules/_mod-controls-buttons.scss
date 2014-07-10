@@ -18,7 +18,6 @@
 
 /* Mixin for Basic Button Styles */
 @mixin basicButton($color, $background, $hoverColor: $color, $hoverBackground: darken($background, 12)) {
-  @include buttonBase;
   color:$color;
   background:$background;
 
