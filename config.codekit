@@ -35,6 +35,15 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/css\/screen (Good iMac's conflicted copy 2014-07-16).css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/css\/screen (Good iMac's conflicted copy 2014-07-16).css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/assets\/css\/screen.css": {
 		"fileType": 16,
 		"ignore": 1,
