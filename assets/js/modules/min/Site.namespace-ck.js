@@ -1,1 +1,0 @@
-var Site=Site||{};Site.namespace=function(i){"use strict";var n="",t=function(){var i=function(){},n=function(){};this.init=function(){i(),n()}},e=function(){},c=function(i){var n=new t(i);n.init()},u=function(){Site.utils.cl("Site.namespace initialised"),i(n).each(function(){var i=new t(this);i.init()}),e()};return{init:u,createObject:c}}(jQuery);
