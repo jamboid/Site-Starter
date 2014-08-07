@@ -157,7 +157,6 @@ Site.scroller = (function ($) {
                 // Bind updateLayout event listener for updating scroller on global layoutChange message
                 $thisScroller.on('updateLayout', function (e) {
                   e.preventDefault();
-
                   setupLayout();
                 });
 

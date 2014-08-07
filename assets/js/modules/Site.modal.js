@@ -12,11 +12,11 @@ Site.modal = (function ($) {
   ///////////////
 
     var modalSel = ".modalSource",
-        modalCloseSel = '.cpModal .close',
-        modalContinueSel = '.cpModal .continueLink a',
+        modalCloseSel = '.cp_Modal .close',
+        modalContinueSel = '.cp_Modal .continueLink a',
         modalContentSel = '.modalContent',
         modalScreenSel = '.modalScreen',
-        modalTemplate = '<div class="modalContent"><div id="confirmation-popup" class="cpModal cp"><div class="in modalContentContainer"><div class="close"><a href="#">Close</a></div></div></div></div>',
+        modalTemplate = '<div class="modalContent"><div id="confirmation-popup" class="cp_Modal"><div class="in modalContentContainer"><div class="close"><a href="#">Close</a></div></div></div></div>',
         modalScreenTemplate = "<div class='modalScreen'></div>",
         $window = $(window),
         $body = $('body'),
@@ -132,7 +132,7 @@ Site.modal = (function ($) {
            * @function
            */
           subscribeToEvents = function () {
-            $.subscribe('debouncedresize', function () {$(this).trigger('updatelayout');},$thisModal);
+            $.subscribe('page/resize', function () {$(this).trigger('updatelayout');},$thisModal);
           };
 
           /**
@@ -226,9 +226,9 @@ if (thisModalType === 'inpage') {
          * @function
          */
         delegateEvents = function () {
-          Site.events.delegateEventFactory('click', modalCloseSel, 'closeModal');
-          Site.events.delegateEventFactory('click', modalContinueSel, 'closeModal');
-          Site.events.delegateEventFactory('click', modalScreenSel, 'closeModal');
+          Site.events.createDelegatedEventListener('click', modalCloseSel, 'closeModal');
+          Site.events.createDelegatedEventListener('click', modalContinueSel, 'closeModal');
+          Site.events.createDelegatedEventListener('click', modalScreenSel, 'closeModal');
         },
 
         /**

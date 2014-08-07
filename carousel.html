@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -45,8 +44,7 @@
           <ul class="menu">
             <li><a href="/">Home</a></li>
             <li><a href="forms.html">Form Elements</a></li>
-            <li><a href="scroller.html">Scroller</a></li>
-            <li><a href="carousel.html">Carousel</a></li>
+            <li><a href="carousel.html">Carousels</a></li>
             <li><a href="layout.html">Layout</a></li>
             <li><a href="images.html">Images</a></li>
             <li><a href="videos.html">Videos</a></li>
@@ -56,42 +54,81 @@
       </div>
     </div>
   </header>
-
 <div class="fd_PageSection">
   <div class="rg_Section">
 
     <!-- Section Toggle -->
     <div class="cp_SectionToggle">
       <div class="in">
-        <h2 class="ttComp">Carousel</h2>
+        <h2 class="ttComp">Fade Carousel</h2>
       </div>
     </div>
 
 
-    <div class="cp_Carousel" data-plugin="carousel" data-config='{"interval": 3000, "transition": 1000, "paused": true}'>
+    <div class="cp_Carousel--static cp_Carousel" data-plugin="carousel" data-config='{"interval": 2000, "transition": 500, "paused": true, "mode": "fade"}'>
       <div class="in">
         <ul class="slides cleanList">
           <li class="slide">
             <a href="#">
-              <img src="http://placehold.it/1200x770/666666/ffffff/&text=Slide+1" alt="placeholder_carousel_1" width="1024" height="766">
+              <img src="http://placehold.it/1200x770/666666/ffffff/&text=Slide+1" alt="placeholder_carousel_1" />
             </a>
           </li>
           <li class="slide">
             <a href="#">
-              <img src="http://placehold.it/1200x770/CC6666/ffffff/&text=Slide+2" alt="placeholder_carousel_2" width="1024" height="766">
+              <img src="http://placehold.it/1200x770/CC6666/ffffff/&text=Slide+2" alt="placeholder_carousel_2" />
             </a>
           </li>
           <li class="slide">
             <a href="#">
-              <img src="http://placehold.it/1200x770/66CC66/ffffff/&text=Slide+3" alt="placeholder_carousel_3" width="1024" height="766" />
+              <img src="http://placehold.it/1200x770/66CC66/ffffff/&text=Slide+3" alt="placeholder_carousel_3" />
             </a>
           </li>
         </ul>
+        <div class="scrollControls">
+          <a href="#" data-action="previous" class="scrollPrev moreLink">Previous</a>
+          <a href="#" data-action="next" class="scrollNext moreLink">Next</a>
+        </div>
       </div>
     </div>
+
+    <div class="cp_SectionToggle">
+      <div class="in">
+        <h2 class="ttComp">Scroll Carousel</h2>
+      </div>
+    </div>
+
+    <div class="cp_Carousel--scroll cp_Carousel" data-plugin="carousel" data-config='{"interval": 2000, "transition": 500, "paused": false, "mode": "scroll"}'>
+      <div class="in">
+        <ul class="slides cleanList"><li class="slide">
+            <a href="#">
+              <img src="http://placehold.it/1200x770/666666/ffffff/&text=Slide+1" alt="placeholder_carousel_1" />
+            </a>
+          </li><li class="slide">
+            <a href="#">
+              <img src="http://placehold.it/1200x770/CC6666/ffffff/&text=Slide+2" alt="placeholder_carousel_2" />
+            </a>
+          </li><li class="slide">
+            <a href="#">
+              <img src="http://placehold.it/1200x770/66CC66/ffffff/&text=Slide+3" alt="placeholder_carousel_3" />
+            </a>
+          </li><li class="slide">
+            <a href="#">
+              <img src="http://placehold.it/1200x770/CC6666/ffffff/&text=Slide+4" alt="placeholder_carousel_3" />
+            </a>
+          </li><li class="slide">
+            <a href="#">
+              <img src="http://placehold.it/1200x770/66CC66/ffffff/&text=Slide+5" alt="placeholder_carousel_3" />
+            </a>
+          </li></ul>
+        <div class="scrollControls">
+          <a href="#" data-action="previous" class="scrollPrev moreLink">Previous</a>
+          <a href="#" data-action="next" class="scrollNext moreLink">Next</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-
   <footer class="st_Footer">
     <div class="fd_PageFooter">
       <div class="cp_Legal">
