@@ -95,7 +95,7 @@ Site.map = (function ($) {
          * @function
          */
         delegateEvents = function () {
-          //Site.events.createDelegatedEventListener('click', sel, 'toggleMainNav');
+          //Site.events.delegate('click', sel, 'toggleMainNav');
 
         },
 

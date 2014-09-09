@@ -22,38 +22,43 @@ Site.events = (function ($) {
          * @function
          */
         bindGlobalMessages = function () {
-          // Handle 'layoutchange' event bubbled to <body> element
-          $body.on('layoutchange', function () {
-            $.publish('layout/change');
-          });
 
-          // Handle page scroll or (debounced) resize
+          // Handle page scroll
           $(window).on('scroll', function () {
             $.publish('page/scroll');
           });
 
+          // Handle debounced resize
           $(window).on('debouncedresize', function () {
             $.publish('page/resize');
           });
 
           // Register Hammer touch events on body
           // This lets you treat these touch events as the normal delegate events
+          // - CURRENTLY OVERKILL TO DO THIS - JUST BIND INDIVIDUAL COMPONENTS (e.g. See Carousel)
           //$body.hammer();
 
         },
 
         /**
          * Simple factory function to trigger a global message upon a delegated event
-         * - note that preventDefault and stopPropagation are not called
+         * - note that preventDefault is only called if the preventBubble parameter is false
          * @function
          * @parameter eventType (string)
          * @parameter selector (string)
          * @parameter message (string)
+         * @parameter preventBubble (boolean)
          *
          */
-        createGlobalMessenger = function (eventType, selector, message) {
+        createGlobalMessenger = function (eventType, selector, message, preventBubble) {
+
           $body.on(eventType, selector, function (e) {
-            $.publish(message);
+            if(preventBubble){
+              e.preventDefault();
+            }
+
+            // The message is published with the event object (e) as attached data
+            $.publish(message, e);
           });
         },
 
@@ -87,8 +92,8 @@ Site.events = (function ($) {
 
     return {
       init: init,
-      createDelegatedEventListener: createDelegatedEventListener,
-      createGlobalMessenger: createGlobalMessenger
+      delegate: createDelegatedEventListener,
+      global: createGlobalMessenger
     };
 
 }(jQuery));

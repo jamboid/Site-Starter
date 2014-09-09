@@ -21,17 +21,17 @@ The following Tools are required to process this Sass framework correctly:
 
 /* !== Global Rules */
 @import "components/document";
-@import "components/typography";
 @import "components/layout-page";
 @import "components/layout-fuzz";
-@import "components/forms";
-@import "components/links";
-@import "components/images";
-@import "components/videos";
+@import "components/atom-typography";
+@import "components/atom-typography-fonts";
+@import "components/atom-forms";
+@import "components/atom-links";
+@import "components/atom-images";
+@import "components/atom-videos";
+@import "components/atom-buttons";
 
 /* !== Components */
-@import "components/atom-animations";
-@import "components/atom-buttons";
 @import "components/prose";
 @import "components/brand";
 @import "components/navigation";
@@ -40,9 +40,7 @@ The following Tools are required to process this Sass framework correctly:
 @import "components/scrollers";
 @import "components/grid-modules";
 @import "components/filter";
-@import "components/ratio-grid";
-
-
+@import "components/animations";
 
 /* !== Extras */
 @import "components/states";

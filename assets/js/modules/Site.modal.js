@@ -12,11 +12,11 @@ Site.modal = (function ($) {
   ///////////////
 
     var modalSel = ".modalSource",
-        modalCloseSel = '.cpModal .close',
-        modalContinueSel = '.cpModal .continueLink a',
+        modalCloseSel = '.cp_Modal .close',
+        modalContinueSel = '.cp_Modal .continueLink a',
         modalContentSel = '.modalContent',
         modalScreenSel = '.modalScreen',
-        modalTemplate = '<div class="modalContent"><div id="confirmation-popup" class="cpModal cp"><div class="in modalContentContainer"><div class="close"><a href="#">Close</a></div></div></div></div>',
+        modalTemplate = '<div class="modalContent"><div id="confirmation-popup" class="cp_Modal"><div class="in modalContentContainer"><div class="close"><a href="#">Close</a></div></div></div></div>',
         modalScreenTemplate = "<div class='modalScreen'></div>",
         $window = $(window),
         $body = $('body'),
@@ -74,7 +74,8 @@ Site.modal = (function ($) {
                 windowHeight = $window.height(),
                 modalWidth = $thisModal.width(),
                 modalHeight = $thisModal.height(),
-                topPos = ((windowHeight-modalHeight)/2)-10,
+                scrollTop = $window.scrollTop(),
+                topPos = (((windowHeight-modalHeight)/2)+scrollTop)-10,
                 leftPos = ((windowWidth/2)-(modalWidth/2));
 
 
@@ -94,8 +95,8 @@ Site.modal = (function ($) {
            * @function
            */
           closeModal = function () {
-            // Merge objects so they can be faded out as one
             $thisModal.fadeOut(function () {
+              $thisModal.empty();
               $thisModal.remove();
             });
 
@@ -117,7 +118,6 @@ Site.modal = (function ($) {
 
             $thisModal.on('updatelayout', function (e) {
               e.preventDefault();
-              Site.utils.cl('Cart Modal: layout updated');
               positionModal();
             });
 
@@ -132,7 +132,8 @@ Site.modal = (function ($) {
            * @function
            */
           subscribeToEvents = function () {
-            $.subscribe('debouncedresize', function () {$(this).trigger('updatelayout');},$thisModal);
+            $.subscribe('page/resize', function () {$(this).trigger('updatelayout');},$thisModal);
+            $.subscribe('page/scroll', function () {$(this).trigger('updatelayout');},$thisModal);
           };
 
           /**
@@ -156,29 +157,28 @@ if (thisModalType === 'inpage') {
           };
         },
 
+
         /**
-         * Constructor for a Modal Link object that manages links on the page that should be opened in a modal iframe
+         * Creates a ModalLinkManager object to manage modal links
          * @constructor
-         * @parameter element (Object)
          */
-        ModalLink = function (element) {
-          var $thisModalLink = $(element),
-              modalLinkURL = $thisModalLink.attr('href'),
-              $modalLinkContent = $('<div class="iframe">'),
+        ModalLinkManager = function () {
+
+          var $modalLinkContent = $('<div class="iframe">'),
 
           /**
-           * Create an iframe using the modal link URL
+           * Display modal content
            * @function
            */
-          createIframeContent = function () {
-            var $iframeScaffold = $('<iframe></iframe>');
+          createModalContent = function (data) {
+            var $thisModalLink = $(data.target).closest(modalLinkSel),
+                modalLinkURL = $thisModalLink.attr('href'),
+                $iframeScaffold = $('<iframe></iframe>');
 
-            $iframeScaffold.attr('href',modalLinkURL).attr('width',600).attr('height',400);
-
+            $modalLinkContent.empty();
+            $iframeScaffold.attr('src',modalLinkURL).attr('width',600).attr('height',400);
             Site.utils.cl($iframeScaffold);
-
             $modalLinkContent.append($iframeScaffold);
-
             createModal();
           },
 
@@ -188,22 +188,11 @@ if (thisModalType === 'inpage') {
           },
 
           /**
-           * Bind custom message events for this object
-           * @function
-           */
-          bindCustomMessageEvents = function () {
-            $thisModalLink.on('click', function (e) {
-              e.preventDefault();
-              createIframeContent();
-            });
-          },
-
-          /**
            * Subscribe object to Global Messages
            * @function
            */
           subscribeToEvents = function () {
-
+            $.subscribe('display/modal', function (topic,data) { createModalContent(data); });
           };
 
           /**
@@ -211,8 +200,10 @@ if (thisModalType === 'inpage') {
            * @function
            */
           this.init = function () {
-            bindCustomMessageEvents();
             subscribeToEvents();
+            //initialiseNewModalLinks();
+
+            Site.utils.cl('modal link initialised');
           };
         },
 
@@ -226,9 +217,11 @@ if (thisModalType === 'inpage') {
          * @function
          */
         delegateEvents = function () {
-          Site.events.delegateEventFactory('click', modalCloseSel, 'closeModal');
-          Site.events.delegateEventFactory('click', modalContinueSel, 'closeModal');
-          Site.events.delegateEventFactory('click', modalScreenSel, 'closeModal');
+          Site.events.delegate('click', modalCloseSel, 'closeModal');
+          Site.events.delegate('click', modalContinueSel, 'closeModal');
+          Site.events.delegate('click', modalScreenSel, 'closeModal');
+
+          Site.events.global('click',modalLinkSel,'display/modal', true);
         },
 
         /**
@@ -239,16 +232,18 @@ if (thisModalType === 'inpage') {
           Site.utils.cl("Site.modal initialised");
 
           // Initialise Modal object for page-load content
+          /*
           $(modalSel).each(function () {
             var thisModal = new Modal(this, 'inpage');
             thisModal.init();
           });
+          */
 
-          // Initialise ModalLink objects for all modal links on page
-          $(modalLinkSel).each(function () {
-            var thisModalLink = new ModalLink(this);
-            thisModalLink.init();
-          });
+          // Initialise ModalLinkManager object to manage current and future modal links
+
+          var thisModalLinkManager = new ModalLinkManager(this);
+          thisModalLinkManager.init();
+
 
           // Add delegate event listeners for this module
           delegateEvents();

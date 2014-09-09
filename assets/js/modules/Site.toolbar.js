@@ -68,7 +68,7 @@ Site.toolbar = (function ($) {
 
         // Delegate events to an event listener on the <body> tag
         delegateEvents = function () {
-          Site.events.createDelegatedEventListener('click', selToolToggle, 'toggleTool');
+          Site.events.delegate('click', selToolToggle, 'toggleTool');
         },
 
         init = function () {

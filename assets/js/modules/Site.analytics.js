@@ -276,7 +276,7 @@ Site.analytics = (function ($) {
          * @function
          */
         delegateEvents = function () {
-          Site.events.createDelegatedEventListener('click', externalLinkSel, 'trackExternalLink');
+          Site.events.delegate('click', externalLinkSel, 'trackExternalLink');
         },
 
 

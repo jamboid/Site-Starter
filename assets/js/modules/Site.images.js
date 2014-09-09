@@ -121,7 +121,7 @@ Site.images = (function ($) {
 
               Site.utils.cl(loadingMethod);
 
-              if(loadingMethod !== 'click') {
+              if(loadingMethod !== 'click' && loadingMethod !== 'pageload') {
                 $.subscribe('page/scroll', function () {$(this).trigger('loadLazyImage');},$thisSprite);
                 $.subscribe('page/resize', function () {$(this).trigger('loadLazyImage');},$thisSprite);
                 $.subscribe('layout/change', function () {$(this).trigger('loadLazyImage');},$thisSprite);
@@ -170,7 +170,7 @@ Site.images = (function ($) {
        * @function
        */
       delegateEvents = function () {
-        Site.events.createDelegatedEventListener('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
+        Site.events.delegate('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
       },
 
       /**

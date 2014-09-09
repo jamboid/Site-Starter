@@ -96,7 +96,7 @@ Site.showhide = (function ($) {
          * @function
          */
         delegateEvents = function () {
-          Site.events.createDelegatedEventListener('click', defaults.selAction, 'toggleShowHide');
+          Site.events.delegate('click', defaults.selAction, 'toggleShowHide');
         },
 
         /**

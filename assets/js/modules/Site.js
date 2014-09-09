@@ -33,7 +33,6 @@ Site.init = (function ($) {
         Site.media.init();
         Site.showhide.init();
         Site.carousel.init();
-        Site.scroller.init();
         Site.filter.init();
         Site.loading.init();
       });

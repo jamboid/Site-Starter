@@ -39,6 +39,12 @@ Site.layout = (function ($) {
               };
 
           switch(true) {
+            // Case for static (non-media query) browsers, using Modernizr MQ test
+            // - use this if you want to load static-specific images
+            //   (e.g. correctly sized background images that can't be scaled with CSS)
+            case(!Modernizr.mq('only all')):
+              responsiveSize = 'static';
+              break;
             case(screenWidth <= screenSizeIs.small):
               responsiveSize = 'small';
               break;
@@ -135,6 +141,56 @@ Site.layout = (function ($) {
         };
       },
 
+      /**
+       * Creates a HeightManager object to manage component heights
+       * @constructor
+       */
+      HeightManager = function () {
+
+        var
+
+        // JSON object that holds group (groupSel) and item (itemSel) selectors for height equalisation,
+        // along with a group name for reference (although the function below simply loops through them all)
+        groups = {
+                  "minireviews": {
+                    "groupSel": ".gp_MiniReviews",
+                    "itemSel": ".reviewText"
+                  }
+                },
+
+        /**
+         * Match the heights of all the groups of elements in the groups var
+         * @function
+         */
+        updateHeights = function () {
+          $.each(groups,function(i,v) {
+            $(v.groupSel).each(function() {
+              var $thisGroup = $(this),
+                  items = $thisGroup.find(v.itemSel);
+
+              Site.utils.equaliseMinHeights(items);
+            });
+          });
+        },
+
+        /**
+         * Subscribe object to Global Messages
+         * @function
+         */
+        subscribeToEvents = function () {
+          $.subscribe('page/resize', function () { updateHeights(); });
+        };
+
+        /**
+         * Initialise this object
+         * @function
+         */
+        this.init = function () {
+          subscribeToEvents();
+          updateHeights();
+        };
+       },
+
   ///////////////
   // Functions //
   ///////////////
@@ -165,6 +221,10 @@ Site.layout = (function ($) {
         // Create a new ScrollManager object
         var thisScrollManager = new ScrollManager();
         thisScrollManager.init();
+
+        // Create a new HeightManager object
+        var thisHeightManager = new HeightManager();
+        thisHeightManager.init();
       };
 
   ///////////////////////

@@ -192,15 +192,15 @@ Site.navigation = (function ($) {
 
         // Create delegated event listeners
         if(Modernizr.touch) {
-          Site.events.createDelegatedEventListener('click', selNavToggle, 'toggleMainNav');
+          Site.events.delegate('click', selNavToggle, 'toggleMainNav');
         } else {
-          Site.events.createDelegatedEventListener('click', selNavToggle, 'toggleMainNav');
+          Site.events.delegate('click', selNavToggle, 'toggleMainNav');
         }
 
-        Site.events.createDelegatedEventListener('click', selInPageLink, 'inpagelink');
+        Site.events.delegate('click', selInPageLink, 'inpagelink');
 
         // Create a global messenger for a click event on the page wrapper (or any child element)
-        Site.events.createGlobalMessenger('click', selWrapper, 'navigation/close');
+        Site.events.global('click', selWrapper, 'navigation/close', true);
       },
 
       /**

@@ -337,7 +337,7 @@ Site.grid = (function ($) {
        * @function
        */
       delegateEvents = function () {
-        Site.events.createDelegatedEventListener('click', shGridHeadlineSel, 'toggle');
+        Site.events.delegate('click', shGridHeadlineSel, 'toggle');
       },
 
       /**
