@@ -76,7 +76,7 @@ Site.media = (function ($) {
 
         // Set Event Listeners for events associated with this module
         delegateEvents = function () {
-          Site.events.createDelegatedEventListener('click', lazyVideoActionSel, 'loadLazyMedia');
+          Site.events.delegate('click', lazyVideoActionSel, 'loadLazyMedia');
         },
 
         setLazyVideos = function () {
