@@ -59,7 +59,7 @@ Site.carousel = (function ($) {
            */
           setCycle = function () {
             if(autoplay) {
-              cycleTimeout = setTimeout(function(){ advanceCarousel('next'); }, interval);
+              cycleTimeout = setTimeout(function(){ advanceCarousel('n'); }, interval);
             }
           },
 
@@ -83,7 +83,6 @@ Site.carousel = (function ($) {
 
               if($thisCarousel.hasClass(selIconIndex)) {
                 hasIcons = true;
-                Site.utils.cl('Icon Carousel found');
               }
 
               $slides.each(function (index) {
@@ -93,9 +92,6 @@ Site.carousel = (function ($) {
 
                 // If Carousel is of the Icon Index variety
                 if(hasIcons) {
-
-                  Site.utils.cl('get icon image');
-
                   var iconImage = $(this).find('.indexIcon').html();
 
                   if(iconImage !== undefined){
@@ -462,10 +458,12 @@ Site.carousel = (function ($) {
          */
         init = function () {
           Site.utils.cl("Site.carousel initialised");
+
           $(carouselSel).each(function () {
             var thisCarousel = new Carousel(this);
             thisCarousel.init();
           });
+
           delegateEvents();
         };
 
