@@ -14,7 +14,7 @@ This boilerplate uses CodeKit 2 for its asset pipeline and the generation of the
 
 ### Sass Versions
 
-Sass 3.3 is the default configuration. Libsass, the implementation of Sass in C, still isn't mature enough for me to use in production, although CodeKit has it built in if required.
+Ruby Sass is the default configuration. Libsass, the implementation of Sass in C, still isn't mature enough for me to use in production, although CodeKit has it built in if required.
 
 ## Author
 
