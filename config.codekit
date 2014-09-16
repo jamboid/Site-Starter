@@ -1385,13 +1385,13 @@
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/modules\/Site.carousel.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/modules\/Site.grid.js",
 			"position": 10,
 			"type": 1
 			},
 		{
 			"followForSyntaxChecking": 1,
-			"linkedFileAbbreviatedPath": "\/assets\/js\/modules\/Site.grid.js",
+			"linkedFileAbbreviatedPath": "\/assets\/js\/modules\/Site.carousel.js",
 			"position": 11,
 			"type": 1
 			},
