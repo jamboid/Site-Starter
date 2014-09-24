@@ -10,7 +10,11 @@ Site.navigation = (function ($) {
   // Variables //
   ///////////////
 
-  var selNav = ".cp_MainNav",
+  var $window = $(window),
+      $pageDocument = $('html').eq(0),
+      $body = $('body').eq(0),
+
+      selNav = ".cp_MainNav",
       selWrapper = ".wrapper",
       selNavToggle = ".nvToggle [data-action=toggle]",
       selNavMenu = "ul.menu",
@@ -18,7 +22,13 @@ Site.navigation = (function ($) {
 
       selInPageLink = 'a.inPageLink',
 
-      $body = $('body').eq(0),
+      selInPageNavMenu = "[data-plugin=inPageMenu]",
+      selInPageNav = "[data-plugin=inPageMenu] li a:not(.action)",
+
+      selInPageAction = "[data-plugin=inPageMenu] li a.action",
+      selInPageActionLink = ".inPageAction a",
+
+      $mainPanels = $('[class^=cp_][id],[class^=rg_][id]'),
 
   //////////////////
   // Constructors //
@@ -134,6 +144,200 @@ Site.navigation = (function ($) {
           //updateMinHeight();
         };
       },
+
+      /**
+       * Creates a InPageNavMenu object to manage a sticky in-page nav menu
+       * @constructor
+       */
+      InPageNavMenu = function (elem) {
+
+        var $thisMenu = $(elem),
+            offsetCoords = $thisMenu.offset(),
+            topOffset = offsetCoords.top,
+            menuHeight = $thisMenu.outerHeight(),
+            inPageMenuHeight, menuIsSticky,
+
+            // Update Position
+            updatePosition = function () {
+              offsetCoords = $thisMenu.offset(),
+              topOffset = offsetCoords.top;
+            },
+
+            // Update menu's "current" link
+            updateMenuActiveState = function () {
+
+              var currentPos = $(document).scrollTop(),
+                  set = false;
+
+              $mainPanels.each(function () {
+                var $thisPanel = $(this),
+                    thisPanelHeight = $thisPanel.height(),
+                    thisPanelOffset = $thisPanel.offset();
+
+                if (set === false) {
+                  var thisPanelID = $thisPanel.attr('id'),
+                      navItemSel = selInPageNavMenu + ' a[href="' + window.location.pathname + '#' + thisPanelID + '"]';
+
+                  //if((currentPos + menuHeight) < thisPanelOffset.top || currentPos > ((thisPanelOffset.top + thisPanelHeight) - menuHeight)) {
+                  //  $(navItemSel).removeClass('current');
+
+                  if((currentPos + menuHeight) < thisPanelOffset.top || currentPos > ((thisPanelOffset.top + thisPanelHeight) - menuHeight)) {
+
+
+                  } else {
+                    $thisMenu.find('li a.current').removeClass('current');
+                    $(navItemSel).addClass('current');
+                    set = true;
+                  }
+                }
+              });
+            },
+
+            // Takes URL with Anchor and returns anchor
+            getAnchorFromAnchorUrl = function (anchorUrl) {
+              var thisUrl = anchorUrl,
+                  index = thisUrl.indexOf('#'),
+                  hash, anchor;
+
+              if (index > 0) {
+                hash = thisUrl.substring(index + 1);
+                anchor = hash;
+              } else {
+                anchor = "";
+              }
+              return anchor;
+            },
+
+            setInPageNavMode = function () {
+              var windowHeight = $window.height(),
+                  scrollTop = $window.scrollTop();
+
+              // If mainNav element is at top of page
+              if (scrollTop > topOffset) {
+                $pageDocument.addClass('fixedNav');
+                $thisMenu.css('height', $thisMenu.find('.in').eq(0).outerHeight());
+              } else {
+                if($pageDocument.hasClass('fixedNav')) {
+                  $pageDocument.removeClass('fixedNav');
+                  Site.utils.resetStyles($thisMenu);
+                }
+              }
+            },
+
+            // Set scroll position at section
+            setScrollPosition = function (selector, animate) {
+              var headerOffset = menuHeight,
+                  thisSelector = '#' + selector,
+                  useAnimation = animate,
+                  position, offSet, scrollTime;
+
+              Site.analytics.trackPageEvent('In-page Navigation', 'Scroll to section', selector);
+
+              position = $(thisSelector).eq(0).position();
+              offSet = position.top;
+
+              //offSet = position.top;
+
+              if (offSet >= $window.scrollTop()) {
+                offSet = offSet+2;
+                scrollTime = (offSet - $window.scrollTop())/4;
+              } else {
+                offSet = offSet - (headerOffset-2);
+                scrollTime = ($window.scrollTop() - offSet)/4;
+              }
+
+              if (useAnimation){
+                //$thisMenu.addClass('autoScrolling');
+                $('html, body').animate({ scrollTop: offSet}, scrollTime /*,
+                function(){
+
+                    setTimeout(function(){
+                      Site.layout.setScrollDirection('up');
+                      $thisMenu.removeClass('autoScrolling').trigger('showMenu');
+                    }, 100);
+
+                }*/);
+              } else {
+                $('html, body').scrollTop(offSet);
+              }
+
+              updateMenuState();
+            },
+
+            // Update fixed/static status of menu
+            updateMenuState = function () {
+              updateMenuActiveState();
+              setInPageNavMode();
+            },
+
+            // Add event handler for main navigation toggle
+            bindCustomMessageEvents = function () {
+              $thisMenu.on('updatelayout', function (e) {
+                e.preventDefault();
+                updatePosition();
+              });
+
+              $thisMenu.on('updateMenuState', function (e) {
+                e.preventDefault();
+                updateMenuState();
+              });
+
+              $thisMenu.on('inpagelinkclicked', function (e) {
+                e.preventDefault();
+                setScrollPosition(getAnchorFromAnchorUrl(e.target.href), true);
+              });
+
+              $thisMenu.on('showMenu', function (e) {
+                e.preventDefault();
+                $thisMenu.addClass('showMenu');
+              });
+
+              $thisMenu.on('hideMenu', function (e) {
+                e.preventDefault();
+                $thisMenu.removeClass('showMenu');
+              });
+            },
+
+            // Subscribe object to Global Messages
+            subscribeToEvents = function () {
+              $.subscribe('layout/change', function () {$(this).trigger('updatelayout');}, $thisMenu);
+              $.subscribe('page/loaded', function () {$(this).trigger('updatelayout');}, $thisMenu);
+              $.subscribe('page/resize', function () {$(this).trigger('updatelayout');}, $thisMenu);
+              if(menuIsSticky) {
+                $.subscribe('page/scroll', function () {$(this).trigger('updateMenuState');}, $thisMenu);
+
+                // Subscribe to scroll direction events
+                $.subscribe('scroll/up', function () {$(this).trigger('showMenu');}, $thisMenu);
+                $.subscribe('scroll/down', function () {$(this).trigger('hideMenu');}, $thisMenu);
+              }
+            };
+
+
+        this.init = function () {
+          // Set menu mode
+          if($thisMenu.hasClass('cp_Nav--inpage')) {
+            menuIsSticky = true;
+          } else {
+            menuIsSticky = false;
+            menuHeight = $('.cp_Nav--inpage .in').eq(0).outerHeight();
+          }
+
+          bindCustomMessageEvents();
+          subscribeToEvents();
+          setInPageNavMode();
+
+          $thisMenu.find('a.action').each(function() {
+            $(this).parent().addClass('action');
+
+            if(!$(this).hasClass('action--alt')) {
+              $(this).closest('[class^=cp_]').addClass('hasAction')
+            }
+          });
+
+          //inPageMenuHeight = menuHeight;
+        };
+      },
+
 
       /**
        * Creates an InPageLink object to manage a deep-link navigation item
