@@ -12,6 +12,8 @@ Site.layout = (function ($) {
   ///////////////
 
   var responsiveSize = 'small',
+      newSize,
+      scrollDirection,
 
 
   //////////////////
@@ -24,6 +26,20 @@ Site.layout = (function ($) {
        */
       ResponsiveLayoutManager = function () {
         var
+
+        /**
+         * Publish a message when the breakpoint changes
+         * @function
+         */
+        checkBreakpointChange = function (newSize) {
+          if (responsiveSize !== newSize) {
+
+            responsiveSize = newSize;
+            $.publish('breakpoint/change');
+          } else {
+            responsiveSize = newSize;
+          }
+        },
 
         /**
          * Set and update the responsiveSize variable based on current screen width
@@ -46,19 +62,24 @@ Site.layout = (function ($) {
               responsiveSize = 'static';
               break;
             case(screenWidth <= screenSizeIs.small):
-              responsiveSize = 'small';
+              newSize = 'small';
+              checkBreakpointChange(newSize);
               break;
             case(screenWidth <= screenSizeIs.medium):
-              responsiveSize = 'medium';
+              newSize = 'medium';
+              checkBreakpointChange(newSize);
               break;
             case(screenWidth <= screenSizeIs.large):
-              responsiveSize = 'large';
+              newSize = 'large';
+              checkBreakpointChange(newSize);
               break;
             case(screenWidth <= screenSizeIs.xlarge):
-              responsiveSize = 'xlarge';
+              newSize = 'xlarge';
+              checkBreakpointChange(newSize);
               break;
             case(screenWidth > screenSizeIs.xlarge):
-              responsiveSize = 'xxlarge';
+              newSize = 'xxlarge';
+              checkBreakpointChange(newSize);
               break;
           }
         },
@@ -68,7 +89,7 @@ Site.layout = (function ($) {
          * @function
          */
         subscribeToEvents = function () {
-          $.subscribe('debouncedresize', function () { updateResponsiveSize(); });
+          $.subscribe('page/resize', function () { updateResponsiveSize(); });
         };
 
         /**
@@ -111,6 +132,34 @@ Site.layout = (function ($) {
 
         var $pageFooter = $('.stFooter').eq(0),
             footerReached = false,
+            scrollTop = 0,
+            newScrollTop = 0,
+            pixelDelay = 20,
+
+        /**
+         * Record the current scroll direction
+         * @function
+         */
+        updateScrollDirection = function () {
+          newScrollTop = $(document).scrollTop();
+
+          if(newScrollTop > (scrollTop + pixelDelay) ){
+            scrollTop = newScrollTop;
+
+            if(scrollDirection !== 'down'){
+              $.publish('scroll/down');
+              scrollDirection = 'down';
+            }
+
+          } else if (newScrollTop < (scrollTop - pixelDelay) ){
+            scrollTop = newScrollTop;
+
+            if(scrollDirection !== 'up'){
+              $.publish('scroll/up');
+              scrollDirection = 'up';
+            }
+          }
+        },
 
         /**
          * Check if the page footer has been reached when the page is scrolled
@@ -129,7 +178,8 @@ Site.layout = (function ($) {
          * @function
          */
         subscribeToEvents = function () {
-          $.subscribe('scroll', function () { checkIfFooterHasBeenReached(); });
+          $.subscribe('page/scroll', function () { updateScrollDirection(); });
+          $.subscribe('page/scroll', function () { checkIfFooterHasBeenReached(); });
         };
 
         /**
@@ -204,6 +254,23 @@ Site.layout = (function ($) {
       },
 
       /**
+       * Get the value of the scrollDirection variable
+       * @function
+       */
+      getScrollDirection = function () {
+        return scrollDirection;
+      },
+
+      /**
+       * Set the value of the scrollDirection variable
+       * @function
+       */
+      setScrollDirection = function (newDirection) {
+        scrollDirection = newDirection;
+      },
+
+
+      /**
        * Initialise this module
        * @function
        */
@@ -233,6 +300,8 @@ Site.layout = (function ($) {
 
   return {
     init: init,
-    getResponsiveSize: getResponsiveSize
+    getResponsiveSize: getResponsiveSize,
+    getScrollDirection: getScrollDirection,
+    setScrollDirection: setScrollDirection
   };
 }(jQuery));

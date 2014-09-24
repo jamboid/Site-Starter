@@ -152,6 +152,16 @@ Site.carousel = (function ($) {
           },
 
           /**
+           * Complete the transition of the carousel
+           * @function
+           */
+          completeTransition = function () {
+            inTransition = false;
+            setCycle();
+            updateIndex();
+          },
+
+          /**
            * Set dimensions and other parameters for the carousel transitions
            * Called on page-load and whenever window is resized
            * @function
@@ -205,39 +215,37 @@ Site.carousel = (function ($) {
               inTransition = true;
               if (direction === 'n') {
                 slidesToClone = $(carouselSlideSel, $thisCarousel).slice(0, slidesToScroll).clone();
+
+                $.publish('content/change', slidesToClone);
+
                 $slideContainer.append(slidesToClone);
 
                 if (animate === false) {
                   $(carouselSlideSel, $thisCarousel).slice(0, slidesToScroll).remove();
-                  inTransition = false;
-                  setCycle();
-                  updateIndex();
+                  completeTransition();
                 } else {
                   $(carouselSlideFirstSel, $slideContainer).animate({ marginLeft: [-moveWidth, "easeInOutQuad"]}, transition, function () {
                     $(this).css("margin-left", "auto");
                     $(carouselSlideSel, $thisCarousel).slice(0, slidesToScroll).remove();
-                    inTransition = false;
-                    setCycle();
-                    updateIndex();
+                    completeTransition();
                   });
                 }
               } else if (direction === 'p') {
                 slidesToClone = $(carouselSlideSel, $thisCarousel).slice(-slidesToScroll).clone();
+
+                $.publish('content/change', slidesToClone);
+
                 if (animate === false) {
                   $slideContainer.prepend(slidesToClone);
                   $(carouselSlideSel, $thisCarousel).slice(-slidesToScroll).remove();
-                  inTransition = false;
-                  setCycle();
-                  updateIndex();
+                  completeTransition();
                 } else {
                   $(slidesToClone).eq(0).css("margin-left", -moveWidth);
                   $slideContainer.prepend(slidesToClone);
                   $(carouselSlideFirstSel, $slideContainer).animate({ marginLeft: [0,"easeInOutQuad"] }, transition, function () {
                     $(this).css("margin-left", "auto");
                     $(carouselSlideSel, $thisCarousel).slice(-slidesToScroll).remove();
-                    inTransition = false;
-                    setCycle();
-                    updateIndex();
+                    completeTransition();
                   });
                 }
               }
@@ -253,37 +261,40 @@ Site.carousel = (function ($) {
             var thisDirection = direction,
                 currentPos = $slides.index($currentSlide);
 
-            // Set next slide based on direction
-            if (direction === 'n'){
 
-              if((currentPos+1) < numOfSlides){
-                $nextSlide = $currentSlide.next();
-                $nextSlide.addClass('next');
-              } else {
-                $nextSlide = $firstSlide;
-                $nextSlide.addClass('next');
+            if (inTransition === false) {
+              inTransition = true;
+              // Set next slide based on direction
+              if (direction === 'n'){
+
+                if((currentPos+1) < numOfSlides){
+                  $nextSlide = $currentSlide.next();
+                  $nextSlide.addClass('next');
+                } else {
+                  $nextSlide = $firstSlide;
+                  $nextSlide.addClass('next');
+                }
+
+              } else if (direction === 'p') {
+
+                if(currentPos > 0){
+                  $nextSlide = $currentSlide.prev();
+                  $nextSlide.addClass('next');
+                } else {
+                  $nextSlide = $lastSlide;
+                  $nextSlide.addClass('next');
+                }
               }
 
-            } else if (direction === 'p') {
-
-              if(currentPos > 0){
-                $nextSlide = $currentSlide.prev();
-                $nextSlide.addClass('next');
-              } else {
-                $nextSlide = $lastSlide;
-                $nextSlide.addClass('next');
-              }
+              // Fade in next slide to sit over current slide
+              $nextSlide.fadeIn(transition, function () {
+                $currentSlide.removeClass('current');
+                $nextSlide.addClass('current').removeClass('next');
+                Site.utils.resetStyles($nextSlide);
+                $currentSlide = $nextSlide;
+                completeTransition();
+              });
             }
-
-            // Fade in next slide to sit over current slide
-            $nextSlide.fadeIn(transition, function () {
-              $currentSlide.removeClass('current');
-              $nextSlide.addClass('current').removeClass('next');
-              Site.utils.resetStyles($nextSlide);
-              $currentSlide = $nextSlide;
-              updateIndex();
-              setCycle();
-            });
           },
 
           /**
