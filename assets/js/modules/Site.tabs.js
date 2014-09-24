@@ -16,64 +16,123 @@ Site.tabs = (function ($) {
         tabControlSel = '[data-tabs=control]',
         tabControlCurrentSel = '.current[data-tabs=control]',
 
+        tabGlobalControlSel = '[data-plugin=tabs] [data-tabs=control]',
+        tabGlobalControlInnerSel = '[data-plugin=tabs] [data-tabs=control] span',
+
+        // Template contains show/hide data attributes
+        tabControlsContainerTemplate = '<div class="tabControls" data-plugin="showhide" data-plugin-config=\'{"animate": false, "open": false}\'><a class="tabToggle" href="#" data-showhide-action="toggle"></a><div class="tabs"></div></div>',
+        tabControlTemplate = '<a href="#" class="tabLink" data-tabs="control"><span class="inner"></span></a>',
+
+
   //////////////////
   // Constructors //
   //////////////////
 
-        buildTabs = function (tabbedComponent) {
-          var thisTabbedComponent = tabbedComponent,
-              tabPanels = $(tabPanelSel, thisTabbedComponent),
-              tabControls = $('<div class="tabControls"><ul class="controlsList itemList"></ul></div>'),
 
-              bindControlEvents = function (control) {
-                $(control).on('click', function (e) {
-                  e.preventDefault();
-                  Site.utils.cl('Tab control clicked');
+        TabbedContent = function (elem) {
+          var $thisTabbedContent = $(elem),
+              $tabPanels = $thisTabbedContent.find(tabPanelSel),
+              $tabControls = $(tabControlsContainerTemplate),
 
-                  var $thisControl = $(this),
+          /**
+           * Setup tabbed content and controls
+           * @function
+           */
+          setupTabs = function () {
 
-                  // Function to call when tab-switching complete
-                  transitionComplete = function () {
-                    // Fire event to be heard by global delegate (Site.events.js)
-                    $(thisAction).trigger('layout/change');
-                  };
+            $tabPanels.each(function () {
+              var thisTitle = $(this).data('title'),
+                  $tabControl = $(tabControlTemplate);
 
-                  if(!$thisControl.hasClass('current')) {
-                    var newPos = $(this).index();
-                    $('.current',tabControls).removeClass('current');
-                    $(tabControlCurrentSel, thisTabbedComponent).removeClass('current');
+              $tabControl.find('span').text(thisTitle);
+              $('.tabs',$tabControls).append($tabControl);
+            });
 
-                    $(tabControlSel,tabControls).eq(newPos).addClass('current');
-                    $(tabPanelSel, thisTabbedComponent).eq(newPos).addClass('current');
-                    transitionComplete();
-                  }
-                });
-              };
+            $('.tabContainer', $thisTabbedContent).eq(0).prepend($tabControls);
 
-          $(tabPanels).each(function () {
-            var thisTitle = $(this).data('title'),
-                tabControl = $('<li class="tabControl"><a href="#" class="tabLink"></a></li>');
-                $('.tabLink',tabControl).text(thisTitle);
-                $('.controlsList', tabControls).append(tabControl);
-                bindControlEvents(tabControl);
-          });
+            $thisTabbedContent.addClass('tabbed');
+            $tabPanels.eq(0).addClass('current');
+            $('.tabLink:first-child', $tabControls).addClass('current');
 
-          $('.in', thisTabbedComponent).eq(0).prepend(tabControls);
+          },
 
-          $(thisTabbedComponent).addClass('tabbed');
-          $(tabPanels).eq(0).addClass('current');
-          $('li:first-child', tabControls).addClass('current');
+
+          /**
+           * Change active tab and panel of content
+           * @function
+           */
+          updateCurrentTab = function (tab) {
+            var $tabTarget = $(tab),
+                $actualTab, indexOfClickedTab;
+
+            if($(tab).hasClass('inner')){
+              $actualTab = $tabTarget.parent();
+            } else {
+              $actualTab = $tabTarget
+            }
+
+            indexOfClickedTab = $actualTab.index();
+
+            $('.current', $tabControls).removeClass('current');
+            $tabPanels.removeClass('current');
+
+            $actualTab.addClass('current');
+            $tabPanels.eq(indexOfClickedTab).addClass('current');
+          },
+
+          /**
+           * Bind custom message events for this object
+           * @function
+           */
+          bindCustomMessageEvents = function () {
+            $thisTabbedContent.on('updatestate', function (e) {
+               e.preventDefault();
+               updateCurrentTab(e.target);
+            });
+          },
+
+          /**
+           * Subscribe object to Global Messages
+           * @function
+           */
+          subscribeToEvents = function () {
+
+          };
+
+          /**
+           * Initialise this object
+           * @function
+           */
+          this.init = function () {
+            bindCustomMessageEvents();
+            subscribeToEvents();
+            setupTabs();
+          };
         },
 
-        initialiseTabbedPanels = function () {
-          $(tabContainerSel).each(function(){
-            buildTabs(this);
-          });
+
+  ///////////////
+  // Functions //
+  ///////////////
+
+        /**
+         * Create delegate event listeners for this module
+         * @function
+         */
+        delegateEvents = function () {
+          Site.events.delegate('click', tabGlobalControlSel, 'updatestate');
+          Site.events.delegate('click', tabGlobalControlInnerSel, 'updatestate');
         },
 
         init = function () {
           Site.utils.cl("Site.tabs initialised");
-          initialiseTabbedPanels();
+          //initialiseTabbedPanels();
+          delegateEvents();
+
+          $(tabContainerSel).each(function() {
+            var thisTabbedContent= new TabbedContent(this);
+            thisTabbedContent.init();
+          })
         };
 
   ///////////////////////
