@@ -3,7 +3,7 @@
 .rg_GridModule {
   display: table;
   width: 100%;
-  @include mq($mqLeia) {
+  @include mq($bpLeia) {
     display: block;
   }
 }
@@ -13,7 +13,7 @@
   width: 50%;
   vertical-align: top;
   background:$clrWhite;
-  @include mq($mqLeia) {
+  @include mq($bpLeia) {
     display: block;
     width: 100%;
   }
@@ -38,7 +38,7 @@
     background-size:cover;
     vertical-align:top;
 
-    @include mq($mqArtoo){
+    @include mq($bpArtoo){
       display: none;
     }
   }

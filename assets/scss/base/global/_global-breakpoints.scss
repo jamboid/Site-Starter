@@ -6,11 +6,11 @@
 What are the parameter values for each Media Query?
 - Set these values without units, these'll be added in the mixin
 */
-$mqArtoo: 480;
-$mqLeia: 610;
-$mqLuke: 770;
-$mqHan: 900;
-$mqChewie: 1000;
+$bpArtoo: 480;
+$bpLeia: 610;
+$bpLuke: 770;
+$bpHan: 900;
+$bpChewie: 1000;
 
 /*
 
@@ -23,48 +23,48 @@ Small
 ------------
 
 - A-List
-$mqYoda
-$mqArtoo
+$bpYoda
+$bpArtoo
 
 - B-List
-$mqEwok
-$mqJawa
+$bpEwok
+$bpJawa
 
 Medium
 ------------
 
 - A-List
-$mqLeia
-$mqLuke
-$mqHan
-$mqThreepio
+$bpLeia
+$bpLuke
+$bpHan
+$bpThreepio
 
 - B-List
-$mqLando
-$mqBoba
-$mqLobot
+$bpLando
+$bpBoba
+$bpLobot
 
 
 Large
 ------------
 
 - A-List
-$mqVader
-$mqChewie
+$bpVader
+$bpChewie
 
 - B-List
-$mqJabba
-$mqWampa
-$mqRancor
-$mqSarlacc
+$bpJabba
+$bpWampa
+$bpRancor
+$bpSarlacc
 
 
 Very Large
 ------------
 
 - A-List
-$mqATAT
-$mqStarDestroyer
-$mqDeathStar
+$bpATAT
+$bpStarDestroyer
+$bpDeathStar
 
 */
