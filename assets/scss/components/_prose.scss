@@ -105,7 +105,7 @@
     max-width: 100% !important;
     margin:2em 0;
     position: relative;
-    @include mq($mqLuke){
+    @include mq($bpLuke){
       width: 100% !important;
     }
 

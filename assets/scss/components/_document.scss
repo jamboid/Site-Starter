@@ -9,7 +9,7 @@ body {
   font-family:$bodyfontfamily;
   line-height:1.5;
   color:$clrDarkGrey;
-  @include mq(plusOne($mqHan), $query1: min) {
+  @include mq(plusOne($bpHan), $query1: min) {
     font-size: 125%;
   }
 }

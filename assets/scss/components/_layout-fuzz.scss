@@ -71,11 +71,11 @@ NOTE: Styles to set the layout of the larger containers and regions in the templ
   @extend %clearfix;
   @include rem(margin, 0 45px 45px);
 
-  @include mq($mqHan) {
+  @include mq($bpHan) {
     @include rem(margin, 0 30px 30px);
   }
 
-  @include mq($mqLuke){
+  @include mq($bpLuke){
     @include rem(margin, 0 20px 30px);
   }
 }

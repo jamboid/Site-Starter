@@ -41,7 +41,7 @@ input[type=search] {
 input[type=file] {
   background:$clrFormsFileBack;
 
-  @include mq($mqArtoo){
+  @include mq($bpArtoo){
     width: 100%;
   }
 }

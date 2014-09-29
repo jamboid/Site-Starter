@@ -30,7 +30,7 @@
   text-align: left;
   display: block;
 
-  @include mq($mqLuke){
+  @include mq($bpLuke){
     left:20px;
   }
 }
@@ -54,11 +54,11 @@
   left:0;
   display: none;
 
-  //@include mq($mqLuke){
+  //@include mq($bpLuke){
     display: block;
   //}
 
-  @include mq($mqArtoo){
+  @include mq($bpArtoo){
     width: 260px;
     width: calc(100% - 58px);
   }
@@ -101,7 +101,7 @@
   }
 }
 
-//@include mq($mqLuke){
+//@include mq($bpLuke){
   html {
     overflow-x: hidden !important;
   }
@@ -130,7 +130,7 @@
   }
 //}
 
-@include mq($mqArtoo) {
+@include mq($bpArtoo) {
   .navVisible {
     .wrapper {
       left:260px;

@@ -29,13 +29,13 @@
     margin-bottom: 0;
     @include inline-block;
     vertical-align: top;
-    @include mq($mqHan) {
+    @include mq($bpHan) {
       width: 33.333%;
     }
-    @include mq($mqLuke) {
+    @include mq($bpLuke) {
       width: 50%;
     }
-    @include mq($mqArtoo) {
+    @include mq($bpArtoo) {
       width: 100%;
     }
 
