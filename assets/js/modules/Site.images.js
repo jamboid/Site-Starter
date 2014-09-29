@@ -113,7 +113,7 @@ Site.images = (function ($) {
              */
             bindCustomMessageEvents = function () {
               // Load lazy images
-              $thisSprite.on('loadLazyImage', function (e) {
+              $thisSprite.on('loadSmartImage', function (e) {
                 e.preventDefault();
                 if(imageLoaded === false){
                   loadSpriteImageIfInView($thisSprite);
@@ -134,10 +134,10 @@ Site.images = (function ($) {
              */
             subscribeToEvents = function () {
               if(loadingMethod !== 'click' && loadingMethod !== 'pageload') {
-                $.subscribe('page/scroll', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('page/resize', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('layout/change', function () {$(this).trigger('loadLazyImage');},$thisSprite);
-                $.subscribe('page/load', function () {$(this).trigger('loadLazyImage');},$thisSprite);
+                $.subscribe('page/scroll', function () {$(this).trigger('loadSmartImage');},$thisSprite);
+                $.subscribe('page/resize', function () {$(this).trigger('loadSmartImage');},$thisSprite);
+                $.subscribe('layout/change', function () {$(this).trigger('loadSmartImage');},$thisSprite);
+                $.subscribe('page/load', function () {$(this).trigger('loadSmartImage');},$thisSprite);
               }
 
               $.subscribe('breakpoint/change', function () {$(this).trigger('reloadImage');},$thisSprite);
@@ -227,7 +227,7 @@ Site.images = (function ($) {
        * @function
        */
       delegateEvents = function () {
-        Site.events.delegate('click', '.lazyLoader[data-image-load=click]', 'loadLazyImage');
+        Site.events.delegate('click', '.lazyLoader[data-image-load=click]', 'loadSmartImage');
       },
 
       /**
