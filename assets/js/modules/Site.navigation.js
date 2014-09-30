@@ -28,7 +28,7 @@ Site.navigation = (function ($) {
       selInPageAction = "[data-plugin=inPageMenu] li a.action",
       selInPageActionLink = ".inPageAction a",
 
-      $mainPanels = $('[class^=cp_][id],[class^=rg_][id]'),
+      $mainPanels = $('[class*=cp_][id],[class*=rg_][id]'),
 
   //////////////////
   // Constructors //
@@ -330,7 +330,7 @@ Site.navigation = (function ($) {
             $(this).parent().addClass('action');
 
             if(!$(this).hasClass('action--alt')) {
-              $(this).closest('[class^=cp_]').addClass('hasAction')
+              $(this).closest('[class*=cp_]').addClass('hasAction')
             }
           });
 
