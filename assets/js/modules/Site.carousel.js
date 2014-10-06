@@ -23,7 +23,7 @@ Site.carousel = (function ($) {
         eventSelCarouselIndexItem = '[data-plugin=carousel] .controls [data-index]',
 
         // Specific carousel type selectors
-        // selIconIndex = ".cp_Carousel--icon",
+        selIconIndex = ".cp_Carousel--icon",
 
   //////////////////
   // Constructors //

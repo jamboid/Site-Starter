@@ -166,10 +166,11 @@ Site.layout = (function ($) {
          * @function
          */
         checkIfFooterHasBeenReached = function () {
-
-          if(Site.utils.isElementInView($pageFooter) && !footerReached){
-            footerReached = true;
-            Site.analytics.trackPageEvent('Page Navigation','scroll','Footer reached');
+          if($pageFooter.length > 0 ){
+            if(Site.utils.isElementInView($pageFooter) && !footerReached){
+              footerReached = true;
+              Site.analytics.trackPageEvent('Page Navigation','scroll','Footer reached');
+            }
           }
         },
 
@@ -179,7 +180,7 @@ Site.layout = (function ($) {
          */
         subscribeToEvents = function () {
           $.subscribe('page/scroll', function () { updateScrollDirection(); });
-          $.subscribe('page/scroll', function () { checkIfFooterHasBeenReached(); });
+          //$.subscribe('page/scroll', function () { checkIfFooterHasBeenReached(); });
         };
 
         /**
