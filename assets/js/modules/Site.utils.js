@@ -39,7 +39,7 @@ Site.utils = (function ($) {
           var theseElements = elements,
               maxHeight = 0,
               currentHeight = 0;
-          $(theseElements).css('min-height', 0);
+          $(theseElements).css('min-height', "");
           $(theseElements).each(function () {
             currentHeight = $(this).height();
             if (currentHeight > maxHeight){
