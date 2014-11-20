@@ -26,10 +26,11 @@ Site.images = (function ($) {
         var $thisSprite = $(elem),
             $placeholderImage = $thisSprite.find('> img').eq(0),
             loadingMethod = $thisSprite.data('image-load'),
-            imageType = $thisSprite.data('image-type') || 'inline',
+            imageConfig = $thisSprite.data('image-config'),
+            imageType = imageConfig.type || 'inline',
+            imageReloader = imageConfig.reload || false,
             imageTargetSel = $thisSprite.data('image-target') || null,
             imageLoaded = false,
-            imageReloader = false,
             imageToAdd = new Image(),
 
             // Display a pre-loaded lazy image, adding atrributes set on
@@ -82,12 +83,14 @@ Site.images = (function ($) {
               var thisImageData = 'src-' + Site.layout.getResponsiveSize(),
                   thisImageUrl = $thisSprite.data(thisImageData);
 
+                if(thisImageUrl !== 'none'){
                   imageToAdd.src = thisImageUrl;
 
-                if(imageType === 'inline') {
-                  $(imageToAdd).imagesLoaded(displaySpriteImageInContainer(imageToAdd)).done(function() { $.publish('layout/change'); });
-                } else if (imageType === 'background') {
-                  $(imageToAdd).imagesLoaded(displaySpriteImageAsBackground(thisImageUrl)).done(function() { $.publish('layout/change'); });
+                  if(imageType === 'inline') {
+                    $(imageToAdd).imagesLoaded(displaySpriteImageInContainer(imageToAdd)).done(function() { $.publish('layout/change'); });
+                  } else if (imageType === 'background') {
+                    $(imageToAdd).imagesLoaded(displaySpriteImageAsBackground(thisImageUrl)).done(function() { $.publish('layout/change'); });
+                  }
                 }
             },
 
@@ -148,11 +151,6 @@ Site.images = (function ($) {
          * @function
          */
         this.init = function () {
-
-          if($thisSprite.hasClass('reLoader')) {
-            imageReloader = true;
-          }
-
           if(loadingMethod === 'click') {
             // Do nothing
           }
