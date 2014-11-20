@@ -33,7 +33,6 @@ Site.layout = (function ($) {
          */
         checkBreakpointChange = function (newSize) {
           if (responsiveSize !== newSize) {
-
             responsiveSize = newSize;
             $.publish('breakpoint/change');
           } else {

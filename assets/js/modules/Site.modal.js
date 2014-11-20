@@ -238,12 +238,10 @@ if (thisModalType === 'inpage') {
             thisModal.init();
           });
           */
-
           // Initialise ModalLinkManager object to manage current and future modal links
 
           var thisModalLinkManager = new ModalLinkManager(this);
           thisModalLinkManager.init();
-
 
           // Add delegate event listeners for this module
           delegateEvents();
