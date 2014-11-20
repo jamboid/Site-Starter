@@ -12,15 +12,16 @@ Site.carousel = (function ($) {
   ///////////////
 
     var carouselSel = "[data-plugin=carousel]",
-        carouselSlideSel = ".slide",
-        carouselSlideFirstSel = ".slide:first-child",
-        carouselIndexContainerSel = '.controls .index',
-        carouselControlsSel = ".controls",
+        carouselSlideContainerSel = "[data-carousel=slides]",
+        carouselSlideSel = "[data-carousel=slide]",
+        carouselSlideFirstSel = "[data-carousel=slide]:first-child",
+        carouselIndexContainerSel = '.scrollControls .index',
+        carouselControlsSel = ".scrollControls",
 
         // Selectors for delegated events - need to include parent component to ensure specificity
         eventSelCarouselControl = '[data-plugin=carousel] [data-action]',
-        eventSelCarouselSlide = '[data-plugin=carousel] .slide',
-        eventSelCarouselIndexItem = '[data-plugin=carousel] .controls [data-index]',
+        eventSelCarouselSlide = '[data-plugin=carousel] [data-carousel=slide]',
+        eventSelCarouselIndexItem = '[data-plugin=carousel] .scrollControls [data-index]',
 
         // Specific carousel type selectors
         selIconIndex = ".cp_Carousel--icon",
@@ -35,8 +36,9 @@ Site.carousel = (function ($) {
          */
         Carousel = function (elem) {
           var $thisCarousel = $(elem),
-              $slideContainer = $thisCarousel.find('.slides').eq(0),
-              $slides = $thisCarousel.find('.slide'),
+              carouselID = $thisCarousel.attr('id') || 'unidentified',
+              $slideContainer = $thisCarousel.find(carouselSlideContainerSel).eq(0),
+              $slides = $thisCarousel.find(carouselSlideSel),
               numOfSlides = $slides.length,
               config = $thisCarousel.data('config'),
               interval = config.interval || 5000,
@@ -51,7 +53,6 @@ Site.carousel = (function ($) {
               maxScroll = config.maxScroll || 4,
               controlsActive = true,
               carouselWidth, slideWidth, slidesToScroll, moveWidth,
-
 
           /**
            * Set timeout to repeat autocycle of carousel is it isn't paused
@@ -109,30 +110,6 @@ Site.carousel = (function ($) {
               });
 
               updateIndex(0);
-              positionControls();
-            }
-          },
-
-
-          /**
-           * Position the carousel index based on the screen width
-           * @function
-           */
-          positionControls = function () {
-            if ( $thisCarousel.hasClass('cp_Carousel--button')) {
-              var imageHeight = $thisCarousel.find('.slides .image img').eq(0).outerHeight(),
-                  indexHeight = $thisCarousel.find('.index').eq(0).outerHeight(),
-                  indexOffset = imageHeight - indexHeight,
-                  buttonOffset;
-
-              if(Site.layout.getResponsiveSize() === 'small'){
-                buttonOffset = imageHeight;
-              } else {
-                buttonOffset = (imageHeight/2);
-              }
-
-              $thisCarousel.find('.controls .index').css('top',indexOffset);
-              $thisCarousel.find('.controls .control').css('top',buttonOffset);
             }
           },
 
@@ -167,6 +144,7 @@ Site.carousel = (function ($) {
            * @function
            */
           setLayout = function () {
+
             //Site.utils.cl("setLayout called");
             carouselWidth = $slideContainer.width();
             slideWidth = $(carouselSlideSel, $thisCarousel).eq(0).width();
@@ -252,6 +230,39 @@ Site.carousel = (function ($) {
             }
           },
 
+
+          /**
+           * Transition the carousel, using a fade-in effect, to the indexed slide
+           * @function
+           * @parameter direction - string
+           */
+          fadeToIndexSlide = function (index) {
+            var nextIndex = index,
+                currentPos = $slides.index($currentSlide);
+
+
+            if (inTransition === false) {
+              inTransition = true;
+              // Set next slide based on direction
+              if (nextIndex !== currentPos){
+
+                $nextSlide = $slides.eq(nextIndex);
+                $nextSlide.addClass('next');
+
+                // Fade in next slide to sit over current slide
+                $nextSlide.fadeIn(transition, function () {
+                  $currentSlide.removeClass('current');
+                  $nextSlide.addClass('current').removeClass('next');
+                  Site.utils.rs($nextSlide);
+                  $currentSlide = $nextSlide;
+                  completeTransition();
+                });
+              } else {
+                inTransition = false;
+              }
+            }
+          },
+
           /**
            * Transition the carousel, using a fade-in effect, to the next or previous slide(s)
            * @function
@@ -306,7 +317,11 @@ Site.carousel = (function ($) {
             //Site.utils.cl("advanceCarousel called...");
             if(!inTransition){
               if(mode === 'fade'){
-                fadeToNextSlide(direction);
+                if(direction === parseInt(direction, 10)){
+                  fadeToIndexSlide(direction);
+                } else {
+                  fadeToNextSlide(direction);
+                }
               } else if (mode === 'scroll') {
                 scrollToNextSlide(direction);
               }
@@ -347,15 +362,27 @@ Site.carousel = (function ($) {
               // advance the scroller in the direction the attribute states
               if($(e.target).attr('data-action') !== undefined) {
                 advanceCarousel($(e.target).attr('data-action'));
+                var direction;
+
+                if($(e.target).attr('data-action') === 'n'){
+                  direction = 'Next';
+                } else {
+                  direction = 'Previous';
+                }
+
+                Site.analytics.trackPageEvent('Carousel: ' + carouselID, 'Carousel advanced', 'Direction: ' + direction );
               }
             });
 
             // Event listener for 'nextslide' event that cycles to next slide
             $thisCarousel.on('nextslide', function (e) {
               e.preventDefault();
+
               if(controlsActive){
                 advanceCarousel("n");
                 stopCycle();
+
+                Site.analytics.trackPageEvent('Carousel: ' + carouselID, 'Carousel advanced with touch swipe', 'Direction: Next');
               }
             });
 
@@ -365,18 +392,26 @@ Site.carousel = (function ($) {
               if(controlsActive){
                 advanceCarousel("p");
                 stopCycle();
+
+                Site.analytics.trackPageEvent('Carousel: ' + carouselID, 'Carousel advanced with touch swipe', 'Direction: Previous');
               }
             });
 
             $thisCarousel.on('indexclicked', function (e) {
               e.preventDefault();
+
+              // Clear autoscroll
+              stopCycle();
               advanceCarousel($(e.target).data('index'));
+
+              Site.analytics.trackPageEvent('Carousel: ' + carouselID, 'index control clicked', 'slide: ' + ($(e.target).data('index') + 1));
+
             });
 
             $thisCarousel.on('updateLayout', function (e) {
               e.preventDefault();
               setLayout();
-              positionControls();
+              //positionControls();
             });
 
 
@@ -454,7 +489,7 @@ Site.carousel = (function ($) {
           Site.events.delegate('click', eventSelCarouselControl, 'controlclicked');
 
           // Delegate 'click' event on carousel index links
-          //Site.events.delegate('click', eventSelCarouselIndexItem, 'indexclicked');
+          Site.events.delegate('click', eventSelCarouselIndexItem, 'indexclicked');
 
           // Delegate 'swipeleft' event to move back
           Site.events.delegate('swipeleft', eventSelCarouselSlide, 'nextslide');
