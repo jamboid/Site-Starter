@@ -11,17 +11,17 @@ Site.carousel = (function ($) {
   // Variables //
   ///////////////
 
-    var carouselSel = "[data-plugin=carousel]",
+    var carouselSel = "[data-carousel=component]",
         carouselSlideContainerSel = "[data-carousel=slides]",
         carouselSlideSel = "[data-carousel=slide]",
         carouselSlideFirstSel = "[data-carousel=slide]:first-child",
-        carouselIndexContainerSel = '.scrollControls .index',
-        carouselControlsSel = ".scrollControls",
+        carouselIndexContainerSel = '[data-carousel=controls] .index',
+        carouselControlsSel = "[data-carousel=slide]",
 
         // Selectors for delegated events - need to include parent component to ensure specificity
-        eventSelCarouselControl = '[data-plugin=carousel] [data-action]',
-        eventSelCarouselSlide = '[data-plugin=carousel] [data-carousel=slide]',
-        eventSelCarouselIndexItem = '[data-plugin=carousel] .scrollControls [data-index]',
+        eventSelCarouselControl = '[data-carousel=component] [data-action]',
+        eventSelCarouselSlide = '[data-carousel=component] [data-carousel=slide]',
+        eventSelCarouselIndexItem = '[data-carousel=component] [data-index]',
 
         // Specific carousel type selectors
         selIconIndex = ".cp_Carousel--icon",
@@ -40,7 +40,7 @@ Site.carousel = (function ($) {
               $slideContainer = $thisCarousel.find(carouselSlideContainerSel).eq(0),
               $slides = $thisCarousel.find(carouselSlideSel),
               numOfSlides = $slides.length,
-              config = $thisCarousel.data('config'),
+              config = $thisCarousel.data('carousel-config'),
               interval = config.interval || 5000,
               mode = config.mode || "scroll",
               transition = config.transition || 1000,
@@ -164,9 +164,9 @@ Site.carousel = (function ($) {
             }
 
             // Debug log
-            //Site.utils.cl("maxScroll: " + maxScroll + ", " + "Slides to scroll: " + slidesToScroll);
-            //Site.utils.cl("Carousel width: " + carouselWidth + ", " + "Slide Width: " + slideWidth);
-            //Site.utils.cl("Items to scroll: " + slidesToScroll + ", " + "Number of items: " + $slides.length + ", " + "Distance to scroll: " + moveWidth);
+//             Site.utils.cl("maxScroll: " + maxScroll + ", " + "Slides to scroll: " + slidesToScroll);
+//             Site.utils.cl("Carousel width: " + carouselWidth + ", " + "Slide Width: " + slideWidth);
+//             Site.utils.cl("Items to scroll: " + slidesToScroll + ", " + "Number of items: " + $slides.length + ", " + "Distance to scroll: " + moveWidth);
 
             // If total number of items is greater than visible items, show controls...
 

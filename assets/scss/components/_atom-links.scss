@@ -14,13 +14,13 @@ a {
 
 /* !==  More/Action link */
 
-.moreLink {
+.button {
   @include buttonBase;
   @include basicButton($clrWhite, $clrBlue);
 }
 
 // Colour variants
-.moreLink {
+.button {
   &--negative {
     @include basicButton($clrWhite, $clrRed);
   }

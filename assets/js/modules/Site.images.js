@@ -56,7 +56,11 @@ Site.images = (function ($) {
 
               $thisSprite.addClass('imageLoaded');
               // Need to allow browser a moment to process the addition of the image before displaying it
-              window.setTimeout(function () {$thisSprite.addClass('imageDisplayed');}, 100);
+              window.setTimeout(function () {
+                $thisSprite.addClass('imageDisplayed');
+                $.publish('content/update');
+                $.publish('image/loaded');
+              }, 50);
               imageLoaded = true;
             },
 

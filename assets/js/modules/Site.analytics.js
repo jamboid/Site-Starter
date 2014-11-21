@@ -299,10 +299,10 @@ Site.analytics = (function ($) {
             delegateEvents();
 
 
-            $('a').each(function () {
-              var thisLink = new PageLink(this);
-              thisLink.init();
-            });
+//             $('a').each(function () {
+//               var thisLink = new PageLink(this);
+//               thisLink.init();
+//             });
 
         };
 
