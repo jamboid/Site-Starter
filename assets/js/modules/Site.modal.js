@@ -11,7 +11,7 @@ Site.modal = (function ($) {
   // Variables //
   ///////////////
 
-    var modalSel = ".modalSource",
+    var modalSel = "[data-modal=source]",
         modalCloseSel = '.cp_Modal .close',
         modalContinueSel = '.cp_Modal .continueLink a',
         modalContentSel = '.modalContent',
@@ -21,7 +21,7 @@ Site.modal = (function ($) {
         $window = $(window),
         $body = $('body'),
 
-        modalLinkSel = ".modalLink",
+        modalLinkSel = "[data-modal=source]",
 
   /////////////
   // Classes //
@@ -33,9 +33,10 @@ Site.modal = (function ($) {
          * @parameter element (Object)
          * @parameter modalTyle (String) - can be either 'inpage' or 'iframe'
          */
-        Modal = function (element, modalType) {
+        Modal = function (element, modalType, modalID) {
 
           var $modalSource = $(element),
+              thisModalID = modalID,
               thisModalType = modalType,
               $thisModal = $(modalTemplate),
               $modalScreen = $(modalScreenTemplate),
@@ -55,7 +56,7 @@ Site.modal = (function ($) {
           },
 
           /**
-           * Display a page link in an iframe as a modal
+           * Display the content of a page link in a modal
            * @function
            */
           displayPageLinkInModal = function () {
@@ -63,6 +64,19 @@ Site.modal = (function ($) {
             $thisModal.find('.modalContentContainer').append($modalSource);
             $body.append($thisModal).append($modalScreen);
             positionModal();
+            $.publish('content/change',$modalSource);
+          },
+
+          /**
+           * Display the content of a page link in a modal
+           * @function
+           */
+          displaySmartImageInModal = function () {
+            $thisModal.addClass('imageModal');
+            $thisModal.find('.modalContentContainer').append($modalSource);
+            $body.append($thisModal).append($modalScreen);
+            positionModal();
+            $.publish('content/change',$modalSource);
           },
 
           /**
@@ -78,7 +92,6 @@ Site.modal = (function ($) {
                 topPos = (((windowHeight-modalHeight)/2)+scrollTop)-10,
                 leftPos = ((windowWidth/2)-(modalWidth/2));
 
-
             if(topPos < 0){
               topPos = 0;
             }
@@ -88,6 +101,21 @@ Site.modal = (function ($) {
             }
 
             $thisModal.css('top',topPos).css('left', leftPos).addClass('displayed');
+          },
+
+          /**
+           * Turn the modal from holding state to final state once content is loaded
+           * @function
+           */
+          activateModal = function () {
+            $thisModal.addClass('imageLoaded');
+            positionModal();
+
+            Site.analytics.trackPageEvent('Modal Image', 'Modal Opened', 'Image ID: ' + thisModalID);
+
+            var delayPosition = setTimeout(function() {
+              positionModal();
+            }, 1000);
           },
 
           /**
@@ -103,6 +131,8 @@ Site.modal = (function ($) {
             $modalScreen.fadeOut(function () {
               $modalScreen.remove();
             });
+
+            Site.analytics.trackPageEvent('Modal Image', 'Modal Closed', 'Image ID: ' + thisModalID);
           },
 
           /**
@@ -121,6 +151,11 @@ Site.modal = (function ($) {
               positionModal();
             });
 
+            $thisModal.on('activateModal', function (e) {
+              e.preventDefault();
+              activateModal();
+            });
+
             $modalScreen.on('closeModal', function (e) {
               e.preventDefault();
               closeModal();
@@ -133,7 +168,9 @@ Site.modal = (function ($) {
            */
           subscribeToEvents = function () {
             $.subscribe('page/resize', function () {$(this).trigger('updatelayout');},$thisModal);
+            $.subscribe('content/update', function () {$(this).trigger('updatelayout');},$thisModal);
             $.subscribe('page/scroll', function () {$(this).trigger('updatelayout');},$thisModal);
+            $.subscribe('image/loaded', function () {$(this).trigger('activateModal');},$thisModal);
           };
 
           /**
@@ -144,13 +181,13 @@ Site.modal = (function ($) {
 
             displayContentInModal();
 
-            /*
-if (thisModalType === 'inpage') {
+            if (thisModalType === 'inpage') {
               displayPageContentInModal();
+            } else if (thisModalType === 'image') {
+              displaySmartImageInModal();
             } else if (thisModalType === 'iframe') {
               displayPageLinkInModal();
             }
-*/
 
             bindCustomMessageEvents();
             subscribeToEvents();
@@ -164,26 +201,26 @@ if (thisModalType === 'inpage') {
          */
         ModalLinkManager = function () {
 
-          var $modalLinkContent = $('<div class="iframe">'),
+          var $modalLinkContent = $('<div class="modalImage">'),
 
           /**
            * Display modal content
            * @function
            */
           createModalContent = function (data) {
-            var $thisModalLink = $(data.target).closest(modalLinkSel),
+            var $thisModalLink = $(data.target),
+                modalLinkID = $thisModalLink.attr('id') || 'unidentified',
                 modalLinkURL = $thisModalLink.attr('href'),
-                $iframeScaffold = $('<iframe></iframe>');
+
+                $image = $('<div class="image" data-image-load="pageload" data-image-config=\'{ "type" : "inline", "reload" : true }\' data-src-small="' + modalLinkURL + '" data-src-medium="' + modalLinkURL + '" data-src-large="' + modalLinkURL + '" data-src-xlarge="' + modalLinkURL + '" data-src-xxlarge="' + modalLinkURL + '" data-src-static="' + modalLinkURL + '">');
 
             $modalLinkContent.empty();
-            $iframeScaffold.attr('src',modalLinkURL).attr('width',600).attr('height',400);
-            Site.utils.cl($iframeScaffold);
-            $modalLinkContent.append($iframeScaffold);
-            createModal();
+            $modalLinkContent.append($image);
+            createModal(modalLinkID);
           },
 
-          createModal = function () {
-             var thisNewModal = new Modal($modalLinkContent, 'iframe');
+          createModal = function (id) {
+             var thisNewModal = new Modal($modalLinkContent, 'image', id);
              thisNewModal.init();
           },
 
@@ -201,9 +238,6 @@ if (thisModalType === 'inpage') {
            */
           this.init = function () {
             subscribeToEvents();
-            //initialiseNewModalLinks();
-
-            Site.utils.cl('modal link initialised');
           };
         },
 
@@ -220,7 +254,6 @@ if (thisModalType === 'inpage') {
           Site.events.delegate('click', modalCloseSel, 'closeModal');
           Site.events.delegate('click', modalContinueSel, 'closeModal');
           Site.events.delegate('click', modalScreenSel, 'closeModal');
-
           Site.events.global('click',modalLinkSel,'display/modal', true);
         },
 
