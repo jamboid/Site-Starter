@@ -1,6 +1,6 @@
 /*# sourceMappingURL=screen.css.map */
 
-/* !== Screen */
+/* !== Legacy IE Stylesheet */
 /* NOTE: Master SASS file for screen display. Only add @import statements. No SASS/CSS code please */
 
 /*
@@ -15,7 +15,7 @@ The following Tools are required to process this Sass framework correctly:
 
 */
 
-$legacy: false;
+$legacy: true;
 
 /* Framework - Variables, Mixins, Functions, Resets, Placeholders */
 @import "base/all";

@@ -39,7 +39,9 @@ Site.images = (function ($) {
               var $thisImage = $(image),
                   imageAlt = $thisSprite.data('alt') || 'image';
 
-              $thisImage.attr('alt', imageAlt);
+              if(imageAlt.length > 0){
+                $thisImage.attr('alt', imageAlt);
+              }
 
               if($placeholderImage.length > 0) {
                 $placeholderImage.attr('src', $thisImage.attr('src')).removeClass('placeholder').removeAttr('width').removeAttr('height');
@@ -56,7 +58,11 @@ Site.images = (function ($) {
 
               $thisSprite.addClass('imageLoaded');
               // Need to allow browser a moment to process the addition of the image before displaying it
-              window.setTimeout(function () {$thisSprite.addClass('imageDisplayed');}, 100);
+              window.setTimeout(function () {
+                $thisSprite.addClass('imageDisplayed');
+                $.publish('content/update');
+                $.publish('image/loaded');
+              }, 50);
               imageLoaded = true;
             },
 

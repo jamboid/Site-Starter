@@ -30,6 +30,13 @@ Site.navigation = (function ($) {
 
       $mainPanels = $('[class*=cp_][id],[class*=rg_][id]'),
 
+      selDropDownMenu = "[data-plugin=dropdown]",
+      selDropDownToggle = "[data-action=toggle]",
+      selDropDownMenuIContainer = ".menu",
+      selDropDownMenuItems = ".menu > li",
+
+      selDropDownToggleGlobal = "[data-plugin=dropdown] [data-action=toggle]",
+
   //////////////////
   // Constructors //
   //////////////////
@@ -142,6 +149,98 @@ Site.navigation = (function ($) {
           subscribeToEvents();
           createSlideMenu();
           //updateMinHeight();
+        };
+      },
+
+      /**
+       * Creates a DropDownNavMenu object to manage a responsive main navigation menu
+       * @constructor
+       */
+      DropDownNavMenu = function (elem) {
+
+        var $thisMenu = $(elem),
+            $menuContainer = $thisMenu.find(selDropDownMenuIContainer),
+            $menuItems = $thisMenu.find(selDropDownMenuItems),
+            $menuToggle = $thisMenu.find(selDropDownToggle),
+
+            /**
+             * Show/Hide main navigation menu when in mobile/small-screen configuration
+             * @function
+             */
+            toggleDropDown = function () {
+              if ($thisMenu.hasClass('isOpen') === true) {
+                $thisMenu.addClass('transitionToClosed');
+                $menuContainer.slideUp(200, 'easeInOutQuad', function () {
+                  $thisMenu.removeClass('isOpen');
+                  Site.utils.rs($(this));
+                  $thisMenu.removeClass('transitionToClosed');
+                });
+              } else {
+                $thisMenu.addClass('transitionToOpen');
+                $menuContainer.slideDown(200, 'easeInOutQuad', function () {
+                  $thisMenu.addClass('isOpen');
+                  Site.utils.rs($(this));
+                  $thisMenu.removeClass('transitionToOpen');
+                });
+              }
+            },
+
+            /**
+             * Update the menu toggle with the current page name and hide the corresponding item in the menu
+             * @function
+             */
+            updateCurrent = function () {
+              var currentPageTitle = $menuItems.find('a.active').eq(0).text();
+              $menuItems.find('a.active').closest('li').addClass('current');
+
+              if(currentPageTitle === "") {
+                currentPageTitle = "In this section";
+              }
+
+              $menuToggle.text(currentPageTitle);
+            },
+
+            /**
+             * Subscribe object to Global Messages
+             * @function
+             */
+            subscribeToEvents = function () {
+              //$.subscribe('navigation/close', function () { $(this).trigger('closeMainNav');} , $thisMainNav);
+            },
+
+            /**
+             * Add event handler for main navigation toggle
+             * @function
+             */
+            bindCustomMessageEvents = function () {
+              $thisMenu.on('toggleDropDown', function (e) {
+                e.preventDefault();
+                toggleDropDown();
+              });
+
+              $thisMenu.on('openDropDown', function (e) {
+                e.preventDefault();
+                openDropDown();
+              });
+
+              $thisMenu.on('closeDropDown', function (e) {
+                e.preventDefault();
+                closeDropDown();
+              });
+
+              $thisMenu.on('updatelayout', function (e) {
+                e.preventDefault();
+              });
+            };
+
+        /**
+         * Initialise this object
+         * @function
+         */
+        this.init = function () {
+          bindCustomMessageEvents();
+          subscribeToEvents();
+          updateCurrent();
         };
       },
 
@@ -413,9 +512,15 @@ Site.navigation = (function ($) {
        */
       init = function () {
         Site.utils.cl("Site.navigation initialised");
+
         $(selNav).each(function () {
           var newNav = new MainNavMenu(this);
           newNav.init();
+        });
+
+        $(selDropDownMenu).each(function () {
+          var newDropDownNavMenu = new DropDownNavMenu(this);
+          newDropDownNavMenu.init();
         });
 
         $(selInPageLink).each(function () {
